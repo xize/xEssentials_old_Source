@@ -7,6 +7,10 @@ import tv.mineinthebox.xEssentials;
 import tv.mineinthebox.events.enumTypes.playerJoinEnum;
 
 public class handler {
+	xEssentials plugin;
+	public handler(xEssentials plugin) {
+		this.plugin = plugin;
+	}
 	
 	public void getListener() {
 		setListener(new playerJoin(playerJoinEnum.altmessage));
@@ -17,7 +21,6 @@ public class handler {
 	}
 	
 	public void setListener(Listener listener) {
-		xEssentials plugin = (xEssentials) Bukkit.getPluginManager().getPlugin("xEssentials");
 		Bukkit.getPluginManager().registerEvents(listener, plugin);
 	}
 

@@ -18,7 +18,7 @@ public class xEssentials extends JavaPlugin {
 	private commandhandler command = new commandhandler();
 	private configHandler handleConfig = new configHandler();
 	private pluginDescription pluginhandle = new pluginDescription();
-	private handler handle = new handler();
+	private handler handle = new handler(this);
 	
 	public void log(String log, logType type) {
 		if(type == logType.info) {

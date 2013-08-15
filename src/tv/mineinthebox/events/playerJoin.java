@@ -16,7 +16,7 @@ public class playerJoin implements Listener {
 	}
 	
 	@EventHandler
-	public void rar(PlayerJoinEvent e) {
+	public void join(PlayerJoinEvent e) {
 		if(type == playerJoinEnum.altmessage) {
 			
 		} else if(type == playerJoinEnum.isSafe) {
