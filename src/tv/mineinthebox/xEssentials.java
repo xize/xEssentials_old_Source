@@ -7,6 +7,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import tv.mineinthebox.commands.commandhandler;
 import tv.mineinthebox.commands.commandlist;
 import tv.mineinthebox.configuration.configHandler;
+import tv.mineinthebox.events.handler;
 import tv.mineinthebox.logtype.logType;
 
 
@@ -17,6 +18,7 @@ public class xEssentials extends JavaPlugin {
 	private commandhandler command = new commandhandler();
 	private configHandler handleConfig = new configHandler();
 	private pluginDescription pluginhandle = new pluginDescription();
+	private handler handle = new handler();
 	
 	public void log(String log, logType type) {
 		if(type == logType.info) {
@@ -30,6 +32,7 @@ public class xEssentials extends JavaPlugin {
 	public void onEnable() {
 		log("has been enabled!", logType.info);
 		handleConfig.setup_config();
+		handle.getListener();
 		for(String commandS : cmdlist.getCommandList) {
 			getCommand(commandS).setExecutor(command);
 		}
