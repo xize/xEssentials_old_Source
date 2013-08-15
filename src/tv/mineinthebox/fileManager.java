@@ -210,20 +210,5 @@ public class fileManager extends xEssentials {
 		}
 		return false;
 	}
-	
-	public static boolean getBoolean(String fileName, String path, String fileLocation) {
-		try {
-			File f = new File(fileLocation + File.separator + "fileName");
-			if(f.exists()) {
-				FileConfiguration con = YamlConfiguration.loadConfiguration(f);
-				if(con.getBoolean(path)) {
-					return true;
-				}
-			}
-		} catch(Exception e) {
-			e.printStackTrace();
-		}
-		return false;
-	}
 
 }

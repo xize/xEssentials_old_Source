@@ -20,7 +20,7 @@ public class handler {
 		 * 
 		 */
 		if(fileManager.file_exists("ban.yml", fileManager.getDir())) {
-			if(fileManager.getBoolean("ban.yml", "ban.system.showAlternateAccounts", fileManager.getDir()) && fileManager.getBoolean("ban.yml", "ban.system.enable", fileManager.getDir())) {
+			if(fileManager.getBooleanValue("ban.yml", "ban.system.showAlternateAccounts", fileManager.getDir())) {
 				setListener(new playerJoin(playerJoinEnum.altmessage));
 			}
 		}
