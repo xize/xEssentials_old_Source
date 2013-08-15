@@ -1,0 +1,24 @@
+name: xEssentials
+version: 1.1
+description: a
+author: Xeph0re
+authors: [] 
+website:
+
+main: tv.mineinthebox.xEssentials
+database: false
+depend: []
+softdepend: []
+
+commands:
+ #supertowns:
+ #   description: allows you to teleport to your home
+ #   aliases: [st]
+ #   permission:
+ #   permission-message:
+
+permissions:
+  #supertowns.random:
+  #  description: Gives access to all plugin commands
+  #  children:
+  #    supertowns.randomSuper: true

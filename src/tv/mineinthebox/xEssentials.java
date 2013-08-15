@@ -1,0 +1,39 @@
+package tv.mineinthebox;
+
+import java.util.logging.Logger;
+
+import org.bukkit.plugin.java.JavaPlugin;
+
+import tv.mineinthebox.configuration.configHandler;
+import tv.mineinthebox.logtype.logType;
+
+
+public class xEssentials extends JavaPlugin {
+	
+	private Logger logger = Logger.getLogger("Minecraft");
+	private configHandler handleConfig = new configHandler();
+	private pluginDescription pluginhandle = new pluginDescription();
+	
+	public void log(String log, logType type) {
+		if(type == logType.info) {
+			logger.info(pluginhandle.pname() + pluginhandle.version() + " " + log);
+		} else if(type == logType.servere) {
+			logger.severe(pluginhandle.pname() + pluginhandle.version() + " " + log);
+		}
+	}
+	
+	@Override
+	public void onEnable() {
+		log("has been enabled!", logType.info);
+		handleConfig.setup_config();
+	}
+	@Override
+	public void onDisable() {
+		log("has been disabled!", logType.info);
+	}
+	
+	public xEssentials getPlugin() {
+		return this;
+	}
+
+}
