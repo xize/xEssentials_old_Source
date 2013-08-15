@@ -17,6 +17,8 @@ public class configHandler {
 		player.create_player();
 		pvp_config pvp = new pvp_config();
 		pvp.create_pvp();
+		rules_config rules = new rules_config();
+		rules.create_rules();
 		
 	}
 }
