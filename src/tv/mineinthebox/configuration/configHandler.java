@@ -13,6 +13,8 @@ public class configHandler {
 		chat.create_chat();
 		motd_config motd = new motd_config();
 		motd.create_motd();
+		player_config player = new player_config();
+		player.create_player();
 		
 	}
 }
