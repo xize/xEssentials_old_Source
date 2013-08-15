@@ -14,6 +14,7 @@ public class ban_config {
 			fileManager.writeFile("ban.yml", "ban.system.PwnAgeProtection.banMessage", "[PwnAge] spam hacks", fileManager.getDir());
 			fileManager.writeFile("ban.yml", "ban.system.AntiFloodSpam.banMessage", "[FloodSpam] spam hacks", fileManager.getDir());
 			fileManager.writeFile("ban.yml", "ban.system.HumanSpamProtection.banMessage", "[normal spam] dont spam!", fileManager.getDir());
+			fileManager.writeFile("ban.yml", "ban.system.showAlternateAccounts", true, fileManager.getDir());
 		}
 	}
 
