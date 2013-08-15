@@ -15,6 +15,8 @@ public class configHandler {
 		motd.create_motd();
 		player_config player = new player_config();
 		player.create_player();
+		pvp_config pvp = new pvp_config();
+		pvp.create_pvp();
 		
 	}
 }
