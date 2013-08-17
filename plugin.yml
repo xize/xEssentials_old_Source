@@ -8,11 +8,17 @@ website:
 main: tv.mineinthebox.xEssentials
 database: false
 depend: []
-softdepend: []
+softdepend: [WorldGuard, WorldEdit, Votifier, Vault, iConomy]
 
 commands:
   sethome:
      description: allows you to set your home
+     aliases: []
+     permission:
+     permission-message:
+
+  home:
+     description: allows you to teleport to home
      aliases: []
      permission:
      permission-message:
