@@ -15,6 +15,14 @@ public class playerPermission {
 			sender.sendMessage(ChatColor.RED + "you are not allowed to use this command! /" + cmd.getName() + "\n" + ChatColor.GRAY + "permission: xEssentials.command.setspawn");
 		} else if(cmd.getName().equalsIgnoreCase("spawn")) {
 			sender.sendMessage(ChatColor.RED + "you are not allowed to use this command! /" + cmd.getName() + "\n" + ChatColor.GRAY + "permission: xEssentials.command.spawn");
+		} else if(cmd.getName().equalsIgnoreCase("vanish")) {
+			if(args.length == 0) {
+				sender.sendMessage(ChatColor.RED + "you are not allowed to use this command! /" + cmd.getName() + "\n" + ChatColor.GRAY + "permission: xEssentials.command.vanish");
+			} else if(args.length == 1) {
+				if(args[0].equalsIgnoreCase("nopickup")) {
+					sender.sendMessage(ChatColor.RED + "you are not allowed to use this command! /" + cmd.getName() + " " + args[0] + "\n" + ChatColor.GRAY + "permission: xEssentials.command.vanish.nopickup");
+				}
+			}
 		}
 	}
 

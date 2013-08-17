@@ -80,5 +80,23 @@ public class vanishApi {
 		}
 		return false;
 	}
+	
+	public static boolean setNoPickUp(Player p) {
+		if(fileManager.file_exists(p.getName() + ".yml", fileManager.getDir() + File.separator + "vanish")) {
+			if(isVanished(p)) {
+				fileManager.writeFile(p.getName() + ".yml", "noPickup", true, fileManager.getDir() + File.separator + "vanish");
+			}
+		}
+		return false;
+	}
+	
+	public static boolean unsetNoPickUp(Player p) {
+		if(fileManager.file_exists(p.getName() + ".yml", fileManager.getDir() + File.separator + "vanish")) {
+			if(isVanished(p)) {
+				fileManager.writeFile(p.getName() + ".yml", "noPickup", false, fileManager.getDir() + File.separator + "vanish");
+			}
+		}
+		return false;
+	}
 
 }
