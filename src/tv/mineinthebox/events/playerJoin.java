@@ -10,6 +10,7 @@ import org.bukkit.event.player.PlayerJoinEvent;
 
 import tv.mineinthebox.fileManager;
 import tv.mineinthebox.resources.bansystem.ban;
+import tv.mineinthebox.resources.vanish.vanishApi;
 
 import com.sk89q.worldguard.bukkit.WorldGuardPlugin;
 import com.sk89q.worldguard.protection.flags.DefaultFlag;
@@ -41,6 +42,9 @@ public class playerJoin implements Listener {
 	@EventHandler
 	public void WorldGuardJoinMessage(PlayerJoinEvent e) {
 		if(ban.isBanned(e.getPlayer())) {
+			return;
+		}
+		if(vanishApi.isVanished(e.getPlayer())) {
 			return;
 		}
 		if(Bukkit.getPluginManager().isPluginEnabled("WorldGuard")) {
