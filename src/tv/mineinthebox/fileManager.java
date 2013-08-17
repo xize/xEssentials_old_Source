@@ -11,6 +11,7 @@ package tv.mineinthebox;
 import java.io.File;
 import java.util.ArrayList;
 
+import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.FileConfigurationOptions;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -21,7 +22,7 @@ import tv.mineinthebox.xEssentials;
 public class fileManager extends xEssentials {
 	
 	public static String getDir() {
-		xEssentials plugin = new xEssentials();
+		xEssentials plugin = (xEssentials) Bukkit.getPluginManager().getPlugin("xEssentials");
 		return plugin.getDataFolder().getAbsolutePath();
 	}
 	
