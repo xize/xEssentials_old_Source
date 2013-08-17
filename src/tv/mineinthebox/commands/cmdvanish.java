@@ -16,7 +16,7 @@ import tv.mineinthebox.permissions.playerPermission;
 import tv.mineinthebox.resources.vanish.vanishApi;
 
 public class cmdvanish {
-	
+
 	public static boolean execute(CommandSender sender, Command cmd, String[] args) {
 		if(cmd.getName().equalsIgnoreCase("vanish")) {
 			if(sender instanceof Player) {
@@ -47,53 +47,53 @@ public class cmdvanish {
 							} else {
 								playerPermission.getPermissionError(sender, cmd, args);
 							}
-						}
-					} else if(args[0].equalsIgnoreCase("fq") || args[0].equalsIgnoreCase("fakequit")) {
-						if(!vanishApi.isVanished(p)) {
-							if(Bukkit.getPluginManager().isPluginEnabled("WorldGuard")) {
-								WorldGuardPlugin wg = (WorldGuardPlugin) Bukkit.getPluginManager().getPlugin("WorldGuard");
-								for(ProtectedRegion region : wg.getRegionManager(p.getWorld()).getApplicableRegions(p.getLocation())) {
-									if(region.getFlag(DefaultFlag.MOB_SPAWNING) == State.DENY) {
-										Bukkit.broadcastMessage(ChatColor.RED + "Whoosh! staff member " + ChatColor.GREEN + p.getName() + ChatColor.GRAY + " has left the game safely!");
-										vanishApi.vanish(p);
-										return false;
+						} else if(args[0].equalsIgnoreCase("fq") || args[0].equalsIgnoreCase("fakequit")) {
+							if(!vanishApi.isVanished(p)) {
+								if(Bukkit.getPluginManager().isPluginEnabled("WorldGuard")) {
+									WorldGuardPlugin wg = (WorldGuardPlugin) Bukkit.getPluginManager().getPlugin("WorldGuard");
+									for(ProtectedRegion region : wg.getRegionManager(p.getWorld()).getApplicableRegions(p.getLocation())) {
+										if(region.getFlag(DefaultFlag.MOB_SPAWNING) == State.DENY) {
+											Bukkit.broadcastMessage(ChatColor.RED + "Whoosh! staff member " + ChatColor.GREEN + p.getName() + ChatColor.GRAY + " has left the game safely!");
+											vanishApi.vanish(p);
+											return false;
+										}
 									}
+									Bukkit.broadcastMessage(ChatColor.RED + "Whoosh! staff member " + ChatColor.GREEN + p.getName() + ChatColor.GRAY + " has left the game in wild!");
+									vanishApi.vanish(p);
+								} else {
+									Bukkit.broadcastMessage(ChatColor.GREEN + p.getName() + " has left!");
+									vanishApi.vanish(p);
 								}
-								Bukkit.broadcastMessage(ChatColor.RED + "Whoosh! staff member " + ChatColor.GREEN + p.getName() + ChatColor.GRAY + " has left the game in wild!");
-								vanishApi.vanish(p);
 							} else {
-								Bukkit.broadcastMessage(ChatColor.GREEN + p.getName() + " has left!");
-								vanishApi.vanish(p);
+								p.sendMessage(ChatColor.RED + "you are allready vanished so you can't fake quit, use /vanish fakejoin instead or /vanish");
 							}
-						} else {
-							p.sendMessage(ChatColor.RED + "you are allready vanished so you can't fake quit, use /vanish fakejoin instead or /vanish");
-						}
-					} else if(args[0].equalsIgnoreCase("fj") || args[0].equalsIgnoreCase("fakejoin")) {
-						if(vanishApi.isVanished(p)) {
-							if(Bukkit.getPluginManager().isPluginEnabled("WorldGuard")) {
-								WorldGuardPlugin wg = (WorldGuardPlugin) Bukkit.getPluginManager().getPlugin("WorldGuard");
-								for(ProtectedRegion region : wg.getRegionManager(p.getWorld()).getApplicableRegions(p.getLocation())) {
-									if(region.getFlag(DefaultFlag.MOB_SPAWNING) == State.DENY) {
-										Bukkit.broadcastMessage(ChatColor.GRAY + "a safe staff member " + p.getName() + ChatColor.GRAY + " has been appeared!");
-										vanishApi.vanish(p);
-										return false;
+						} else if(args[0].equalsIgnoreCase("fj") || args[0].equalsIgnoreCase("fakejoin")) {
+							if(vanishApi.isVanished(p)) {
+								if(Bukkit.getPluginManager().isPluginEnabled("WorldGuard")) {
+									WorldGuardPlugin wg = (WorldGuardPlugin) Bukkit.getPluginManager().getPlugin("WorldGuard");
+									for(ProtectedRegion region : wg.getRegionManager(p.getWorld()).getApplicableRegions(p.getLocation())) {
+										if(region.getFlag(DefaultFlag.MOB_SPAWNING) == State.DENY) {
+											Bukkit.broadcastMessage(ChatColor.GRAY + "a safe staff member " + p.getName() + ChatColor.GRAY + " has been appeared!");
+											vanishApi.vanish(p);
+											return false;
+										}
 									}
+									Bukkit.broadcastMessage(ChatColor.GRAY + "a wild staff member " + ChatColor.GREEN + p.getName() + ChatColor.GRAY + " has been appeared!");
+									vanishApi.unvanish(p);
+								} else {
+									Bukkit.broadcastMessage(ChatColor.GREEN + p.getName() + " has joined :)");
+									vanishApi.unvanish(p);
 								}
-								Bukkit.broadcastMessage(ChatColor.GRAY + "a wild staff member " + ChatColor.GREEN + p.getName() + ChatColor.GRAY + " has been appeared!");
-								vanishApi.unvanish(p);
 							} else {
-								Bukkit.broadcastMessage(ChatColor.GREEN + p.getName() + " has joined :)");
-								vanishApi.unvanish(p);
+								p.sendMessage(ChatColor.RED + "you are allready are unvanished so you can't fake join, use /vanish fakequit instead or /vanish");
 							}
-						} else {
-							p.sendMessage(ChatColor.RED + "you are allready are unvanished so you can't fake join, use /vanish fakequit instead or /vanish");
 						}
+					} else {
+						playerPermission.getPermissionError(sender, cmd, args);
 					}
 				} else {
-					playerPermission.getPermissionError(sender, cmd, args);
+					consolePermission.getConsoleMessage(sender);
 				}
-			} else {
-				consolePermission.getConsoleMessage(sender);
 			}
 		}
 		return false;
