@@ -4,6 +4,7 @@ import java.io.File;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
@@ -28,10 +29,27 @@ public class playerJoin implements Listener {
 	}
 	
 	@EventHandler
+	public void vanishHandle(PlayerJoinEvent e) {
+		if(vanishApi.isVanished(e.getPlayer())) {
+			for(Player p : Bukkit.getOnlinePlayers()) {
+				p.hidePlayer(e.getPlayer());
+			}
+			e.setJoinMessage("");
+		} else {
+			for(Player p : Bukkit.getOnlinePlayers()) {
+				if(vanishApi.isVanished(p)) {
+					e.getPlayer().hidePlayer(p);
+				}
+			}
+		}
+	}
+	
+	@EventHandler
 	public void checkAlts(PlayerJoinEvent e) {
 		if(fileManager.file_exists("ban.yml", fileManager.getDir())) {
 			if(fileManager.getBooleanValue("ban.yml", "ban.system.showAlternateAccounts", fileManager.getDir())) {
 				if(ban.isBanned(e.getPlayer())) {
+					e.setJoinMessage("");	
 					return;
 				}
 				ban.getAlternateAccounts(e.getPlayer());
@@ -42,9 +60,11 @@ public class playerJoin implements Listener {
 	@EventHandler
 	public void WorldGuardJoinMessage(PlayerJoinEvent e) {
 		if(ban.isBanned(e.getPlayer())) {
+			e.setJoinMessage("");	
 			return;
 		}
 		if(vanishApi.isVanished(e.getPlayer())) {
+			e.setJoinMessage("");	
 			return;
 		}
 		if(Bukkit.getPluginManager().isPluginEnabled("WorldGuard")) {
