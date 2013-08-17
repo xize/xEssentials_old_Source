@@ -9,6 +9,8 @@ public class playerPermission {
 	public static void getPermissionError(CommandSender sender, Command cmd, String[] args) {
 		if(cmd.getName().equalsIgnoreCase("sethome")) {
 			sender.sendMessage(ChatColor.RED + "you are not allowed to use this command! /" + cmd.getName() + "\n" + ChatColor.GRAY + "permission: xEssentials.command.sethome");
+		} else if(cmd.getName().equalsIgnoreCase("home")) {
+			sender.sendMessage(ChatColor.RED + "you are not allowed to use this command! /" + cmd.getName() + "\n" + ChatColor.GRAY + "permission: xEssentials.command.home");
 		}
 	}
 

@@ -23,15 +23,15 @@ public class playerJoin implements Listener {
 	@EventHandler
 	public void checkIfBanned(PlayerJoinEvent e) {
 		if(ban.isBanned(e.getPlayer())) {
-			e.getPlayer().kickPlayer(fileManager.getStringValue(e.getPlayer().getName() + ".yml", "Reason", fileManager.getDir() + File.separator + "bans") + File.separator);
+			e.getPlayer().kickPlayer(fileManager.getStringValue(e.getPlayer().getName() + ".yml", "Reason", fileManager.getDir() + File.separator + "bans"));
 			e.setJoinMessage("");	
 		}
 	}
 	
 	@EventHandler
 	public void HandleOnCommandTask(PlayerJoinEvent e) {
-		if(fileManager.file_exists(e.getPlayer().getName() + ".yml", fileManager.getDir() + File.separator + "tasks" + File.separator)) {
-			e.getPlayer().getServer().dispatchCommand(Bukkit.getConsoleSender(), fileManager.getStringValue(e.getPlayer().getName() + ".yml", "command", fileManager.getDir() + File.separator + "tasks" + File.separator));
+		if(fileManager.file_exists(e.getPlayer().getName() + ".yml", fileManager.getDir() + File.separator + "tasks")) {
+			e.getPlayer().getServer().dispatchCommand(Bukkit.getConsoleSender(), fileManager.getStringValue(e.getPlayer().getName() + ".yml", "command", fileManager.getDir() + File.separator + "tasks"));
 		}
 	}
 	

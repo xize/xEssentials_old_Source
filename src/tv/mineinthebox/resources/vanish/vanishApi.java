@@ -10,8 +10,8 @@ import tv.mineinthebox.fileManager;
 public class vanishApi {
 
 	public static boolean isVanished(Player p) {
-		if(fileManager.file_exists(p.getName() + ".yml", fileManager.getDir() + File.separator + "vanish" + File.separator)) {
-			if(fileManager.getBooleanValue(p.getName() + ".yml", "Vanished", fileManager.getDir() + File.separator + "vanish" + File.separator)) {
+		if(fileManager.file_exists(p.getName() + ".yml", fileManager.getDir() + File.separator + "vanish")) {
+			if(fileManager.getBooleanValue(p.getName() + ".yml", "Vanished", fileManager.getDir() + File.separator + "vanish")) {
 				return true;
 			}
 		}
@@ -20,7 +20,7 @@ public class vanishApi {
 
 	public static boolean isVanishedGetString(String p) {
 		if(fileManager.file_exists(p + ".yml", fileManager.getDir() + File.separator + "vanish" + File.separator)) {
-			if(fileManager.getBooleanValue(p + ".yml", "Vanished", fileManager.getDir() + File.separator + "vanish" + File.separator)) {
+			if(fileManager.getBooleanValue(p + ".yml", "Vanished", fileManager.getDir() + File.separator + "vanish")) {
 				return true;
 			}
 		}
@@ -28,15 +28,15 @@ public class vanishApi {
 	}
 
 	public static boolean vanish(Player p ) {
-		if(fileManager.file_exists(p.getName() + ".yml", fileManager.getDir() + File.separator + "vanish" + File.separator)) {
-			fileManager.writeFile(p.getName() + ".yml", "Vanished", true, fileManager.getDir() + File.separator + "vanish" + File.separator);
-			fileManager.writeFile(p.getName() + ".yml", "noPickup", true, fileManager.getDir() + File.separator + "vanish" + File.separator);
+		if(fileManager.file_exists(p.getName() + ".yml", fileManager.getDir() + File.separator + "vanish")) {
+			fileManager.writeFile(p.getName() + ".yml", "Vanished", true, fileManager.getDir() + File.separator + "vanish");
+			fileManager.writeFile(p.getName() + ".yml", "noPickup", true, fileManager.getDir() + File.separator + "vanish");
 			for(Player target : Bukkit.getOnlinePlayers()) {
 				target.hidePlayer(p);
 			}
 		} else {
-			fileManager.writeFile(p.getName() + ".yml", "Vanished", true, fileManager.getDir() + File.separator + "vanish" + File.separator);
-			fileManager.writeFile(p.getName() + ".yml", "noPickup", true, fileManager.getDir() + File.separator + "vanish" + File.separator);
+			fileManager.writeFile(p.getName() + ".yml", "Vanished", true, fileManager.getDir() + File.separator + "vanish");
+			fileManager.writeFile(p.getName() + ".yml", "noPickup", true, fileManager.getDir() + File.separator + "vanish");
 			for(Player target : Bukkit.getOnlinePlayers()) {
 				target.hidePlayer(p);
 			}
@@ -45,15 +45,15 @@ public class vanishApi {
 	}
 
 	public static boolean unvanish(Player p) {
-		if(fileManager.file_exists(p.getName() + ".yml", fileManager.getDir() + File.separator + "vanish" + File.separator)) {
-			fileManager.writeFile(p.getName() + ".yml", "Vanished", false, fileManager.getDir() + File.separator + "vanish" + File.separator);
-			fileManager.writeFile(p.getName() + ".yml", "noPickup", false, fileManager.getDir() + File.separator + "vanish" + File.separator);
+		if(fileManager.file_exists(p.getName() + ".yml", fileManager.getDir() + File.separator + "vanish")) {
+			fileManager.writeFile(p.getName() + ".yml", "Vanished", false, fileManager.getDir() + File.separator + "vanish");
+			fileManager.writeFile(p.getName() + ".yml", "noPickup", false, fileManager.getDir() + File.separator + "vanish");
 			for(Player target : Bukkit.getOnlinePlayers()) {
 				target.showPlayer(p);
 			}
 		} else {
-			fileManager.writeFile(p.getName() + ".yml", "Vanished", false, fileManager.getDir() + File.separator + "vanish" + File.separator);
-			fileManager.writeFile(p.getName() + ".yml", "noPickup", false, fileManager.getDir() + File.separator + "vanish" + File.separator);
+			fileManager.writeFile(p.getName() + ".yml", "Vanished", false, fileManager.getDir() + File.separator + "vanish");
+			fileManager.writeFile(p.getName() + ".yml", "noPickup", false, fileManager.getDir() + File.separator + "vanish");
 			for(Player target : Bukkit.getOnlinePlayers()) {
 				target.showPlayer(p);
 			}
@@ -71,8 +71,8 @@ public class vanishApi {
 	}
 
 	public static boolean vanishNoPickUp(Player p) {
-		if(fileManager.file_exists(p.getName() + ".yml", fileManager.getDir() + File.separator + "vanish" + File.separator)) {
-			if(fileManager.getBooleanValue(p.getName() + ".yml", "noPickup", fileManager.getDir() + File.separator + "vanish" + File.separator)) {
+		if(fileManager.file_exists(p.getName() + ".yml", fileManager.getDir() + File.separator + "vanish")) {
+			if(fileManager.getBooleanValue(p.getName() + ".yml", "noPickup", fileManager.getDir() + File.separator + "vanish")) {
 				return true;
 			} else {
 				return false;

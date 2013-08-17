@@ -195,6 +195,36 @@ public class fileManager extends xEssentials {
 		return null;
 	}
 	
+	public static Double getDoubleValue(String configFileName, String path, String fileLocation) {
+		try {
+			File f = new File(fileLocation + File.separator + configFileName);
+			if(f.exists()) {
+				FileConfiguration con = YamlConfiguration.loadConfiguration(f);
+				return con.getDouble("path");
+			} else {
+				return null;
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	public static Float getFloatValue(String configFileName, String path, String fileLocation) {
+		try {
+			File f = new File(fileLocation + File.separator + configFileName);
+			if(f.exists()) {
+				FileConfiguration con = YamlConfiguration.loadConfiguration(f);
+				return Float.valueOf((String) con.get(path));
+			} else {
+				return null;
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
 	public static boolean file_exists(String configFileName, String fileLocation) {
 		try {
 			File f = new File(fileLocation + File.separator + configFileName);

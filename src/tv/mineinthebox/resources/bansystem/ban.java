@@ -14,7 +14,7 @@ public class ban {
 	public static void getAlternateAccounts(Player p) {
 		String ip = p.getPlayer().getAddress().getHostName();
 		try {
-			File dir = new File(fileManager.getDir() + File.separator + "alts" + File.separator);
+			File dir = new File(fileManager.getDir() + File.separator + "alts");
 			if(dir.isDirectory()) {
 				File[] list = dir.listFiles();
 				StringBuilder build = new StringBuilder();
