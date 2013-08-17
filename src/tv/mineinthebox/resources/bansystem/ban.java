@@ -1,4 +1,4 @@
-package tv.mineinthebox.events.enumTypes;
+package tv.mineinthebox.resources.bansystem;
 
 import java.io.File;
 
@@ -10,9 +10,7 @@ import org.bukkit.entity.Player;
 
 import tv.mineinthebox.fileManager;
 
-public enum playerJoinEnum {
-	altmessage, welcomeMessage, isXeph0re, isWild, isSafe;
-
+public class ban {
 	public static void getAlternateAccounts(Player p) {
 		String ip = p.getPlayer().getAddress().getHostName();
 		try {

@@ -3,38 +3,30 @@ package tv.mineinthebox.events;
 import org.bukkit.Bukkit;
 import org.bukkit.event.Listener;
 
-import tv.mineinthebox.fileManager;
 import tv.mineinthebox.xEssentials;
-import tv.mineinthebox.events.enumTypes.playerJoinEnum;
 
 public class handler {
 	xEssentials plugin;
 	public handler(xEssentials plugin) {
 		this.plugin = plugin;
 	}
-	
+
 	public void getListener() {
 		/*
 		 *  
 		 * PlayerJoinEvent System
 		 * 
 		 */
-		if(fileManager.file_exists("ban.yml", fileManager.getDir())) {
-			if(fileManager.getBooleanValue("ban.yml", "ban.system.showAlternateAccounts", fileManager.getDir())) {
-				setListener(new playerJoin(playerJoinEnum.altmessage));
-			}
-		}
-		setListener(new playerJoin(playerJoinEnum.isSafe));
-		setListener(new playerJoin(playerJoinEnum.isWild));
-		setListener(new playerJoin(playerJoinEnum.isXeph0re));
-		setListener(new playerJoin(playerJoinEnum.welcomeMessage));
+		
+		setListener(new playerJoin());
+
 		/*
 		 * 
 		 * PlayerLeaveEvent system
 		 * 
 		 */
 	}
-	
+
 	public void setListener(Listener listener) {
 		Bukkit.getPluginManager().registerEvents(listener, plugin);
 	}
