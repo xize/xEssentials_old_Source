@@ -11,11 +11,11 @@ depend: []
 softdepend: []
 
 commands:
- #supertowns:
- #   description: allows you to teleport to your home
- #   aliases: [st]
- #   permission:
- #   permission-message:
+ sethome:
+    description: allows you to set your home
+    aliases: []
+    permission:
+    permission-message:
 
 permissions:
   #supertowns.random:

@@ -7,6 +7,9 @@ import org.bukkit.command.CommandSender;
 public class commandhandler implements CommandExecutor {
 	
 	public boolean onCommand(CommandSender sender, Command cmd, String CommandLabel, String[] args) {
+		if(cmd.getName().equalsIgnoreCase("sethome")) {
+			cmdsethome.execute(sender, cmd, args);
+		}
 		return false;
 	}
 
