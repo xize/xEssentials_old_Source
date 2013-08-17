@@ -4,7 +4,8 @@ public class commandlist {
 	
 	public String[] getCommandList = {
 			"sethome",
-			"home"
+			"home",
+			"setspawn"
 	};
 
 }
