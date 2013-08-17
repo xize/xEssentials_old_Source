@@ -37,7 +37,7 @@ commands:
 
   vanish:
      description: vanish yourself
-     aliases: []
+     aliases: [v]
      permission:
      permission-message:
 
