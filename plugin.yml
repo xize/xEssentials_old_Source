@@ -29,6 +29,12 @@ commands:
      permission:
      permission-message:
 
+  spawn:
+     description: allows you to teleport to the spawn
+     aliases: []
+     permission:
+     permission-message:
+
 permissions:
   #supertowns.random:
   #  description: Gives access to all plugin commands

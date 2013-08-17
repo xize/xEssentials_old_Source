@@ -13,6 +13,8 @@ public class commandhandler implements CommandExecutor {
 			cmdhome.execute(sender, cmd, args);
 		} else if(cmd.getName().equalsIgnoreCase("setspawn")) {
 			cmdsetspawn.execute(sender, cmd, args);
+		} else if(cmd.getName().equalsIgnoreCase("spawn")) {
+			cmdspawn.execute(sender, cmd, args);
 		}
 		return false;
 	}
