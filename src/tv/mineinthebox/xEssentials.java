@@ -13,6 +13,7 @@ import tv.mineinthebox.logtype.logType;
 
 public class xEssentials extends JavaPlugin {
 	
+	private static String filePath;
 	private Logger logger = Logger.getLogger("Minecraft");
 	private commandlist cmdlist = new commandlist();
 	private commandhandler command = new commandhandler();
@@ -33,6 +34,7 @@ public class xEssentials extends JavaPlugin {
 		log("has been enabled!", logType.info);
 		handleConfig.setup_config();
 		handle.getListener();
+		filePath = this.getDataFolder().getAbsolutePath();
 		for(String commandS : cmdlist.getCommandList) {
 			getCommand(commandS).setExecutor(command);
 		}
@@ -42,8 +44,8 @@ public class xEssentials extends JavaPlugin {
 		log("has been disabled!", logType.info);
 	}
 	
-	public xEssentials getPlugin() {
-		return this;
+	public static String getFileFolder() {
+		return filePath;
 	}
 
 }
