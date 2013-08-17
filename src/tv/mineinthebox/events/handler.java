@@ -25,6 +25,15 @@ public class handler {
 		 * PlayerLeaveEvent system
 		 * 
 		 */
+		
+		setListener(new playerLeave());
+		
+		/*
+		 * 
+		 *  PlayerMoveEvent system
+		 * 
+		 */
+		setListener(new playermove());
 	}
 
 	public void setListener(Listener listener) {

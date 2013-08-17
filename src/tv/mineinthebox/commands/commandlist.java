@@ -7,7 +7,8 @@ public class commandlist {
 			"home",
 			"setspawn",
 			"spawn",
-			"vanish"
+			"vanish",
+			"firefly"
 	};
 
 }

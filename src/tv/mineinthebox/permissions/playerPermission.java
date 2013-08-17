@@ -23,6 +23,8 @@ public class playerPermission {
 					sender.sendMessage(ChatColor.RED + "you are not allowed to use this command! /" + cmd.getName() + " " + args[0] + "\n" + ChatColor.GRAY + "permission: xEssentials.command.vanish.nopickup");
 				}
 			}
+		} else if(cmd.getName().equalsIgnoreCase("firefly")) {
+			sender.sendMessage(ChatColor.RED + "you are not allowed to use this command! /" + cmd.getName() + "\n" + ChatColor.GRAY + "permission: xEssentials.command.firefly");
 		}
 	}
 
