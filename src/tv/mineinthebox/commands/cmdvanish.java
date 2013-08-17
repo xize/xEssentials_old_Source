@@ -53,12 +53,12 @@ public class cmdvanish {
 									WorldGuardPlugin wg = (WorldGuardPlugin) Bukkit.getPluginManager().getPlugin("WorldGuard");
 									for(ProtectedRegion region : wg.getRegionManager(p.getWorld()).getApplicableRegions(p.getLocation())) {
 										if(region.getFlag(DefaultFlag.MOB_SPAWNING) == State.DENY) {
-											Bukkit.broadcastMessage(ChatColor.RED + "Whoosh! staff member " + ChatColor.GREEN + p.getName() + ChatColor.GRAY + " has left the game safely!");
+											Bukkit.broadcastMessage(ChatColor.RED + "Whoosh!" + ChatColor.GRAY + " staff member " + ChatColor.GREEN + p.getName() + ChatColor.GRAY + " has left the game safely!");
 											vanishApi.vanish(p);
 											return false;
 										}
 									}
-									Bukkit.broadcastMessage(ChatColor.RED + "Whoosh! staff member " + ChatColor.GREEN + p.getName() + ChatColor.GRAY + " has left the game in wild!");
+									Bukkit.broadcastMessage(ChatColor.RED + "Whoosh!" + ChatColor.GRAY + " staff member " + ChatColor.GREEN + p.getName() + ChatColor.GRAY + " has left the game in wild!");
 									vanishApi.vanish(p);
 								} else {
 									Bukkit.broadcastMessage(ChatColor.GREEN + p.getName() + " has left!");
