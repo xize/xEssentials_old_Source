@@ -6,7 +6,8 @@ public class commandlist {
 			"sethome",
 			"home",
 			"setspawn",
-			"spawn"
+			"spawn",
+			"vanish"
 	};
 
 }
