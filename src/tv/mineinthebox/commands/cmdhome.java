@@ -17,36 +17,31 @@ import tv.mineinthebox.permissions.playerPermission;
 public class cmdhome {
 	
 	public static boolean execute(CommandSender sender, Command cmd, String[] args) {
-		if(cmd.getName().equalsIgnoreCase("sethome")) {
+		if(cmd.getName().equalsIgnoreCase("home")) {
 			if(sender instanceof Player) {
 				if(sender.hasPermission("xEssentials.command.home")) {
-					if(fileManager.file_exists(sender.getName() + ".yml", fileManager.getDir() + File.separator + "homes" + File.separator)) {
+					if(fileManager.file_exists(sender.getName() + ".yml", fileManager.getDir() + File.separator + "homes")) {
 						Player p = (Player) sender;
 						Location loc = p.getLocation();
-						Double x = fileManager.getDoubleValue(sender.getName() + ".yml", "x", fileManager.getDir() + File.separator + "homes");
-						Double y = fileManager.getDoubleValue(sender.getName() + ".yml", "y", fileManager.getDir() + File.separator + "homes");
-						Double z = fileManager.getDoubleValue(sender.getName() + ".yml", "z", fileManager.getDir() + File.separator + "homes");
-						Float yaw = fileManager.getFloatValue(sender.getName() + ".yml", "yaw", fileManager.getDir() + File.separator + "homes");
-						World w = Bukkit.getWorld(fileManager.getStringValue(sender.getName() + ".yml", "World", fileManager.getDir() + File.separator + "homes"));
-						if(w instanceof World) {
-							loc.setX(x);
-							loc.setY(y);
-							loc.setZ(z);
-							loc.setYaw(yaw);
+						loc.setX(fileManager.getDoubleValue(p.getName() + ".yml", "x", fileManager.getDir() + File.separator + "homes"));
+						loc.setY(fileManager.getDoubleValue(p.getName() + ".yml", "y", fileManager.getDir() + File.separator + "homes"));
+						loc.setZ(fileManager.getDoubleValue(p.getName() + ".yml", "z", fileManager.getDir() + File.separator + "homes"));
+						loc.setYaw(fileManager.getIntegerValue(p.getName() + ".yml", "yaw", fileManager.getDir() + File.separator + "homes"));
+						if(Bukkit.getWorld(fileManager.getStringValue(p.getName() + ".yml", "World", fileManager.getDir() + File.separator + "homes")) instanceof World) {
+							World w = Bukkit.getWorld(fileManager.getStringValue(p.getName() + ".yml", "World", fileManager.getDir() + File.separator + "homes"));
 							loc.setWorld(w);
 							loc.getWorld().refreshChunk(loc.getChunk().getX(), loc.getChunk().getZ());
 							if(p.isInsideVehicle()) {
 								p.getVehicle().eject();
-								p.sendMessage(ChatColor.GREEN + "successfully ejected from vehicle, teleporting to home!");
+								p.sendMessage(ChatColor.GREEN + "successfully ejected from vehicle teleporting to home :)");
 								p.teleport(loc);
 							} else {
-								p.sendMessage(ChatColor.GREEN + "teleporting to home :)");
+								p.sendMessage(ChatColor.GREEN + "teleporting to home! :)");
+								p.teleport(loc);
 							}
 						} else {
-							sender.sendMessage(ChatColor.RED + "your home is in a unloaded world!");
+							sender.sendMessage(ChatColor.RED + "your home is in a world which is unloaded!");
 						}
-					} else {
-						sender.sendMessage(ChatColor.RED + "your home does not exists");
 					}
 				} else {
 					playerPermission.getPermissionError(sender, cmd, args);
