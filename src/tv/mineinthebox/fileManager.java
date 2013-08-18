@@ -42,6 +42,18 @@ public class fileManager extends xEssentials {
 		return false;
 	}
 	
+	public static File returnFile(String configFileName, String fileLocation) {
+		try {
+			File f = new File(fileLocation + File.separator + configFileName);
+			if(f.exists()) {
+				return f;
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
 	public static boolean writeFile(String configFileName, String path, Boolean value, String fileLocation) {
 		try {
 			File f = new File(fileLocation + File.separator + configFileName);
