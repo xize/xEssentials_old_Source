@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.FileConfigurationOptions;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.inventory.ItemStack;
 
 import tv.mineinthebox.xEssentials;
 
@@ -73,6 +74,24 @@ public class fileManager extends xEssentials {
 	}
 	
 	public static boolean writeFile(String configFileName, String path, ArrayList<String> value, String fileLocation) {
+		try {
+			File f = new File(fileLocation + File.separator + configFileName);
+			if(f.exists()) {
+				FileConfiguration con = YamlConfiguration.loadConfiguration(f);
+				con.set(path, value);
+				con.save(f);
+			} else {
+				FileConfiguration con = YamlConfiguration.loadConfiguration(f);
+				con.set(path, value);
+				con.save(f);
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+	
+	public static boolean writeFile(String configFileName, String path, ItemStack[] value, String fileLocation) {
 		try {
 			File f = new File(fileLocation + File.separator + configFileName);
 			if(f.exists()) {
