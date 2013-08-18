@@ -262,7 +262,7 @@ public static void turnOffWand(Player player) {
 					we.getSession(player).setToolControl(true);
 					player.sendMessage(ChatColor.GOLD + ".oO___[Gamemode alert]___Oo.");
 					player.sendMessage(ChatColor.GRAY + "your worldedit wand has been " + ChatColor.GREEN + "Enabled!");
-					player.sendMessage(ChatColor.GRAY + "if you want to rendisable it switch to survival or use /toggleeditwand");
+					player.sendMessage(ChatColor.GRAY + "if you want to redisable it switch to survival or use /toggleeditwand");
 				}
 			}
 		} else {
