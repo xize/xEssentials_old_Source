@@ -33,7 +33,15 @@ public class handler {
 		 *  PlayerMoveEvent system
 		 * 
 		 */
+		
 		setListener(new playermove());
+		
+		/*
+		 * 
+		 * PlayerKickEvent 
+		 * 
+		 */
+		setListener(new playerKickEvent());
 	}
 
 	public void setListener(Listener listener) {
