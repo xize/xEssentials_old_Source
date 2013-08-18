@@ -9,7 +9,8 @@ public class commandlist {
 			"spawn",
 			"vanish",
 			"firefly",
-			"spawner"
+			"spawner",
+			"gamemode"
 	};
 
 }

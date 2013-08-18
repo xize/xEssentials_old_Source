@@ -10,6 +10,7 @@ package tv.mineinthebox;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.List;
 
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.FileConfigurationOptions;
@@ -230,6 +231,19 @@ public class fileManager extends xEssentials {
 			if(f.exists()) {
 				FileConfiguration con = YamlConfiguration.loadConfiguration(f);
 				return con.getDouble(path);
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	public static List<?> getListValue(String configFileName, String path, String fileLocation) {
+		try {
+			File f = new File(fileLocation + File.separator + configFileName);
+			if(f.exists()) {
+				FileConfiguration con = YamlConfiguration.loadConfiguration(f);
+				return con.getList(path);
 			}
 		} catch(Exception e) {
 			e.printStackTrace();
