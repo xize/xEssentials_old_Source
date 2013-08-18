@@ -32,9 +32,9 @@ public class xEssentials extends JavaPlugin {
 	@Override
 	public void onEnable() {
 		log("has been enabled!", logType.info);
-		handleConfig.setup_config();
 		handle.getListener();
 		filePath = this.getDataFolder().getAbsolutePath();
+		handleConfig.setup_config();
 		for(String commandS : cmdlist.getCommandList) {
 			getCommand(commandS).setExecutor(command);
 		}
