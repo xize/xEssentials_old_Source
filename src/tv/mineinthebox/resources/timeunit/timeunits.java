@@ -23,6 +23,14 @@ public class timeunits {
 		return date.getTime();
 	}
 	
+	public static boolean isOverTime(Long time) {
+		Long systemTime = System.currentTimeMillis();
+		if(systemTime > time) {
+			return true;
+		}
+		return false;
+	}
+	
 	@SuppressWarnings("deprecation")
 	public static String getElapsedTime(Long time) {
 		Date current_date = new Date(System.currentTimeMillis());
