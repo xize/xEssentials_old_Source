@@ -19,6 +19,8 @@ public class commandhandler implements CommandExecutor {
 			cmdvanish.execute(sender, cmd, args);
 		} else if(cmd.getName().equalsIgnoreCase("firefly")) {
 			cmdfirefly.execute(sender, cmd, args);
+		} else if(cmd.getName().equalsIgnoreCase("spawner")) {
+			cmdspawner.execute(sender, cmd, args);
 		}
 		return false;
 	}

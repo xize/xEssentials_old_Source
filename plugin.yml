@@ -47,6 +47,12 @@ commands:
      permission:
      permission-message:
 
+  spawner:
+     description: change spawners
+     aliases: []
+     permission:
+     permission-message:
+
 permissions:
   #supertowns.random:
   #  description: Gives access to all plugin commands

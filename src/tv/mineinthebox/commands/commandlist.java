@@ -8,7 +8,8 @@ public class commandlist {
 			"setspawn",
 			"spawn",
 			"vanish",
-			"firefly"
+			"firefly",
+			"spawner"
 	};
 
 }
