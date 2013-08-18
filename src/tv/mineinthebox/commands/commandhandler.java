@@ -23,6 +23,8 @@ public class commandhandler implements CommandExecutor {
 			cmdspawner.execute(sender, cmd, args);
 		} else if(cmd.getName().equalsIgnoreCase("gamemode")) {
 			cmdgamemode.execute(sender, cmd, args);
+		} else if(cmd.getName().equalsIgnoreCase("modreq")) {
+			cmdmodreq.execute(sender, cmd, args);
 		}
 		return false;
 	}

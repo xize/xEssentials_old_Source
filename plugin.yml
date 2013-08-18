@@ -59,6 +59,12 @@ commands:
      permission:
      permission-message:
 
+  modreq:
+     description: create a modreq
+     aliases: []
+     permission:
+     permission-message:
+
 permissions:
   #supertowns.random:
   #  description: Gives access to all plugin commands
