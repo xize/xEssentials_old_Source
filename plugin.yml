@@ -55,7 +55,7 @@ commands:
 
   gamemode:
      description: change gamemode
-     aliases: []
+     aliases: [gm]
      permission:
      permission-message:
 
