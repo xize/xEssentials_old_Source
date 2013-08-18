@@ -42,7 +42,7 @@ public class cmdmodreq {
 						} else {
 							if(fileManager.file_exists(sender.getName() + ".yml", fileManager.getDir() + File.separator + "modreq")) {
 								StringBuilder message = new StringBuilder();
-								for(int i = 1; i < args.length; i++) {
+								for(int i = 0; i < args.length; i++) {
 									message.append(args[i] + " ").toString();
 								}
 								Date date = timeunits.setLongToDate(System.currentTimeMillis());
@@ -52,7 +52,7 @@ public class cmdmodreq {
 								Bukkit.broadcast(sender.getName() + " has updated his ticket, use /check " + sender.getName() + " to look into his ticket request", "xEssentials.isStaff");
 							} else {
 								StringBuilder message = new StringBuilder();
-								for(int i = 1; i < args.length; i++) {
+								for(int i = 0; i < args.length; i++) {
 									message.append(args[i] + " ").toString();
 								}
 								Date date = timeunits.setLongToDate(System.currentTimeMillis());
@@ -65,7 +65,7 @@ public class cmdmodreq {
 					} else {
 						if(fileManager.file_exists(sender.getName() + ".yml", fileManager.getDir() + File.separator + "modreq")) {
 							StringBuilder message = new StringBuilder();
-							for(int i = 1; i < args.length; i++) {
+							for(int i = 0; i < args.length; i++) {
 								message.append(args[i] + " ").toString();
 							}
 							Date date = timeunits.setLongToDate(System.currentTimeMillis());
@@ -75,7 +75,7 @@ public class cmdmodreq {
 							Bukkit.broadcast(sender.getName() + " has updated his ticket, use /check " + sender.getName() + " to look into his ticket request", "xEssentials.isStaff");
 						} else {
 							StringBuilder message = new StringBuilder();
-							for(int i = 1; i < args.length; i++) {
+							for(int i = 0; i < args.length; i++) {
 								message.append(args[i] + " ").toString();
 							}
 							Date date = timeunits.setLongToDate(System.currentTimeMillis());
