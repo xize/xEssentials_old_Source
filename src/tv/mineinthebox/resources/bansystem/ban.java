@@ -136,4 +136,21 @@ public class ban {
 		}
 		return false;
 	}
+	
+	public static boolean isTempBanned(Player p) {
+		try {
+			File f = new File(fileManager.getDir() + File.separator + "bans" + File.separator + p.getName() + ".yml");
+			if(f.exists()) {
+				FileConfiguration con = YamlConfiguration.loadConfiguration(f);
+				if(con.getBoolean("tempBanned")) {
+					return true;
+				} else {
+					return false;
+				}
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
 }
