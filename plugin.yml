@@ -101,6 +101,12 @@ commands:
      permission:
      permission-message:
 
+  delwarp:
+     description: delete a warp
+     aliases: []
+     permission:
+     permission-message:
+
 permissions:
   #supertowns.random:
   #  description: Gives access to all plugin commands
