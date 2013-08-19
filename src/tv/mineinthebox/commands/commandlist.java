@@ -14,7 +14,8 @@ public class commandlist {
 			"modreq",
 			"spawnmob",
 			"invsee",
-			"warp"
+			"warp",
+			"setwarp"
 	};
 
 }

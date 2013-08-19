@@ -43,6 +43,8 @@ public class playerPermission {
 			} else if(args.length == 2) {
 				sender.sendMessage(ChatColor.RED + "you are not allowed to use this command! /" + cmd.getName() + "\n" + ChatColor.GRAY + "permission: xEssentials.command.warp.admin");
 			}
+		} else if(cmd.getName().equalsIgnoreCase("setwarp")) {
+			sender.sendMessage(ChatColor.RED + "you are not allowed to use this command! /" + cmd.getName() + "\n" + ChatColor.GRAY + "permission: xEssentials.command.setwarp");
 		}
 	}
 

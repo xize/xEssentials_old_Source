@@ -77,6 +77,12 @@ commands:
      permission:
      permission-message:
 
+  setwarp:
+     description: setwarp command
+     aliases: []
+     permission:
+     permission-message:
+
   invsee:
      description: open a other players inventory
      aliases: []
