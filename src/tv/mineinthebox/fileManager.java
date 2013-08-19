@@ -44,6 +44,19 @@ public class fileManager extends xEssentials {
 		return false;
 	}
 	
+	public static File[] getFileList(String Folder) {
+		try {
+			File dir = new File(Folder);
+			if(dir.isDirectory()) {
+				File[] list = dir.listFiles();
+				return list;	
+			}	
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
 	public static File returnFile(String configFileName, String fileLocation) {
 		try {
 			File f = new File(fileLocation + File.separator + configFileName);
