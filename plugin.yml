@@ -71,6 +71,12 @@ commands:
      permission:
      permission-message:
 
+  invsee:
+     description: open a other players inventory
+     aliases: []
+     permission:
+     permission-message:
+
 permissions:
   #supertowns.random:
   #  description: Gives access to all plugin commands

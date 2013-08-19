@@ -12,7 +12,8 @@ public class commandlist {
 			"spawner",
 			"gamemode",
 			"modreq",
-			"spawnmob"
+			"spawnmob",
+			"invsee"
 	};
 
 }
