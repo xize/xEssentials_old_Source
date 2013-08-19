@@ -1,11 +1,14 @@
 package tv.mineinthebox.events;
 
+import java.io.File;
+
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerQuitEvent;
 
+import tv.mineinthebox.fileManager;
 import tv.mineinthebox.resources.bansystem.ban;
 import tv.mineinthebox.resources.vanish.vanishApi;
 
@@ -15,14 +18,21 @@ import com.sk89q.worldguard.protection.flags.StateFlag.State;
 import com.sk89q.worldguard.protection.regions.ProtectedRegion;
 
 public class playerLeave implements Listener {
-	
+
 	@EventHandler
 	public void firefly(PlayerQuitEvent e) {
 		if(playermove.firefly.contains(e.getPlayer().getName())) {
 			playermove.firefly.remove(e.getPlayer().getName());
 		}
 	}
-	
+
+	@EventHandler
+	public void saveInv(PlayerQuitEvent e) {
+		if(fileManager.getBooleanValue("player.yml", "save-playerInventory", fileManager.getDir())) {
+			fileManager.writeFile(e.getPlayer().getName() + ".yml", "inv", e.getPlayer().getInventory().getContents(), fileManager.getDir() + File.separator + "inventory");
+		}
+	}
+
 	@EventHandler
 	public void WorldGuardJoinMessage(PlayerQuitEvent e) {
 		if(ban.isBanned(e.getPlayer())) {
