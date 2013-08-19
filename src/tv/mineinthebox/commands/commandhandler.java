@@ -33,6 +33,8 @@ public class commandhandler implements CommandExecutor {
 			cmdwarp.execute(sender, cmd, args);
 		} else if(cmd.getName().equalsIgnoreCase("setwarp")) {
 			cmdsetwarp.execute(sender, cmd, args);
+		} else if(cmd.getName().equalsIgnoreCase("torch")) {
+			cmdtorch.execute(sender, cmd, args);
 		}
 		return false;
 	}

@@ -15,7 +15,8 @@ public class commandlist {
 			"spawnmob",
 			"invsee",
 			"warp",
-			"setwarp"
+			"setwarp",
+			"torch"
 	};
 
 }

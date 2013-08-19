@@ -89,6 +89,12 @@ commands:
      permission:
      permission-message:
 
+  torch:
+     description: torch command
+     aliases: []
+     permission:
+     permission-message:
+
 permissions:
   #supertowns.random:
   #  description: Gives access to all plugin commands
