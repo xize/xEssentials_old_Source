@@ -3,6 +3,7 @@ package tv.mineinthebox.commands;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.DyeColor;
+import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Chicken;
@@ -25,6 +26,7 @@ import org.bukkit.entity.Villager;
 import org.bukkit.entity.Villager.Profession;
 import org.bukkit.entity.Wolf;
 import org.bukkit.entity.Zombie;
+import org.bukkit.inventory.ItemStack;
 
 import tv.mineinthebox.permissions.consolePermission;
 import tv.mineinthebox.permissions.playerPermission;
@@ -49,7 +51,12 @@ public class cmdspawnmob {
 							try {
 								EntityType entity = EntityType.valueOf(args[0].toUpperCase());
 								if(entity.isAlive()) {
-									p.getLocation().getWorld().spawnEntity(p.getLocation(), entity);
+									if(entity == EntityType.SKELETON) {
+										Skeleton e = (Skeleton) p.getLocation().getWorld().spawnEntity(p.getLocation(), entity);
+										e.getEquipment().setItemInHand(new ItemStack(Material.BOW));
+									} else {
+										p.getLocation().getWorld().spawnEntity(p.getLocation(), entity);	
+									}
 								} else {
 									sender.sendMessage(ChatColor.RED + "this is not a mob, but a other entity!");
 								}
@@ -107,7 +114,7 @@ public class cmdspawnmob {
 									sender.sendMessage(ChatColor.GRAY + "normal, baby");
 								} else if(entity == EntityType.ZOMBIE) {
 									sender.sendMessage(ChatColor.GOLD + ".oO___[type zombies]___Oo.");
-									sender.sendMessage(ChatColor.GRAY + "normal, baby");
+									sender.sendMessage(ChatColor.GRAY + "normal, baby, zombie_villager");
 								} else {
 									sender.sendMessage(ChatColor.RED + "this mob does not support any types");
 								}
@@ -298,12 +305,14 @@ public class cmdspawnmob {
 									}
 								} else if(entity == EntityType.SKELETON) {
 									if(args[2].equalsIgnoreCase("normal")) {
-										p.getWorld().spawnEntity(p.getLocation(), entity);
+										Skeleton e = (Skeleton) p.getWorld().spawnEntity(p.getLocation(), entity);
+										e.getEquipment().setItemInHand(new ItemStack(Material.BOW));
 										sender.sendMessage(ChatColor.GREEN + "spawned a normal skeleton near you!");
 									} else if(args[2].equalsIgnoreCase("wither")) {
 										Entity e = p.getWorld().spawnEntity(p.getLocation(), entity);
 										Skeleton skeleton = (Skeleton) e;
 										skeleton.setSkeletonType(SkeletonType.WITHER);
+										skeleton.getEquipment().setItemInHand(new ItemStack(Material.STONE_SWORD));
 										sender.sendMessage(ChatColor.GREEN + "spawned a wither skeleton near you!");
 									} else {
 										sender.sendMessage(ChatColor.RED + "this type does not exist! " + args[2]);
@@ -361,6 +370,11 @@ public class cmdspawnmob {
 										Zombie zombie = (Zombie) e;
 										zombie.setBaby(true);
 										p.sendMessage(ChatColor.GREEN + "spawned a baby zombie near you!");
+									} else if(args[2].equalsIgnoreCase("zombie_villager")) {
+										Entity e = p.getWorld().spawnEntity(p.getLocation(), entity);
+										Zombie zombie = (Zombie) e;
+										zombie.setVillager(true);
+										p.sendMessage(ChatColor.GREEN + "spawned a villager zombie near you!");
 									} else {
 										sender.sendMessage(ChatColor.RED + "this type does not exist! " + args[2]);
 									}
@@ -525,12 +539,14 @@ public class cmdspawnmob {
 										}
 									} else if(entity == EntityType.SKELETON) {
 										if(args[2].equalsIgnoreCase("normal")) {
-											victem.getWorld().spawnEntity(victem.getLocation(), entity);
+											Skeleton e = (Skeleton) victem.getWorld().spawnEntity(victem.getLocation(), entity);
+											e.getEquipment().setItemInHand(new ItemStack(Material.BOW));
 											sender.sendMessage(ChatColor.GREEN + "teleported a normal skeleton near you!");
 										} else if(args[2].equalsIgnoreCase("wither")) {
 											Entity e = victem.getWorld().spawnEntity(victem.getLocation(), entity);
 											Skeleton skeleton = (Skeleton) e;
 											skeleton.setSkeletonType(SkeletonType.WITHER);
+											skeleton.getEquipment().setItemInHand(new ItemStack(Material.STONE_SWORD));
 											sender.sendMessage(ChatColor.GREEN + "teleported a wither skeleton near you!");
 										} else {
 											sender.sendMessage(ChatColor.RED + "this type does not exist! " + args[2]);
@@ -588,6 +604,11 @@ public class cmdspawnmob {
 											Zombie zombie = (Zombie) e;
 											zombie.setBaby(true);
 											victem.sendMessage(ChatColor.GREEN + "teleported a baby zombie near you!");
+										} else if(args[2].equalsIgnoreCase("zombie_villager")) {
+											Entity e = victem.getWorld().spawnEntity(victem.getLocation(), entity);
+											Zombie zombie = (Zombie) e;
+											zombie.setVillager(true);
+											victem.sendMessage(ChatColor.GREEN + "teleported a villager zombie near you!");
 										} else {
 											sender.sendMessage(ChatColor.RED + "this type does not exist! " + args[2]);
 										}
