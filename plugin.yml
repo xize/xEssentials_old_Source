@@ -71,6 +71,12 @@ commands:
      permission:
      permission-message:
 
+  warp:
+     description: warp command
+     aliases: []
+     permission:
+     permission-message:
+
   invsee:
      description: open a other players inventory
      aliases: []

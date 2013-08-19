@@ -13,7 +13,8 @@ public class commandlist {
 			"gamemode",
 			"modreq",
 			"spawnmob",
-			"invsee"
+			"invsee",
+			"warp"
 	};
 
 }
