@@ -25,6 +25,8 @@ public class commandhandler implements CommandExecutor {
 			cmdgamemode.execute(sender, cmd, args);
 		} else if(cmd.getName().equalsIgnoreCase("modreq")) {
 			cmdmodreq.execute(sender, cmd, args);
+		} else if(cmd.getName().equalsIgnoreCase("spawnmob")) {
+			cmdspawnmob.execute(sender, cmd, args);
 		}
 		return false;
 	}

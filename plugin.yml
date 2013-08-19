@@ -65,6 +65,12 @@ commands:
      permission:
      permission-message:
 
+  spawnmob:
+     description: spawnmobs
+     aliases: []
+     permission:
+     permission-message:
+
 permissions:
   #supertowns.random:
   #  description: Gives access to all plugin commands

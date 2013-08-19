@@ -11,7 +11,8 @@ public class commandlist {
 			"firefly",
 			"spawner",
 			"gamemode",
-			"modreq"
+			"modreq",
+			"spawnmob"
 	};
 
 }
