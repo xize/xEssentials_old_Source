@@ -10,6 +10,7 @@ package tv.mineinthebox;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.bukkit.configuration.file.FileConfiguration;
@@ -106,6 +107,24 @@ public class fileManager extends xEssentials {
 	}
 	
 	public static boolean writeFile(String configFileName, String path, ItemStack[] value, String fileLocation) {
+		try {
+			File f = new File(fileLocation + File.separator + configFileName);
+			if(f.exists()) {
+				FileConfiguration con = YamlConfiguration.loadConfiguration(f);
+				con.set(path, value);
+				con.save(f);
+			} else {
+				FileConfiguration con = YamlConfiguration.loadConfiguration(f);
+				con.set(path, value);
+				con.save(f);
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+	
+	public static boolean writeFile(String configFileName, String path, Date value, String fileLocation) {
 		try {
 			File f = new File(fileLocation + File.separator + configFileName);
 			if(f.exists()) {
