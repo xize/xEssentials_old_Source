@@ -107,6 +107,12 @@ commands:
      permission:
      permission-message:
 
+  ban:
+     description: ban a player
+     aliases: []
+     permission:
+     permission-message:
+
 permissions:
   #supertowns.random:
   #  description: Gives access to all plugin commands

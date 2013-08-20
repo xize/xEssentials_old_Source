@@ -23,11 +23,11 @@ public class playerKickEvent implements Listener {
 	public void bannedPlayer(PlayerKickEvent e) {
 		if(ban.isBanned(e.getPlayer())) {
 			e.setLeaveMessage("");
-			e.setReason(e.getPlayer().getName() + " is banned");
+			//e.setReason(e.getPlayer().getName() + " is banned");
 		} else if(ban.isTempBanned(e.getPlayer())) {
 			if(!timeunits.isOverTime(fileManager.getLongValue(e.getPlayer().getName() + ".yml", "time", fileManager.getDir() + File.separator + "bans"))) {
 				e.setLeaveMessage("");
-				e.setReason(e.getPlayer().getName() + " is tempory banned till " + timeunits.getElapsedTime(fileManager.getLongValue(e.getPlayer().getName() + ".yml", "time", fileManager.getDir() + File.separator + "bans")));	
+				//e.setReason(e.getPlayer().getName() + " is tempory banned till " + timeunits.getElapsedTime(fileManager.getLongValue(e.getPlayer().getName() + ".yml", "time", fileManager.getDir() + File.separator + "bans")));	
 			}
 		}
 	}

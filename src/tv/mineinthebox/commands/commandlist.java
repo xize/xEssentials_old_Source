@@ -18,7 +18,8 @@ public class commandlist {
 			"warps",
 			"setwarp",
 			"torch",
-			"delwarp"
+			"delwarp",
+			"ban"
 	};
 
 }

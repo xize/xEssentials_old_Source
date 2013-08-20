@@ -39,6 +39,8 @@ public class commandhandler implements CommandExecutor {
 			cmdwarps.execute(sender, cmd, args);
 		} else if(cmd.getName().equalsIgnoreCase("delwarp")) {
 			cmddelwarp.execute(sender, cmd, args);
+		} else if(cmd.getName().equalsIgnoreCase("ban")) {
+			cmdban.execute(sender, cmd, args);
 		}
 		return false;
 	}
