@@ -1,9 +1,11 @@
 package tv.mineinthebox.events;
 
 import java.io.File;
+import java.util.LinkedList;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.block.BlockState;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerQuitEvent;
@@ -23,6 +25,17 @@ public class playerLeave implements Listener {
 	public void firefly(PlayerQuitEvent e) {
 		if(playermove.firefly.contains(e.getPlayer().getName())) {
 			playermove.firefly.remove(e.getPlayer().getName());
+		}
+	}
+	
+	@EventHandler
+	public void torch(PlayerQuitEvent e) {
+		if(playermove.isTorch(e.getPlayer())) {
+			if(playermove.list.containsKey(e.getPlayer())) {
+				LinkedList<BlockState> list = playermove.list.get(e.getPlayer());
+				list.clear();
+				playermove.list.remove(e.getPlayer());
+			}
 		}
 	}
 
