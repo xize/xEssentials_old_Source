@@ -119,6 +119,12 @@ commands:
      permission:
      permission-message:
 
+  tempban:
+     description: tempbans a player
+     aliases: [tmpban, tb]
+     permission:
+     permission-message:
+
 permissions:
   #supertowns.random:
   #  description: Gives access to all plugin commands

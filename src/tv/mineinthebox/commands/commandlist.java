@@ -20,7 +20,8 @@ public class commandlist {
 			"torch",
 			"delwarp",
 			"ban",
-			"unban"
+			"unban",
+			"tempban"
 	};
 
 }

@@ -142,7 +142,24 @@ public class ban {
 			File f = new File(fileManager.getDir() + File.separator + "bans" + File.separator + p.getName() + ".yml");
 			if(f.exists()) {
 				FileConfiguration con = YamlConfiguration.loadConfiguration(f);
-				if(con.getBoolean("tempBanned")) {
+				if(con.getBoolean("Tempbanned")) {
+					return true;
+				} else {
+					return false;
+				}
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+	
+	public static boolean isTempBanned(String p) {
+		try {
+			File f = new File(fileManager.getDir() + File.separator + "bans" + File.separator + p + ".yml");
+			if(f.exists()) {
+				FileConfiguration con = YamlConfiguration.loadConfiguration(f);
+				if(con.getBoolean("Tempbanned")) {
 					return true;
 				} else {
 					return false;
