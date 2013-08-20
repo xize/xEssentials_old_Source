@@ -33,7 +33,7 @@ public class playerJoin implements Listener {
 				return;
 			} else {
 				e.setJoinMessage("");
-				e.getPlayer().kickPlayer("you where banned by staff member " + fileManager.getStringValue(e.getPlayer().getName() + ".yml", "BannedBy", fileManager.getDir() + File.separator + "bans") + "\n for " + timeunits.getElapsedTime(fileManager.getLongValue(e.getPlayer().getName() + ".yml", "time", fileManager.getDir() + File.separator + "bans")));
+				e.getPlayer().kickPlayer("you where banned tempory by staff member " + fileManager.getStringValue(e.getPlayer().getName() + ".yml", "BannedBy", fileManager.getDir() + File.separator + "bans") + "\n till " + timeunits.getElapsedTime(fileManager.getLongValue(e.getPlayer().getName() + ".yml", "time", fileManager.getDir() + File.separator + "bans")));
 			}
 		}
 	}

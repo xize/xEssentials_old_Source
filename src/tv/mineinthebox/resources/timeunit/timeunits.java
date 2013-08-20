@@ -8,10 +8,11 @@
  */
 package tv.mineinthebox.resources.timeunit;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.apache.commons.lang.time.DateUtils;
 public class timeunits {
 	
 	public static Date setLongToDate(Long m) {
@@ -35,26 +36,25 @@ public class timeunits {
 	public static String getElapsedTime(Long time) {
 		Date current_date = new Date(System.currentTimeMillis());
 		Date newTime = new Date(time);
-		String daysLeft = "" + (current_date.getDay() - newTime.getDay());
-		String monthsLeft = "" + (current_date.getMonth() - newTime.getMonth());
-		String yearsLeft = "" + (current_date.getYear() - newTime.getYear());
-		String hoursLeft = "" + (current_date.getHours() - newTime.getHours());
-		String minutesLeft = "" + (current_date.getMinutes() - newTime.getMinutes());
-		String secondsLeft = "" + (current_date.getSeconds() - newTime.getSeconds());
-		return "days: " + daysLeft + " months: " + monthsLeft + " years: " + yearsLeft + " hours: " + hoursLeft + " minutes: " + minutesLeft + " seconds: " + secondsLeft;
+		current_date = DateUtils.addDays(newTime, newTime.getDay());
+		current_date = DateUtils.addMonths(newTime, newTime.getMonth());
+		current_date = DateUtils.addYears(newTime, newTime.getYear());
+		current_date = DateUtils.addMinutes(newTime, newTime.getMinutes());
+		current_date = DateUtils.addSeconds(newTime, newTime.getSeconds());
+		return current_date.toString();
+		
 	}
 	
 	@SuppressWarnings("deprecation")
 	public static String getElapsedTimeBetweenAnotherTime(Long time, Long otherTime) {
 		Date current_date = new Date(otherTime);
 		Date newTime = new Date(time);
-		String daysLeft = "" + (current_date.getDay() - newTime.getDay());
-		String monthsLeft = "" + (current_date.getMonth() - newTime.getMonth());
-		String yearsLeft = "" + (current_date.getYear() - newTime.getYear());
-		String hoursLeft = "" + (current_date.getHours() - newTime.getHours());
-		String minutesLeft = "" + (current_date.getMinutes() - newTime.getMinutes());
-		String secondsLeft = "" + (current_date.getSeconds() - newTime.getSeconds());
-		return "days: " + daysLeft + " months: " + monthsLeft + " years: " + yearsLeft + " hours: " + hoursLeft + " minutes: " + minutesLeft + " seconds: " + secondsLeft;
+		current_date = DateUtils.addDays(newTime, newTime.getDay());
+		current_date = DateUtils.addMonths(newTime, newTime.getMonth());
+		current_date = DateUtils.addYears(newTime, newTime.getYear());
+		current_date = DateUtils.addMinutes(newTime, newTime.getMinutes());
+		current_date = DateUtils.addSeconds(newTime, newTime.getSeconds());
+		return current_date.toString();
 	}
 	
 	@SuppressWarnings("deprecation")
