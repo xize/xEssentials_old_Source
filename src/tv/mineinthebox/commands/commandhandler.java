@@ -41,6 +41,8 @@ public class commandhandler implements CommandExecutor {
 			cmddelwarp.execute(sender, cmd, args);
 		} else if(cmd.getName().equalsIgnoreCase("ban")) {
 			cmdban.execute(sender, cmd, args);
+		} else if(cmd.getName().equalsIgnoreCase("unban")) {
+			cmdunban.execute(sender, cmd, args);
 		}
 		return false;
 	}

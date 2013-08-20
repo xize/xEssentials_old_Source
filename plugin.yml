@@ -113,6 +113,12 @@ commands:
      permission:
      permission-message:
 
+  unban:
+     description: unbans a player
+     aliases: [pardon]
+     permission:
+     permission-message:
+
 permissions:
   #supertowns.random:
   #  description: Gives access to all plugin commands
