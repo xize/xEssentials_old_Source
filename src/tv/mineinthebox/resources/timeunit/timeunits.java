@@ -9,6 +9,7 @@
 package tv.mineinthebox.resources.timeunit;
 
 import java.util.Date;
+import java.util.concurrent.TimeUnit;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -32,17 +33,48 @@ public class timeunits {
 		return false;
 	}
 	
-	@SuppressWarnings("deprecation")
+	public static long getDateDiff(Date date1, Date date2, TimeUnit timeUnit) {
+	    long diffInMillies = date2.getTime() - date1.getTime();
+	    return timeUnit.convert(diffInMillies, timeUnit);
+	}
+	
 	public static String getElapsedTime(Long time) {
 		Date current_date = new Date(System.currentTimeMillis());
 		Date newTime = new Date(time);
-		current_date = DateUtils.addDays(newTime, newTime.getDay());
-		current_date = DateUtils.addMonths(newTime, newTime.getMonth());
-		current_date = DateUtils.addYears(newTime, newTime.getYear());
-		current_date = DateUtils.addMinutes(newTime, newTime.getMinutes());
-		current_date = DateUtils.addSeconds(newTime, newTime.getSeconds());
-		return current_date.toString();
-		
+		StringBuilder build = new StringBuilder();
+		int seconds = (int) (getDateDiff(current_date, newTime, TimeUnit.SECONDS));
+		int minutes = (int) (getDateDiff(current_date, newTime, TimeUnit.MINUTES));
+		int hours = (int) (getDateDiff(current_date, newTime, TimeUnit.HOURS));
+		int days = (int) (getDateDiff(current_date, newTime, TimeUnit.DAYS));
+		if(days != 0) {
+			days = (days / 100000000);
+			build.append(days + "days, ");
+		}
+		if(hours != 0) {
+			if(hours > 24) {
+				hours = (hours / days / 10000000);
+				build.append(hours + "hours, ").toString();
+			} else{
+				build.append(hours + "hours, ").toString();
+			}
+		}
+		if(minutes != 0) {
+			if(minutes > 60) {
+				minutes = (minutes / hours %60);
+				build.append(minutes + "minutes, ").toString();
+			} else {
+				build.append(minutes + "minutes, ").toString();
+			}
+		}
+		if(seconds != 0) {
+			if(seconds > 60) {
+				seconds = (seconds / minutes %60);
+				build.append(seconds + "seconds, ").toString();
+			} else {
+				build.append(seconds + "seconds, ").toString();
+			}
+		}
+		return build.toString();
 	}
 	
 	@SuppressWarnings("deprecation")
