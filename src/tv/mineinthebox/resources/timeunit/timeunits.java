@@ -13,6 +13,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.apache.commons.lang.time.DateUtils;
+import org.bukkit.ChatColor;
+import org.bukkit.command.CommandSender;
 public class timeunits {
 
 	public static Date setLongToDate(Long m) {
@@ -90,8 +92,9 @@ public class timeunits {
 	}
 
 	@SuppressWarnings("deprecation")
-	public static Long convertDateArguments(final String[] args) {
+	public static Long convertDateArguments(final String[] args, CommandSender sender) {
 		Date date = new Date(System.currentTimeMillis());
+		try {
 		String day = null;
 		String month = null;
 		String year = null;
@@ -168,6 +171,11 @@ public class timeunits {
 					}
 				}
 			}
+		}
+		} catch(NumberFormatException e) {
+			sender.sendMessage(ChatColor.RED + "something went wrong in the time machine!");
+			sender.sendMessage(ChatColor.RED + "only the first argument could be a name others only could be called as:");
+			sender.sendMessage(ChatColor.GRAY + "1D equals 1 Day, 1M equals 1 Month, 1Y equals 1 Year, 1h equals 1 Hour, 1m equals 1 minute, 1s equals 1 second");
 		}
 		return date.getTime();
 	}

@@ -63,7 +63,7 @@ public class cmdtempban {
 					if(!ban.isTempBanned(args[0]) || !ban.isBanned(args[0])) {
 						Player victem = Bukkit.getPlayer(args[0]);
 						if(victem instanceof Player) {
-							Long time = timeunits.convertDateArguments(args);
+							Long time = timeunits.convertDateArguments(args, sender);
 							fileManager.writeFile(victem.getName() + ".yml", "Player", victem.getName(), fileManager.getDir() + File.separator + "bans");
 							fileManager.writeFile(victem.getName() + ".yml", "ip", victem.getAddress().getHostName(), fileManager.getDir() + File.separator + "bans");
 							fileManager.writeFile(victem.getName() + ".yml", "BannedOn", timeunits.setLongToDate(System.currentTimeMillis()).toString(), fileManager.getDir() + File.separator + "bans");
@@ -75,7 +75,7 @@ public class cmdtempban {
 							cmdban.showBanResults(victem.getName());
 							victem.kickPlayer("Banned by " + sender.getName() + " banned for " + timeunits.getElapsedTime(time));
 						} else {
-							Long time = timeunits.convertDateArguments(args);
+							Long time = timeunits.convertDateArguments(args, sender);
 							String ip = fileManager.getStringValue(args[0] + ".yml", "ip", fileManager.getDir() + File.separator + "alts");
 							fileManager.writeFile(args[0] + ".yml", "Player", args[0], fileManager.getDir() + File.separator + "bans");
 							fileManager.writeFile(args[0] + ".yml", "ip", ip, fileManager.getDir() + File.separator + "bans");
