@@ -9,22 +9,21 @@
 package tv.mineinthebox.resources.timeunit;
 
 import java.util.Date;
-import java.util.concurrent.TimeUnit;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.apache.commons.lang.time.DateUtils;
 public class timeunits {
-	
+
 	public static Date setLongToDate(Long m) {
 		Date date = new Date(m);
 		return date;
 	}
-	
+
 	public static Long setDateToLong(Date date) {
 		return date.getTime();
 	}
-	
+
 	public static boolean isOverTime(Long time) {
 		Long systemTime = System.currentTimeMillis();
 		if(systemTime > time) {
@@ -32,51 +31,52 @@ public class timeunits {
 		}
 		return false;
 	}
-	
-	public static long getDateDiff(Date date1, Date date2, TimeUnit timeUnit) {
-	    long diffInMillies = date2.getTime() - date1.getTime();
-	    return timeUnit.convert(diffInMillies, timeUnit);
-	}
-	
+
 	public static String getElapsedTime(Long time) {
 		Date current_date = new Date(System.currentTimeMillis());
 		Date newTime = new Date(time);
 		StringBuilder build = new StringBuilder();
-		int seconds = (int) (getDateDiff(current_date, newTime, TimeUnit.SECONDS));
-		int minutes = (int) (getDateDiff(current_date, newTime, TimeUnit.MINUTES));
-		int hours = (int) (getDateDiff(current_date, newTime, TimeUnit.HOURS));
-		int days = (int) (getDateDiff(current_date, newTime, TimeUnit.DAYS));
-		if(days != 0) {
-			days = (days / 100000000);
-			build.append(days + "days, ");
+		long diff = newTime.getTime() - current_date.getTime();
+		int seconds = (int) Math.round(diff / 1000 % 60);
+		int minutes = (int) Math.round(diff / (60 * 1000) % 60);
+		int hours = (int) Math.round(diff / (60 * 60 * 1000) % 24);
+		int days = (int) Math.round(diff / (24 * 60 * 60 * 1000));
+		//int weeks = (int) Math.round(diff / (7 * 24 * 60 * 60 * 1000));
+		int months = (int) Math.round(diff / (4 * 7 * 24 * 60 * 60 * 1000));
+		int years = (int) Math.round(diff / (12 * 4 * 7 * 24 * 60 * 60 * 1000));
+		if(days == 0 || days < 0) {
+			build.append(0 + "days, ").toString();
+		} else {
+			build.append(days + "days, ").toString();
 		}
-		if(hours != 0) {
-			if(hours > 24) {
-				hours = (hours / days / 10000000);
-				build.append(hours + "hours, ").toString();
-			} else{
-				build.append(hours + "hours, ").toString();
-			}
+		if(months == 0 || months < 0) {
+			build.append(0 + "months, ").toString();
+		} else {
+			build.append(months + "months, ").toString();
 		}
-		if(minutes != 0) {
-			if(minutes > 60) {
-				minutes = (minutes / hours %60);
-				build.append(minutes + "minutes, ").toString();
-			} else {
-				build.append(minutes + "minutes, ").toString();
-			}
+		if(years == 0 || years < 0) {
+			build.append(0 + "years, ").toString();
+		} else {
+			build.append(years + "years, ").toString();
 		}
-		if(seconds != 0) {
-			if(seconds > 60) {
-				seconds = (seconds / minutes %60);
-				build.append(seconds + "seconds, ").toString();
-			} else {
-				build.append(seconds + "seconds, ").toString();
-			}
+		if(hours == 0 || hours < 0) {
+			build.append(0 + "hours, ").toString();
+		} else {
+			build.append(hours + "hours, ").toString();
+		}
+		if(minutes == 0 || minutes < 0) {
+			build.append(0 + "minutes, ").toString();
+		} else {
+			build.append(minutes + "minutes, ").toString();
+		}
+		if(seconds == 0 || seconds < 0) {
+			build.append(0 + "seconds, ").toString();
+		} else {
+			build.append(seconds + "seconds, ").toString();
 		}
 		return build.toString();
 	}
-	
+
 	@SuppressWarnings("deprecation")
 	public static String getElapsedTimeBetweenAnotherTime(Long time, Long otherTime) {
 		Date current_date = new Date(otherTime);
@@ -88,7 +88,7 @@ public class timeunits {
 		current_date = DateUtils.addSeconds(newTime, newTime.getSeconds());
 		return current_date.toString();
 	}
-	
+
 	@SuppressWarnings("deprecation")
 	public static Long convertDateArguments(final String[] args) {
 		Date date = new Date(System.currentTimeMillis());
@@ -110,31 +110,63 @@ public class timeunits {
 		Pattern hours = Pattern.compile(hourReg);
 		Pattern minutes = Pattern.compile(minuteReg);
 		Pattern seconds = Pattern.compile(secondReg);
-		for(int i = 0; i < args.length; i++) {
-			Matcher dayMatch = days.matcher(args[i]);
-			Matcher monthMatch = months.matcher(args[i]);
-			Matcher yearMatch = years.matcher(args[i]);
-			Matcher hourMatch = hours.matcher(args[i]);
-			Matcher minuteMatch = minutes.matcher(args[i]);
-			Matcher secondMatch = seconds.matcher(args[i]);
-			if(dayMatch.find()) {
-				day = dayMatch.group(0).replace("D", "");
-				date.setDate(date.getDate() + Integer.parseInt(day));
-			} else if(monthMatch.find()) {
-				month = monthMatch.group(0).replace("M", "");
-				date.setMonth(date.getMonth() + Integer.parseInt(month));
-			} else if(yearMatch.find()) {
-				year = yearMatch.group(0).replace("Y", "");
-				date.setYear(date.getYear() + Integer.parseInt(year));
-			} else if(hourMatch.find()) {
-				hour = hourMatch.group(0).replace("h", "");
-				date.setHours(date.getHours() + Integer.parseInt(hour));
-			} else if(minuteMatch.find()) {
-				minute = minuteMatch.group(0).replace("m", "");
-				date.setMinutes(date.getMinutes() + Integer.parseInt(minute));
-			} else if(secondMatch.find()) {
-				second = secondMatch.group(0).replace("s", "");
-				date.setSeconds(date.getSeconds() + Integer.parseInt(second));
+		if(args.length > 0) {
+			if(args[0].length() > 1) {
+				for(int i = 1; i < args.length; i++) {
+					Matcher dayMatch = days.matcher(args[i]);
+					Matcher monthMatch = months.matcher(args[i]);
+					Matcher yearMatch = years.matcher(args[i]);
+					Matcher hourMatch = hours.matcher(args[i]);
+					Matcher minuteMatch = minutes.matcher(args[i]);
+					Matcher secondMatch = seconds.matcher(args[i]);
+					if(dayMatch.find()) {
+						day = dayMatch.group(0).replace("D", "");
+						date.setDate(date.getDate() + Integer.parseInt(day));
+					} else if(monthMatch.find()) {
+						month = monthMatch.group(0).replace("M", "");
+						date.setMonth(date.getMonth() + Integer.parseInt(month));
+					} else if(yearMatch.find()) {
+						year = yearMatch.group(0).replace("Y", "");
+						date.setYear(date.getYear() + Integer.parseInt(year));
+					} else if(hourMatch.find()) {
+						hour = hourMatch.group(0).replace("h", "");
+						date.setHours(date.getHours() + Integer.parseInt(hour));
+					} else if(minuteMatch.find()) {
+						minute = minuteMatch.group(0).replace("m", "");
+						date.setMinutes(date.getMinutes() + Integer.parseInt(minute));
+					} else if(secondMatch.find()) {
+						second = secondMatch.group(0).replace("s", "");
+						date.setSeconds(date.getSeconds() + Integer.parseInt(second));
+					}
+				}
+			} else {
+				for(int i = 0; i < args.length; i++) {
+					Matcher dayMatch = days.matcher(args[i]);
+					Matcher monthMatch = months.matcher(args[i]);
+					Matcher yearMatch = years.matcher(args[i]);
+					Matcher hourMatch = hours.matcher(args[i]);
+					Matcher minuteMatch = minutes.matcher(args[i]);
+					Matcher secondMatch = seconds.matcher(args[i]);
+					if(dayMatch.find()) {
+						day = dayMatch.group(0).replace("D", "");
+						date.setDate(date.getDate() + Integer.parseInt(day));
+					} else if(monthMatch.find()) {
+						month = monthMatch.group(0).replace("M", "");
+						date.setMonth(date.getMonth() + Integer.parseInt(month));
+					} else if(yearMatch.find()) {
+						year = yearMatch.group(0).replace("Y", "");
+						date.setYear(date.getYear() + Integer.parseInt(year));
+					} else if(hourMatch.find()) {
+						hour = hourMatch.group(0).replace("h", "");
+						date.setHours(date.getHours() + Integer.parseInt(hour));
+					} else if(minuteMatch.find()) {
+						minute = minuteMatch.group(0).replace("m", "");
+						date.setMinutes(date.getMinutes() + Integer.parseInt(minute));
+					} else if(secondMatch.find()) {
+						second = secondMatch.group(0).replace("s", "");
+						date.setSeconds(date.getSeconds() + Integer.parseInt(second));
+					}
+				}
 			}
 		}
 		return date.getTime();
