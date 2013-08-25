@@ -19,8 +19,11 @@ import com.sk89q.worldguard.protection.flags.DefaultFlag;
 import com.sk89q.worldguard.protection.flags.StateFlag.State;
 import com.sk89q.worldguard.protection.regions.ProtectedRegion;
 
+import eu.supertowns.town.supertowns;
+import eu.supertowns.town.api.coreApi.flagType;
+
 public class playerJoin implements Listener {
-	
+
 	@EventHandler
 	public void checkIfBanned(PlayerJoinEvent e) {
 		if(ban.isBanned(e.getPlayer())) {
@@ -37,14 +40,14 @@ public class playerJoin implements Listener {
 			}
 		}
 	}
-	
+
 	@EventHandler
 	public void HandleOnCommandTask(PlayerJoinEvent e) {
 		if(fileManager.file_exists(e.getPlayer().getName() + ".yml", fileManager.getDir() + File.separator + "tasks")) {
 			e.getPlayer().getServer().dispatchCommand(Bukkit.getConsoleSender(), fileManager.getStringValue(e.getPlayer().getName() + ".yml", "command", fileManager.getDir() + File.separator + "tasks"));
 		}
 	}
-	
+
 	@EventHandler
 	public void vanishHandle(PlayerJoinEvent e) {
 		if(vanishApi.isVanished(e.getPlayer())) {
@@ -60,7 +63,7 @@ public class playerJoin implements Listener {
 			}
 		}
 	}
-	
+
 	@EventHandler
 	public void checkAlts(PlayerJoinEvent e) {
 		if(fileManager.file_exists("ban.yml", fileManager.getDir())) {
@@ -73,7 +76,7 @@ public class playerJoin implements Listener {
 			}
 		}
 	}
-	
+
 	@EventHandler
 	public void modreqEvent(PlayerJoinEvent e) {
 		if(e.getPlayer().hasPermission("xEssentials.command.check.admin")) {
@@ -105,9 +108,9 @@ public class playerJoin implements Listener {
 			}
 		}
 	}
-	
+
 	@EventHandler
-	public void WorldGuardJoinMessage(PlayerJoinEvent e) {
+	public void joinMessage(PlayerJoinEvent e) {
 		if(ban.isBanned(e.getPlayer()) || ban.isTempBanned(e.getPlayer())) {
 			e.setJoinMessage("");	
 			return;
@@ -139,6 +142,37 @@ public class playerJoin implements Listener {
 			}
 		} else {
 			e.setJoinMessage(ChatColor.GREEN + e.getPlayer().getName() + " has joined :)");
+		}
+		if(Bukkit.getPluginManager().isPluginEnabled("supertowns")) {
+			supertowns supert = (supertowns) Bukkit.getPluginManager().getPlugin("supertowns");
+			if(supert.getCoreApi().checkTown(e.getPlayer().getLocation().getChunk().getX(), e.getPlayer().getLocation().getChunk().getZ(), e.getPlayer().getWorld())) {
+				String townName = supert.getCoreApi().getTownNameOnLocation(e.getPlayer().getLocation().getChunk().getX(), e.getPlayer().getLocation().getChunk().getZ(), e.getPlayer().getWorld());
+				if(supert.getCoreApi().returnFlagTypes(townName, flagType.hostile_mob_spawn)) {
+					if(e.getPlayer().hasPermission("xEssentials.isStaff")) {
+						e.setJoinMessage(ChatColor.GRAY + "a safe staff member " + ChatColor.GREEN + e.getPlayer().getName() + ChatColor.GRAY + " has been appeared!");
+						return;
+					} else {
+						e.setJoinMessage(ChatColor.GRAY + "a safe " + ChatColor.GREEN + e.getPlayer().getName() + ChatColor.GRAY + " has been appeared!");
+						return;
+					}
+				} else {
+					if(e.getPlayer().hasPermission("xEssentials.isStaff")) {
+						e.setJoinMessage(ChatColor.GRAY + "a wild staff member " + ChatColor.GREEN + e.getPlayer().getName() + ChatColor.GRAY + " has been appeared!");
+						return;
+					} else {
+						e.setJoinMessage(ChatColor.GRAY + "a wild " + ChatColor.GREEN + e.getPlayer().getName() + ChatColor.GRAY + " has been appeared!");
+						return;
+					}
+				}
+			} else {
+				if(e.getPlayer().hasPermission("xEssentials.isStaff")) {
+					e.setJoinMessage(ChatColor.GRAY + "a wild staff member " + ChatColor.GREEN + e.getPlayer().getName() + ChatColor.GRAY + " has been appeared!");
+					return;
+				} else {
+					e.setJoinMessage(ChatColor.GRAY + "a wild " + ChatColor.GREEN + e.getPlayer().getName() + ChatColor.GRAY + " has been appeared!");
+					return;
+				}
+			}
 		}
 	}
 

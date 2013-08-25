@@ -19,6 +19,9 @@ import com.sk89q.worldguard.protection.flags.DefaultFlag;
 import com.sk89q.worldguard.protection.flags.StateFlag.State;
 import com.sk89q.worldguard.protection.regions.ProtectedRegion;
 
+import eu.supertowns.town.supertowns;
+import eu.supertowns.town.api.coreApi.flagType;
+
 public class playerLeave implements Listener {
 
 	@EventHandler
@@ -47,7 +50,7 @@ public class playerLeave implements Listener {
 	}
 
 	@EventHandler
-	public void WorldGuardJoinMessage(PlayerQuitEvent e) {
+	public void LeaveMessage(PlayerQuitEvent e) {
 		if(ban.isBanned(e.getPlayer())) {
 			e.setQuitMessage("");	
 			return;
@@ -79,6 +82,37 @@ public class playerLeave implements Listener {
 			}
 		} else {
 			e.setQuitMessage(ChatColor.GREEN + e.getPlayer().getName() + " has left!");
+		}
+		if(Bukkit.getPluginManager().isPluginEnabled("supertowns")) {
+			supertowns supert = (supertowns) Bukkit.getPluginManager().getPlugin("supertowns");
+			if(supert.getCoreApi().checkTown(e.getPlayer().getLocation().getChunk().getX(), e.getPlayer().getLocation().getChunk().getZ(), e.getPlayer().getWorld())) {
+				String townName = supert.getCoreApi().getTownNameOnLocation(e.getPlayer().getLocation().getChunk().getX(), e.getPlayer().getLocation().getChunk().getZ(), e.getPlayer().getWorld());
+				if(supert.getCoreApi().returnFlagTypes(townName, flagType.hostile_mob_spawn)) {
+					if(e.getPlayer().hasPermission("xEssentials.isStaff")) {
+						e.setQuitMessage(ChatColor.RED + "Whoosh!" + ChatColor.GRAY + " staff member " + ChatColor.GREEN + e.getPlayer().getName() + ChatColor.GRAY + " has left the game safely!");
+						return;
+					} else {
+						e.setQuitMessage("Whoosh! " + ChatColor.GREEN + e.getPlayer().getName() + ChatColor.GRAY + " has left the game safely!");
+						return;
+					}
+				} else {
+					if(e.getPlayer().hasPermission("xEssentials.isStaff")) {
+						e.setQuitMessage(ChatColor.RED + "Whoosh!" + ChatColor.GRAY + " staff member " + ChatColor.GREEN + e.getPlayer().getName() + ChatColor.GRAY + " has left the game in wild!");
+						return;
+					} else {
+						e.setQuitMessage(ChatColor.RED + "Whoosh! " + ChatColor.GREEN + e.getPlayer().getName() + ChatColor.GRAY + " has left the game in wild!");
+						return;
+					}
+				}
+			} else {
+				if(e.getPlayer().hasPermission("xEssentials.isStaff")) {
+					e.setQuitMessage(ChatColor.RED + "Whoosh!" + ChatColor.GRAY + " staff member " + ChatColor.GREEN + e.getPlayer().getName() + ChatColor.GRAY + " has left the game in wild!");
+					return;
+				} else {
+					e.setQuitMessage(ChatColor.RED + "Whoosh! " + ChatColor.GREEN + e.getPlayer().getName() + ChatColor.GRAY + " has left the game in wild!");
+					return;
+				}
+			}
 		}
 	}
 

@@ -45,6 +45,20 @@ public class fileManager extends xEssentials {
 		return false;
 	}
 	
+	public static boolean isDirectory(String fileLocation) {
+		try {
+			File f = new File(fileLocation);
+			if(f.isDirectory()) {
+				return true;
+			} else {
+				return false;
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+	
 	public static File[] getFileList(String Folder) {
 		try {
 			File dir = new File(Folder);
