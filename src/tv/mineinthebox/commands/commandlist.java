@@ -25,7 +25,8 @@ public class commandlist {
 			"claim",
 			"check",
 			"done",
-			"teleport"
+			"teleport",
+			"hometp"
 	};
 
 }

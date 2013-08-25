@@ -53,6 +53,8 @@ public class commandhandler implements CommandExecutor {
 			cmddone.execute(sender, cmd, args);
 		} else if(cmd.getName().equalsIgnoreCase("teleport")) {
 			cmdteleport.execute(sender, cmd, args);
+		} else if(cmd.getName().equalsIgnoreCase("hometp")) {
+			cmdhometp.execute(sender, cmd, args);
 		}
 		return false;
 	}
