@@ -155,6 +155,12 @@ commands:
      permission:
      permission-message:
 
+  tphere:
+     description: teleports a player to your location
+     aliases: [th]
+     permission:
+     permission-message:
+
 permissions:
   #supertowns.random:
   #  description: Gives access to all plugin commands

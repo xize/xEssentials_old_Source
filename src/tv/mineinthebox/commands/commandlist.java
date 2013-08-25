@@ -26,7 +26,8 @@ public class commandlist {
 			"check",
 			"done",
 			"teleport",
-			"hometp"
+			"hometp",
+			"tphere"
 	};
 
 }
