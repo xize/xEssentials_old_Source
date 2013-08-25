@@ -45,6 +45,8 @@ public class commandhandler implements CommandExecutor {
 			cmdunban.execute(sender, cmd, args);
 		} else if(cmd.getName().equalsIgnoreCase("tempban")) {
 			cmdtempban.execute(sender, cmd, args);
+		} else if(cmd.getName().equalsIgnoreCase("claim")) {
+			cmdclaim.execute(sender, cmd, args);
 		}
 		return false;
 	}

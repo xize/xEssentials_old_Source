@@ -125,6 +125,12 @@ commands:
      permission:
      permission-message:
 
+  claim:
+     description: claims a modreq
+     aliases: []
+     permission:
+     permission-message:
+
 permissions:
   #supertowns.random:
   #  description: Gives access to all plugin commands
