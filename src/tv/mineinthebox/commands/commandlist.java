@@ -24,7 +24,8 @@ public class commandlist {
 			"tempban",
 			"claim",
 			"check",
-			"done"
+			"done",
+			"teleport"
 	};
 
 }

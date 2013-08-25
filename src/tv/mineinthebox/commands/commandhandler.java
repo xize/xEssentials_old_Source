@@ -51,6 +51,8 @@ public class commandhandler implements CommandExecutor {
 			cmdcheck.execute(sender, cmd, args);
 		} else if(cmd.getName().equalsIgnoreCase("done")) {
 			cmddone.execute(sender, cmd, args);
+		} else if(cmd.getName().equalsIgnoreCase("teleport")) {
+			cmdteleport.execute(sender, cmd, args);
 		}
 		return false;
 	}

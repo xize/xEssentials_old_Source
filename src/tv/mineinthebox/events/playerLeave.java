@@ -5,6 +5,7 @@ import java.util.LinkedList;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.Location;
 import org.bukkit.block.BlockState;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -29,6 +30,16 @@ public class playerLeave implements Listener {
 		if(playermove.firefly.contains(e.getPlayer().getName())) {
 			playermove.firefly.remove(e.getPlayer().getName());
 		}
+	}
+	
+	@EventHandler
+	public void saveLocation(PlayerQuitEvent e) {
+		Location loc = e.getPlayer().getLocation();
+		fileManager.writeFile(e.getPlayer().getName() + ".yml", "location.x", loc.getX(), fileManager.getDir() + File.separator + "players");
+		fileManager.writeFile(e.getPlayer().getName() + ".yml", "location.y", loc.getY(), fileManager.getDir() + File.separator + "players");
+		fileManager.writeFile(e.getPlayer().getName() + ".yml", "location.z", loc.getZ(), fileManager.getDir() + File.separator + "players");
+		fileManager.writeFile(e.getPlayer().getName() + ".yml", "location.yaw", loc.getYaw(), fileManager.getDir() + File.separator + "players");
+		fileManager.writeFile(e.getPlayer().getName() + ".yml", "location.world", loc.getWorld().getName(), fileManager.getDir() + File.separator + "players");
 	}
 	
 	@EventHandler
