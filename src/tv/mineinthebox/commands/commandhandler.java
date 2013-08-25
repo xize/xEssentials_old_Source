@@ -49,6 +49,8 @@ public class commandhandler implements CommandExecutor {
 			cmdclaim.execute(sender, cmd, args);
 		} else if(cmd.getName().equalsIgnoreCase("check")) {
 			cmdcheck.execute(sender, cmd, args);
+		} else if(cmd.getName().equalsIgnoreCase("done")) {
+			cmddone.execute(sender, cmd, args);
 		}
 		return false;
 	}

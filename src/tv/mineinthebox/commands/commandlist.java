@@ -23,7 +23,8 @@ public class commandlist {
 			"unban",
 			"tempban",
 			"claim",
-			"check"
+			"check",
+			"done"
 	};
 
 }
