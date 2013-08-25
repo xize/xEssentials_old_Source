@@ -175,7 +175,7 @@ public class timeunits {
 				}
 			}
 		}
-		} catch(NumberFormatException e) {
+		} catch(NumberFormatException e) { 
 			Bukkit.getScheduler().scheduleSyncDelayedTask(xEssentials.getPlugin(), new Runnable() {
 
 				@Override
