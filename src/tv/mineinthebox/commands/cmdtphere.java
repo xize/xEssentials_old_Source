@@ -33,7 +33,7 @@ public class cmdtphere {
 						} else {
 							Player victem = Bukkit.getPlayer(args[0]);
 							if(victem instanceof Player) {
-								sender.sendMessage(ChatColor.GREEN + sender.getName() + " has teleported you to his location");
+								victem.sendMessage(ChatColor.GREEN + sender.getName() + " has teleported you to his location");
 								victem.teleport(p);
 							} else {
 								sender.sendMessage(ChatColor.RED + "warning this player is not online!");
