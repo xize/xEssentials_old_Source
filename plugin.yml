@@ -161,6 +161,12 @@ commands:
      permission:
      permission-message:
 
+  tpa:
+     description: tpa
+     aliases: []
+     permission:
+     permission-message:
+
 permissions:
   #supertowns.random:
   #  description: Gives access to all plugin commands
