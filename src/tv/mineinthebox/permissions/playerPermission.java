@@ -57,6 +57,18 @@ public class playerPermission {
 			sender.sendMessage(ChatColor.RED + "you are not allowed to use this command! /" + cmd.getName() + "\n" + ChatColor.GRAY + "permission: xEssentials.command.unban");
 		} else if(cmd.getName().equalsIgnoreCase("claim")) {
 			sender.sendMessage(ChatColor.RED + "you are not allowed to use this command! /" + cmd.getName() + "\n" + ChatColor.GRAY + "permission: xEssentials.command.claim");
+		} else if(cmd.getName().equalsIgnoreCase("check")) {
+			if(args.length == 0) {
+				sender.sendMessage(ChatColor.RED + "you are not allowed to use this command! /" + cmd.getName() + "\n" + ChatColor.GRAY + "permission: xEssentials.command.check");
+			} else if(args.length == 1) {
+				if(args[0].equalsIgnoreCase("help")) {
+					sender.sendMessage(ChatColor.RED + "you are not allowed to use this command! /" + cmd.getName() + " " + args[0] + "\n" + ChatColor.GRAY + "permission: xEssentials.command.check");
+				} else if(args[0].equalsIgnoreCase("list")) {
+					sender.sendMessage(ChatColor.RED + "you are not allowed to use this command! /" + cmd.getName() + " " + args[0] + "\n" + ChatColor.GRAY + "permission: xEssentials.command.check.admin");
+				} else {
+					sender.sendMessage(ChatColor.RED + "you are not allowed to use this command! /" + cmd.getName() + " " + args[0] + "\n" + ChatColor.GRAY + "permission: xEssentials.command.check.admin");
+				}
+			}
 		}
 	}
 
