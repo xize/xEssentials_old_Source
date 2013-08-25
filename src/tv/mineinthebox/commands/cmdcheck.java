@@ -40,7 +40,7 @@ public class cmdcheck {
 								File[] files = fileManager.getFileList(fileManager.getDir() + File.separator + "modreq");
 								for(File f : files) {
 									String date = fileManager.getStringValue(f.getName(), "submitDate", fileManager.getDir() + File.separator + "modreq");
-									String message = fileManager.getStringValue(f.getName() + ".yml", "message", fileManager.getDir() + File.separator + "modreq");
+									String message = fileManager.getStringValue(f.getName(), "message", fileManager.getDir() + File.separator + "modreq");
 									sender.sendMessage(ChatColor.GOLD + ".oO___[modreq list]___Oo.");
 									sender.sendMessage(ChatColor.GOLD + "[" + date + "]" + ChatColor.RED + message + ChatColor.GRAY + "by: " + f.getName().replace(".yml", ""));
 								}
