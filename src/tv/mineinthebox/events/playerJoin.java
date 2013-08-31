@@ -47,6 +47,18 @@ public class playerJoin implements Listener {
 			e.getPlayer().getServer().dispatchCommand(Bukkit.getConsoleSender(), fileManager.getStringValue(e.getPlayer().getName() + ".yml", "command", fileManager.getDir() + File.separator + "tasks"));
 		}
 	}
+	
+	@EventHandler
+	public void onFly(PlayerJoinEvent e) {
+		if(fileManager.file_exists(e.getPlayer().getName() + ".yml", fileManager.getDir() + File.separator + "players")) {
+			if(fileManager.isSet(e.getPlayer().getName() + ".yml", "fly", fileManager.getDir() + File.separator + "players")) {
+				if(fileManager.getBooleanValue(e.getPlayer().getName() + ".yml", "fly", fileManager.getDir() + File.separator + "players")) {
+					e.getPlayer().setAllowFlight(true);
+					e.getPlayer().setFlying(true);
+				}
+			}
+		}
+	}
 
 	@EventHandler
 	public void vanishHandle(PlayerJoinEvent e) {

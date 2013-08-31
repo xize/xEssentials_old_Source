@@ -29,7 +29,8 @@ public class commandlist {
 			"hometp",
 			"tphere",
 			"tpa",
-			"tpahere"
+			"tpahere",
+			"fly"
 	};
 
 }
