@@ -6,12 +6,14 @@ import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
 import tv.mineinthebox.fileManager;
+import tv.mineinthebox.xEssentialsMemory;
 
 public class vanishApi {
 
 	public static boolean isVanished(Player p) {
-		if(fileManager.file_exists(p.getName() + ".yml", fileManager.getDir() + File.separator + "vanish")) {
-			if(fileManager.getBooleanValue(p.getName() + ".yml", "Vanished", fileManager.getDir() + File.separator + "vanish")) {
+		if(xEssentialsMemory.returnPlayer(p).containsKey("Vanished")) {
+			Boolean bol = (Boolean) xEssentialsMemory.returnPlayer(p).get("Vanished");
+			if(bol) {
 				return true;
 			}
 		}
@@ -28,35 +30,25 @@ public class vanishApi {
 	}
 
 	public static boolean vanish(Player p ) {
-		if(fileManager.file_exists(p.getName() + ".yml", fileManager.getDir() + File.separator + "vanish")) {
-			fileManager.writeFile(p.getName() + ".yml", "Vanished", true, fileManager.getDir() + File.separator + "vanish");
-			fileManager.writeFile(p.getName() + ".yml", "noPickup", true, fileManager.getDir() + File.separator + "vanish");
-			for(Player target : Bukkit.getOnlinePlayers()) {
-				target.hidePlayer(p);
+		if(!isVanished(p)) {
+			for(Player player : Bukkit.getOnlinePlayers()) {
+				 player.hidePlayer(p);
 			}
-		} else {
-			fileManager.writeFile(p.getName() + ".yml", "Vanished", true, fileManager.getDir() + File.separator + "vanish");
-			fileManager.writeFile(p.getName() + ".yml", "noPickup", true, fileManager.getDir() + File.separator + "vanish");
-			for(Player target : Bukkit.getOnlinePlayers()) {
-				target.hidePlayer(p);
-			}
+			xEssentialsMemory.returnPlayer(p).put("Vanished", true);
+			xEssentialsMemory.returnPlayer(p).put("noPickup", true);
+			xEssentialsMemory.updatePlayerConfig(p);
 		}
 		return false;
 	}
 
 	public static boolean unvanish(Player p) {
-		if(fileManager.file_exists(p.getName() + ".yml", fileManager.getDir() + File.separator + "vanish")) {
-			fileManager.writeFile(p.getName() + ".yml", "Vanished", false, fileManager.getDir() + File.separator + "vanish");
-			fileManager.writeFile(p.getName() + ".yml", "noPickup", false, fileManager.getDir() + File.separator + "vanish");
-			for(Player target : Bukkit.getOnlinePlayers()) {
-				target.showPlayer(p);
+		if(isVanished(p)) {
+			for(Player player : Bukkit.getOnlinePlayers()) {
+				player.showPlayer(p);
 			}
-		} else {
-			fileManager.writeFile(p.getName() + ".yml", "Vanished", false, fileManager.getDir() + File.separator + "vanish");
-			fileManager.writeFile(p.getName() + ".yml", "noPickup", false, fileManager.getDir() + File.separator + "vanish");
-			for(Player target : Bukkit.getOnlinePlayers()) {
-				target.showPlayer(p);
-			}
+			xEssentialsMemory.returnPlayer(p).put("Vanished", false);
+			xEssentialsMemory.returnPlayer(p).put("noPickup", false);
+			xEssentialsMemory.updatePlayerConfig(p);
 		}
 		return false;
 	}
@@ -71,9 +63,12 @@ public class vanishApi {
 	}
 
 	public static boolean vanishNoPickUp(Player p) {
-		if(fileManager.file_exists(p.getName() + ".yml", fileManager.getDir() + File.separator + "vanish")) {
-			if(fileManager.getBooleanValue(p.getName() + ".yml", "noPickup", fileManager.getDir() + File.separator + "vanish")) {
-				return true;
+		if(xEssentialsMemory.returnPlayer(p).containsKey("noPickup")) {
+			Boolean bol = (Boolean) xEssentialsMemory.returnPlayer(p).get("noPickup");
+			if(bol instanceof Boolean) {
+				if(bol) {
+					return true;
+				}
 			} else {
 				return false;
 			}
@@ -82,19 +77,16 @@ public class vanishApi {
 	}
 	
 	public static boolean setNoPickUp(Player p) {
-		if(fileManager.file_exists(p.getName() + ".yml", fileManager.getDir() + File.separator + "vanish")) {
-			if(isVanished(p)) {
-				fileManager.writeFile(p.getName() + ".yml", "noPickup", true, fileManager.getDir() + File.separator + "vanish");
-			}
+		if(!vanishNoPickUp(p)) {
+			xEssentialsMemory.returnPlayer(p).put("noPickup", true);
+			xEssentialsMemory.updatePlayerConfig(p);
 		}
 		return false;
 	}
 	
 	public static boolean unsetNoPickUp(Player p) {
-		if(fileManager.file_exists(p.getName() + ".yml", fileManager.getDir() + File.separator + "vanish")) {
-			if(isVanished(p)) {
-				fileManager.writeFile(p.getName() + ".yml", "noPickup", false, fileManager.getDir() + File.separator + "vanish");
-			}
+		if(vanishNoPickUp(p)) {
+			xEssentialsMemory.returnPlayer(p).put("noPickup", false);
 		}
 		return false;
 	}
