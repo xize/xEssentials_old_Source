@@ -87,6 +87,7 @@ public class vanishApi {
 	public static boolean unsetNoPickUp(Player p) {
 		if(vanishNoPickUp(p)) {
 			xEssentialsMemory.returnPlayer(p).put("noPickup", false);
+			xEssentialsMemory.updatePlayerConfig(p);
 		}
 		return false;
 	}
