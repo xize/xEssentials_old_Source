@@ -15,6 +15,7 @@ public class motd_config {
 			fileManager.writeFile("motd.yml", "motd.normal.enable", true, fileManager.getDir());
 			fileManager.writeFile("motd.yml", "motd.random.enable", false, fileManager.getDir());
 			fileManager.writeFile("motd.yml", "motd.messages", list, fileManager.getDir());
+			fileManager.writeFile("motd.yml", "motd.message", "default motd for xEssentials", fileManager.getDir());
 			list.clear();
 		}
 	}
