@@ -9,6 +9,8 @@ import java.util.Map.Entry;
 
 import org.bukkit.Bukkit;
 import org.bukkit.World;
+import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 
 public class xEssentialsMemory {
@@ -67,10 +69,10 @@ public class xEssentialsMemory {
 		enderdragongrief = fileManager.getBooleanValue("entity.yml", "disable-enderdragon-grief", fileManager.getDir());
 		disable_spawneggs = fileManager.getBooleanValue("entity.yml", "disable-spawneggs", fileManager.getDir());
 		logSpawnEggs = fileManager.getBooleanValue("entity.yml", "log.spawnEggs", fileManager.getDir());
-		Iterator<?> mobs = fileManager.getListValue("entity.yml", "mobs.allowToSpawn", fileManager.getDir()).iterator();
-		while(mobs.hasNext()) {
-			String mob = (String) mobs.next();
-			mobValues.put(mob, fileManager.getBooleanValue("entity.yml", "mobs.allowToSpawn." + mob, fileManager.getDir()));
+		File f = fileManager.returnFile("entity.yml", fileManager.getDir());
+		FileConfiguration con = YamlConfiguration.loadConfiguration(f);
+		for(String mobname : con.getConfigurationSection("mobs.allowToSpawn").getKeys(false)) {
+			mobValues.put(mobname, con.getBoolean("mobs.allowToSpawn." + mobname));
 		}
 	}
 	
