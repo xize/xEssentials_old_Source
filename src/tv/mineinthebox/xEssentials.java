@@ -40,6 +40,7 @@ public class xEssentials extends JavaPlugin {
 			getCommand(commandS).setExecutor(command);
 		}
 		pl = this;
+		xEssentialsMemory.startMemoryInput();
 	}
 	@Override
 	public void onDisable() {
