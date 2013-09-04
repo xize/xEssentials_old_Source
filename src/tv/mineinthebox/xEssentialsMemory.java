@@ -22,14 +22,14 @@ public class xEssentialsMemory {
 	 * 
 	 */
 	
-	protected static boolean isBanSystemEnabled = false;
-	protected static boolean isAntiPwnAgeEnabled = false;
-	protected static boolean isAntiFloodEnabled = false;
-	protected static boolean isHumanSpamEnabled = false;
-	protected static boolean showAlternateAccounts = false;
-	protected static String pwnageMessage = null;
-	protected static String antiFloodSpamMessage = null;
-	protected static String humanSpamMessage = null;
+	public static boolean isBanSystemEnabled = false;
+	public static boolean isAntiPwnAgeEnabled = false;
+	public static boolean isAntiFloodEnabled = false;
+	public static boolean isHumanSpamEnabled = false;
+	public static boolean showAlternateAccounts = false;
+	public static String pwnageMessage = null;
+	public static String antiFloodSpamMessage = null;
+	public static String humanSpamMessage = null;
 	
 	public static void setBanSystem() {
 		isBanSystemEnabled = fileManager.getBooleanValue("ban.yml", "ban.system.enable", fileManager.getDir());
@@ -49,15 +49,15 @@ public class xEssentialsMemory {
 	 * 
 	 */
 	
-	protected static boolean firespread = false;
-	protected static boolean explosion = false;
-	protected static boolean firework = false;
-	protected static boolean withergrief = false;
-	protected static boolean endermangrief = false;
-	protected static boolean enderdragongrief = false;
-	protected static boolean disable_spawneggs = false;
-	protected static boolean logSpawnEggs = false;
-	protected static HashMap<String, Boolean> mobValues = new HashMap<String, Boolean>();
+	public static boolean firespread = false;
+	public static boolean explosion = false;
+	public static boolean firework = false;
+	public static boolean withergrief = false;
+	public static boolean endermangrief = false;
+	public static boolean enderdragongrief = false;
+	public static boolean disable_spawneggs = false;
+	public static boolean logSpawnEggs = false;
+	public static HashMap<String, Boolean> mobValues = new HashMap<String, Boolean>();
 	
 	public static void setEntitySystem() {
 		mobValues.clear();
@@ -83,10 +83,10 @@ public class xEssentialsMemory {
 	 * 
 	 */
 	
-	protected static boolean broadcastEnabled = false;
-	protected static String broadcast_prefix;
-	protected static String broadcast_suffix;
-	protected static ArrayList<String> broadcast_list = new ArrayList<String>();
+	public static boolean broadcastEnabled = false;
+	public static String broadcast_prefix;
+	public static String broadcast_suffix;
+	public static ArrayList<String> broadcast_list = new ArrayList<String>();
 	
 	public static void setBroadcastSystem() {
 		broadcast_list.clear();
@@ -103,9 +103,9 @@ public class xEssentialsMemory {
 	 * 
 	 */
 	
-	protected static boolean hightlights = false;
-	protected static boolean smilleys = false;
-	protected static boolean antiAddvertise = false;
+	public static boolean hightlights = false;
+	public static boolean smilleys = false;
+	public static boolean antiAddvertise = false;
 	
 	public static void setChatSystem() {
 		hightlights = fileManager.getBooleanValue("chat.yml", "chat.enable.playerHighlights", fileManager.getDir());
@@ -120,10 +120,10 @@ public class xEssentialsMemory {
 	 * 
 	 * 
 	 */
-	protected static boolean motdEnabled = false;
-	protected static boolean motdRandom = false;
-	protected static ArrayList<String> motdMessages = new ArrayList<String>();
-	protected static String motdMessage = null;
+	public static boolean motdEnabled = false;
+	public static boolean motdRandom = false;
+	public static ArrayList<String> motdMessages = new ArrayList<String>();
+	public static String motdMessage = null;
 	
 	public static void setMotdSystem() {
 		motdEnabled = fileManager.getBooleanValue("motd.yml", "motd.normal.enable", fileManager.getDir());
@@ -139,10 +139,10 @@ public class xEssentialsMemory {
 	 * 
 	 */
 	
-	protected static boolean playerUseSeperatedInventorys = false;
-	protected static boolean playerSaveInventory = false;
-	protected static boolean playerGodmodeAfk = false;
-	protected static boolean playerSteveHurtSound = false;
+	public static boolean playerUseSeperatedInventorys = false;
+	public static boolean playerSaveInventory = false;
+	public static boolean playerGodmodeAfk = false;
+	public static boolean playerSteveHurtSound = false;
 	
 	public static void setPlayerSystem() {
 		playerUseSeperatedInventorys = fileManager.getBooleanValue("player.yml", "useSeperatedInventorys", fileManager.getDir());
@@ -157,11 +157,11 @@ public class xEssentialsMemory {
 	 * 
 	 * 
 	 */
-	protected static boolean disablePvp = false;
-	protected static boolean createClientsideGraveyard = false;
-	protected static boolean killBountyEnabled = false;
-	protected static Double killBountyPrice = null;
-	protected static boolean npcReplaceLoggers = false;
+	public static boolean disablePvp = false;
+	public static boolean createClientsideGraveyard = false;
+	public static boolean killBountyEnabled = false;
+	public static Double killBountyPrice = null;
+	public static boolean npcReplaceLoggers = false;
 	
 	public static void setPvpSystem() {
 		disablePvp = fileManager.getBooleanValue("pvp.yml", "disable-pvp", fileManager.getDir());
@@ -178,9 +178,9 @@ public class xEssentialsMemory {
 	 * 
 	 */
 	
-	protected static String rules_prefix;
-	protected static String rules_suffix;
-	protected static ArrayList<String> rules = new ArrayList<String>();
+	public static String rules_prefix;
+	public static String rules_suffix;
+	public static ArrayList<String> rules = new ArrayList<String>();
 	
 	public static void setRulesSystem() {
 		rules_prefix = fileManager.getStringValue("rules.yml", "rules.prefix", fileManager.getDir());
@@ -195,11 +195,11 @@ public class xEssentialsMemory {
 	 * 
 	 */
 	
-	protected static Double spawn_x;
-	protected static Double spawn_y;
-	protected static Double spawn_z;
-	protected static int spawn_yaw;
-	protected static World spawn_world;
+	public static Double spawn_x;
+	public static Double spawn_y;
+	public static Double spawn_z;
+	public static int spawn_yaw;
+	public static World spawn_world;
 	
 	public static void setSpawnSystem() {
 		if(fileManager.file_exists("spawn.yml", fileManager.getDir())) {
@@ -218,7 +218,7 @@ public class xEssentialsMemory {
 	 * 
 	 */
 	
-	protected static HashMap<String, HashMap<String, Object>> onlinePlayers = new HashMap<String, HashMap<String, Object>>();
+	public static HashMap<String, HashMap<String, Object>> onlinePlayers = new HashMap<String, HashMap<String, Object>>();
 	
 	public static HashMap<String, Object> returnPlayer(Player p) {
 		if(!onlinePlayers.containsKey(p.getName())) {
