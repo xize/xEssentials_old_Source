@@ -218,9 +218,9 @@ public class xEssentialsMemory {
 	 * 
 	 */
 	
-	public static HashMap<String, HashMap<String, Object>> onlinePlayers = new HashMap<String, HashMap<String, Object>>();
+	protected HashMap<String, HashMap<String, Object>> onlinePlayers = new HashMap<String, HashMap<String, Object>>();
 	
-	public static HashMap<String, Object> returnPlayer(Player p) {
+	public HashMap<String, Object> returnPlayer(Player p) {
 		if(!onlinePlayers.containsKey(p.getName())) {
 			onlinePlayers.put(p.getName(), new HashMap<String, Object>());
 			return onlinePlayers.get(p.getName());
@@ -229,7 +229,7 @@ public class xEssentialsMemory {
 		}
 	}
 	
-	public static void setPlayer(Player p) {
+	public void setPlayer(Player p) {
 		if(!onlinePlayers.containsKey(p.getName())) {
 			if(fileManager.file_exists(p.getName() + ".yml", fileManager.getDir() + File.separator + "players")) {
 				if(fileManager.isSet(p.getName() + ".yml", "torch", fileManager.getDir() + File.separator + "players")) {
@@ -255,14 +255,14 @@ public class xEssentialsMemory {
 		}
 	}
 	
-	public static void removePlayer(Player p) {
+	public void removePlayer(Player p) {
 		if(onlinePlayers.containsKey(p.getName())) {
 			returnPlayer(p).clear();
 			onlinePlayers.remove(p.getName());
 		}
 	}
 	
-	public static void updatePlayerConfig(Player p) {
+	public void updatePlayerConfig(Player p) {
 		Map<String, Object> map = returnPlayer(p);
 		Iterator<Entry<String, Object>> it = map.entrySet().iterator();
 		while(it.hasNext()) {
@@ -278,7 +278,7 @@ public class xEssentialsMemory {
 	 * 
 	 */
 	
-	public static void startMemoryInput() {
+	public void startMemoryInput() {
 		setBanSystem();
 		setEntitySystem();
 		setBroadcastSystem();

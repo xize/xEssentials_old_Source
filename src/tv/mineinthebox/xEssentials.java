@@ -21,6 +21,7 @@ public class xEssentials extends JavaPlugin {
 	private configHandler handleConfig = new configHandler();
 	private pluginDescription pluginhandle = new pluginDescription();
 	private handler handle = new handler(this);
+	public static xEssentialsMemory mem = new xEssentialsMemory();
 	
 	public void log(String log, logType type) {
 		if(type == logType.info) {
@@ -40,7 +41,7 @@ public class xEssentials extends JavaPlugin {
 			getCommand(commandS).setExecutor(command);
 		}
 		pl = this;
-		xEssentialsMemory.startMemoryInput();
+		mem.startMemoryInput();
 	}
 	@Override
 	public void onDisable() {

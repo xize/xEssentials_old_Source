@@ -15,11 +15,13 @@ import tv.mineinthebox.events.joinEvent.taskEvent;
 import tv.mineinthebox.events.joinEvent.vanishEvent;
 import tv.mineinthebox.events.kickEvent.banKickEvent;
 import tv.mineinthebox.events.kickEvent.delKickMemory;
+import tv.mineinthebox.events.kickEvent.saveKickAlt;
 import tv.mineinthebox.events.kickEvent.saveLocationEvent;
 import tv.mineinthebox.events.leaveEvent.delLeaveMemory;
 import tv.mineinthebox.events.leaveEvent.leaveMessageEvent;
 import tv.mineinthebox.events.leaveEvent.locationSave;
 import tv.mineinthebox.events.leaveEvent.saveInventory;
+import tv.mineinthebox.events.leaveEvent.saveLeaveAlt;
 import tv.mineinthebox.events.leaveEvent.torchEventLeave;
 import tv.mineinthebox.events.playerMoveEvent.firefly;
 import tv.mineinthebox.events.playerMoveEvent.torchEvent;
@@ -42,6 +44,8 @@ public class handler {
 			setListener(new bancheck()); 
 			setListener(new banKickEvent());
 			if(xEssentialsMemory.showAlternateAccounts) {
+				setListener(new saveKickAlt());
+				setListener(new saveLeaveAlt());
 				setListener(new alternateAccountEvent());
 			}
 		}
@@ -53,12 +57,12 @@ public class handler {
 		 * 
 		 */
 		
+		setListener(new loadMemory());
 		setListener(new flyEvent());
 		setListener(new joinMessageEvent());
 		setListener(new modreqEvent());
 		setListener(new taskEvent());
 		setListener(new vanishEvent());
-		setListener(new loadMemory());
 		
 		/*
 		 * 

@@ -5,7 +5,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import tv.mineinthebox.xEssentialsMemory;
+import tv.mineinthebox.xEssentials;
 import tv.mineinthebox.permissions.consolePermission;
 import tv.mineinthebox.permissions.playerPermission;
 
@@ -16,14 +16,14 @@ public class cmdfirefly {
 			if(sender instanceof Player) {
 				Player p = (Player) sender;
 				if(sender.hasPermission("xEssentials.command.firefly")) {
-					if(xEssentialsMemory.returnPlayer(p).containsKey("firefly")) {
-						if((Boolean) xEssentialsMemory.returnPlayer(p).get("firefly")) {
-							xEssentialsMemory.returnPlayer(p).put("firefly", false);
-							xEssentialsMemory.updatePlayerConfig(p);
+					if(xEssentials.mem.returnPlayer(p).containsKey("firefly")) {
+						if((Boolean) xEssentials.mem.returnPlayer(p).get("firefly")) {
+							xEssentials.mem.returnPlayer(p).put("firefly", false);
+							xEssentials.mem.updatePlayerConfig(p);
 							sender.sendMessage(ChatColor.GREEN + "disabled firefly!");
 						} else {
-							xEssentialsMemory.returnPlayer(p).put("firefly", true);
-							xEssentialsMemory.updatePlayerConfig(p);
+							xEssentials.mem.returnPlayer(p).put("firefly", true);
+							xEssentials.mem.updatePlayerConfig(p);
 							sender.sendMessage(ChatColor.GREEN + "enabled firefly!");
 						}
 					} else {

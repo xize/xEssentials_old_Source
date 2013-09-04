@@ -13,7 +13,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerMoveEvent;
 
-import tv.mineinthebox.xEssentialsMemory;
+import tv.mineinthebox.xEssentials;
 
 public class torchEvent implements Listener {
 	public static Map<Player, LinkedList<BlockState>> list = new HashMap<Player, LinkedList<BlockState>>();
@@ -55,8 +55,8 @@ public class torchEvent implements Listener {
 	}
 	
 	public static boolean isTorch(Player p) {
-		if(xEssentialsMemory.returnPlayer(p).containsKey("torch")) {
-			Boolean bol = (Boolean) xEssentialsMemory.returnPlayer(p).get("torch");
+		if(xEssentials.mem.returnPlayer(p).containsKey("torch")) {
+			Boolean bol = (Boolean) xEssentials.mem.returnPlayer(p).get("torch");
 			if(bol instanceof Boolean) {
 				if(bol) {
 					return true;

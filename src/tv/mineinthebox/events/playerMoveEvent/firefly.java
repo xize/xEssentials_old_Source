@@ -6,14 +6,14 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerMoveEvent;
 
-import tv.mineinthebox.xEssentialsMemory;
+import tv.mineinthebox.xEssentials;
 import tv.mineinthebox.resources.vanish.vanishApi;
 
 public class firefly implements Listener {
 	@EventHandler
 	public void fireFly(PlayerMoveEvent e) {
-		if(xEssentialsMemory.returnPlayer(e.getPlayer()).containsKey("firefly")) {
-			if((Boolean) xEssentialsMemory.returnPlayer(e.getPlayer()).get("firefly")) {
+		if(xEssentials.mem.returnPlayer(e.getPlayer()).containsKey("firefly")) {
+			if((Boolean) xEssentials.mem.returnPlayer(e.getPlayer()).get("firefly")) {
 				if(vanishApi.isVanished(e.getPlayer())) {
 					//only draw client side particles while being vanished
 					e.getPlayer().playEffect(e.getPlayer().getLocation().getBlock().getRelative(BlockFace.DOWN).getLocation(), Effect.MOBSPAWNER_FLAMES, 1);
