@@ -4,6 +4,8 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
 
 import org.bukkit.Bukkit;
 import org.bukkit.World;
@@ -241,6 +243,12 @@ public class xEssentialsMemory {
 				if(fileManager.isSet(p.getName() + ".yml", "fly", fileManager.getDir() + File.separator + "players")) {
 					returnPlayer(p).put("fly", fileManager.getBooleanValue(p.getName() + ".yml", "fly", fileManager.getDir() + File.separator + "players"));
 				}
+				if(fileManager.isSet(p.getName() + ".yml", "firefly", fileManager.getDir() + File.separator + "players")) {
+					returnPlayer(p).put("firefly", fileManager.getBooleanValue(p.getName() + ".yml", "firefly", fileManager.getDir() + File.separator + "players"));
+				}
+				if(fileManager.isSet(p.getName() + ".yml", "Vanished", fileManager.getDir() + File.separator + "players")) {
+					returnPlayer(p).put("Vanished", fileManager.getBooleanValue(p.getName() + ".yml", "Vanished", fileManager.getDir() + File.separator + "players"));
+				}
 			}
 		}
 	}
@@ -252,6 +260,15 @@ public class xEssentialsMemory {
 		}
 	}
 	
+	public static void updatePlayerConfig(Player p) {
+		Map<String, Object> map = returnPlayer(p);
+		Iterator<Entry<String, Object>> it = map.entrySet().iterator();
+		while(it.hasNext()) {
+			Map.Entry<String, Object> its = (Entry<String, Object>) it.next();
+			fileManager.writeFile(p.getName() + ".yml", its.getKey(), its.getValue(), fileManager.getDir() + File.separator + "players");
+		}
+	}
+	
 	/*
 	 * 
 	 * memory injector
@@ -259,7 +276,7 @@ public class xEssentialsMemory {
 	 * 
 	 */
 	
-	public void startMemoryInput() {
+	public static void startMemoryInput() {
 		setBanSystem();
 		setEntitySystem();
 		setBroadcastSystem();
