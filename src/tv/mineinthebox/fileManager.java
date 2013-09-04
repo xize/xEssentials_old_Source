@@ -12,6 +12,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.FileConfigurationOptions;
@@ -95,6 +96,19 @@ public class fileManager extends xEssentials {
 			File f = new File(fileLocation + File.separator + configFileName);
 			if(f.exists()) {
 				return f;
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	public static List<Map<?, ?>> getMapList(String configFileName, String path, String fileLocation) {
+		try {
+			File f = new File(fileLocation + File.separator + configFileName);
+			if(f.exists()) {
+				FileConfiguration con = YamlConfiguration.loadConfiguration(f);
+				return con.getMapList(path);
 			}
 		} catch(Exception e) {
 			e.printStackTrace();
