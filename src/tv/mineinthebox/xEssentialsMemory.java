@@ -313,6 +313,9 @@ public class xEssentialsMemory {
 		motdMessages.clear();
 		rules.clear();
 		mobValues.clear();
+		for(Player p : Bukkit.getOnlinePlayers()) {
+			returnPlayer(p).clear();
+		}
 		onlinePlayers.clear();
 	}
 }
