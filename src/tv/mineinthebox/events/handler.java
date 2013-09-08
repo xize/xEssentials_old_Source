@@ -2,6 +2,7 @@ package tv.mineinthebox.events;
 
 import org.bukkit.Bukkit;
 import org.bukkit.event.Listener;
+import org.bukkit.event.player.PlayerChatEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerKickEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
@@ -35,6 +36,7 @@ import tv.mineinthebox.events.playerMoveEvent.torchEvent;
 import tv.mineinthebox.events.playerMoveEvent.zoneEvent;
 import tv.mineinthebox.events.weatherEvent.weatherEvent;
 
+@SuppressWarnings("deprecation")
 public class handler {
 
 	public void getListener() {
@@ -130,6 +132,7 @@ public class handler {
 		PlayerKickEvent.getHandlerList().unregister(xEssentials.getPlugin());
 		WeatherChangeEvent.getHandlerList().unregister(xEssentials.getPlugin());
 		PlayerMoveEvent.getHandlerList().unregister(xEssentials.getPlugin());
+		PlayerChatEvent.getHandlerList().unregister(xEssentials.getPlugin());
 		xEssentialsMemory.closeMemoryInput();
 		xEssentialsMemory.startMemoryInput();
 		xEssentials.handle.getListener();

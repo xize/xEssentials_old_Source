@@ -107,7 +107,7 @@ public class xEssentialsMemory {
 
 	public static  boolean hightlights = false;
 	public static  boolean smilleys = false;
-	public static String hashtag;
+	public static String hashtag = null;
 	public static  boolean antiAddvertise = false;
 	public static String setSmilleys(String msg, String RecallSuffix) {
 		if(smilleys) {
