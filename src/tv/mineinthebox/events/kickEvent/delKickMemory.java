@@ -9,6 +9,7 @@ import tv.mineinthebox.xEssentials;
 public class delKickMemory implements Listener {
 	@EventHandler
 	public void delPlayerMemory(PlayerJoinEvent e) {
+		xEssentials.mem.returnPlayer(e.getPlayer()).clear();
 		xEssentials.mem.removePlayer(e.getPlayer());
 	}
 
