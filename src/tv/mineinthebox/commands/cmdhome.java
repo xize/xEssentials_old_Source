@@ -47,29 +47,29 @@ public class cmdhome {
 					} else {
 						playerPermission.getPermissionError(sender, cmd, args);
 					}
-				} else {
-					consolePermission.getConsoleMessage(sender);
-				}
-			} else if(args.length == 2) {
-				if(args[0].equalsIgnoreCase("convert")) {
-					if(sender.hasPermission("xEssentials.command.homeconvert")) {
-						if(args[1].equalsIgnoreCase("essentials")) {
+				} else if(args.length == 2) {
+					if(args[0].equalsIgnoreCase("convert")) {
+						if(sender.hasPermission("xEssentials.command.homeconvert")) {
 							if(args[1].equalsIgnoreCase("essentials")) {
-								if(fileManager.isDirectory(fileManager.getBukkitDir() + File.separator + "essentials")) {
-									sender.sendMessage(ChatColor.GREEN + "converting all essentials default homes to xEssentials homes!");
-									File[] list = fileManager.getFileList(fileManager.getBukkitDir() + File.separator + "essentials");
-									for(File file : list) {
-										convertEssentials(file);
+								if(args[1].equalsIgnoreCase("essentials")) {
+									if(fileManager.isDirectory(fileManager.getBukkitDir() + File.separator + "essentials")) {
+										sender.sendMessage(ChatColor.GREEN + "converting all essentials default homes to xEssentials homes!");
+										File[] list = fileManager.getFileList(fileManager.getBukkitDir() + File.separator + "essentials");
+										for(File file : list) {
+											convertEssentials(file);
+										}
+									} else {
+										sender.sendMessage(ChatColor.RED + "no essentials user folder found!");
 									}
-								} else {
-									sender.sendMessage(ChatColor.RED + "no essentials user folder found!");
 								}
 							}
+						} else {
+							playerPermission.getPermissionError(sender, cmd, args);
 						}
-					} else {
-						playerPermission.getPermissionError(sender, cmd, args);
 					}
 				}
+			} else {
+				consolePermission.getConsoleMessage(sender);
 			}
 		}
 		return false;
