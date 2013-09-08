@@ -26,7 +26,6 @@ import tv.mineinthebox.events.leaveEvent.torchEventLeave;
 import tv.mineinthebox.events.playerMoveEvent.firefly;
 import tv.mineinthebox.events.playerMoveEvent.torchEvent;
 import tv.mineinthebox.events.playerMoveEvent.zoneEvent;
-import tv.mineinthebox.logtype.logType;
 
 public class handler {
 	xEssentials plugin;
@@ -42,8 +41,6 @@ public class handler {
 		  */
 		
 		if(xEssentials.mem.isBanSystemEnabled) {
-			plugin.log("!!!!!!!!!!!!!!!!!ban system is enabled!!!!!!!!!!!!!!!!!!!!!", logType.info);
-			plugin.log("ban system boolean: " + xEssentials.mem.isBanSystemEnabled, logType.info);
 			setListener(new bancheck()); 
 			setListener(new banKickEvent());
 			if(xEssentials.mem.showAlternateAccounts) {

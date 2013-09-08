@@ -31,7 +31,8 @@ public class commandlist {
 			"tpa",
 			"tpahere",
 			"fly",
-			"mute"
+			"mute",
+			"unmute"
 	};
 
 }
