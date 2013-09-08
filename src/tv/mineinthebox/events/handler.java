@@ -4,6 +4,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.event.Listener;
 
 import tv.mineinthebox.xEssentials;
+import tv.mineinthebox.events.chatEvent.chatEvent;
 import tv.mineinthebox.events.chatEvent.muteManager;
 import tv.mineinthebox.events.joinEvent.alternateAccountEvent;
 import tv.mineinthebox.events.joinEvent.bancheck;
@@ -102,6 +103,9 @@ public class handler {
 		 * 
 		 */
 		setListener(new muteManager());
+		if(xEssentials.mem.smilleys) {
+			setListener(new chatEvent());
+		}
 		
 		/*
 		 * 
