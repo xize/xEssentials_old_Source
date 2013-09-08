@@ -33,7 +33,8 @@ public class commandlist {
 			"fly",
 			"mute",
 			"unmute",
-			"xessentials"
+			"xessentials",
+			"gc"
 	};
 
 }

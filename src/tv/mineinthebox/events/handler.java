@@ -7,6 +7,7 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerKickEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
+import org.bukkit.event.server.PluginEnableEvent;
 import org.bukkit.event.weather.WeatherChangeEvent;
 
 import tv.mineinthebox.xEssentials;
@@ -34,6 +35,7 @@ import tv.mineinthebox.events.leaveEvent.torchEventLeave;
 import tv.mineinthebox.events.playerMoveEvent.firefly;
 import tv.mineinthebox.events.playerMoveEvent.torchEvent;
 import tv.mineinthebox.events.playerMoveEvent.zoneEvent;
+import tv.mineinthebox.events.pluginEnableEvent.TPS;
 import tv.mineinthebox.events.weatherEvent.weatherEvent;
 
 @SuppressWarnings("deprecation")
@@ -120,6 +122,13 @@ public class handler {
 		if(xEssentialsMemory.weather) {
 			setListener(new weatherEvent());
 		}
+		
+		/*
+		 * 
+		 * pluginEnableEvent
+		 * 
+		 */
+		setListener(new TPS());
 	}
 
 	public void setListener(Listener listener) {
@@ -131,6 +140,7 @@ public class handler {
 		PlayerQuitEvent.getHandlerList().unregister(xEssentials.getPlugin());
 		PlayerKickEvent.getHandlerList().unregister(xEssentials.getPlugin());
 		WeatherChangeEvent.getHandlerList().unregister(xEssentials.getPlugin());
+		PluginEnableEvent.getHandlerList().unregister(xEssentials.getPlugin());
 		PlayerMoveEvent.getHandlerList().unregister(xEssentials.getPlugin());
 		PlayerChatEvent.getHandlerList().unregister(xEssentials.getPlugin());
 		xEssentialsMemory.closeMemoryInput();
