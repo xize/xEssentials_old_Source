@@ -9,7 +9,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import tv.mineinthebox.fileManager;
-import tv.mineinthebox.xEssentials;
+import tv.mineinthebox.xEssentialsMemory;
 import tv.mineinthebox.permissions.playerPermission;
 
 public class cmdunmute {
@@ -27,9 +27,9 @@ public class cmdunmute {
 					} else {
 						Player victem = Bukkit.getPlayer(args[0]);
 						if(victem instanceof Player) {
-							if(xEssentials.mem.returnPlayer(victem).containsKey("muted")) {
-								xEssentials.mem.returnPlayer(victem).put("muted", null);
-								xEssentials.mem.updatePlayerConfig(victem);
+							if(xEssentialsMemory.returnPlayer(victem).containsKey("muted")) {
+								xEssentialsMemory.returnPlayer(victem).put("muted", null);
+								xEssentialsMemory.updatePlayerConfig(victem);
 								victem.sendMessage(ChatColor.GREEN + "you are unmuted by " + sender.getName());
 								sender.sendMessage(ChatColor.GREEN +  "you have unmuted " + sender.getName());
 							} else {

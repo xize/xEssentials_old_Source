@@ -22,16 +22,16 @@ public class xEssentialsMemory {
 	 * 
 	 */
 
-	public boolean isBanSystemEnabled = false;
-	public boolean isAntiPwnAgeEnabled = false;
-	public boolean isAntiFloodEnabled = false;
-	public boolean isHumanSpamEnabled = false;
-	public boolean showAlternateAccounts = false;
-	public String pwnageMessage = null;
-	public String antiFloodSpamMessage = null;
-	public String humanSpamMessage = null;
+	public static boolean isBanSystemEnabled = false;
+	public static boolean isAntiPwnAgeEnabled = false;
+	public static boolean isAntiFloodEnabled = false;
+	public static boolean isHumanSpamEnabled = false;
+	public static boolean showAlternateAccounts = false;
+	public static String pwnageMessage = null;
+	public static String antiFloodSpamMessage = null;
+	public static String humanSpamMessage = null;
 
-	public void setBanSystem() {
+	public static void setBanSystem() {
 		isBanSystemEnabled = fileManager.getBooleanValue("ban.yml", "ban.system.enable", fileManager.getDir());
 		isAntiPwnAgeEnabled = fileManager.getBooleanValue("ban.yml", "ban.system.enablePwnAgeProtection", fileManager.getDir());
 		isAntiFloodEnabled = fileManager.getBooleanValue("ban.yml", "ban.system.enableAntiFloodSpam", fileManager.getDir());
@@ -49,18 +49,18 @@ public class xEssentialsMemory {
 	 * 
 	 */
 
-	public boolean weather = false;
-	public boolean firespread = false;
-	public boolean explosion = false;
-	public boolean firework = false;
-	public boolean withergrief = false;
-	public boolean endermangrief = false;
-	public boolean enderdragongrief = false;
-	public boolean disable_spawneggs = false;
-	public boolean logSpawnEggs = false;
-	public HashMap<String, Boolean> mobValues = new HashMap<String, Boolean>();
+	public static boolean weather = false;
+	public static boolean firespread = false;
+	public static boolean explosion = false;
+	public static boolean firework = false;
+	public static boolean withergrief = false;
+	public static boolean endermangrief = false;
+	public static boolean enderdragongrief = false;
+	public static boolean disable_spawneggs = false;
+	public static boolean logSpawnEggs = false;
+	public static HashMap<String, Boolean> mobValues = new HashMap<String, Boolean>();
 
-	public void setEntitySystem() {
+	public static void setEntitySystem() {
 		mobValues.clear();
 		weather = fileManager.getBooleanValue("entity.yml", "disable-weather", fileManager.getDir());
 		firespread = fileManager.getBooleanValue("entity.yml", "disable-firespread", fileManager.getDir());
@@ -85,12 +85,12 @@ public class xEssentialsMemory {
 	 * 
 	 */
 
-	public  boolean broadcastEnabled = false;
-	public  String broadcast_prefix;
-	public  String broadcast_suffix;
-	public  ArrayList<String> broadcast_list = new ArrayList<String>();
+	public static  boolean broadcastEnabled = false;
+	public static  String broadcast_prefix;
+	public static  String broadcast_suffix;
+	public static  ArrayList<String> broadcast_list = new ArrayList<String>();
 
-	public  void setBroadcastSystem() {
+	public static  void setBroadcastSystem() {
 		broadcast_list.clear();
 		broadcastEnabled = fileManager.getBooleanValue("broadcast.yml", "broadcast.system.normal.enable", fileManager.getDir());
 		broadcast_prefix = fileManager.getStringValue("broadcast.yml", "broadcast.prefix", fileManager.getDir());
@@ -105,11 +105,11 @@ public class xEssentialsMemory {
 	 * 
 	 */
 
-	public  boolean hightlights = false;
-	public  boolean smilleys = false;
-	public String hashtag;
-	public  boolean antiAddvertise = false;
-	public String setSmilleys(String msg, String RecallSuffix) {
+	public static  boolean hightlights = false;
+	public static  boolean smilleys = false;
+	public static String hashtag;
+	public static  boolean antiAddvertise = false;
+	public static String setSmilleys(String msg, String RecallSuffix) {
 		if(smilleys) {
 			if(msg.contains(":D") || msg.contains(":@") || msg.contains(":d") || msg.contains("<3")) {
 				return msg.toString().replace(":D", ChatColor.translateAlternateColorCodes('&', "  &6☻ " + RecallSuffix)).toString().replace(":d", ChatColor.translateAlternateColorCodes('&', "  &6☻ " + RecallSuffix)).toString().replace("<3", ChatColor.translateAlternateColorCodes('&', "  &c♥ " + RecallSuffix)).toString().replace(":@", ChatColor.translateAlternateColorCodes('&', " &c(╯°□°）╯︵ ┻━┻  " + RecallSuffix));
@@ -121,7 +121,7 @@ public class xEssentialsMemory {
 		}
 	}
 
-	public void setChatSystem() {
+	public static void setChatSystem() {
 		hightlights = fileManager.getBooleanValue("chat.yml", "chat.enable.playerHighlights", fileManager.getDir());
 		smilleys = fileManager.getBooleanValue("chat.yml", "chat.enable.smilleys", fileManager.getDir());
 		hashtag = fileManager.getStringValue("chat.yml", "chat.enable.hashtag", fileManager.getDir());
@@ -135,12 +135,12 @@ public class xEssentialsMemory {
 	 * 
 	 * 
 	 */
-	public  boolean motdEnabled = false;
-	public  boolean motdRandom = false;
-	public  ArrayList<String> motdMessages = new ArrayList<String>();
-	public  String motdMessage = null;
+	public static  boolean motdEnabled = false;
+	public static  boolean motdRandom = false;
+	public static  ArrayList<String> motdMessages = new ArrayList<String>();
+	public static  String motdMessage = null;
 
-	public  void setMotdSystem() {
+	public static  void setMotdSystem() {
 		motdEnabled = fileManager.getBooleanValue("motd.yml", "motd.normal.enable", fileManager.getDir());
 		motdRandom = fileManager.getBooleanValue("motd.yml", "motd.random.enable", fileManager.getDir());
 		motdMessages.addAll(fileManager.getStringListValue("motd.yml", "motd.messages", fileManager.getDir()));
@@ -154,12 +154,12 @@ public class xEssentialsMemory {
 	 * 
 	 */
 
-	public  boolean playerUseSeperatedInventorys = false;
-	public  boolean playerSaveInventory = false;
-	public  boolean playerGodmodeAfk = false;
-	public  boolean playerSteveHurtSound = false;
+	public static  boolean playerUseSeperatedInventorys = false;
+	public static  boolean playerSaveInventory = false;
+	public static  boolean playerGodmodeAfk = false;
+	public static  boolean playerSteveHurtSound = false;
 
-	public  void setPlayerSystem() {
+	public static  void setPlayerSystem() {
 		playerUseSeperatedInventorys = fileManager.getBooleanValue("player.yml", "useSeperatedInventorys", fileManager.getDir());
 		playerSaveInventory = fileManager.getBooleanValue("player.yml", "save-playerInventory", fileManager.getDir());
 		playerGodmodeAfk = fileManager.getBooleanValue("player.yml", "godmode-inAfk", fileManager.getDir());
@@ -172,13 +172,13 @@ public class xEssentialsMemory {
 	 * 
 	 * 
 	 */
-	public  boolean disablePvp = false;
-	public  boolean createClientsideGraveyard = false;
-	public  boolean killBountyEnabled = false;
-	public  Double killBountyPrice = null;
-	public  boolean npcReplaceLoggers = false;
+	public static  boolean disablePvp = false;
+	public static  boolean createClientsideGraveyard = false;
+	public static  boolean killBountyEnabled = false;
+	public static  Double killBountyPrice = null;
+	public static  boolean npcReplaceLoggers = false;
 
-	public  void setPvpSystem() {
+	public static  void setPvpSystem() {
 		disablePvp = fileManager.getBooleanValue("pvp.yml", "disable-pvp", fileManager.getDir());
 		createClientsideGraveyard = fileManager.getBooleanValue("pvp.yml", "createClientSideGraveyard", fileManager.getDir());
 		killBountyEnabled = fileManager.getBooleanValue("pvp.yml", "killBounty.enable", fileManager.getDir());
@@ -193,11 +193,11 @@ public class xEssentialsMemory {
 	 * 
 	 */
 
-	public  String rules_prefix;
-	public  String rules_suffix;
-	public  ArrayList<String> rules = new ArrayList<String>();
+	public static  String rules_prefix;
+	public static  String rules_suffix;
+	public static  ArrayList<String> rules = new ArrayList<String>();
 
-	public  void setRulesSystem() {
+	public static  void setRulesSystem() {
 		rules_prefix = fileManager.getStringValue("rules.yml", "rules.prefix", fileManager.getDir());
 		rules_suffix = fileManager.getStringValue("rules.yml", "rules.suffix", fileManager.getDir());
 		rules.addAll(fileManager.getStringListValue("rules.yml", "rules.messages", fileManager.getDir()));
@@ -210,13 +210,13 @@ public class xEssentialsMemory {
 	 * 
 	 */
 
-	public  Double spawn_x;
-	public  Double spawn_y;
-	public  Double spawn_z;
-	public  int spawn_yaw;
-	public  World spawn_world;
+	public static  Double spawn_x;
+	public static  Double spawn_y;
+	public static  Double spawn_z;
+	public static  int spawn_yaw;
+	public static  World spawn_world;
 
-	public  void setSpawnSystem() {
+	public static  void setSpawnSystem() {
 		if(fileManager.file_exists("spawn.yml", fileManager.getDir())) {
 			spawn_x = fileManager.getDoubleValue("spawn.yml", "x", fileManager.getDir());
 			spawn_y = fileManager.getDoubleValue("spawn.yml", "y", fileManager.getDir());
@@ -233,9 +233,9 @@ public class xEssentialsMemory {
 	 * 
 	 */
 
-	protected HashMap<String, HashMap<String, Object>> onlinePlayers = new HashMap<String, HashMap<String, Object>>();
+	protected static HashMap<String, HashMap<String, Object>> onlinePlayers = new HashMap<String, HashMap<String, Object>>();
 
-	public HashMap<String, Object> returnPlayer(Player p) {
+	public static HashMap<String, Object> returnPlayer(Player p) {
 		if(!onlinePlayers.containsKey(p.getName())) {
 			onlinePlayers.put(p.getName(), new HashMap<String, Object>());
 			return onlinePlayers.get(p.getName());
@@ -244,7 +244,7 @@ public class xEssentialsMemory {
 		}
 	}
 
-	public void setPlayer(Player p) {
+	public static void setPlayer(Player p) {
 		if(!onlinePlayers.containsKey(p.getName())) {
 			if(fileManager.file_exists(p.getName() + ".yml", fileManager.getDir() + File.separator + "players")) {
 				if(fileManager.isSet(p.getName() + ".yml", "torch", fileManager.getDir() + File.separator + "players")) {
@@ -270,14 +270,14 @@ public class xEssentialsMemory {
 		}
 	}
 
-	public void removePlayer(Player p) {
+	public static void removePlayer(Player p) {
 		if(onlinePlayers.containsKey(p.getName())) {
 			returnPlayer(p).clear();
 			onlinePlayers.remove(p.getName());
 		}
 	}
 
-	public void updatePlayerConfig(Player p) {
+	public static void updatePlayerConfig(Player p) {
 		Map<String, Object> map = returnPlayer(p);
 		Iterator<Entry<String, Object>> it = map.entrySet().iterator();
 		while(it.hasNext()) {
@@ -293,7 +293,7 @@ public class xEssentialsMemory {
 	 * 
 	 */
 
-	public void startMemoryInput() {
+	public static void startMemoryInput() {
 		setBanSystem();
 		setEntitySystem();
 		setBroadcastSystem();
@@ -308,7 +308,7 @@ public class xEssentialsMemory {
 		}
 	}
 
-	public void closeMemoryInput() {
+	public static void closeMemoryInput() {
 		broadcast_list.clear();
 		motdMessages.clear();
 		rules.clear();

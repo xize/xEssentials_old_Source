@@ -6,13 +6,13 @@ import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
 import tv.mineinthebox.fileManager;
-import tv.mineinthebox.xEssentials;
+import tv.mineinthebox.xEssentialsMemory;
 
 public class vanishApi {
 
 	public static boolean isVanished(Player p) {
-		if(xEssentials.mem.returnPlayer(p).containsKey("Vanished")) {
-			Boolean bol = (Boolean) xEssentials.mem.returnPlayer(p).get("Vanished");
+		if(xEssentialsMemory.returnPlayer(p).containsKey("Vanished")) {
+			Boolean bol = (Boolean) xEssentialsMemory.returnPlayer(p).get("Vanished");
 			if(bol) {
 				return true;
 			}
@@ -34,9 +34,9 @@ public class vanishApi {
 			for(Player player : Bukkit.getOnlinePlayers()) {
 				 player.hidePlayer(p);
 			}
-			xEssentials.mem.returnPlayer(p).put("Vanished", true);
-			xEssentials.mem.returnPlayer(p).put("noPickup", true);
-			xEssentials.mem.updatePlayerConfig(p);
+			xEssentialsMemory.returnPlayer(p).put("Vanished", true);
+			xEssentialsMemory.returnPlayer(p).put("noPickup", true);
+			xEssentialsMemory.updatePlayerConfig(p);
 		}
 		return false;
 	}
@@ -46,9 +46,9 @@ public class vanishApi {
 			for(Player player : Bukkit.getOnlinePlayers()) {
 				player.showPlayer(p);
 			}
-			xEssentials.mem.returnPlayer(p).put("Vanished", false);
-			xEssentials.mem.returnPlayer(p).put("noPickup", false);
-			xEssentials.mem.updatePlayerConfig(p);
+			xEssentialsMemory.returnPlayer(p).put("Vanished", false);
+			xEssentialsMemory.returnPlayer(p).put("noPickup", false);
+			xEssentialsMemory.updatePlayerConfig(p);
 		}
 		return false;
 	}
@@ -63,8 +63,8 @@ public class vanishApi {
 	}
 
 	public static boolean vanishNoPickUp(Player p) {
-		if(xEssentials.mem.returnPlayer(p).containsKey("noPickup")) {
-			Boolean bol = (Boolean) xEssentials.mem.returnPlayer(p).get("noPickup");
+		if(xEssentialsMemory.returnPlayer(p).containsKey("noPickup")) {
+			Boolean bol = (Boolean) xEssentialsMemory.returnPlayer(p).get("noPickup");
 			if(bol instanceof Boolean) {
 				if(bol) {
 					return true;
@@ -78,16 +78,16 @@ public class vanishApi {
 	
 	public static boolean setNoPickUp(Player p) {
 		if(!vanishNoPickUp(p)) {
-			xEssentials.mem.returnPlayer(p).put("noPickup", true);
-			xEssentials.mem.updatePlayerConfig(p);
+			xEssentialsMemory.returnPlayer(p).put("noPickup", true);
+			xEssentialsMemory.updatePlayerConfig(p);
 		}
 		return false;
 	}
 	
 	public static boolean unsetNoPickUp(Player p) {
 		if(vanishNoPickUp(p)) {
-			xEssentials.mem.returnPlayer(p).put("noPickup", false);
-			xEssentials.mem.updatePlayerConfig(p);
+			xEssentialsMemory.returnPlayer(p).put("noPickup", false);
+			xEssentialsMemory.updatePlayerConfig(p);
 		}
 		return false;
 	}

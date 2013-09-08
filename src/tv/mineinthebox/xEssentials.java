@@ -20,7 +20,7 @@ public class xEssentials extends JavaPlugin {
 	private commandhandler command = new commandhandler();
 	private configHandler handleConfig = new configHandler();
 	private pluginDescription pluginhandle = new pluginDescription();
-	private handler handle = new handler(this);
+	public static handler handle = new handler();
 	public static xEssentialsMemory mem = new xEssentialsMemory();
 	
 	public void log(String log, logType type) {
@@ -36,9 +36,9 @@ public class xEssentials extends JavaPlugin {
 		pl = this;
 		log("has been enabled!", logType.info);
 		filePath = this.getDataFolder().getAbsolutePath();
-		mem.startMemoryInput();
-		handle.getListener();
+		xEssentialsMemory.startMemoryInput();
 		handleConfig.setup_config();
+		handle.getListener();
 		for(String commandS : cmdlist.getCommandList) {
 			getCommand(commandS).setExecutor(command);
 		}
@@ -46,7 +46,7 @@ public class xEssentials extends JavaPlugin {
 	@Override
 	public void onDisable() {
 		log("has been disabled!", logType.info);
-		mem.closeMemoryInput();
+		xEssentialsMemory.closeMemoryInput();
 	}
 	
 	public static xEssentials getPlugin() {

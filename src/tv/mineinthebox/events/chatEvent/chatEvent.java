@@ -16,6 +16,7 @@ import org.bukkit.plugin.Plugin;
 import ru.tehkode.permissions.bukkit.PermissionsEx;
 import tv.mineinthebox.fileManager;
 import tv.mineinthebox.xEssentials;
+import tv.mineinthebox.xEssentialsMemory;
 import tv.mineinthebox.resources.vanish.vanishApi;
 
 import com.dthielke.herochat.Herochat;
@@ -32,28 +33,28 @@ public class chatEvent implements Listener {
 		if(xEssentials.getPlugin().getServer().getPluginManager().isPluginEnabled("PermissionsEx")) {
 
 			String pex = PermissionsEx.getUser(e.getPlayer().getName()).getSuffix();
-			e.setMessage(xEssentials.mem.setSmilleys(getMessage(e.getMessage(), pex), pex));
+			e.setMessage(xEssentialsMemory.setSmilleys(getMessage(e.getMessage(), pex), pex));
 
 		} else if(xEssentials.getPlugin().getServer().getPluginManager().isPluginEnabled("GroupManager")) {
 			Plugin groupManager = (GroupManager) e.getPlayer().getServer().getPluginManager().getPlugin("GroupManager");
 			GroupManager groupHandler = (GroupManager) groupManager;
 			String suffix = groupHandler.getWorldsHolder().getWorldPermissions(e.getPlayer()).getUserSuffix(e.getPlayer().getName());
-			e.setMessage(xEssentials.mem.setSmilleys(getMessage(e.getMessage(), suffix), suffix));
+			e.setMessage(xEssentialsMemory.setSmilleys(getMessage(e.getMessage(), suffix), suffix));
 		} else if(xEssentials.getPlugin().getServer().getPluginManager().isPluginEnabled("HeroChat")) {
 			String herochat = Herochat.getChatService().getPlayerSuffix(e.getPlayer().getWorld(), e.getPlayer().getName());
-			e.setMessage(xEssentials.mem.setSmilleys(getMessage(e.getMessage(), herochat), herochat));
+			e.setMessage(xEssentialsMemory.setSmilleys(getMessage(e.getMessage(), herochat), herochat));
 		} else if(xEssentials.getPlugin().getServer().getPluginManager().isPluginEnabled("bPermissions")) {
 			String bPermissions = ApiLayer.getValue(e.getPlayer().getWorld().getName(), CalculableType.USER, e.getPlayer().getName(), "suffix");
-			e.setMessage(xEssentials.mem.setSmilleys(getMessage(e.getMessage(), bPermissions), bPermissions));
+			e.setMessage(xEssentialsMemory.setSmilleys(getMessage(e.getMessage(), bPermissions), bPermissions));
 		} else {
 			String color = "&f";
-			e.setMessage(xEssentials.mem.setSmilleys(getMessage(e.getMessage(), color), color));
+			e.setMessage(xEssentialsMemory.setSmilleys(getMessage(e.getMessage(), color), color));
 		}
 	}
 
 	public String getMessage(String message, String suffixCallBack) {
-		if(xEssentials.mem.hightlights) {
-			String hashtag = ChatColor.translateAlternateColorCodes('&', xEssentials.mem.hashtag);
+		if(xEssentialsMemory.hightlights) {
+			String hashtag = ChatColor.translateAlternateColorCodes('&', xEssentialsMemory.hashtag);
 			for(Player p : Bukkit.getOnlinePlayers()) {
 				if(message.contains(p.getName())) {
 					if(vanishApi.isVanished(p)) {

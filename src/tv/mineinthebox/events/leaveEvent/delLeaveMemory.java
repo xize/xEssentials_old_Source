@@ -4,12 +4,12 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 
-import tv.mineinthebox.xEssentials;
+import tv.mineinthebox.xEssentialsMemory;
 
 public class delLeaveMemory implements Listener {
 	@EventHandler
 	public void delPlayerMemory(PlayerJoinEvent e) {
-		xEssentials.mem.returnPlayer(e.getPlayer()).clear();
-		xEssentials.mem.removePlayer(e.getPlayer());
+		xEssentialsMemory.returnPlayer(e.getPlayer()).clear();
+		xEssentialsMemory.removePlayer(e.getPlayer());
 	}
 }

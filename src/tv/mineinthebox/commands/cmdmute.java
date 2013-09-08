@@ -8,7 +8,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import tv.mineinthebox.xEssentials;
+import tv.mineinthebox.xEssentialsMemory;
 import tv.mineinthebox.permissions.playerPermission;
 import tv.mineinthebox.resources.timeunit.timeunits;
 
@@ -30,8 +30,8 @@ public class cmdmute {
 						if(victem instanceof Player) {
 							Date date = timeunits.setLongToDate(System.currentTimeMillis());
 							date.setDate(date.getDate() + 1);
-							xEssentials.mem.returnPlayer(victem).put("muted", date.getTime());
-							xEssentials.mem.updatePlayerConfig(victem);
+							xEssentialsMemory.returnPlayer(victem).put("muted", date.getTime());
+							xEssentialsMemory.updatePlayerConfig(victem);
 							victem.sendMessage(ChatColor.GREEN + "you where muted by " + sender.getName() + " for " + timeunits.getElapsedTime(date.getTime()));
 							sender.sendMessage(ChatColor.GREEN + "successfully muted " + victem.getName() + " for " + timeunits.getElapsedTime(date.getTime()));
 						} else {
@@ -43,8 +43,8 @@ public class cmdmute {
 					if(victem instanceof Player) {
 						Long time = timeunits.convertDateArguments(args, sender);
 						Date date = timeunits.setLongToDate(time);
-						xEssentials.mem.returnPlayer(victem).put("muted", date.getTime());
-						xEssentials.mem.updatePlayerConfig(victem);
+						xEssentialsMemory.returnPlayer(victem).put("muted", date.getTime());
+						xEssentialsMemory.updatePlayerConfig(victem);
 						victem.sendMessage(ChatColor.GREEN + "you where muted by " + sender.getName() + " for " + timeunits.getElapsedTime(date.getTime()));
 						sender.sendMessage(ChatColor.GREEN + "successfully muted " + victem.getName() + " for " + timeunits.getElapsedTime(date.getTime()));
 					} else {
