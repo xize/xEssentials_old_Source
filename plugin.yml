@@ -191,6 +191,12 @@ commands:
      permission:
      permission-message:
 
+  xessentials:
+     description: default plugin command
+     aliases: []
+     permission:
+     permission-message:
+
 permissions:
   #supertowns.random:
   #  description: Gives access to all plugin commands

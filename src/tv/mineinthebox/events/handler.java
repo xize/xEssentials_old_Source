@@ -2,8 +2,14 @@ package tv.mineinthebox.events;
 
 import org.bukkit.Bukkit;
 import org.bukkit.event.Listener;
+import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.PlayerKickEvent;
+import org.bukkit.event.player.PlayerMoveEvent;
+import org.bukkit.event.player.PlayerQuitEvent;
+import org.bukkit.event.weather.WeatherChangeEvent;
 
 import tv.mineinthebox.xEssentials;
+import tv.mineinthebox.xEssentialsMemory;
 import tv.mineinthebox.events.chatEvent.chatEvent;
 import tv.mineinthebox.events.chatEvent.muteManager;
 import tv.mineinthebox.events.joinEvent.alternateAccountEvent;
@@ -30,10 +36,6 @@ import tv.mineinthebox.events.playerMoveEvent.zoneEvent;
 import tv.mineinthebox.events.weatherEvent.weatherEvent;
 
 public class handler {
-	xEssentials plugin;
-	public handler(xEssentials plugin) {
-		this.plugin = plugin;
-	}
 
 	public void getListener() {
 		 /*
@@ -42,10 +44,10 @@ public class handler {
 		  * 
 		  */
 		
-		if(xEssentials.mem.isBanSystemEnabled) {
+		if(xEssentialsMemory.isBanSystemEnabled) {
 			setListener(new bancheck()); 
 			setListener(new banKickEvent());
-			if(xEssentials.mem.showAlternateAccounts) {
+			if(xEssentialsMemory.showAlternateAccounts) {
 				setListener(new saveKickAlt());
 				setListener(new saveLeaveAlt());
 				setListener(new alternateAccountEvent());
@@ -83,7 +85,7 @@ public class handler {
 		
 		setListener(new leaveMessageEvent());
 		setListener(new locationSave());
-		if(xEssentials.mem.playerSaveInventory) {setListener(new saveInventory());}
+		if(xEssentialsMemory.playerSaveInventory) {setListener(new saveInventory());}
 		setListener(new torchEventLeave());
 		setListener(new delLeaveMemory());
 		
@@ -103,7 +105,7 @@ public class handler {
 		 * 
 		 */
 		setListener(new muteManager());
-		if(xEssentials.mem.smilleys) {
+		if(xEssentialsMemory.smilleys) {
 			setListener(new chatEvent());
 		}
 		
@@ -113,13 +115,25 @@ public class handler {
 		 * 
 		 * 
 		 */
-		if(xEssentials.mem.weather) {
+		if(xEssentialsMemory.weather) {
 			setListener(new weatherEvent());
 		}
 	}
 
 	public void setListener(Listener listener) {
-		Bukkit.getPluginManager().registerEvents(listener, plugin);
+		Bukkit.getPluginManager().registerEvents(listener, xEssentials.getPlugin());
+	}
+	
+	public static void restartListeners() {
+		PlayerJoinEvent.getHandlerList().unregister(xEssentials.getPlugin());
+		PlayerQuitEvent.getHandlerList().unregister(xEssentials.getPlugin());
+		PlayerKickEvent.getHandlerList().unregister(xEssentials.getPlugin());
+		WeatherChangeEvent.getHandlerList().unregister(xEssentials.getPlugin());
+		PlayerMoveEvent.getHandlerList().unregister(xEssentials.getPlugin());
+		xEssentialsMemory.closeMemoryInput();
+		xEssentialsMemory.startMemoryInput();
+		xEssentials.handle.getListener();
+		
 	}
 
 }

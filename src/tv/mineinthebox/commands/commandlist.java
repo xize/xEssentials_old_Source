@@ -32,7 +32,8 @@ public class commandlist {
 			"tpahere",
 			"fly",
 			"mute",
-			"unmute"
+			"unmute",
+			"xessentials"
 	};
 
 }

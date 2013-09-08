@@ -67,6 +67,8 @@ public class commandhandler implements CommandExecutor {
 			cmdmute.execute(sender, cmd, args);
 		} else if(cmd.getName().equalsIgnoreCase("unmute")) {
 			cmdunmute.execute(sender, cmd, args);
+		} else if(cmd.getName().equalsIgnoreCase("xessentials")) {
+			cmdxessentials.execute(sender, cmd, args);
 		}
 		return false;
 	}
