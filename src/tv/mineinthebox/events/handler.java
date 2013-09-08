@@ -4,6 +4,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.event.Listener;
 
 import tv.mineinthebox.xEssentials;
+import tv.mineinthebox.events.chatEvent.muteManager;
 import tv.mineinthebox.events.joinEvent.alternateAccountEvent;
 import tv.mineinthebox.events.joinEvent.bancheck;
 import tv.mineinthebox.events.joinEvent.flyEvent;
@@ -96,6 +97,13 @@ public class handler {
 		setListener(new firefly());
 		setListener(new torchEvent());
 		setListener(new zoneEvent());
+		
+		/*
+		 * 
+		 * chat system
+		 * 
+		 */
+		setListener(new muteManager());
 	}
 
 	public void setListener(Listener listener) {
