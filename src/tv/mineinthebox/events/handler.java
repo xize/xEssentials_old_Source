@@ -4,7 +4,6 @@ import org.bukkit.Bukkit;
 import org.bukkit.event.Listener;
 
 import tv.mineinthebox.xEssentials;
-import tv.mineinthebox.xEssentialsMemory;
 import tv.mineinthebox.events.joinEvent.alternateAccountEvent;
 import tv.mineinthebox.events.joinEvent.bancheck;
 import tv.mineinthebox.events.joinEvent.flyEvent;
@@ -26,6 +25,7 @@ import tv.mineinthebox.events.leaveEvent.torchEventLeave;
 import tv.mineinthebox.events.playerMoveEvent.firefly;
 import tv.mineinthebox.events.playerMoveEvent.torchEvent;
 import tv.mineinthebox.events.playerMoveEvent.zoneEvent;
+import tv.mineinthebox.logtype.logType;
 
 public class handler {
 	xEssentials plugin;
@@ -40,10 +40,12 @@ public class handler {
 		  * 
 		  */
 		
-		if(xEssentialsMemory.isBanSystemEnabled) {
+		if(xEssentials.mem.isBanSystemEnabled) {
+			plugin.log("!!!!!!!!!!!!!!!!!ban system is enabled!!!!!!!!!!!!!!!!!!!!!", logType.info);
+			plugin.log("ban system boolean: " + xEssentials.mem.isBanSystemEnabled, logType.info);
 			setListener(new bancheck()); 
 			setListener(new banKickEvent());
-			if(xEssentialsMemory.showAlternateAccounts) {
+			if(xEssentials.mem.showAlternateAccounts) {
 				setListener(new saveKickAlt());
 				setListener(new saveLeaveAlt());
 				setListener(new alternateAccountEvent());
@@ -81,7 +83,7 @@ public class handler {
 		
 		setListener(new leaveMessageEvent());
 		setListener(new locationSave());
-		if(xEssentialsMemory.playerSaveInventory) {setListener(new saveInventory());}
+		if(xEssentials.mem.playerSaveInventory) {setListener(new saveInventory());}
 		setListener(new torchEventLeave());
 		setListener(new delLeaveMemory());
 		

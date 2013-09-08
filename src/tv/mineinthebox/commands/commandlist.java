@@ -30,7 +30,8 @@ public class commandlist {
 			"tphere",
 			"tpa",
 			"tpahere",
-			"fly"
+			"fly",
+			"mute"
 	};
 
 }

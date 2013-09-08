@@ -33,19 +33,20 @@ public class xEssentials extends JavaPlugin {
 	
 	@Override
 	public void onEnable() {
+		pl = this;
 		log("has been enabled!", logType.info);
 		handle.getListener();
 		filePath = this.getDataFolder().getAbsolutePath();
 		handleConfig.setup_config();
+		mem.startMemoryInput();
 		for(String commandS : cmdlist.getCommandList) {
 			getCommand(commandS).setExecutor(command);
 		}
-		pl = this;
-		mem.startMemoryInput();
 	}
 	@Override
 	public void onDisable() {
 		log("has been disabled!", logType.info);
+		mem.closeMemoryInput();
 	}
 	
 	public static xEssentials getPlugin() {
