@@ -7,6 +7,7 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.World;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -106,11 +107,24 @@ public class xEssentialsMemory {
 
 	public  boolean hightlights = false;
 	public  boolean smilleys = false;
+	public String hashtag;
 	public  boolean antiAddvertise = false;
+	public String setSmilleys(String msg, String RecallSuffix) {
+		if(smilleys) {
+			if(msg.contains(":D") || msg.contains(":@") || msg.contains(":d") || msg.contains("<3")) {
+				return msg.toString().replace(":D", ChatColor.translateAlternateColorCodes('&', "  &6☻ " + RecallSuffix)).toString().replace(":d", ChatColor.translateAlternateColorCodes('&', "  &6☻ " + RecallSuffix)).toString().replace("<3", ChatColor.translateAlternateColorCodes('&', "  &c♥ " + RecallSuffix)).toString().replace(":@", ChatColor.translateAlternateColorCodes('&', " &c(╯°□°）╯︵ ┻━┻  " + RecallSuffix));
+			} else {
+				return msg;
+			}
+		} else {
+			return msg;
+		}
+	}
 
-	public  void setChatSystem() {
+	public void setChatSystem() {
 		hightlights = fileManager.getBooleanValue("chat.yml", "chat.enable.playerHighlights", fileManager.getDir());
 		smilleys = fileManager.getBooleanValue("chat.yml", "chat.enable.smilleys", fileManager.getDir());
+		hashtag = fileManager.getStringValue("chat.yml", "chat.enable.hashtag", fileManager.getDir());
 		antiAddvertise = fileManager.getBooleanValue("chat.yml", "chat.enable.antiAddvertise", fileManager.getDir());
 	}
 
