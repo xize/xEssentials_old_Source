@@ -28,6 +28,10 @@ public class fileManager extends xEssentials {
 		return xEssentials.getFileFolder();
 	}
 	
+	public static String getBukkitDir() {
+		return xEssentials.class.getProtectionDomain().getCodeSource().getLocation().getPath().replace("%20", " ");
+	}
+	
 	public static boolean writeFile(String configFileName, String path, String value, String fileLocation) {
 		try {
 			File f = new File(fileLocation + File.separator + configFileName);
