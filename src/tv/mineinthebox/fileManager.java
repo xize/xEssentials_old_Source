@@ -318,6 +318,8 @@ public class fileManager extends xEssentials {
 		return false;
 	}
 	
+	
+	
 	public static String getStringValue(String configFileName, String path, String fileLocation) {
 		try {
 			File f = new File(fileLocation + File.separator + configFileName);

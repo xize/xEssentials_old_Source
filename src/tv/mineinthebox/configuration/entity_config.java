@@ -17,6 +17,7 @@ public class entity_config {
 			if(fileManager.file_exists("entity.yml", fileManager.getDir())) {
 				update();
 			} else {
+				fileManager.writeFile("entity.yml", "disable-weather", false, fileManager.getDir());
 				fileManager.writeFile("entity.yml", "disable-firespread", false, fileManager.getDir());
 				fileManager.writeFile("entity.yml", "disable-explosion", false, fileManager.getDir());
 				fileManager.writeFile("entity.yml", "disable-firework", false, fileManager.getDir());

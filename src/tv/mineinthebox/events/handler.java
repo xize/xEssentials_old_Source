@@ -26,6 +26,7 @@ import tv.mineinthebox.events.leaveEvent.torchEventLeave;
 import tv.mineinthebox.events.playerMoveEvent.firefly;
 import tv.mineinthebox.events.playerMoveEvent.torchEvent;
 import tv.mineinthebox.events.playerMoveEvent.zoneEvent;
+import tv.mineinthebox.events.weatherEvent.weatherEvent;
 
 public class handler {
 	xEssentials plugin;
@@ -101,6 +102,16 @@ public class handler {
 		 * 
 		 */
 		setListener(new muteManager());
+		
+		/*
+		 * 
+		 * weather system
+		 * 
+		 * 
+		 */
+		if(xEssentials.mem.weather) {
+			setListener(new weatherEvent());
+		}
 	}
 
 	public void setListener(Listener listener) {
