@@ -71,6 +71,8 @@ public class commandhandler implements CommandExecutor {
 			cmdxessentials.execute(sender, cmd, args);
 		} else if(cmd.getName().equalsIgnoreCase("gc")) {
 			cmdgc.execute(sender, cmd, args);
+		} else if(cmd.getName().equalsIgnoreCase("homeinvite")) {
+			cmdhomeinvite.execute(sender, cmd, args);
 		}
 		return false;
 	}

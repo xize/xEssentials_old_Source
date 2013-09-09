@@ -34,7 +34,8 @@ public class commandlist {
 			"mute",
 			"unmute",
 			"xessentials",
-			"gc"
+			"gc",
+			"homeinvite"
 	};
 
 }

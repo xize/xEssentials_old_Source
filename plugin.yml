@@ -203,6 +203,12 @@ commands:
      permission:
      permission-message:
 
+  homeinvite:
+     description: invite a player to your home
+     aliases: []
+     permission:
+     permission-message:
+
 permissions:
   #supertowns.random:
   #  description: Gives access to all plugin commands
