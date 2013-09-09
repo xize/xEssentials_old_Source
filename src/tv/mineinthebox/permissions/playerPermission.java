@@ -97,6 +97,10 @@ public class playerPermission {
 					sender.sendMessage(ChatColor.RED + "you are not allowed to use this command! /" + cmd.getName() + args[0] + "\n" + ChatColor.GRAY + "permission: xEssentials.command.xEssentials");
 				}
 			}
+		} else if(cmd.getName().equalsIgnoreCase("gc")) {
+			sender.sendMessage(ChatColor.RED + "you are not allowed to use this command! /" + cmd.getName() + "\n" + ChatColor.GRAY + "permission: xEssentials.command.gc");
+		} else if(cmd.getName().equalsIgnoreCase("homeinvite")) {
+			sender.sendMessage(ChatColor.RED + "you are not allowed to use this command! /" + cmd.getName() + "\n" + ChatColor.GRAY + "permission: xEssentials.command.homeinvite");
 		}
 	}
 
