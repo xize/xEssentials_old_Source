@@ -267,7 +267,8 @@ public class xEssentialsMemory {
 					returnPlayer(p).put("Vanished", fileManager.getBooleanValue(p.getName() + ".yml", "Vanished", fileManager.getDir() + File.separator + "players"));
 				}
 				if(fileManager.isSet(p.getName() + ".yml", "muted", fileManager.getDir() + File.separator + "players")) {
-					returnPlayer(p).put("muted", fileManager.getBooleanValue(p.getName() + ".yml", "muted", fileManager.getDir() + File.separator + "players"));
+					System.out.println("detected mute for player " + p.getName());
+					returnPlayer(p).put("muted", fileManager.getLongValue(p.getName() + ".yml", "muted", fileManager.getDir() + File.separator + "players"));
 				}
 			}
 		}

@@ -9,7 +9,7 @@ import tv.mineinthebox.xEssentialsMemory;
 public class loadMemory implements Listener {
 
 	@EventHandler
-	public void loadPlayerMemory(final PlayerJoinEvent e) {
+	public void loadPlayerMemory(PlayerJoinEvent e) {
 		xEssentialsMemory.setPlayer(e.getPlayer());
 	}
 }

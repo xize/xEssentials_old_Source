@@ -2,13 +2,14 @@ package tv.mineinthebox.events.kickEvent;
 
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.PlayerKickEvent;
 
 import tv.mineinthebox.xEssentialsMemory;
 
 public class delKickMemory implements Listener {
 	@EventHandler
-	public void delPlayerMemory(PlayerJoinEvent e) {
+	public void delPlayerMemory(PlayerKickEvent e) {
+		xEssentialsMemory.updatePlayerConfig(e.getPlayer());
 		xEssentialsMemory.returnPlayer(e.getPlayer()).clear();
 		xEssentialsMemory.removePlayer(e.getPlayer());
 	}

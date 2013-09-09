@@ -14,7 +14,8 @@ public class muteManager implements Listener {
 	@EventHandler
 	public void getMutes(PlayerChatEvent e) {
 		if(xEssentialsMemory.returnPlayer(e.getPlayer()).containsKey("muted")) {
-			if(!timeunits.isOverTime((Long) xEssentialsMemory.returnPlayer(e.getPlayer()).get("muted"))) {
+			long time = (Long) xEssentialsMemory.returnPlayer(e.getPlayer()).get("muted");
+			if(!timeunits.isOverTime(time)) {
 				e.getPlayer().sendMessage(ChatColor.GREEN + "you are muted for " + timeunits.getElapsedTime((Long) xEssentialsMemory.returnPlayer(e.getPlayer()).get("muted")));
 				e.setCancelled(true);
 			} else {
