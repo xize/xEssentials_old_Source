@@ -12,7 +12,7 @@ public class TPS implements Listener {
 	public static int tps = 0;
 	public static long second = 0;
 	
-	public float getServerTicks() {
+	public static float getServerTicks() {
 		return tps;
 	}
 
