@@ -266,6 +266,9 @@ public class xEssentialsMemory {
 				if(fileManager.isSet(p.getName() + ".yml", "Vanished", fileManager.getDir() + File.separator + "players")) {
 					returnPlayer(p).put("Vanished", fileManager.getBooleanValue(p.getName() + ".yml", "Vanished", fileManager.getDir() + File.separator + "players"));
 				}
+				if(fileManager.isSet(p.getName() + ".yml", "muted", fileManager.getDir() + File.separator + "players")) {
+					returnPlayer(p).put("muted", fileManager.getBooleanValue(p.getName() + ".yml", "muted", fileManager.getDir() + File.separator + "players"));
+				}
 			}
 		}
 	}
