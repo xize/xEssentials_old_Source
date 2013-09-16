@@ -35,10 +35,12 @@ import tv.mineinthebox.events.leaveEvent.locationSave;
 import tv.mineinthebox.events.leaveEvent.saveInventory;
 import tv.mineinthebox.events.leaveEvent.saveLeaveAlt;
 import tv.mineinthebox.events.leaveEvent.torchEventLeave;
+import tv.mineinthebox.events.playerDeathEvent.deathBackEvent;
 import tv.mineinthebox.events.playerMoveEvent.firefly;
 import tv.mineinthebox.events.playerMoveEvent.torchEvent;
 import tv.mineinthebox.events.playerMoveEvent.zoneEvent;
 import tv.mineinthebox.events.pluginEnableEvent.TPS;
+import tv.mineinthebox.events.teleportEvent.teleportBack;
 import tv.mineinthebox.events.weatherEvent.weatherEvent;
 
 public class handler {
@@ -166,6 +168,25 @@ public class handler {
 		if(xEssentialsMemory.logSpawnEggs) {
 			setListener(new egglogger());
 		}
+		
+		/*
+		 * 
+		 * teleport event
+		 * 
+		 * 
+		 */
+		
+		setListener(new teleportBack());
+		
+		/*
+		 * 
+		 * 
+		 * death event
+		 * 
+		 * 
+		 */
+		
+		setListener(new deathBackEvent());
 	}
 
 	public void setListener(Listener listener) {

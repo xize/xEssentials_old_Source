@@ -209,6 +209,12 @@ commands:
      permission:
      permission-message:
 
+  back:
+     description: teleport back to your last location
+     aliases: []
+     permission:
+     permission-message:
+
 permissions:
   #supertowns.random:
   #  description: Gives access to all plugin commands
