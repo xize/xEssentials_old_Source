@@ -22,7 +22,6 @@ public class cmdback {
 						if(back.locations.containsKey(p.getName())) {
 							Location loc = back.locations.get(sender.getName());
 							cmdteleport.teleport(p, loc);
-							back.removeBack(p);
 						} else {
 							sender.sendMessage(ChatColor.RED + "there whas no back data found!");
 						}
@@ -39,7 +38,6 @@ public class cmdback {
 						if(p instanceof Player) {
 							Location loc = back.locations.get(sender.getName());
 							cmdteleport.teleport(p, loc);
-							back.removeBack(p);
 						} else {
 							sender.sendMessage(ChatColor.RED + "this player is not online!");
 							if(back.locations.containsKey(args[0])) {
