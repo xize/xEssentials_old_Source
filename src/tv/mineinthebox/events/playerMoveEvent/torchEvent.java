@@ -18,6 +18,7 @@ import tv.mineinthebox.xEssentialsMemory;
 public class torchEvent implements Listener {
 	public static Map<Player, LinkedList<BlockState>> list = new HashMap<Player, LinkedList<BlockState>>();
 	
+	@SuppressWarnings("deprecation")
 	@EventHandler
 	public static void torch(PlayerMoveEvent e) {
 		if(isTorch(e.getPlayer())) {
