@@ -49,6 +49,7 @@ public class cmdspawner {
 									} else if(type == EntityType.PLAYER) {
 										sender.sendMessage(ChatColor.RED + "player entities cannot used through Bukkit");
 									} else {
+										@SuppressWarnings("deprecation")
 										Block block = p.getTargetBlock(null, 50);
 										if(block.getType() == Material.MOB_SPAWNER) {
 											CreatureSpawner spawner = (CreatureSpawner) block.getState();
