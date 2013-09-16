@@ -10,6 +10,7 @@ import tv.mineinthebox.xEssentialsMemory;
 import tv.mineinthebox.resources.vanish.vanishApi;
 
 public class firefly implements Listener {
+	@SuppressWarnings("deprecation")
 	@EventHandler
 	public void fireFly(PlayerMoveEvent e) {
 		if(xEssentialsMemory.returnPlayer(e.getPlayer()).containsKey("firefly")) {
