@@ -8,6 +8,7 @@ import tv.mineinthebox.xEssentialsMemory;
 import tv.mineinthebox.events.EntityEvent.creatureSpawnManager;
 import tv.mineinthebox.events.EntityEvent.disableFireWork;
 import tv.mineinthebox.events.EntityEvent.disableSpawnEggs;
+import tv.mineinthebox.events.EntityEvent.egglogger;
 import tv.mineinthebox.events.EntityEvent.enderDragonCheck;
 import tv.mineinthebox.events.EntityEvent.endermanCheck;
 import tv.mineinthebox.events.EntityEvent.firespread;
@@ -161,6 +162,9 @@ public class handler {
 		}
 		if(xEssentialsMemory.disable_spawneggs) {
 			setListener(new disableSpawnEggs());
+		}
+		if(xEssentialsMemory.logSpawnEggs) {
+			setListener(new egglogger());
 		}
 	}
 
