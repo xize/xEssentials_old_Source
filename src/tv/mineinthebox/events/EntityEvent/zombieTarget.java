@@ -1,4 +1,4 @@
-package tv.mineinthebox.events.EntityTargetEvent;
+package tv.mineinthebox.events.EntityEvent;
 
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Zombie;

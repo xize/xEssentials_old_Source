@@ -13,7 +13,7 @@ import org.bukkit.event.weather.WeatherChangeEvent;
 
 import tv.mineinthebox.xEssentials;
 import tv.mineinthebox.xEssentialsMemory;
-import tv.mineinthebox.events.EntityTargetEvent.zombieTarget;
+import tv.mineinthebox.events.EntityEvent.zombieTarget;
 import tv.mineinthebox.events.chatEvent.AntiFloodSpam;
 import tv.mineinthebox.events.chatEvent.chatEvent;
 import tv.mineinthebox.events.chatEvent.muteManager;
