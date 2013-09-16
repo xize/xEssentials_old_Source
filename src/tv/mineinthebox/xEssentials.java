@@ -36,8 +36,8 @@ public class xEssentials extends JavaPlugin {
 		pl = this;
 		log("has been enabled!", logType.info);
 		filePath = this.getDataFolder().getAbsolutePath();
-		xEssentialsMemory.startMemoryInput();
 		handleConfig.setup_config();
+		xEssentialsMemory.startMemoryInput();
 		handle.getListener();
 		for(String commandS : cmdlist.getCommandList) {
 			getCommand(commandS).setExecutor(command);
