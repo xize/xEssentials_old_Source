@@ -1,26 +1,14 @@
 package tv.mineinthebox.events;
 
 import org.bukkit.Bukkit;
+import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
-import org.bukkit.event.block.BlockBurnEvent;
-import org.bukkit.event.block.BlockSpreadEvent;
-import org.bukkit.event.entity.CreatureSpawnEvent;
-import org.bukkit.event.entity.EntityChangeBlockEvent;
-import org.bukkit.event.entity.EntityExplodeEvent;
-import org.bukkit.event.entity.EntityTargetLivingEntityEvent;
-import org.bukkit.event.entity.ProjectileLaunchEvent;
-import org.bukkit.event.player.PlayerChatEvent;
-import org.bukkit.event.player.PlayerJoinEvent;
-import org.bukkit.event.player.PlayerKickEvent;
-import org.bukkit.event.player.PlayerMoveEvent;
-import org.bukkit.event.player.PlayerQuitEvent;
-import org.bukkit.event.server.PluginEnableEvent;
-import org.bukkit.event.weather.WeatherChangeEvent;
-
 import tv.mineinthebox.xEssentials;
 import tv.mineinthebox.xEssentialsMemory;
 import tv.mineinthebox.events.EntityEvent.creatureSpawnManager;
 import tv.mineinthebox.events.EntityEvent.disableFireWork;
+import tv.mineinthebox.events.EntityEvent.disableSpawnEggs;
+import tv.mineinthebox.events.EntityEvent.enderDragonCheck;
 import tv.mineinthebox.events.EntityEvent.endermanCheck;
 import tv.mineinthebox.events.EntityEvent.firespread;
 import tv.mineinthebox.events.EntityEvent.witherGrief;
@@ -52,7 +40,6 @@ import tv.mineinthebox.events.playerMoveEvent.zoneEvent;
 import tv.mineinthebox.events.pluginEnableEvent.TPS;
 import tv.mineinthebox.events.weatherEvent.weatherEvent;
 
-@SuppressWarnings("deprecation")
 public class handler {
 
 	public void getListener() {
@@ -169,6 +156,12 @@ public class handler {
 		if(xEssentialsMemory.endermangrief) {
 			setListener(new endermanCheck());
 		}
+		if(xEssentialsMemory.enderdragongrief) {
+			setListener(new enderDragonCheck());
+		}
+		if(xEssentialsMemory.disable_spawneggs) {
+			setListener(new disableSpawnEggs());
+		}
 	}
 
 	public void setListener(Listener listener) {
@@ -176,22 +169,7 @@ public class handler {
 	}
 	
 	public static void restartListeners() {
-		PlayerJoinEvent.getHandlerList().unregister(xEssentials.getPlugin());
-		PlayerQuitEvent.getHandlerList().unregister(xEssentials.getPlugin());
-		PlayerKickEvent.getHandlerList().unregister(xEssentials.getPlugin());
-		WeatherChangeEvent.getHandlerList().unregister(xEssentials.getPlugin());
-		PluginEnableEvent.getHandlerList().unregister(xEssentials.getPlugin());
-		PlayerMoveEvent.getHandlerList().unregister(xEssentials.getPlugin());
-		PlayerChatEvent.getHandlerList().unregister(xEssentials.getPlugin());
-		EntityTargetLivingEntityEvent.getHandlerList().unregister(xEssentials.getPlugin());
-		BlockSpreadEvent.getHandlerList().unregister(xEssentials.getPlugin());
-		BlockBurnEvent.getHandlerList().unregister(xEssentials.getPlugin());
-		CreatureSpawnEvent.getHandlerList().unregister(xEssentials.getPlugin());
-		ProjectileLaunchEvent.getHandlerList().unregister(xEssentials.getPlugin());
-		EntityExplodeEvent.getHandlerList().unregister(xEssentials.getPlugin());
-		EntityChangeBlockEvent.getHandlerList().unregister(xEssentials.getPlugin());
-		xEssentialsMemory.closeMemoryInput();
-		xEssentialsMemory.startMemoryInput();
+		HandlerList.unregisterAll(xEssentials.getPlugin());
 		xEssentials.handle.getListener();
 		
 	}
