@@ -6,6 +6,7 @@ import org.bukkit.event.block.BlockBurnEvent;
 import org.bukkit.event.block.BlockSpreadEvent;
 import org.bukkit.event.entity.CreatureSpawnEvent;
 import org.bukkit.event.entity.EntityTargetLivingEntityEvent;
+import org.bukkit.event.entity.ProjectileLaunchEvent;
 import org.bukkit.event.player.PlayerChatEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerKickEvent;
@@ -17,6 +18,7 @@ import org.bukkit.event.weather.WeatherChangeEvent;
 import tv.mineinthebox.xEssentials;
 import tv.mineinthebox.xEssentialsMemory;
 import tv.mineinthebox.events.EntityEvent.creatureSpawnManager;
+import tv.mineinthebox.events.EntityEvent.disableFireWork;
 import tv.mineinthebox.events.EntityEvent.firespread;
 import tv.mineinthebox.events.EntityEvent.zombieTarget;
 import tv.mineinthebox.events.chatEvent.AntiFloodSpam;
@@ -154,6 +156,9 @@ public class handler {
 			setListener(new firespread());
 		}
 		setListener(new creatureSpawnManager());
+		if(xEssentialsMemory.firework) {
+			setListener(new disableFireWork());
+		}
 	}
 
 	public void setListener(Listener listener) {
@@ -172,6 +177,7 @@ public class handler {
 		BlockSpreadEvent.getHandlerList().unregister(xEssentials.getPlugin());
 		BlockBurnEvent.getHandlerList().unregister(xEssentials.getPlugin());
 		CreatureSpawnEvent.getHandlerList().unregister(xEssentials.getPlugin());
+		ProjectileLaunchEvent.getHandlerList().unregister(xEssentials.getPlugin());
 		xEssentialsMemory.closeMemoryInput();
 		xEssentialsMemory.startMemoryInput();
 		xEssentials.handle.getListener();
