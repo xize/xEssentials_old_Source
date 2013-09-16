@@ -20,6 +20,7 @@ import tv.mineinthebox.xEssentialsMemory;
 import tv.mineinthebox.events.EntityEvent.creatureSpawnManager;
 import tv.mineinthebox.events.EntityEvent.disableFireWork;
 import tv.mineinthebox.events.EntityEvent.firespread;
+import tv.mineinthebox.events.EntityEvent.witherGrief;
 import tv.mineinthebox.events.EntityEvent.zombieTarget;
 import tv.mineinthebox.events.chatEvent.AntiFloodSpam;
 import tv.mineinthebox.events.chatEvent.chatEvent;
@@ -158,6 +159,9 @@ public class handler {
 		setListener(new creatureSpawnManager());
 		if(xEssentialsMemory.firework) {
 			setListener(new disableFireWork());
+		}
+		if(xEssentialsMemory.withergrief) {
+			setListener(new witherGrief());
 		}
 	}
 
