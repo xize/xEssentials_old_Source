@@ -58,6 +58,8 @@ public class xEssentialsMemory {
 	public static boolean enderdragongrief = false;
 	public static boolean disable_spawneggs = false;
 	public static boolean logSpawnEggs = false;
+	public static boolean zombieAggroEnabled = false;
+	public static Double zombieRange = 0.0;
 	public static HashMap<String, Boolean> mobValues = new HashMap<String, Boolean>();
 
 	public static void setEntitySystem() {
@@ -71,6 +73,8 @@ public class xEssentialsMemory {
 		enderdragongrief = fileManager.getBooleanValue("entity.yml", "disable-enderdragon-grief", fileManager.getDir());
 		disable_spawneggs = fileManager.getBooleanValue("entity.yml", "disable-spawneggs", fileManager.getDir());
 		logSpawnEggs = fileManager.getBooleanValue("entity.yml", "log.spawnEggs", fileManager.getDir());
+		zombieAggroEnabled = fileManager.getBooleanValue("entity.yml", "zombie-custom-aggro.enable", fileManager.getDir());
+		zombieRange = fileManager.getDoubleValue("entity.yml", "zombie-custom-aggro.range", fileManager.getDir());
 		File f = fileManager.returnFile("entity.yml", fileManager.getDir());
 		FileConfiguration con = YamlConfiguration.loadConfiguration(f);
 		for(String mobname : con.getConfigurationSection("mobs.allowToSpawn").getKeys(false)) {

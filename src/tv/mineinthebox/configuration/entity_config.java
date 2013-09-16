@@ -24,6 +24,8 @@ public class entity_config {
 				fileManager.writeFile("entity.yml", "disable-wither-grief", false, fileManager.getDir());
 				fileManager.writeFile("entity.yml", "disable-enderman-grief", false, fileManager.getDir());
 				fileManager.writeFile("entity.yml", "disable-enderdragon-grief", false, fileManager.getDir());
+				fileManager.writeFile("entity.yml", "zombie-custom-aggro.enable", false, fileManager.getDir());
+				fileManager.writeFile("entity.yml", "zombie-custom-aggro.range", 8.0, fileManager.getDir());
 				fileManager.writeFile("entity.yml", "disable-spawneggs", false, fileManager.getDir());
 				fileManager.writeFile("entity.yml", "log.spawnEggs", false, fileManager.getDir());
 				update("entity.yml");
