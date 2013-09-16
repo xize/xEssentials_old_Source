@@ -5,6 +5,8 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBurnEvent;
 import org.bukkit.event.block.BlockSpreadEvent;
 import org.bukkit.event.entity.CreatureSpawnEvent;
+import org.bukkit.event.entity.EntityChangeBlockEvent;
+import org.bukkit.event.entity.EntityExplodeEvent;
 import org.bukkit.event.entity.EntityTargetLivingEntityEvent;
 import org.bukkit.event.entity.ProjectileLaunchEvent;
 import org.bukkit.event.player.PlayerChatEvent;
@@ -19,6 +21,7 @@ import tv.mineinthebox.xEssentials;
 import tv.mineinthebox.xEssentialsMemory;
 import tv.mineinthebox.events.EntityEvent.creatureSpawnManager;
 import tv.mineinthebox.events.EntityEvent.disableFireWork;
+import tv.mineinthebox.events.EntityEvent.endermanCheck;
 import tv.mineinthebox.events.EntityEvent.firespread;
 import tv.mineinthebox.events.EntityEvent.witherGrief;
 import tv.mineinthebox.events.EntityEvent.zombieTarget;
@@ -163,6 +166,9 @@ public class handler {
 		if(xEssentialsMemory.withergrief) {
 			setListener(new witherGrief());
 		}
+		if(xEssentialsMemory.endermangrief) {
+			setListener(new endermanCheck());
+		}
 	}
 
 	public void setListener(Listener listener) {
@@ -182,6 +188,8 @@ public class handler {
 		BlockBurnEvent.getHandlerList().unregister(xEssentials.getPlugin());
 		CreatureSpawnEvent.getHandlerList().unregister(xEssentials.getPlugin());
 		ProjectileLaunchEvent.getHandlerList().unregister(xEssentials.getPlugin());
+		EntityExplodeEvent.getHandlerList().unregister(xEssentials.getPlugin());
+		EntityChangeBlockEvent.getHandlerList().unregister(xEssentials.getPlugin());
 		xEssentialsMemory.closeMemoryInput();
 		xEssentialsMemory.startMemoryInput();
 		xEssentials.handle.getListener();
