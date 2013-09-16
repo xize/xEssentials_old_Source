@@ -1,28 +1,47 @@
 package tv.mineinthebox.events.chatEvent;
 
-import org.bukkit.ChatColor;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerChatEvent;
-
 import tv.mineinthebox.xEssentialsMemory;
 import tv.mineinthebox.resources.timeunit.timeunits;
 
 @SuppressWarnings("deprecation")
 public class muteManager implements Listener {
-	
-	@EventHandler
+
+	@EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
 	public void getMutes(PlayerChatEvent e) {
-		if(xEssentialsMemory.returnPlayer(e.getPlayer()).containsKey("muted")) {
-			long time = (Long) xEssentialsMemory.returnPlayer(e.getPlayer()).get("muted");
-			if(!timeunits.isOverTime(time)) {
-				e.getPlayer().sendMessage(ChatColor.GREEN + "you are muted for " + timeunits.getElapsedTime((Long) xEssentialsMemory.returnPlayer(e.getPlayer()).get("muted")));
-				e.setCancelled(true);
+		if(isMuted(e.getPlayer())) {
+			Long time = (Long) xEssentialsMemory.returnPlayer(e.getPlayer()).get("muted");
+			if(timeunits.isOverTime(time)) {
+				xEssentialsMemory.returnPlayer(e.getPlayer()).put("muted", 0);
+				xEssentialsMemory.updatePlayerConfig(e.getPlayer());	
 			} else {
-				xEssentialsMemory.returnPlayer(e.getPlayer()).remove("muted");
-				xEssentialsMemory.updatePlayerConfig(e.getPlayer());
+				e.setCancelled(true);
 			}
 		}
 	}
+	
+	public static boolean isMuted(Player p) {
+		if(p instanceof Player) {
+				if(xEssentialsMemory.returnPlayer(p).containsKey("muted")) {
+					Long time = (Long) xEssentialsMemory.returnPlayer(p).get("muted");
+					try {
+						if(time == 0 || time == null) {
+							return false;
+						}
+						if(!timeunits.isOverTime(time)) {
+							return true;
+						}
+					} catch(NullPointerException e) {
+						System.out.println("the time is null");
+					}	
+				} 
+			}
+		return false;
+	}
+
 
 }
