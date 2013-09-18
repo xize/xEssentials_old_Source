@@ -8,7 +8,7 @@ website:
 main: tv.mineinthebox.xEssentials
 database: false
 depend: []
-softdepend: [WorldGuard, WorldEdit, Votifier, Vault, iConomy]
+softdepend: [WorldGuard, WorldEdit, Votifier, Vault, iConomy, RemoteEntities]
 
 commands:
   sethome:
@@ -211,6 +211,12 @@ commands:
 
   back:
      description: teleport back to your last location
+     aliases: []
+     permission:
+     permission-message:
+
+  spawnherobrine:
+     description: ???
      aliases: []
      permission:
      permission-message:

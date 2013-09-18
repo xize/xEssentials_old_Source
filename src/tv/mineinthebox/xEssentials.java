@@ -2,8 +2,13 @@ package tv.mineinthebox;
 
 import java.util.logging.Logger;
 
+import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import de.kumpelblase2.remoteentities.EntityManager;
+import de.kumpelblase2.remoteentities.RemoteEntities;
+
+import tv.mineinthebox.commands.cmdspawnherobrine;
 import tv.mineinthebox.commands.commandhandler;
 import tv.mineinthebox.commands.commandlist;
 import tv.mineinthebox.configuration.configHandler;
@@ -15,6 +20,7 @@ public class xEssentials extends JavaPlugin {
 	
 	private static String filePath;
 	private static xEssentials pl;
+	public static EntityManager manager;
 	private Logger logger = Logger.getLogger("Minecraft");
 	private commandlist cmdlist = new commandlist();
 	private commandhandler command = new commandhandler();
@@ -41,6 +47,10 @@ public class xEssentials extends JavaPlugin {
 		handle.getListener();
 		for(String commandS : cmdlist.getCommandList) {
 			getCommand(commandS).setExecutor(command);
+		}
+		cmdspawnherobrine.startHerobrineTask();
+		if(Bukkit.getPluginManager().isPluginEnabled("RemoteEntities")) {
+			manager = RemoteEntities.createManager(xEssentials.getPlugin());
 		}
 	}
 	@Override

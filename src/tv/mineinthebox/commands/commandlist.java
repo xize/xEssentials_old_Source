@@ -36,7 +36,8 @@ public class commandlist {
 			"xessentials",
 			"gc",
 			"homeinvite",
-			"back"
+			"back",
+			"spawnherobrine"
 	};
 
 }
