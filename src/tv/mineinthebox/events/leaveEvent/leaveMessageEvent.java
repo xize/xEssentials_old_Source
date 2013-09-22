@@ -42,7 +42,7 @@ public class leaveMessageEvent implements Listener {
 			} else {
 				for(ProtectedRegion region : wg.getRegionManager(e.getPlayer().getWorld()).getApplicableRegions(e.getPlayer().getLocation())) {
 					if(region.getFlag(DefaultFlag.MOB_SPAWNING) == State.DENY) {
-						e.setQuitMessage("Whoosh! " + ChatColor.GREEN + e.getPlayer().getName() + ChatColor.GRAY + " has left the game safely!");
+						e.setQuitMessage(ChatColor.RED + "Whoosh! " + ChatColor.GREEN + e.getPlayer().getName() + ChatColor.GRAY + " has left the game safely!");
 						return;
 					}
 				}
@@ -61,7 +61,7 @@ public class leaveMessageEvent implements Listener {
 						e.setQuitMessage(ChatColor.RED + "Whoosh!" + ChatColor.GRAY + " staff member " + ChatColor.GREEN + e.getPlayer().getName() + ChatColor.GRAY + " has left the game safely!");
 						return;
 					} else {
-						e.setQuitMessage("Whoosh! " + ChatColor.GREEN + e.getPlayer().getName() + ChatColor.GRAY + " has left the game safely!");
+						e.setQuitMessage(ChatColor.RED + "Whoosh! " + ChatColor.GREEN + e.getPlayer().getName() + ChatColor.GRAY + " has left the game safely!");
 						return;
 					}
 				} else {
