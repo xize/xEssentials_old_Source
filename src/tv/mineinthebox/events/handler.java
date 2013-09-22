@@ -40,6 +40,9 @@ import tv.mineinthebox.events.playerMoveEvent.firefly;
 import tv.mineinthebox.events.playerMoveEvent.torchEvent;
 import tv.mineinthebox.events.playerMoveEvent.zoneEvent;
 import tv.mineinthebox.events.pluginEnableEvent.TPS;
+import tv.mineinthebox.events.pvp.KillBounty;
+import tv.mineinthebox.events.pvp.clientSideGraveyard;
+import tv.mineinthebox.events.pvp.disablePvp;
 import tv.mineinthebox.events.teleportEvent.teleportBack;
 import tv.mineinthebox.events.weatherEvent.weatherEvent;
 
@@ -187,6 +190,24 @@ public class handler {
 		 */
 		
 		setListener(new deathBackEvent());
+		
+		/*
+		 * 
+		 * 
+		 * pvp events
+		 * 
+		 * 
+		 */
+		
+		if(xEssentialsMemory.disablePvp) {
+			setListener(new disablePvp());
+		}
+		if(xEssentialsMemory.createClientsideGraveyard) {
+			setListener(new clientSideGraveyard());
+		}
+		if(xEssentialsMemory.killBountyEnabled) {
+			setListener(new KillBounty());
+		}
 	}
 
 	public void setListener(Listener listener) {
@@ -195,8 +216,8 @@ public class handler {
 	
 	public static void restartListeners() {
 		HandlerList.unregisterAll(xEssentials.getPlugin());
-		xEssentials.handle.getListener();
-		
+		xEssentialsMemory.startMemoryInput();
+		xEssentials.handle.getListener();	
 	}
 
 }
