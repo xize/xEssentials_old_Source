@@ -37,7 +37,8 @@ public class commandlist {
 			"gc",
 			"homeinvite",
 			"back",
-			"spawnherobrine"
+			"spawnherobrine",
+			"broadcast"
 	};
 
 }

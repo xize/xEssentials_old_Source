@@ -77,6 +77,8 @@ public class commandhandler implements CommandExecutor {
 			cmdback.execute(sender, cmd, args);
 		} else if(cmd.getName().equalsIgnoreCase("spawnherobrine")) {
 			cmdspawnherobrine.execute(sender, cmd, args);
+		} else if(cmd.getName().equalsIgnoreCase("broadcast")) {
+			cmdbroadcast.execute(sender, cmd, args);
 		}
 		return false;
 	}
