@@ -11,6 +11,7 @@ public class player_config {
 			fileManager.writeFile("player.yml", "save-playerInventory", true, fileManager.getDir());
 			fileManager.writeFile("player.yml", "godmode-inAfk", true, fileManager.getDir());
 			fileManager.writeFile("player.yml", "steve-hurt-sound.enable", false, fileManager.getDir());
+			fileManager.writeFile("player.yml", "entitysCanUseHeadOnPlayerDeath", false, fileManager.getDir());
 		}
 	}
 

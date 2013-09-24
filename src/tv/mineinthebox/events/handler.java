@@ -36,6 +36,7 @@ import tv.mineinthebox.events.leaveEvent.saveInventory;
 import tv.mineinthebox.events.leaveEvent.saveLeaveAlt;
 import tv.mineinthebox.events.leaveEvent.torchEventLeave;
 import tv.mineinthebox.events.playerDeathEvent.deathBackEvent;
+import tv.mineinthebox.events.playerDeathEvent.deathHeadEvent;
 import tv.mineinthebox.events.playerMoveEvent.firefly;
 import tv.mineinthebox.events.playerMoveEvent.torchEvent;
 import tv.mineinthebox.events.playerMoveEvent.zoneEvent;
@@ -45,6 +46,7 @@ import tv.mineinthebox.events.pvp.clientSideGraveyard;
 import tv.mineinthebox.events.pvp.disablePvp;
 import tv.mineinthebox.events.teleportEvent.teleportBack;
 import tv.mineinthebox.events.weatherEvent.weatherEvent;
+import tv.mineinthebox.events.broadcast.broadcast;
 
 public class handler {
 
@@ -190,6 +192,9 @@ public class handler {
 		 */
 		
 		setListener(new deathBackEvent());
+		if(xEssentialsMemory.mobsUseHeads) {
+			setListener(new deathHeadEvent());
+		}
 		
 		/*
 		 * 
@@ -207,6 +212,16 @@ public class handler {
 		}
 		if(xEssentialsMemory.killBountyEnabled) {
 			setListener(new KillBounty());
+		}
+		
+		/*
+		 * 
+		 * broadcast system
+		 * 
+		 * 
+		 */
+		if(xEssentialsMemory.broadcastEnabled) {
+			broadcast.activateBroadcast();
 		}
 	}
 
