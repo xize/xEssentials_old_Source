@@ -41,7 +41,7 @@ public class broadcast {
 				i++;
 			}
 			
-		}, 0, 50);
+		}, 0, 1500);
 	}
 	
 	public static void broadcastReload() {
