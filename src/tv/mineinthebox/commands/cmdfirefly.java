@@ -27,11 +27,15 @@ public class cmdfirefly {
 							sender.sendMessage(ChatColor.GREEN + "enabled firefly!");
 						}
 					} else {
-						playerPermission.getPermissionError(sender, cmd, args);
+						xEssentialsMemory.returnPlayer(p).put("firefly", true);
+						xEssentialsMemory.updatePlayerConfig(p);
+						sender.sendMessage(ChatColor.GREEN + "enabled firefly!");
 					}
 				} else {
-					consolePermission.getConsoleMessage(sender);
+					playerPermission.getPermissionError(sender, cmd, args);
 				}
+			} else {
+				consolePermission.getConsoleMessage(sender);
 			}
 		}
 		return false;
