@@ -227,12 +227,6 @@ commands:
      permission:
      permission-message:
 
-  arrow:
-     description: test
-     aliases: []
-     permission:
-     permission-message:
-
 
 permissions:
   #supertowns.random:
