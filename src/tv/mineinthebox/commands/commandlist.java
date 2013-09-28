@@ -38,8 +38,7 @@ public class commandlist {
 			"homeinvite",
 			"back",
 			"spawnherobrine",
-			"broadcast",
-			"arrow"
+			"broadcast"
 	};
 
 }

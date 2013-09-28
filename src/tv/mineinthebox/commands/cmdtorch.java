@@ -1,13 +1,11 @@
 package tv.mineinthebox.commands;
 
-import java.io.File;
-
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import tv.mineinthebox.fileManager;
+import tv.mineinthebox.xEssentialsMemory;
 import tv.mineinthebox.permissions.consolePermission;
 import tv.mineinthebox.permissions.playerPermission;
 
@@ -17,22 +15,24 @@ public class cmdtorch {
 		if(cmd.getName().equalsIgnoreCase("torch")) {
 			if(sender instanceof Player) {
 				if(sender.hasPermission("xEssentials.command.torch")) {
-					if(fileManager.file_exists(sender.getName() + ".yml", fileManager.getDir() + File.separator + "players")) {
-						if(fileManager.isSet(sender.getName() + ".yml", "torch", fileManager.getDir() + File.separator + "players")) {
-							if(fileManager.getBooleanValue(sender.getName() + ".yml", "torch", fileManager.getDir() + File.separator + "players")) {
-								fileManager.writeFile(sender.getName() + ".yml", "torch", false, fileManager.getDir() + File.separator + "players");
-								sender.sendMessage(ChatColor.GREEN + "successfully disabled torch");
+					if(args.length == 0) {
+						Player p = (Player) sender;
+						if(xEssentialsMemory.returnPlayer(p).containsKey("torch")) {
+							Boolean bol = (Boolean) xEssentialsMemory.returnPlayer(p).get("torch");
+							if(bol) {
+								sender.sendMessage(ChatColor.GREEN + "you successfully turned off torch");
+								xEssentialsMemory.returnPlayer(p).put("torch", false);
+								xEssentialsMemory.updatePlayerConfig(p);
 							} else {
-								fileManager.writeFile(sender.getName() + ".yml", "torch", true, fileManager.getDir() + File.separator + "players");
-								sender.sendMessage(ChatColor.GREEN + "successfully enabled torch");
+								sender.sendMessage(ChatColor.GREEN + "you successfully turned on torch");
+								xEssentialsMemory.returnPlayer(p).put("torch", true);
+								xEssentialsMemory.updatePlayerConfig(p);
 							}
 						} else {
-							fileManager.writeFile(sender.getName() + ".yml", "torch", true, fileManager.getDir() + File.separator + "players");
-							sender.sendMessage(ChatColor.GREEN + "successfully enabled torch");
+							sender.sendMessage(ChatColor.GREEN + "you successfully turned on torch");
+							xEssentialsMemory.returnPlayer(p).put("torch", true);
+							xEssentialsMemory.updatePlayerConfig(p);
 						}
-					} else {
-						fileManager.writeFile(sender.getName() + ".yml", "torch", true, fileManager.getDir() + File.separator + "players");
-						sender.sendMessage(ChatColor.GREEN + "successfully enabled torch");
 					}
 				} else {
 					playerPermission.getPermissionError(sender, cmd, args);
