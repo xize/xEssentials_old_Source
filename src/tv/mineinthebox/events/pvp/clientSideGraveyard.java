@@ -39,7 +39,7 @@ public class clientSideGraveyard implements Listener {
 			player.playerConnection.sendPacket(new Packet130UpdateSign(signBlock.getX(), signBlock.getY(), signBlock.getZ(), lines));
 			p.sendBlockChange(block.getLocation(), Material.MOSSY_COBBLESTONE, block.getData());
 			Block blockSkeleton = block.getRelative(BlockFace.UP);
-			p.sendBlockChange(blockSkeleton.getLocation(), Material.SKULL, blockSkeleton.getData());
+			p.sendBlockChange(blockSkeleton.getLocation(), Material.SKULL, (byte) 0);
 			Block redstone1 = block.getRelative(BlockFace.EAST);
 			p.sendBlockChange(redstone1.getLocation(), Material.REDSTONE_WIRE, redstone1.getData());
 			Block redstone2 = redstone1.getRelative(BlockFace.EAST);

@@ -227,6 +227,13 @@ commands:
      permission:
      permission-message:
 
+  arrow:
+     description: test
+     aliases: []
+     permission:
+     permission-message:
+
+
 permissions:
   #supertowns.random:
   #  description: Gives access to all plugin commands
