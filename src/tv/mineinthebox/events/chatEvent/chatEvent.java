@@ -9,6 +9,7 @@ import org.bukkit.Effect;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerChatEvent;
 import org.bukkit.plugin.Plugin;
@@ -27,7 +28,7 @@ import de.bananaco.bpermissions.api.CalculableType;
 @SuppressWarnings("deprecation")
 public class chatEvent implements Listener {
 
-	@EventHandler
+	@EventHandler(priority = EventPriority.MONITOR, ignoreCancelled=true)
 	public void onSmile(PlayerChatEvent e) {
 		//checking on chat plugins:), for the actually suffix recall
 		if(xEssentials.getPlugin().getServer().getPluginManager().isPluginEnabled("PermissionsEx")) {

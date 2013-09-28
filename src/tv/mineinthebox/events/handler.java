@@ -15,6 +15,7 @@ import tv.mineinthebox.events.EntityEvent.firespread;
 import tv.mineinthebox.events.EntityEvent.witherGrief;
 import tv.mineinthebox.events.EntityEvent.zombieTarget;
 import tv.mineinthebox.events.chatEvent.AntiFloodSpam;
+import tv.mineinthebox.events.chatEvent.afkChat;
 import tv.mineinthebox.events.chatEvent.chatEvent;
 import tv.mineinthebox.events.chatEvent.muteManager;
 import tv.mineinthebox.events.joinEvent.alternateAccountEvent;
@@ -23,6 +24,7 @@ import tv.mineinthebox.events.joinEvent.flyEvent;
 import tv.mineinthebox.events.joinEvent.joinMessageEvent;
 import tv.mineinthebox.events.joinEvent.loadMemory;
 import tv.mineinthebox.events.joinEvent.modreqEvent;
+import tv.mineinthebox.events.joinEvent.newPlayer;
 import tv.mineinthebox.events.joinEvent.taskEvent;
 import tv.mineinthebox.events.joinEvent.vanishEvent;
 import tv.mineinthebox.events.kickEvent.banKickEvent;
@@ -37,6 +39,8 @@ import tv.mineinthebox.events.leaveEvent.saveLeaveAlt;
 import tv.mineinthebox.events.leaveEvent.torchEventLeave;
 import tv.mineinthebox.events.playerDeathEvent.deathBackEvent;
 import tv.mineinthebox.events.playerDeathEvent.deathHeadEvent;
+import tv.mineinthebox.events.playerMoveEvent.afkCheck;
+import tv.mineinthebox.events.playerMoveEvent.afkScheduler;
 import tv.mineinthebox.events.playerMoveEvent.firefly;
 import tv.mineinthebox.events.playerMoveEvent.torchEvent;
 import tv.mineinthebox.events.playerMoveEvent.zoneEvent;
@@ -182,6 +186,7 @@ public class handler {
 		 */
 		
 		setListener(new teleportBack());
+		setListener(new newPlayer());
 		
 		/*
 		 * 
@@ -223,6 +228,17 @@ public class handler {
 		if(xEssentialsMemory.broadcastEnabled) {
 			broadcast.activateBroadcast();
 		}
+		
+		/*
+		 * 
+		 * afk system
+		 * 
+		 * 
+		 */
+		setListener(new afkCheck());
+		afkScheduler.startAfkTimer();
+		setListener(new afkScheduler());
+		setListener(new afkChat());
 	}
 
 	public void setListener(Listener listener) {

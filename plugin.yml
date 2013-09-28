@@ -227,6 +227,12 @@ commands:
      permission:
      permission-message:
 
+  afk:
+     description: away from keyboard
+     aliases: []
+     permission:
+     permission-message:
+
 
 permissions:
   #supertowns.random:
