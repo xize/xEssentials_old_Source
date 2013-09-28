@@ -27,8 +27,8 @@ public class cmdsetspawn {
 					fileManager.writeFile("spawn.yml", "z", z, fileManager.getDir());
 					fileManager.writeFile("spawn.yml", "yaw", yaw, fileManager.getDir());
 					fileManager.writeFile("spawn.yml", "world", loc.getWorld().getName(), fileManager.getDir());
-					loc.getWorld().setSpawnLocation((int) loc.getX(), (int) loc.getY(), (int) loc.getZ());
 					sender.sendMessage(ChatColor.GREEN + "successfully saved spawn!");
+					p.getLocation().getWorld().setSpawnLocation(p.getLocation().getBlockX(), p.getLocation().getBlockY(), p.getLocation().getBlockZ());
 				} else {
 					playerPermission.getPermissionError(sender, cmd, args);
 				}
