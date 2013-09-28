@@ -38,6 +38,10 @@ public class cmdcheck {
 						} else if(args[0].equalsIgnoreCase("list")) {
 							if(sender.hasPermission("xEssentials.command.check.admin")) {
 								File[] files = fileManager.getFileList(fileManager.getDir() + File.separator + "modreq");
+								if(files.length == 0) {
+									sender.sendMessage(ChatColor.RED + "no modreqs are open!");
+									return false;
+								}
 								for(File f : files) {
 									String date = fileManager.getStringValue(f.getName(), "submitDate", fileManager.getDir() + File.separator + "modreq");
 									String message = fileManager.getStringValue(f.getName(), "message", fileManager.getDir() + File.separator + "modreq");
