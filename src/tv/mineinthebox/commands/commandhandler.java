@@ -85,6 +85,12 @@ public class commandhandler implements CommandExecutor {
 			cmdtask.execute(sender, cmd, args);
 		} else if(cmd.getName().equalsIgnoreCase("checkalt")) {
 			cmdcheckalt.execute(sender, cmd, args);
+		} else if(cmd.getName().equalsIgnoreCase("boom")) {
+			cmdboom.execute(sender, args, cmd);
+		} else if(cmd.getName().equalsIgnoreCase("hat")) {
+			cmdhat.execute(sender, args, cmd);
+		} else if(cmd.getName().equalsIgnoreCase("ghost")) {
+			cmdghost.execute(sender, cmd, args);
 		}
 		return false;
 	}

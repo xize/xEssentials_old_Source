@@ -245,6 +245,25 @@ commands:
      permission:
      permission-message:
 
+  boom:
+     description: boom!
+     aliases: []
+     permission:
+     permission-message:
+
+  hat:
+     description: set your new hat!
+     aliases: []
+     permission:
+     permission-message:
+
+  ghost:
+     description: be a ghost!
+     aliases: []
+     permission:
+     permission-message:
+
+
 
 permissions:
   #supertowns.random:

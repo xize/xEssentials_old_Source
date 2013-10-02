@@ -22,6 +22,7 @@ import tv.mineinthebox.events.joinEvent.PlayerTaskEvent;
 import tv.mineinthebox.events.joinEvent.alternateAccountEvent;
 import tv.mineinthebox.events.joinEvent.bancheck;
 import tv.mineinthebox.events.joinEvent.flyEvent;
+import tv.mineinthebox.events.joinEvent.ghostJoin;
 import tv.mineinthebox.events.joinEvent.joinMessageEvent;
 import tv.mineinthebox.events.joinEvent.loadMemory;
 import tv.mineinthebox.events.joinEvent.modreqEvent;
@@ -30,9 +31,11 @@ import tv.mineinthebox.events.joinEvent.taskEvent;
 import tv.mineinthebox.events.joinEvent.vanishEvent;
 import tv.mineinthebox.events.kickEvent.banKickEvent;
 import tv.mineinthebox.events.kickEvent.delKickMemory;
+import tv.mineinthebox.events.kickEvent.ghostkickLeave;
 import tv.mineinthebox.events.kickEvent.saveKickAlt;
 import tv.mineinthebox.events.kickEvent.saveLocationEvent;
 import tv.mineinthebox.events.leaveEvent.delLeaveMemory;
+import tv.mineinthebox.events.leaveEvent.ghostLeave;
 import tv.mineinthebox.events.leaveEvent.leaveMessageEvent;
 import tv.mineinthebox.events.leaveEvent.locationSave;
 import tv.mineinthebox.events.leaveEvent.saveInventory;
@@ -49,6 +52,9 @@ import tv.mineinthebox.events.pluginEnableEvent.TPS;
 import tv.mineinthebox.events.pvp.KillBounty;
 import tv.mineinthebox.events.pvp.clientSideGraveyard;
 import tv.mineinthebox.events.pvp.disablePvp;
+import tv.mineinthebox.events.signEvent.fireworkSign;
+import tv.mineinthebox.events.signEvent.freeSign;
+import tv.mineinthebox.events.signEvent.signBoom;
 import tv.mineinthebox.events.teleportEvent.teleportBack;
 import tv.mineinthebox.events.weatherEvent.weatherEvent;
 import tv.mineinthebox.events.broadcast.broadcast;
@@ -241,6 +247,28 @@ public class handler {
 		afkScheduler.startAfkTimer();
 		setListener(new afkScheduler());
 		setListener(new afkChat());
+		
+		/*
+		 * 
+		 * 
+		 * sign system
+		 * 
+		 * 
+		 */
+		setListener(new signBoom());
+		setListener(new freeSign());
+		setListener(new fireworkSign());
+		
+		/*
+		 * 
+		 * 
+		 * ghost system
+		 * 
+		 * 
+		 */
+		setListener(new ghostLeave());
+		setListener(new ghostkickLeave());
+		setListener(new ghostJoin());
 	}
 
 	public void setListener(Listener listener) {

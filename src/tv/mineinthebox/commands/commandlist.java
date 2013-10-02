@@ -41,7 +41,10 @@ public class commandlist {
 			"broadcast",
 			"afk",
 			"task",
-			"checkalt"
+			"checkalt",
+			"boom",
+			"hat",
+			"ghost"
 	};
 
 }
