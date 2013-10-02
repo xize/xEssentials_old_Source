@@ -106,7 +106,7 @@ public class playerPermission {
 		} else if(cmd.getName().equalsIgnoreCase("broadcast")) {
 			sender.sendMessage(ChatColor.RED + "you are not allowed to use this command! /" + cmd.getName() + "\n" + ChatColor.GRAY + "permission: xEssentials.command.broadcast");
 		} else if(cmd.getName().equalsIgnoreCase("task")) {
-			sender.sendMessage(ChatColor.RED + "you are not allowed to use this command! /" + cmd.getName() + "\n" + ChatColor.GRAY + "permission: xEssentials.command.task");
+			sender.sendMessage(ChatColor.RED + "you are not allowed to use this command! /" + cmd.getName() + "\n" + ChatColor.GRAY + "permission: xEssentials.isStaff");
 		}
 	}
 

@@ -40,7 +40,8 @@ public class commandlist {
 			"spawnherobrine",
 			"broadcast",
 			"afk",
-			"task"
+			"task",
+			"checkalt"
 	};
 
 }

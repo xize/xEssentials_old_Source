@@ -239,6 +239,12 @@ commands:
      permission:
      permission-message:
 
+  checkalt:
+     description: check for alternate accounts
+     aliases: []
+     permission:
+     permission-message:
+
 
 permissions:
   #supertowns.random:

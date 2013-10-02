@@ -4,6 +4,7 @@ import java.io.File;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
@@ -40,6 +41,66 @@ public class ban {
 			}
 		} catch(Exception e) {
 			e.printStackTrace();
+		}
+	}
+
+	public static void getAlternateAccounts(CommandSender sender, Player victem) {
+		String ip = victem.getPlayer().getAddress().getHostName();
+		try {
+			File dir = new File(fileManager.getDir() + File.separator + "alts");
+			if(dir.isDirectory()) {
+				File[] list = dir.listFiles();
+				StringBuilder build = new StringBuilder();
+				for(File f : list) {
+					if(!f.getName().replace(".yml", "").equalsIgnoreCase(victem.getName())) {
+						FileConfiguration con = YamlConfiguration.loadConfiguration(f);
+						if(con.getString("ip").equalsIgnoreCase(ip)) {
+							build.append(con.getString("player").toString() + ",");
+						}
+
+					}
+				}
+				if(build.length() != 0) {
+					sender.sendMessage(ChatColor.GREEN + "alternate accounts found for player " + victem.getName());
+					sender.sendMessage(setTypeAlt(build.toString()));
+				} else {
+					sender.sendMessage(ChatColor.RED + "no alternate accounts found for player " + victem.getName());
+				}
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public static void getAlternateAccounts(CommandSender sender, String victem) {
+		if(fileManager.file_exists(victem + ".yml", fileManager.getDir() + File.separator + "alts")) {
+			String ip = fileManager.getStringValue(victem + ".yml", "ip", fileManager.getDir() + File.separator + "alts");
+					try {
+						File dir = new File(fileManager.getDir() + File.separator + "alts");
+						if(dir.isDirectory()) {
+							File[] list = dir.listFiles();
+							StringBuilder build = new StringBuilder();
+							for(File f : list) {
+								if(!f.getName().replace(".yml", "").equalsIgnoreCase(victem)) {
+									FileConfiguration con = YamlConfiguration.loadConfiguration(f);
+									if(con.getString("ip").equalsIgnoreCase(ip)) {
+										build.append(con.getString("player").toString() + ",");
+									}
+
+								}
+							}
+							if(build.length() != 0) {
+								sender.sendMessage(ChatColor.GREEN + "alternate accounts found for player " + victem);
+								sender.sendMessage(setTypeAlt(build.toString()));
+							} else {
+								sender.sendMessage(ChatColor.RED + "no alternate accounts found for player " + victem);
+							}
+						}
+					} catch(Exception e) {
+						e.printStackTrace();
+					}
+		} else {
+			sender.sendMessage(ChatColor.RED + victem + " has never played before");
 		}
 	}
 
@@ -136,7 +197,7 @@ public class ban {
 		}
 		return false;
 	}
-	
+
 	public static boolean isTempBanned(Player p) {
 		try {
 			File f = new File(fileManager.getDir() + File.separator + "bans" + File.separator + p.getName() + ".yml");
@@ -153,7 +214,7 @@ public class ban {
 		}
 		return false;
 	}
-	
+
 	public static boolean isTempBanned(String p) {
 		try {
 			File f = new File(fileManager.getDir() + File.separator + "bans" + File.separator + p + ".yml");
