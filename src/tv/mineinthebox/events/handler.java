@@ -18,6 +18,7 @@ import tv.mineinthebox.events.chatEvent.AntiFloodSpam;
 import tv.mineinthebox.events.chatEvent.afkChat;
 import tv.mineinthebox.events.chatEvent.chatEvent;
 import tv.mineinthebox.events.chatEvent.muteManager;
+import tv.mineinthebox.events.joinEvent.PlayerTaskEvent;
 import tv.mineinthebox.events.joinEvent.alternateAccountEvent;
 import tv.mineinthebox.events.joinEvent.bancheck;
 import tv.mineinthebox.events.joinEvent.flyEvent;
@@ -84,6 +85,7 @@ public class handler {
 		setListener(new modreqEvent());
 		setListener(new taskEvent());
 		setListener(new vanishEvent());
+		setListener(new PlayerTaskEvent());
 		
 		/*
 		 * 

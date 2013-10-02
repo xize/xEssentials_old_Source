@@ -233,6 +233,12 @@ commands:
      permission:
      permission-message:
 
+  task:
+     description: place a task uopen when player rejoins
+     aliases: []
+     permission:
+     permission-message:
+
 
 permissions:
   #supertowns.random:

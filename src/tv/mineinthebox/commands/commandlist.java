@@ -39,7 +39,8 @@ public class commandlist {
 			"back",
 			"spawnherobrine",
 			"broadcast",
-			"afk"
+			"afk",
+			"task"
 	};
 
 }

@@ -81,6 +81,8 @@ public class commandhandler implements CommandExecutor {
 			cmdbroadcast.execute(sender, cmd, args);
 		} else if(cmd.getName().equalsIgnoreCase("afk")) {
 			cmdafk.execute(sender, cmd, args);
+		} else if(cmd.getName().equalsIgnoreCase("task")) {
+			cmdtask.execute(sender, cmd, args);
 		}
 		return false;
 	}
