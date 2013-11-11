@@ -71,5 +71,28 @@ public class worldguard {
 			p.sendMessage(ChatColor.RED + "you are allready are unvanished so you can't fake join, use /vanish fakequit instead or /vanish");
 		}
 	}
+	
+	public static void sendJoinMessage(Player p ) {
+		WorldGuardPlugin wg = (WorldGuardPlugin) Bukkit.getPluginManager().getPlugin("WorldGuard");
+		if(e.getPlayer().hasPermission("xEssentials.isStaff")) {
+			for(ProtectedRegion region : wg.getRegionManager(p.getPlayer().getWorld()).getApplicableRegions(p.getPlayer().getLocation())) {
+				if(region.getFlag(DefaultFlag.MOB_SPAWNING) == State.DENY) {
+					Bukkit.broadcastMessage(ChatColor.GRAY + "a safe staff member " + ChatColor.GREEN + p.getPlayer().getName() + ChatColor.GRAY + " has been appeared!");
+					return;
+				}
+			}
+			Bukkit.broadcastMessage(ChatColor.GRAY + "a wild staff member " + ChatColor.GREEN + p.getPlayer().getName() + ChatColor.GRAY + " has been appeared!");
+			return;
+		} else {
+			for(ProtectedRegion region : wg.getRegionManager(p.getPlayer().getWorld()).getApplicableRegions(p.getPlayer().getLocation())) {
+				if(region.getFlag(DefaultFlag.MOB_SPAWNING) == State.DENY) {
+					Bukkit.broadcastMessage(ChatColor.GRAY + "a safe " + ChatColor.GREEN + p.getPlayer().getName() + ChatColor.GRAY + " has been appeared!");
+					return;
+				}
+			}
+			Bukkit.broadcastMessage(ChatColor.GRAY + "a wild " + ChatColor.GREEN + p.getPlayer().getName() + ChatColor.GRAY + " has been appeared!");
+			return;
+		}
+	}
 
 }
