@@ -74,7 +74,7 @@ public class worldguard {
 	
 	public static void sendJoinMessage(Player p ) {
 		WorldGuardPlugin wg = (WorldGuardPlugin) Bukkit.getPluginManager().getPlugin("WorldGuard");
-		if(e.getPlayer().hasPermission("xEssentials.isStaff")) {
+		if(p.getPlayer().hasPermission("xEssentials.isStaff")) {
 			for(ProtectedRegion region : wg.getRegionManager(p.getPlayer().getWorld()).getApplicableRegions(p.getPlayer().getLocation())) {
 				if(region.getFlag(DefaultFlag.MOB_SPAWNING) == State.DENY) {
 					Bukkit.broadcastMessage(ChatColor.GRAY + "a safe staff member " + ChatColor.GREEN + p.getPlayer().getName() + ChatColor.GRAY + " has been appeared!");
@@ -91,6 +91,29 @@ public class worldguard {
 				}
 			}
 			Bukkit.broadcastMessage(ChatColor.GRAY + "a wild " + ChatColor.GREEN + p.getPlayer().getName() + ChatColor.GRAY + " has been appeared!");
+			return;
+		}
+	}
+	
+	public static void sendQuitMessage(Player p) {
+		WorldGuardPlugin wg = (WorldGuardPlugin) Bukkit.getPluginManager().getPlugin("WorldGuard");
+		if(p.getPlayer().hasPermission("xEssentials.isStaff")) {
+			for(ProtectedRegion region : wg.getRegionManager(p.getPlayer().getWorld()).getApplicableRegions(p.getPlayer().getLocation())) {
+				if(region.getFlag(DefaultFlag.MOB_SPAWNING) == State.DENY) {
+					Bukkit.broadcastMessage(ChatColor.RED + "Whoosh!" + ChatColor.GRAY + " staff member " + ChatColor.GREEN + p.getPlayer().getName() + ChatColor.GRAY + " has left the game safely!");
+					return;
+				}
+			}
+			Bukkit.broadcastMessage(ChatColor.RED + "Whoosh!" + ChatColor.GRAY + " staff member " + ChatColor.GREEN + p.getPlayer().getName() + ChatColor.GRAY + " has left the game in wild!");
+			return;
+		} else {
+			for(ProtectedRegion region : wg.getRegionManager(p.getPlayer().getWorld()).getApplicableRegions(p.getPlayer().getLocation())) {
+				if(region.getFlag(DefaultFlag.MOB_SPAWNING) == State.DENY) {
+					Bukkit.broadcastMessage(ChatColor.RED + "Whoosh! " + ChatColor.GREEN + p.getPlayer().getName() + ChatColor.GRAY + " has left the game safely!");
+					return;
+				}
+			}
+			Bukkit.broadcastMessage(ChatColor.RED + "Whoosh! " + ChatColor.GREEN + p.getPlayer().getName() + ChatColor.GRAY + " has left the game in wild!");
 			return;
 		}
 	}
