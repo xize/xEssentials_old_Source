@@ -5,6 +5,10 @@ import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
 
+import tv.mineinthebox.essentials.commands.ProtectedRegion;
+import tv.mineinthebox.essentials.commands.WorldGuardPlugin;
+import tv.mineinthebox.essentials.resources.vanish.vanishApi;
+
 public class worldguard {
 	
 	public static void turnOffWand(Player player) {
@@ -27,6 +31,44 @@ public class worldguard {
 					}
 				}
 			}
+		}
+	}
+	
+	public static void sendVanishQuitMessage(Player p) {
+		if(!vanishApi.isVanished(p)) {
+			if(Bukkit.getPluginManager().isPluginEnabled("WorldGuard")) {
+				WorldGuardPlugin wg = (WorldGuardPlugin) Bukkit.getPluginManager().getPlugin("WorldGuard");
+				for(ProtectedRegion region : wg.getRegionManager(p.getWorld()).getApplicableRegions(p.getLocation())) {
+					if(region.getFlag(DefaultFlag.MOB_SPAWNING) == State.DENY) {
+						Bukkit.broadcastMessage(ChatColor.RED + "Whoosh!" + ChatColor.GRAY + " staff member " + ChatColor.GREEN + p.getName() + ChatColor.GRAY + " has left the game safely!");
+						vanishApi.vanish(p);
+						return false;
+					}
+				}
+				Bukkit.broadcastMessage(ChatColor.RED + "Whoosh!" + ChatColor.GRAY + " staff member " + ChatColor.GREEN + p.getName() + ChatColor.GRAY + " has left the game in wild!");
+				vanishApi.vanish(p);
+			}
+		} else {
+			p.sendMessage(ChatColor.RED + "you are allready vanished so you can't fake quit, use /vanish fakejoin instead or /vanish");
+		}
+	}
+	
+	public static void sendVanishJoinMessage(Player p) {
+		if(vanishApi.isVanished(p)) {
+			if(Bukkit.getPluginManager().isPluginEnabled("WorldGuard")) {
+				WorldGuardPlugin wg = (WorldGuardPlugin) Bukkit.getPluginManager().getPlugin("WorldGuard");
+				for(ProtectedRegion region : wg.getRegionManager(p.getWorld()).getApplicableRegions(p.getLocation())) {
+					if(region.getFlag(DefaultFlag.MOB_SPAWNING) == State.DENY) {
+						Bukkit.broadcastMessage(ChatColor.GRAY + "a safe staff member " + p.getName() + ChatColor.GRAY + " has been appeared!");
+						vanishApi.vanish(p);
+						return false;
+					}
+				}
+				Bukkit.broadcastMessage(ChatColor.GRAY + "a wild staff member " + ChatColor.GREEN + p.getName() + ChatColor.GRAY + " has been appeared!");
+				vanishApi.unvanish(p);
+			}
+		} else {
+			p.sendMessage(ChatColor.RED + "you are allready are unvanished so you can't fake join, use /vanish fakequit instead or /vanish");
 		}
 	}
 
