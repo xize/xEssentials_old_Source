@@ -1,11 +1,11 @@
 name: xEssentials
 version: 1.1
-description: a
+description: core system
 author: Xeph0re
 authors: [] 
 website:
 
-main: tv.mineinthebox.xEssentials
+main: tv.mineinthebox.essentials.xEssentials
 database: false
 depend: []
 softdepend: [WorldGuard, WorldEdit, Votifier, Vault, iConomy, RemoteEntities, ManCo]
