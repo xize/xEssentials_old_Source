@@ -37,7 +37,6 @@ public class commandlist {
 			"gc",
 			"homeinvite",
 			"back",
-			"spawnherobrine",
 			"broadcast",
 			"afk",
 			"task",

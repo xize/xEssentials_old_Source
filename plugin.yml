@@ -215,12 +215,6 @@ commands:
      permission:
      permission-message:
 
-  spawnherobrine:
-     description: ???
-     aliases: []
-     permission:
-     permission-message:
-
   broadcast:
      description: broadcast management
      aliases: []
