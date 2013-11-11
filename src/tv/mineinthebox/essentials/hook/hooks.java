@@ -31,5 +31,12 @@ public class hooks {
 		}
 		return false;
 	}
+	
+	public static boolean isbPermissionsEnabled() {
+		if(Bukkit.getPluginManager().isPluginEnabled("bPermissions")) {
+			return true;
+		}
+		return false;
+	}
 
 }
