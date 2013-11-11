@@ -2,11 +2,11 @@ package tv.mineinthebox.essentials.hook;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.Chunk;
 import org.bukkit.GameMode;
+import org.bukkit.Location;
 import org.bukkit.entity.Player;
 
-import tv.mineinthebox.essentials.commands.ProtectedRegion;
-import tv.mineinthebox.essentials.commands.WorldGuardPlugin;
 import tv.mineinthebox.essentials.resources.vanish.vanishApi;
 
 public class worldguard {
@@ -115,6 +115,27 @@ public class worldguard {
 			}
 			Bukkit.broadcastMessage(ChatColor.RED + "Whoosh! " + ChatColor.GREEN + p.getPlayer().getName() + ChatColor.GRAY + " has left the game in wild!");
 			return;
+		}
+	}
+	
+	public static boolean isInRegion(Location loc) {
+			WorldGuardPlugin wg = (WorldGuardPlugin) Bukkit.getServer().getPluginManager().getPlugin("WorldGuard");
+			for(ProtectedRegion region : wg.getRegionManager(loc.getWorld()).getApplicableRegions(loc)) {
+				if(region.getFlag(DefaultFlag.MOB_SPAWNING) == State.DENY || region.getFlag(DefaultFlag.PVP) == State.DENY) {
+					//player has entered
+					return true;
+				}
+			}
+			return false;
+	}
+	
+	public static void sendRegionMessage(Player p, Chunk from, Chunk to) {
+		if(from.getX() != to.getX() || from.getZ() != to.getZ()) {
+			if(!isInRegion(from.getBlock(1, 1, 1).getLocation()) && isInRegion(to.getBlock(1, 1, 1).getLocation())) {
+				p.getPlayer().sendMessage(ChatColor.GOLD + ".oO___[Entering safe zone]___Oo.");
+			} else if(isInRegion(from.getBlock(1, 1, 1).getLocation()) && !isInRegion(to.getBlock(1, 1, 1).getLocation())) {
+				p.getPlayer().sendMessage(ChatColor.GOLD + ".oO___[Leaving safe zone]___Oo.");
+			}
 		}
 	}
 
