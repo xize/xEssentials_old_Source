@@ -8,7 +8,7 @@ website:
 main: tv.mineinthebox.xEssentials
 database: false
 depend: []
-softdepend: [WorldGuard, WorldEdit, Votifier, Vault, iConomy, RemoteEntities]
+softdepend: [WorldGuard, WorldEdit, Votifier, Vault, iConomy, RemoteEntities, ManCo]
 
 commands:
   sethome:
@@ -259,6 +259,12 @@ commands:
 
   ghost:
      description: be a ghost!
+     aliases: []
+     permission:
+     permission-message:
+
+  motd:
+     description: set motd
      aliases: []
      permission:
      permission-message:

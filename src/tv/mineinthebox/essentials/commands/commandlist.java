@@ -1,0 +1,51 @@
+package tv.mineinthebox.essentials.commands;
+
+public class commandlist {
+	
+	public String[] getCommandList = {
+			"sethome",
+			"home",
+			"setspawn",
+			"spawn",
+			"vanish",
+			"firefly",
+			"spawner",
+			"gamemode",
+			"modreq",
+			"spawnmob",
+			"invsee",
+			"warp",
+			"warps",
+			"setwarp",
+			"torch",
+			"delwarp",
+			"ban",
+			"unban",
+			"tempban",
+			"claim",
+			"check",
+			"done",
+			"teleport",
+			"hometp",
+			"tphere",
+			"tpa",
+			"tpahere",
+			"fly",
+			"mute",
+			"unmute",
+			"xessentials",
+			"gc",
+			"homeinvite",
+			"back",
+			"spawnherobrine",
+			"broadcast",
+			"afk",
+			"task",
+			"checkalt",
+			"boom",
+			"hat",
+			"ghost",
+			"motd"
+	};
+
+}
