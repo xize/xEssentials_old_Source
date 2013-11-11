@@ -58,19 +58,21 @@ public class chatEvent implements Listener {
 					}
 				}
 			}
-			for(File user : fileManager.getFileList(fileManager.getDir() + File.separator + "alts")) {
-				if(message.contains(user.getName().replace(".yml", ""))) {
-					if(vanishApi.isVanishedGetString(user.getName().replace(".yml", ""))) {
-						return message.toString().replace(user.getName().replace(".yml", ""), ChatColor.translateAlternateColorCodes('&',  "&3[offline]" + hashtag + user.getName().replace(".yml", "")) + ChatColor.translateAlternateColorCodes('&', suffixCallBack));	
-					} else {
-						return message.toString().replace(user.getName().replace(".yml", ""), ChatColor.translateAlternateColorCodes('&',"&3[offline]" + hashtag + user.getName().replace(".yml", "")) + ChatColor.translateAlternateColorCodes('&', suffixCallBack));	
+			if(fileManager.isDirectory(fileManager.getDir() + File.separator + "alts")) {
+				for(File user : fileManager.getFileList(fileManager.getDir() + File.separator + "alts")) {
+					if(message.contains(user.getName().replace(".yml", ""))) {
+						if(vanishApi.isVanishedGetString(user.getName().replace(".yml", ""))) {
+							return message.toString().replace(user.getName().replace(".yml", ""), ChatColor.translateAlternateColorCodes('&',  "&3[offline]" + hashtag + user.getName().replace(".yml", "")) + ChatColor.translateAlternateColorCodes('&', suffixCallBack));	
+						} else {
+							return message.toString().replace(user.getName().replace(".yml", ""), ChatColor.translateAlternateColorCodes('&',"&3[offline]" + hashtag + user.getName().replace(".yml", "")) + ChatColor.translateAlternateColorCodes('&', suffixCallBack));	
+						}
 					}
-				}
+				}	
 			}
 		}
 		return message;
 	}
-	
+
 	public static boolean effects(Player p) {
 		if(vanishApi.isVanished(p)) {
 			return false;
