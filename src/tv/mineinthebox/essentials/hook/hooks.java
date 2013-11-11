@@ -24,5 +24,12 @@ public class hooks {
 		}
 		return false;
 	}
+	
+	public static boolean isHerochatEnabeld() {
+		if(Bukkit.getPluginManager().isPluginEnabled("HeroChat")) {
+			return true;
+		}
+		return false;
+	}
 
 }

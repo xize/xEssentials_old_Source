@@ -19,11 +19,10 @@ import tv.mineinthebox.essentials.fileManager;
 import tv.mineinthebox.essentials.xEssentials;
 import tv.mineinthebox.essentials.xEssentialsMemory;
 import tv.mineinthebox.essentials.hook.groupmanager;
+import tv.mineinthebox.essentials.hook.herochat;
 import tv.mineinthebox.essentials.hook.hooks;
 import tv.mineinthebox.essentials.hook.permissionsEx;
 import tv.mineinthebox.essentials.resources.vanish.vanishApi;
-
-import com.dthielke.herochat.Herochat;
 
 import de.bananaco.bpermissions.api.ApiLayer;
 import de.bananaco.bpermissions.api.CalculableType;
@@ -40,9 +39,9 @@ public class chatEvent implements Listener {
 		} else if(hooks.isGroupManagerEnabled()) {
 			String suffix = groupmanager.getSuffix(e.getPlayer());
 			e.setMessage(xEssentialsMemory.setSmilleys(getMessage(e.getMessage(), suffix), suffix));
-		} else if(xEssentials.getPlugin().getServer().getPluginManager().isPluginEnabled("HeroChat")) {
-			String herochat = Herochat.getChatService().getPlayerSuffix(e.getPlayer().getWorld(), e.getPlayer().getName());
-			e.setMessage(xEssentialsMemory.setSmilleys(getMessage(e.getMessage(), herochat), herochat));
+		} else if(hooks.isHerochatEnabeld()) {
+			String hero = herochat.getSuffix(e.getPlayer());
+			e.setMessage(xEssentialsMemory.setSmilleys(getMessage(e.getMessage(), hero), hero));
 		} else if(xEssentials.getPlugin().getServer().getPluginManager().isPluginEnabled("bPermissions")) {
 			String bPermissions = ApiLayer.getValue(e.getPlayer().getWorld().getName(), CalculableType.USER, e.getPlayer().getName(), "suffix");
 			e.setMessage(xEssentialsMemory.setSmilleys(getMessage(e.getMessage(), bPermissions), bPermissions));
