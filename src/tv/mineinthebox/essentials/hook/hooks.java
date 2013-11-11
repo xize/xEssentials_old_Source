@@ -38,5 +38,12 @@ public class hooks {
 		}
 		return false;
 	}
+	
+	public static boolean isVaultEnabled() {
+		if(Bukkit.getPluginManager().isPluginEnabled("Vault")) {
+			return true;
+		}
+		return false;
+	}
 
 }

@@ -3,8 +3,6 @@ package tv.mineinthebox.essentials.events.pvp;
 import java.util.HashMap;
 import java.util.Iterator;
 
-import net.milkbowl.vault.economy.Economy;
-
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Entity;
@@ -16,9 +14,10 @@ import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.event.player.PlayerKickEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
-import org.bukkit.plugin.RegisteredServiceProvider;
 
 import tv.mineinthebox.essentials.xEssentialsMemory;
+import tv.mineinthebox.essentials.hook.Vault;
+import tv.mineinthebox.essentials.hook.hooks;
 
 public class KillBounty implements Listener {
 
@@ -45,10 +44,8 @@ public class KillBounty implements Listener {
 					String playerName = it.next();
 					Player p = Bukkit.getPlayer(playerName);
 					if(p instanceof Player) {
-						if(Bukkit.getPluginManager().isPluginEnabled("iConomy") && Bukkit.getPluginManager().isPluginEnabled("Vault")) {
-							RegisteredServiceProvider<Economy> economyProvider = Bukkit.getServer().getServicesManager().getRegistration(net.milkbowl.vault.economy.Economy.class);
-							Economy econ = economyProvider.getProvider();
-							econ.depositPlayer(p.getName(), xEssentialsMemory.killBountyPrice);
+						if(hooks.isVaultEnabled()) {
+							Vault.desposit(p, xEssentialsMemory.killBountyPrice);
 							p.sendMessage(ChatColor.GOLD + "you earned " + xEssentialsMemory.killBountyPrice + "$! by killing " + ChatColor.GREEN + killed.getName());
 							entityList.remove(p.getName());
 						}
@@ -64,10 +61,8 @@ public class KillBounty implements Listener {
 					String playerName = it.next();
 					Player p = Bukkit.getPlayer(playerName);
 					if(p instanceof Player) {
-						if(Bukkit.getPluginManager().isPluginEnabled("iConomy") && Bukkit.getPluginManager().isPluginEnabled("Vault")) {
-							RegisteredServiceProvider<Economy> economyProvider = Bukkit.getServer().getServicesManager().getRegistration(net.milkbowl.vault.economy.Economy.class);
-							Economy econ = economyProvider.getProvider();
-							econ.depositPlayer(p.getName(), xEssentialsMemory.killBountyPrice);
+						if(hooks.isVaultEnabled()) {
+							Vault.desposit(p, xEssentialsMemory.killBountyPrice);
 							p.sendMessage(ChatColor.GOLD + "you earned " + xEssentialsMemory.killBountyPrice + "$! by killing a " + ChatColor.GREEN + e.getEntityType().name().toLowerCase().replace("_", " "));
 							entityList.remove(p.getName());
 						}
