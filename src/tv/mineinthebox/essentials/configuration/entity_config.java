@@ -28,6 +28,7 @@ public class entity_config {
 				fileManager.writeFile("entity.yml", "zombie-custom-aggro.range", 8.0, fileManager.getDir());
 				fileManager.writeFile("entity.yml", "disable-spawneggs", false, fileManager.getDir());
 				fileManager.writeFile("entity.yml", "log.spawnEggs", false, fileManager.getDir());
+				fileManager.writeFile("entity.yml", "use-criticals", false, fileManager.getDir());
 				update("entity.yml");
 			}
 		} catch(Exception e) {

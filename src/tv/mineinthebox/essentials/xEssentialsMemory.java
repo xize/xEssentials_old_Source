@@ -60,6 +60,7 @@ public class xEssentialsMemory {
 	public static boolean logSpawnEggs = false;
 	public static boolean zombieAggroEnabled = false;
 	public static Double zombieRange = 0.0;
+	public static boolean useCrits = false;
 	public static HashMap<String, Boolean> mobValues = new HashMap<String, Boolean>();
 
 	public static void setEntitySystem() {
@@ -75,6 +76,7 @@ public class xEssentialsMemory {
 		logSpawnEggs = fileManager.getBooleanValue("entity.yml", "log.spawnEggs", fileManager.getDir());
 		zombieAggroEnabled = fileManager.getBooleanValue("entity.yml", "zombie-custom-aggro.enable", fileManager.getDir());
 		zombieRange = fileManager.getDoubleValue("entity.yml", "zombie-custom-aggro.range", fileManager.getDir());
+		useCrits = fileManager.getBooleanValue("entity.yml", "use-criticals", fileManager.getDir());
 		File f = fileManager.returnFile("entity.yml", fileManager.getDir());
 		FileConfiguration con = YamlConfiguration.loadConfiguration(f);
 		for(String mobname : con.getConfigurationSection("mobs.allowToSpawn").getKeys(false)) {

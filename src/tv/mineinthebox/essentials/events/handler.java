@@ -7,6 +7,7 @@ import org.bukkit.event.Listener;
 import tv.mineinthebox.essentials.xEssentials;
 import tv.mineinthebox.essentials.xEssentialsMemory;
 import tv.mineinthebox.essentials.events.EntityEvent.creatureSpawnManager;
+import tv.mineinthebox.essentials.events.EntityEvent.criticalEvent;
 import tv.mineinthebox.essentials.events.EntityEvent.disableFireWork;
 import tv.mineinthebox.essentials.events.EntityEvent.disableSpawnEggs;
 import tv.mineinthebox.essentials.events.EntityEvent.egglogger;
@@ -186,6 +187,9 @@ public class handler {
 		}
 		if(xEssentialsMemory.logSpawnEggs) {
 			setListener(new egglogger());
+		}
+		if(xEssentialsMemory.useCrits) {
+			setListener(new criticalEvent());
 		}
 		
 		/*
