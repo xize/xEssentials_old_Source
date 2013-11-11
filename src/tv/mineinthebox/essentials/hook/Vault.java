@@ -1,11 +1,10 @@
 package tv.mineinthebox.essentials.hook;
 
+import net.milkbowl.vault.economy.Economy;
+
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.RegisteredServiceProvider;
-
-import tv.mineinthebox.essentials.xEssentialsMemory;
-import tv.mineinthebox.essentials.events.pvp.Economy;
 
 public class Vault {
 	

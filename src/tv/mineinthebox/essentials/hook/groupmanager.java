@@ -1,5 +1,6 @@
 package tv.mineinthebox.essentials.hook;
 
+import org.anjocaido.groupmanager.GroupManager;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 

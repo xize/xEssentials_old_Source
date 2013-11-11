@@ -7,6 +7,12 @@ import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 
+import com.sk89q.worldedit.bukkit.WorldEditPlugin;
+import com.sk89q.worldguard.bukkit.WorldGuardPlugin;
+import com.sk89q.worldguard.protection.flags.DefaultFlag;
+import com.sk89q.worldguard.protection.flags.StateFlag.State;
+import com.sk89q.worldguard.protection.regions.ProtectedRegion;
+
 import tv.mineinthebox.essentials.resources.vanish.vanishApi;
 
 public class worldguard {
@@ -42,7 +48,7 @@ public class worldguard {
 					if(region.getFlag(DefaultFlag.MOB_SPAWNING) == State.DENY) {
 						Bukkit.broadcastMessage(ChatColor.RED + "Whoosh!" + ChatColor.GRAY + " staff member " + ChatColor.GREEN + p.getName() + ChatColor.GRAY + " has left the game safely!");
 						vanishApi.vanish(p);
-						return false;
+						return;
 					}
 				}
 				Bukkit.broadcastMessage(ChatColor.RED + "Whoosh!" + ChatColor.GRAY + " staff member " + ChatColor.GREEN + p.getName() + ChatColor.GRAY + " has left the game in wild!");
@@ -61,7 +67,7 @@ public class worldguard {
 					if(region.getFlag(DefaultFlag.MOB_SPAWNING) == State.DENY) {
 						Bukkit.broadcastMessage(ChatColor.GRAY + "a safe staff member " + p.getName() + ChatColor.GRAY + " has been appeared!");
 						vanishApi.vanish(p);
-						return false;
+						return;
 					}
 				}
 				Bukkit.broadcastMessage(ChatColor.GRAY + "a wild staff member " + ChatColor.GREEN + p.getName() + ChatColor.GRAY + " has been appeared!");
