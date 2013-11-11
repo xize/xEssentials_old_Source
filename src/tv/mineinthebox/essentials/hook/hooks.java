@@ -10,5 +10,19 @@ public class hooks {
 		}
 		return false;
 	}
+	
+	public static boolean isPexEnabled() {
+		if(Bukkit.getPluginManager().isPluginEnabled("PermissionsEx")) {
+			return true;
+		}
+		return false;
+	}
+	
+	public static boolean isGroupManagerEnabled() {
+		if(Bukkit.getPluginManager().isPluginEnabled("GroupManager")) {
+			return true;
+		}
+		return false;
+	}
 
 }

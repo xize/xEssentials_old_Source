@@ -18,6 +18,9 @@ import ru.tehkode.permissions.bukkit.PermissionsEx;
 import tv.mineinthebox.essentials.fileManager;
 import tv.mineinthebox.essentials.xEssentials;
 import tv.mineinthebox.essentials.xEssentialsMemory;
+import tv.mineinthebox.essentials.hook.groupmanager;
+import tv.mineinthebox.essentials.hook.hooks;
+import tv.mineinthebox.essentials.hook.permissionsEx;
 import tv.mineinthebox.essentials.resources.vanish.vanishApi;
 
 import com.dthielke.herochat.Herochat;
@@ -31,15 +34,11 @@ public class chatEvent implements Listener {
 	@EventHandler(priority = EventPriority.MONITOR, ignoreCancelled=true)
 	public void onSmile(PlayerChatEvent e) {
 		//checking on chat plugins:), for the actually suffix recall
-		if(xEssentials.getPlugin().getServer().getPluginManager().isPluginEnabled("PermissionsEx")) {
-
-			String pex = PermissionsEx.getUser(e.getPlayer().getName()).getSuffix();
-			e.setMessage(xEssentialsMemory.setSmilleys(getMessage(e.getMessage(), pex), pex));
-
-		} else if(xEssentials.getPlugin().getServer().getPluginManager().isPluginEnabled("GroupManager")) {
-			Plugin groupManager = (GroupManager) e.getPlayer().getServer().getPluginManager().getPlugin("GroupManager");
-			GroupManager groupHandler = (GroupManager) groupManager;
-			String suffix = groupHandler.getWorldsHolder().getWorldPermissions(e.getPlayer()).getUserSuffix(e.getPlayer().getName());
+		if(hooks.isPexEnabled()) {
+			String suffix = permissionsEx.getSuffx(e.getPlayer());
+			e.setMessage(xEssentialsMemory.setSmilleys(getMessage(e.getMessage(), suffix), suffix));
+		} else if(hooks.isGroupManagerEnabled()) {
+			String suffix = groupmanager.getSuffix(e.getPlayer());
 			e.setMessage(xEssentialsMemory.setSmilleys(getMessage(e.getMessage(), suffix), suffix));
 		} else if(xEssentials.getPlugin().getServer().getPluginManager().isPluginEnabled("HeroChat")) {
 			String herochat = Herochat.getChatService().getPlayerSuffix(e.getPlayer().getWorld(), e.getPlayer().getName());
