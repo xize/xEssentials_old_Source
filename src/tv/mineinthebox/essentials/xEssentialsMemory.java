@@ -165,6 +165,7 @@ public class xEssentialsMemory {
 	public static  boolean playerGodmodeAfk = false;
 	public static  boolean playerSteveHurtSound = false;
 	public static boolean mobsUseHeads = false;
+	public static boolean realisticGlassEnabled = false;
 
 	public static  void setPlayerSystem() {
 		playerUseSeperatedInventorys = fileManager.getBooleanValue("player.yml", "useSeperatedInventorys", fileManager.getDir());
@@ -172,6 +173,7 @@ public class xEssentialsMemory {
 		playerGodmodeAfk = fileManager.getBooleanValue("player.yml", "godmode-inAfk", fileManager.getDir());
 		playerSteveHurtSound = fileManager.getBooleanValue("player.yml", "steve-hurt-sound.enable", fileManager.getDir());
 		mobsUseHeads = fileManager.getBooleanValue("player.yml", "entitysCanUseHeadOnPlayerDeath", fileManager.getDir());
+		realisticGlassEnabled = fileManager.getBooleanValue("player.yml", "enable-realistic-glass", fileManager.getDir());
 	}
 
 	/*

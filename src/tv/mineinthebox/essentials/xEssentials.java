@@ -18,11 +18,11 @@ public class xEssentials extends JavaPlugin {
 	private commandlist cmdlist = new commandlist();
 	private commandhandler command = new commandhandler();
 	private configHandler handleConfig = new configHandler();
-	private pluginDescription pluginhandle = new pluginDescription();
+	private static pluginDescription pluginhandle = new pluginDescription();
 	public static handler handle = new handler();
 	public static xEssentialsMemory mem = new xEssentialsMemory();
 	
-	public void log(String log, logType type) {
+	public static void log(String log, logType type) {
 		if(type == logType.info) {
 			Bukkit.getConsoleSender().sendMessage(ChatColor.translateAlternateColorCodes('&', "&2"+pluginhandle.pname() + pluginhandle.version() + " &f" + log));
 		} else if(type == logType.servere) {

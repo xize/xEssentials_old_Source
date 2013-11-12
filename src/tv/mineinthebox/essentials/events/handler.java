@@ -56,6 +56,7 @@ import tv.mineinthebox.essentials.events.pluginEnableEvent.TPS;
 import tv.mineinthebox.essentials.events.pvp.KillBounty;
 import tv.mineinthebox.essentials.events.pvp.clientSideGraveyard;
 import tv.mineinthebox.essentials.events.pvp.disablePvp;
+import tv.mineinthebox.essentials.events.realisticGlass.realisticGlass;
 import tv.mineinthebox.essentials.events.signEvent.fireworkSign;
 import tv.mineinthebox.essentials.events.signEvent.freeSign;
 import tv.mineinthebox.essentials.events.signEvent.signBoom;
@@ -253,6 +254,14 @@ public class handler {
 		afkScheduler.startAfkTimer();
 		setListener(new afkScheduler());
 		setListener(new afkChat());
+		
+		/*
+		 * 
+		 * realistic glass
+		 * 
+		 */
+		
+		if(xEssentialsMemory.realisticGlassEnabled) {setListener(new realisticGlass());}
 		
 		/*
 		 * 
