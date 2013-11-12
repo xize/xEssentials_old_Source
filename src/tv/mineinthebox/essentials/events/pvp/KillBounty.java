@@ -7,7 +7,9 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
+import org.bukkit.entity.MagmaCube;
 import org.bukkit.entity.Player;
+import org.bukkit.entity.Slime;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
@@ -28,8 +30,24 @@ public class KillBounty implements Listener {
 
 		if(e.getDamager() instanceof Player) {
 			if(e.getEntity() instanceof Player || e.getEntity() instanceof LivingEntity) {
-				Player p = (Player) e.getDamager();
-				entityList.put(p.getName(), e.getEntity());
+				if(e.getEntity() instanceof Slime) {
+					Slime slime = (Slime) e.getEntity();
+					if(slime.getSize() == 2) {
+						Player p = (Player) e.getDamager();
+						entityList.put(p.getName(), e.getEntity());
+						return;
+					}
+				} else if(e.getEntity() instanceof MagmaCube) {
+					MagmaCube cube = (MagmaCube) e.getEntity();
+					if(cube.getSize() == 2) {
+						Player p = (Player) e.getDamager();
+						entityList.put(p.getName(), e.getEntity());
+						return;
+					}
+				} else {
+					Player p = (Player) e.getDamager();
+					entityList.put(p.getName(), e.getEntity());	
+				}
 			}
 		}
 	}

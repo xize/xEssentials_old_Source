@@ -1,20 +1,20 @@
 package tv.mineinthebox.essentials;
 
-import java.util.logging.Logger;
-
+import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.plugin.java.JavaPlugin;
+
+import tv.mineinthebox.essentials.logtype.logType;
 import tv.mineinthebox.essentials.commands.commandhandler;
 import tv.mineinthebox.essentials.commands.commandlist;
 import tv.mineinthebox.essentials.configuration.configHandler;
 import tv.mineinthebox.essentials.events.handler;
-import tv.mineinthebox.essentials.logtype.logType;
 
 
 public class xEssentials extends JavaPlugin {
 	
 	private static String filePath;
 	private static xEssentials pl;
-	private Logger logger = Logger.getLogger("Minecraft");
 	private commandlist cmdlist = new commandlist();
 	private commandhandler command = new commandhandler();
 	private configHandler handleConfig = new configHandler();
@@ -24,9 +24,9 @@ public class xEssentials extends JavaPlugin {
 	
 	public void log(String log, logType type) {
 		if(type == logType.info) {
-			logger.info(pluginhandle.pname() + pluginhandle.version() + " " + log);
+			Bukkit.getConsoleSender().sendMessage(ChatColor.translateAlternateColorCodes('&', "&2"+pluginhandle.pname() + pluginhandle.version() + " &f" + log));
 		} else if(type == logType.servere) {
-			logger.severe(pluginhandle.pname() + pluginhandle.version() + " " + log);
+			Bukkit.getConsoleSender().sendMessage(ChatColor.translateAlternateColorCodes('&', "&c[severe]&2"+pluginhandle.pname() + pluginhandle.version() + " &f" + log));
 		}
 	}
 	
