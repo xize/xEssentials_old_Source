@@ -82,14 +82,14 @@ public class chatEvent implements Listener {
 					Player p = Bukkit.getPlayerExact(string);
 					if(p instanceof Player) {
 						if(vanishApi.isVanished(p)) {
-							message = message.replaceAll(string, ChatColor.GRAY + ChatColor.translateAlternateColorCodes('&',"&3[offline]" + hashtag + p.getName()));
+							message = message.replaceAll(string, ChatColor.GRAY + ChatColor.translateAlternateColorCodes('&',"&3[offline]" + hashtag + p.getName() + suffix));
 						} else {
 							message = message.replaceAll(string, hashtag + p.getName() + ChatColor.translateAlternateColorCodes('&', suffix));
 							effects(p);
 						}
 					} else if(fileManager.isDirectory(fileManager.getDir() + File.separator + "alts")) {
 						if(fileManager.file_exists(string + ".yml", fileManager.getDir() + File.separator + "alts")) {
-							message = message.replaceAll(string, ChatColor.translateAlternateColorCodes('&',"&3[offline]" + hashtag + string));
+							message = message.replaceAll(string, ChatColor.translateAlternateColorCodes('&',"&3[offline]" + hashtag + string+suffix));
 						}
 					}
 				}
