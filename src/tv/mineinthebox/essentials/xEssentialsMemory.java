@@ -118,7 +118,7 @@ public class xEssentialsMemory {
 	public static String setSmilleys(String msg, String RecallSuffix) {
 		if(smilleys) {
 			if(msg.contains(":D") || msg.contains(":@") || msg.contains(":d") || msg.contains("<3")) {
-				return msg.toString().replace(":D", ChatColor.translateAlternateColorCodes('&', "  &6â˜» " + RecallSuffix)).toString().replace(":d", ChatColor.translateAlternateColorCodes('&', "  &6â˜» " + RecallSuffix)).toString().replace("<3", ChatColor.translateAlternateColorCodes('&', "  &câ™¥ " + RecallSuffix)).toString().replace(":@", ChatColor.translateAlternateColorCodes('&', " &c(â•¯Â°â–¡Â°ï¼‰â•¯ï¸µ â�?»â�?�â�?»  " + RecallSuffix));
+				return msg.toString().replace(":D", ChatColor.translateAlternateColorCodes('&', "  &6☻ " + RecallSuffix)).toString().replace(":d", ChatColor.translateAlternateColorCodes('&', "  &6☻ " + RecallSuffix)).toString().replace("<3", ChatColor.translateAlternateColorCodes('&', " &c♥ " + RecallSuffix)).toString().replace(":@", ChatColor.translateAlternateColorCodes('&', " &c(╯°□°）╯︵ ┻━┻  " + RecallSuffix));
 			} else {
 				return msg;
 			}
