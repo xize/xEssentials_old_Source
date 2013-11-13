@@ -35,7 +35,6 @@ public class realisticGlass implements Listener {
 			Arrow arrow = (Arrow) e.getEntity();
 			if(arrow.getShooter() instanceof Player) {
 				if(hasAttachedGlass(arrow.getLocation().getBlock())) {
-					System.out.print("is true");
 					storeGlasses(arrow.getLocation().getBlock());
 					arrow.remove();
 					destroyRandomGlasses();
