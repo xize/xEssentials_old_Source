@@ -78,7 +78,7 @@ public class chatEvent implements Listener {
 			String hashtag = ChatColor.translateAlternateColorCodes('&', xEssentialsMemory.hashtag);
 			String[] args = message.split(" ");
 			for(String string : args) {
-				if(!message.contains("@"+string)) {
+				if(!message.contains(hashtag+string)) {
 					Player p = Bukkit.getPlayerExact(string);
 					if(p instanceof Player) {
 						if(vanishApi.isVanished(p)) {
