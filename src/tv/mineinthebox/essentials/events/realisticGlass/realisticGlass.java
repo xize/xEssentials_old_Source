@@ -1,13 +1,9 @@
 package tv.mineinthebox.essentials.events.realisticGlass;
 
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
-import java.util.Random;
-
 import org.bukkit.Bukkit;
 import org.bukkit.Effect;
 import org.bukkit.Location;
@@ -15,13 +11,11 @@ import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
 import org.bukkit.entity.Arrow;
-import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityDamageEvent.DamageCause;
-import org.bukkit.event.entity.EntityExplodeEvent;
 import org.bukkit.event.entity.ProjectileHitEvent;
 import org.bukkit.material.MaterialData;
 import org.bukkit.scheduler.BukkitTask;
@@ -63,46 +57,39 @@ public class realisticGlass implements Listener {
 	}
 	
 	public void storeGlasses(Block block) {
-		int x = block.getX();
-		int y = block.getY();
-		int z = block.getZ();
-		for(int X = 0; X < 9;X++) {
-			for(int Y = 0; Y < 9; Y++) {
-				for(int Z  = 0; Z < 9; Z++) {
-					//x+
-					Block newBlockxPlus = block.getWorld().getBlockAt((x+X), (y+Y), (z+Z));
-					if(newBlockxPlus.getType() == Material.GLASS || newBlockxPlus.getType() == Material.THIN_GLASS) {
-						glasses.put(newBlockxPlus.getLocation(), newBlockxPlus);
+		for(int X = 0; X < 12;X++) {
+			for(int Y = 0; Y < 12; Y++) {
+				for(int Z  = 0; Z < 12; Z++) {
+					Block allplus = block.getWorld().getBlockAt((block.getX()+X), (block.getY()+Y),(block.getZ()+Z));
+					if(allplus.getType() == Material.GLASS || allplus.getType() == Material.THIN_GLASS) {
+						glasses.put(allplus.getLocation(), allplus);
 					}
-					Block newBlockzMinusMinus = block.getWorld().getBlockAt((x-X), (y+Y), (z-Z));
-					if(newBlockzMinusMinus.getType() == Material.GLASS || newBlockzMinusMinus.getType() == Material.THIN_GLASS) {
-						glasses.put(newBlockzMinusMinus.getLocation(), newBlockzMinusMinus);
+					Block allmin = block.getWorld().getBlockAt((block.getX()-X), (block.getY()+Y),(block.getZ()-Z));
+					if(allmin.getType() == Material.GLASS || allmin.getType() == Material.THIN_GLASS) {
+						glasses.put(allmin.getLocation(), allmin);
 					}
-					Block newBlockxMinus = block.getWorld().getBlockAt((x-X), (y+Y), (z+Z));
-					if(newBlockxMinus.getType() == Material.GLASS || newBlockxMinus.getType() == Material.THIN_GLASS) {
-						glasses.put(newBlockxMinus.getLocation(), newBlockxMinus);
+					Block xmin = block.getWorld().getBlockAt((block.getX()-X), (block.getY()+Y), (block.getZ()+Z));
+					if(xmin.getType() == Material.GLASS || xmin.getType() == Material.THIN_GLASS) {
+						glasses.put(xmin.getLocation(), xmin);
 					}
-					Block newBlockzMinus = block.getWorld().getBlockAt((x+X), (y+Y), (z-Z));
-					if(newBlockzMinus.getType() == Material.GLASS || newBlockzMinus.getType() == Material.THIN_GLASS) {
-						glasses.put(newBlockzMinus.getLocation(), newBlockzMinus);
+					Block zmin = block.getWorld().getBlockAt((block.getX()+X), (block.getY()+Y), (block.getZ()-Z));
+					if(zmin.getType() == Material.GLASS || zmin.getType() == Material.THIN_GLASS) {
+						glasses.put(zmin.getLocation(), zmin);
 					}
 				}
 			}
 		}
-		System.out.print("current blocks: " + glasses.size());
 	}
 	
 	public void destroyRandomGlasses() {
-		int i = 0;
-		while(i <= glasses.size()) {
+		for(int i = 0; i < glasses.size();i++) {
 			Location[] locs = glasses.keySet().toArray(new Location[glasses.size()]);
 			Location loc = locs[i];
 			Block block = glasses.get(loc);
-			blocks.put(block.getLocation(), block.getState().getData());
-			block.getWorld().playEffect(block.getLocation(), Effect.STEP_SOUND, block.getType());
+			blocks.put(loc, block.getState().getData());
+			block.getWorld().playEffect(loc, Effect.STEP_SOUND, block.getType());
 			glasses.remove(loc);
 			block.breakNaturally();
-			i++;
 		}
 		glasses.clear();
 	}
@@ -139,7 +126,7 @@ public class realisticGlass implements Listener {
 				}
 			}
 			
-		}, 0, 500);
+		}, 10, 100);
 	}
 
 }
