@@ -44,7 +44,7 @@ public class chatEvent implements Listener {
 		}
 	}
 
-	public String getMessage(String message, String suffixCallBack) {
+	/*public String getMessage(String message, String suffixCallBack) {
 		if(xEssentialsMemory.hightlights) {
 			String hashtag = ChatColor.translateAlternateColorCodes('&', xEssentialsMemory.hashtag);
 			for(Player p : Bukkit.getOnlinePlayers()) {
@@ -68,6 +68,31 @@ public class chatEvent implements Listener {
 						}
 					}
 				}	
+			}
+		}
+		return message;
+	}
+	 */
+	public String getMessage(String message, String suffix) {
+		if(xEssentialsMemory.hightlights) {
+			String hashtag = ChatColor.translateAlternateColorCodes('&', xEssentialsMemory.hashtag);
+			String[] args = message.split(" ");
+			for(String string : args) {
+				if(!message.contains("@"+string)) {
+					Player p = Bukkit.getPlayerExact(string);
+					if(p instanceof Player) {
+						if(vanishApi.isVanished(p)) {
+							message = message.replaceAll(string, ChatColor.GRAY + ChatColor.translateAlternateColorCodes('&',"&3[offline]" + hashtag + p.getName()));
+						} else {
+							message = message.replaceAll(string, hashtag + p.getName() + ChatColor.translateAlternateColorCodes('&', suffix));
+							effects(p);
+						}
+					} else if(fileManager.isDirectory(fileManager.getDir() + File.separator + "alts")) {
+						if(fileManager.file_exists(string + ".yml", fileManager.getDir() + File.separator + "alts")) {
+							message = message.replaceAll(string, ChatColor.translateAlternateColorCodes('&',"&3[offline]" + hashtag + string));
+						}
+					}
+				}
 			}
 		}
 		return message;
