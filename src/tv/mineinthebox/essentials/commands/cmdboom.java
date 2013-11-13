@@ -2,6 +2,7 @@ package tv.mineinthebox.essentials.commands;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -18,9 +19,14 @@ public class cmdboom {
 				if(args.length == 1) {
 					Player boom = Bukkit.getPlayer(args[0]);
 					if(boom instanceof Player) {
+						if(boom.getGameMode() == GameMode.CREATIVE) {
+							boom.setGameMode(GameMode.SURVIVAL);
+						} else if(boom.isFlying()) {
+							boom.setFlying(false);
+						}
 						signBoom.setInArray(boom.getName());
 						sender.sendMessage(ChatColor.GREEN + "You are boomed!");
-						Bukkit.broadcastMessage(ChatColor.GRAY + "The player " + ChatColor.GOLD +  args[0] + ChatColor.GRAY + " has been boomed by " + ChatColor.GREEN + sender.getName());
+						Bukkit.broadcastMessage(ChatColor.GRAY + "The player " + ChatColor.GREEN +  args[0] + ChatColor.GRAY + " has been boomed by " + ChatColor.GREEN + sender.getName());
 						Location loc = boom.getPlayer().getLocation();
 						loc.setY(loc.getY() + 100);
 						int speed = 10;

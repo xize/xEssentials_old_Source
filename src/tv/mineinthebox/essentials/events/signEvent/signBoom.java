@@ -16,29 +16,25 @@ import org.bukkit.event.block.SignChangeEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityDamageEvent.DamageCause;
 import org.bukkit.event.player.PlayerInteractEvent;
-import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerKickEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
-import org.bukkit.event.player.PlayerQuitEvent;
-import org.bukkit.inventory.ItemStack;
 
 public class signBoom implements Listener {
-	
+
 	public static HashSet<String> boomplayer = new HashSet<String>();
-	public static HashSet<String> newPlayer = new HashSet<String>();
-	
+
 	public static void setInArray(String string) {
 		boomplayer.add(string);
 	}
-	
+
 	@EventHandler
 	public void m(PlayerMoveEvent p) {
 		if(boomplayer.contains(p.getPlayer().getName())) {
-				if(p.getPlayer().getLocation().getBlock().getRelative(BlockFace.SELF).getType() == Material.WEB) {
-					boomplayer.remove(p.getPlayer().getName());
-				} else {
-					p.getPlayer().getWorld().createExplosion(p.getPlayer().getLocation(), 0.0F, false);
-				}
+			if(p.getPlayer().getLocation().getBlock().getRelative(BlockFace.SELF).getType() == Material.WEB) {
+				boomplayer.remove(p.getPlayer().getName());
+			} else {
+				p.getPlayer().getWorld().createExplosion(p.getPlayer().getLocation(), 0.0F, false);
+			}
 		}
 	}
 	@EventHandler
@@ -51,7 +47,7 @@ public class signBoom implements Listener {
 			}
 		}
 	}
-	
+
 	@EventHandler
 	public void SignBoom(SignChangeEvent s) {
 		if(s.getLine(0).equalsIgnoreCase("[boom]") && s.getPlayer().hasPermission("xEssentials.boom")) {
@@ -66,7 +62,7 @@ public class signBoom implements Listener {
 			}
 		}
 	}
-	
+
 	@EventHandler
 	public void signRightClickBoom(PlayerInteractEvent s) {
 		if(s.getAction() == Action.RIGHT_CLICK_BLOCK) {
@@ -79,74 +75,24 @@ public class signBoom implements Listener {
 						s.getPlayer().sendMessage(ChatColor.GOLD + "[Boom] " + ChatColor.RED + "You need to be survival to do this!");
 						s.setCancelled(true);
 					} else {
-						if(newPlayer.contains(s.getPlayer().getName())) {
-							ItemStack sword = new ItemStack(Material.STONE_SWORD);
-							ItemStack pick = new ItemStack(Material.STONE_PICKAXE);
-							ItemStack shovel = new ItemStack(Material.STONE_SPADE);
-							ItemStack axe = new ItemStack(Material.STONE_AXE);
-							ItemStack wood = new ItemStack(Material.WOOD);
-							ItemStack torch = new ItemStack(Material.TORCH);
-							ItemStack bed = new ItemStack(Material.BED);
-							ItemStack melon = new ItemStack(Material.MELON);
-							sword.setAmount(1);
-							pick.setAmount(1);
-							shovel.setAmount(1);
-							axe.setAmount(1);
-							wood.setAmount(28);
-							torch.setAmount(8);
-							bed.setAmount(1);
-							melon.setAmount(32);
-							//log.info("This player has interacted with this sign");
-							s.getPlayer().getServer().dispatchCommand(Bukkit.getConsoleSender(), "boom " + s.getPlayer().getName());
-							s.getPlayer().getInventory().addItem(sword);
-							s.getPlayer().getInventory().addItem(pick);
-							s.getPlayer().getInventory().addItem(shovel);
-							s.getPlayer().getInventory().addItem(axe);
-							s.getPlayer().getInventory().addItem(wood);
-							s.getPlayer().getInventory().addItem(torch);
-							s.getPlayer().getInventory().addItem(bed);
-							s.getPlayer().getInventory().addItem(melon);
-							s.getPlayer().sendMessage(ChatColor.GOLD + "[Boom] " + ChatColor.GREEN + "Because you are new on the server we gave you some items!");
-							newPlayer.remove(s.getPlayer().getName());
-						}
+						//log.info("This player has interacted with this sign");
+						s.getPlayer().getServer().dispatchCommand(Bukkit.getConsoleSender(), "boom " + s.getPlayer().getName());
+						s.getPlayer().sendMessage(ChatColor.GOLD + "[Boom] " + ChatColor.GREEN + "boooooom!");
 					}
 				}
 			}
 		}
 	}
-	
-	@EventHandler
-	public void newplayer(PlayerJoinEvent e) {
-		if(!e.getPlayer().hasPlayedBefore()) {
-			newPlayer.add(e.getPlayer().getName());
-		}
-	}
-	
-	@EventHandler
-	public void pquit(PlayerQuitEvent e) {
-		if(newPlayer.contains(e.getPlayer().getName())) {
-			newPlayer.remove(e.getPlayer().getName());
-		}
-		if(boomplayer.contains(e.getPlayer().getName())) {
-			boomplayer.remove(e.getPlayer().getName());
-		}
-	}
-	
+
 	@EventHandler
 	public void newplayer(PlayerKickEvent e) {
-		if(newPlayer.contains(e.getPlayer().getName())) {
-			newPlayer.remove(e.getPlayer().getName());
-		}
 		if(boomplayer.contains(e.getPlayer().getName())) {
 			boomplayer.remove(e.getPlayer().getName());
 		}
 	}
-	
+
 	@EventHandler
 	public void pquit(PlayerKickEvent e) {
-		if(newPlayer.contains(e.getPlayer().getName())) {
-			newPlayer.remove(e.getPlayer().getName());
-		}
 		if(boomplayer.contains(e.getPlayer().getName())) {
 			boomplayer.remove(e.getPlayer().getName());
 		}
