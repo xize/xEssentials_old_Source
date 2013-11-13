@@ -14,7 +14,7 @@ public class motd implements Listener {
 	ListIterator<String> it = xEssentialsMemory.motdMessages.listIterator(); 
 	
 	@EventHandler
-	public void setMothd(ServerListPingEvent e) {
+	public void setMotd(ServerListPingEvent e) {
 		if(xEssentialsMemory.motdEnabled) {
 			e.setMotd(ChatColor.translateAlternateColorCodes('&', xEssentialsMemory.motdMessage));	
 		} else if(xEssentialsMemory.motdRandom) {
