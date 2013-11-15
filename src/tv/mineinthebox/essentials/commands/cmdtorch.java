@@ -1,4 +1,4 @@
-package tv.mineinthebox.essentials.commands;
+ package tv.mineinthebox.essentials.commands;
 
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;

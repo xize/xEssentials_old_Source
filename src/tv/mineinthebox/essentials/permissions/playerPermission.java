@@ -86,7 +86,7 @@ public class playerPermission {
 		} else if(cmd.getName().equalsIgnoreCase("mute")) {
 			sender.sendMessage(ChatColor.RED + "you are not allowed to use this command! /" + cmd.getName() + "\n" + ChatColor.GRAY + "permission: xEssentials.command.mute");
 		} else if(cmd.getName().equalsIgnoreCase("unmute")) {
-			sender.sendMessage(ChatColor.RED + "you are not allowed to use this command! /" + cmd.getName() + "\n" + ChatColor.GRAY + "permission: xEssentials.command.mute");
+			sender.sendMessage(ChatColor.RED + "you are not allowed to use this command! /" + cmd.getName() + "\n" + ChatColor.GRAY + "permission: xEssentials.command.unmute");
 		} else if(cmd.getName().equalsIgnoreCase("xessentials")) {
 			if(args.length == 0) {
 				sender.sendMessage(ChatColor.RED + "you are not allowed to use this command! /" + cmd.getName() + "\n" + ChatColor.GRAY + "permission: xEssentials.command.xEssentials");
