@@ -10,6 +10,7 @@ import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Slime;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDeathEvent;
@@ -18,7 +19,7 @@ public class criticalEvent implements Listener {
 
 	public HashSet<Entity> entitys = new HashSet<Entity>();
 
-	@EventHandler
+	@EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
 	public void onCritical(EntityDamageByEntityEvent e) {
 		if(e.getDamager() instanceof Player) {
 			if(e.getEntity() instanceof LivingEntity) {
