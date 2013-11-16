@@ -263,7 +263,11 @@ commands:
      permission:
      permission-message:
 
-
+  hand:
+     description: check items in your hand
+     aliases: []
+     permission:
+     permission-message:
 
 permissions:
   #supertowns.random:

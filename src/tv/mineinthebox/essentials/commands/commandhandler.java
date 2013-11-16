@@ -91,6 +91,8 @@ public class commandhandler implements CommandExecutor {
 			cmdghost.execute(sender, cmd, args);
 		} else if(cmd.getName().equalsIgnoreCase("motd")) {
 			cmdmotd.execute(sender, cmd, args);
+		} else if(cmd.getName().equalsIgnoreCase("hand")) {
+			cmdhand.execute(sender, cmd, args);
 		}
 		return false;
 	}
