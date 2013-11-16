@@ -45,7 +45,8 @@ public class commandlist {
 			"hat",
 			"ghost",
 			"motd",
-			"hand"
+			"hand",
+			"heal"
 	};
 
 }
