@@ -45,5 +45,12 @@ public class hooks {
 		}
 		return false;
 	}
+	
+	public static boolean isManCoEnabled() {
+		if(Bukkit.getPluginManager().isPluginEnabled("ManCo")) {
+			return true;
+		}
+		return false;
+	}
 
 }

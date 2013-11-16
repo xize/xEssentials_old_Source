@@ -11,6 +11,8 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import tv.mineinthebox.essentials.fileManager;
+import tv.mineinthebox.essentials.hook.ManCoHook;
+import tv.mineinthebox.essentials.hook.hooks;
 import tv.mineinthebox.essentials.permissions.playerPermission;
 
 public class cmdteleport {
@@ -69,7 +71,27 @@ public class cmdteleport {
 					}
 				} else if(args.length == 2) {
 					if(args[1].equalsIgnoreCase("crate")) {
-						System.out.print("hi");
+						Player p = Bukkit.getPlayer(args[0]);
+						if(p instanceof Player) {
+							if(hooks.isManCoEnabled()) {
+								if(ManCoHook.playerHasCrate(p)) {
+									Location loc = ManCoHook.getCrateLocation(p);
+									if(sender instanceof Player) {
+										Player sp = (Player) sender;
+										sp.teleport(loc);
+										sp.sendMessage(ChatColor.GREEN + "successfully teleported to " + args[0] + " his crate!");
+									} else {
+										sender.sendMessage(ChatColor.RED + "a console cannot teleport to a crate!");
+									}
+								} else {
+									sender.sendMessage(ChatColor.RED + "this player does not own a crate at this time!");
+								}
+							} else {
+								sender.sendMessage(ChatColor.RED + "ManCo supply crates plugin is not installed!");
+							}
+						} else {
+							sender.sendMessage(ChatColor.RED + "this player is not online!");
+						}
 					} else {
 						Player player1 = Bukkit.getPlayer(args[0]);
 						Player player2 = Bukkit.getPlayer(args[1]);
