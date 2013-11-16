@@ -98,6 +98,8 @@ public class cmdteleport {
 						if(player1 instanceof Player) {
 							if(player2 instanceof Player) {
 								sender.sendMessage(ChatColor.GREEN + "successfully teleported " + player1.getName() + " to " + player2.getName());
+								player1.sendMessage(ChatColor.GREEN + sender.getName() + " has teleported you to " + player2.getName());
+								player2.sendMessage(ChatColor.GREEN + sender.getName() + " has teleported " + player1.getName() + " to you");
 								teleport(player1, player2);
 							}
 						}
