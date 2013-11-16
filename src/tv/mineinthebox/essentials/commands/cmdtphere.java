@@ -35,6 +35,7 @@ public class cmdtphere {
 							if(victem instanceof Player) {
 								victem.sendMessage(ChatColor.GREEN + sender.getName() + " has teleported you to his location");
 								victem.teleport(p);
+								sender.sendMessage(ChatColor.GREEN + "successfully teleported " + victem.getName() + " to you.");
 							} else {
 								sender.sendMessage(ChatColor.RED + "warning this player is not online!");
 							}
