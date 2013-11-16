@@ -56,6 +56,7 @@ import tv.mineinthebox.essentials.events.pluginEnableEvent.TPS;
 import tv.mineinthebox.essentials.events.pvp.KillBounty;
 import tv.mineinthebox.essentials.events.pvp.clientSideGraveyard;
 import tv.mineinthebox.essentials.events.pvp.disablePvp;
+import tv.mineinthebox.essentials.events.pvp.steveHurtSound;
 import tv.mineinthebox.essentials.events.realisticGlass.realisticGlass;
 import tv.mineinthebox.essentials.events.signEvent.fireworkSign;
 import tv.mineinthebox.essentials.events.signEvent.freeSign;
@@ -232,6 +233,10 @@ public class handler {
 		}
 		if(xEssentialsMemory.killBountyEnabled) {
 			setListener(new KillBounty());
+		}
+		if(xEssentialsMemory.playerSteveHurtSound) {
+			System.out.print("steves sounds enabled");
+			setListener(new steveHurtSound());
 		}
 		
 		/*
