@@ -95,6 +95,8 @@ public class commandhandler implements CommandExecutor {
 			cmdhand.execute(sender, cmd, args);
 		} else if(cmd.getName().equalsIgnoreCase("heal")) {
 			cmdheal.execute(sender, cmd, args);
+		} else if(cmd.getName().equalsIgnoreCase("tp-id")) {
+			cmdtpid.execute(sender, cmd, args);
 		}
 		return false;
 	}

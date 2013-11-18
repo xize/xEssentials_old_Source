@@ -15,7 +15,7 @@ import tv.mineinthebox.essentials.permissions.playerPermission;
 import tv.mineinthebox.essentials.resources.timeunit.timeunits;
 
 public class cmdmodreq {
-	
+
 	public static boolean execute(CommandSender sender, Command cmd, String[] args) {
 		if(cmd.getName().equalsIgnoreCase("modreq")) {
 			if(sender instanceof Player) {
@@ -48,6 +48,14 @@ public class cmdmodreq {
 								Date date = timeunits.setLongToDate(System.currentTimeMillis());
 								fileManager.writeFile(sender.getName() + ".yml", "submitDate", date.toString(), fileManager.getDir() + File.separator + "modreq");
 								fileManager.writeFile(sender.getName() + ".yml", "message", message.toString(), fileManager.getDir() + File.separator + "modreq");
+								Player p = (Player) sender;
+								if(p instanceof Player) {
+									fileManager.writeFile(sender.getName() + ".yml", "x", p.getLocation().getX(), fileManager.getDir() + File.separator + "modreq");
+									fileManager.writeFile(sender.getName() + ".yml", "y", p.getLocation().getY(), fileManager.getDir() + File.separator + "modreq");
+									fileManager.writeFile(sender.getName() + ".yml", "z", p.getLocation().getZ(), fileManager.getDir() + File.separator + "modreq");
+									fileManager.writeFile(sender.getName() + ".yml", "yaw", p.getLocation().getYaw(), fileManager.getDir() + File.separator + "modreq");
+									fileManager.writeFile(sender.getName() + ".yml", "world", p.getWorld().getName(), fileManager.getDir() + File.separator + "modreq");
+								}
 								sender.sendMessage(ChatColor.GREEN + "successfully updated old modreq!");
 								Bukkit.broadcast(sender.getName() + " has updated his ticket, use /check " + sender.getName() + " to look into his ticket request", "xEssentials.isStaff");
 							} else {
@@ -58,8 +66,16 @@ public class cmdmodreq {
 								Date date = timeunits.setLongToDate(System.currentTimeMillis());
 								fileManager.writeFile(sender.getName() + ".yml", "submitDate", date.toString(), fileManager.getDir() + File.separator + "modreq");
 								fileManager.writeFile(sender.getName() + ".yml", "message", message.toString(), fileManager.getDir() + File.separator + "modreq");
+								Player p = (Player) sender;
+								if(p instanceof Player) {
+									fileManager.writeFile(sender.getName() + ".yml", "x", p.getLocation().getX(), fileManager.getDir() + File.separator + "modreq");
+									fileManager.writeFile(sender.getName() + ".yml", "y", p.getLocation().getY(), fileManager.getDir() + File.separator + "modreq");
+									fileManager.writeFile(sender.getName() + ".yml", "z", p.getLocation().getZ(), fileManager.getDir() + File.separator + "modreq");
+									fileManager.writeFile(sender.getName() + ".yml", "yaw", p.getLocation().getYaw(), fileManager.getDir() + File.separator + "modreq");
+									fileManager.writeFile(sender.getName() + ".yml", "world", p.getWorld().getName(), fileManager.getDir() + File.separator + "modreq");
+								}
 								sender.sendMessage(ChatColor.GREEN + "successfully created a modreq!");
-								Bukkit.broadcast(sender.getName() + " has created a new modreq ticket, use /check " + sender.getName() + " to look into his ticket request", "xEssentials.isStaff");
+								Bukkit.broadcast(ChatColor.GREEN + sender.getName() + " has created a new modreq ticket, use /check " + sender.getName() + " to look into his ticket request", "xEssentials.isStaff");
 							}
 						}
 					} else {
@@ -71,8 +87,16 @@ public class cmdmodreq {
 							Date date = timeunits.setLongToDate(System.currentTimeMillis());
 							fileManager.writeFile(sender.getName() + ".yml", "submitDate", date.toString(), fileManager.getDir() + File.separator + "modreq");
 							fileManager.writeFile(sender.getName() + ".yml", "message", message.toString(), fileManager.getDir() + File.separator + "modreq");
+							Player p = (Player) sender;
+							if(p instanceof Player) {
+								fileManager.writeFile(sender.getName() + ".yml", "x", p.getLocation().getX(), fileManager.getDir() + File.separator + "modreq");
+								fileManager.writeFile(sender.getName() + ".yml", "y", p.getLocation().getY(), fileManager.getDir() + File.separator + "modreq");
+								fileManager.writeFile(sender.getName() + ".yml", "z", p.getLocation().getZ(), fileManager.getDir() + File.separator + "modreq");
+								fileManager.writeFile(sender.getName() + ".yml", "yaw", p.getLocation().getYaw(), fileManager.getDir() + File.separator + "modreq");
+								fileManager.writeFile(sender.getName() + ".yml", "world", p.getWorld().getName(), fileManager.getDir() + File.separator + "modreq");
+							}
 							sender.sendMessage(ChatColor.GREEN + "successfully updated old modreq!");
-							Bukkit.broadcast(sender.getName() + " has updated his ticket, use /check " + sender.getName() + " to look into his ticket request", "xEssentials.isStaff");
+							Bukkit.broadcast(ChatColor.GREEN + sender.getName() + " has updated his ticket, use /check " + sender.getName() + " to look into his ticket request", "xEssentials.isStaff");
 						} else {
 							StringBuilder message = new StringBuilder();
 							for(int i = 0; i < args.length; i++) {
@@ -81,8 +105,16 @@ public class cmdmodreq {
 							Date date = timeunits.setLongToDate(System.currentTimeMillis());
 							fileManager.writeFile(sender.getName() + ".yml", "submitDate", date.toString(), fileManager.getDir() + File.separator + "modreq");
 							fileManager.writeFile(sender.getName() + ".yml", "message", message.toString(), fileManager.getDir() + File.separator + "modreq");
+							Player p = (Player) sender;
+							if(p instanceof Player) {
+								fileManager.writeFile(sender.getName() + ".yml", "x", p.getLocation().getX(), fileManager.getDir() + File.separator + "modreq");
+								fileManager.writeFile(sender.getName() + ".yml", "y", p.getLocation().getY(), fileManager.getDir() + File.separator + "modreq");
+								fileManager.writeFile(sender.getName() + ".yml", "z", p.getLocation().getZ(), fileManager.getDir() + File.separator + "modreq");
+								fileManager.writeFile(sender.getName() + ".yml", "yaw", p.getLocation().getYaw(), fileManager.getDir() + File.separator + "modreq");
+								fileManager.writeFile(sender.getName() + ".yml", "world", p.getWorld().getName(), fileManager.getDir() + File.separator + "modreq");
+							}
 							sender.sendMessage(ChatColor.GREEN + "successfully created a modreq!");
-							Bukkit.broadcast(sender.getName() + " has created a new modreq ticket, use /check " + sender.getName() + " to look into his ticket request", "xEssentials.isStaff");
+							Bukkit.broadcast(ChatColor.GREEN + sender.getName() + " has created a new modreq ticket, use /check " + sender.getName() + " to look into his ticket request", "xEssentials.isStaff");
 						}
 					}
 				} else {

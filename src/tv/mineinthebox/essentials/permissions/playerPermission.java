@@ -119,6 +119,8 @@ public class playerPermission {
 			sender.sendMessage(ChatColor.RED + "you are not allowed to use this command! /" + cmd.getName() + "\n" + ChatColor.GRAY + "permission: xEssentials.command.hand");
 		} else if(cmd.getName().equalsIgnoreCase("heal")) {
 			sender.sendMessage(ChatColor.RED + "you are not allowed to use this command! /" + cmd.getName() + "\n" + ChatColor.GRAY + "permission: xEssentials.command.heal");
+		} else if(cmd.getName().equalsIgnoreCase("tp-id")) {
+			sender.sendMessage(ChatColor.RED + "you are not allowed to use this command! /" + cmd.getName() + "\n" + ChatColor.GRAY + "permission: xEssentials.command.tpid");
 		}
 	}
 

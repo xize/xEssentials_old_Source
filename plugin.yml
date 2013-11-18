@@ -275,6 +275,12 @@ commands:
      permission:
      permission-message:
 
+  tp-id:
+     description: teleport
+     aliases: []
+     permission:
+     permission-message:
+
 permissions:
   #supertowns.random:
   #  description: Gives access to all plugin commands
