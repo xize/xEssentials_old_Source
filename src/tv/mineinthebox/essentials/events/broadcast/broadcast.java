@@ -36,7 +36,7 @@ public class broadcast {
 			public void run() {
 				for(Player p : Bukkit.getOnlinePlayers()) {
 					if(i < broadcastMessages().size()) {
-						p.sendMessage(ChatColor.translateAlternateColorCodes('&', returnPrefix() + ": " + returnSuffix() + broadcastMessages().get(i).replace("%p", "&2"+p.getName()+returnSuffix())));
+						p.sendMessage(ChatColor.translateAlternateColorCodes('&', returnPrefix() + ": " + returnSuffix() + broadcastMessages().get(i).replace("%p", "&2@"+p.getName()+returnSuffix())));
 					} else {
 						i = -1;
 					}
