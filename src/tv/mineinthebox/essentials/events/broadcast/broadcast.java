@@ -11,6 +11,8 @@ import tv.mineinthebox.essentials.fileManager;
 import tv.mineinthebox.essentials.xEssentials;
 import tv.mineinthebox.essentials.xEssentialsMemory;
 import tv.mineinthebox.essentials.events.handler;
+import tv.mineinthebox.essentials.events.chatEvent.chatEvent;
+import tv.mineinthebox.essentials.resources.vanish.vanishApi;
 
 public class broadcast {
 
@@ -36,9 +38,18 @@ public class broadcast {
 			public void run() {
 				for(Player p : Bukkit.getOnlinePlayers()) {
 					if(i < broadcastMessages().size()) {
-						p.sendMessage(ChatColor.translateAlternateColorCodes('&', returnPrefix() + ": " + returnSuffix() + broadcastMessages().get(i).replace("%p", xEssentialsMemory.hashtag+p.getName()+returnSuffix())));
+						if(xEssentialsMemory.hightlights) {
+							if(!vanishApi.isVanished(p)) {
+								p.sendMessage(ChatColor.translateAlternateColorCodes('&', xEssentialsMemory.setSmilleys(returnPrefix() + ": " + returnSuffix() + broadcastMessages().get(i).replace("%p", xEssentialsMemory.hashtag+p.getName()+returnSuffix()), returnSuffix())));	
+								if(broadcastMessages().get(i).contains("%p")) {
+									chatEvent.effects(p);	
+								}
+							}
+						} else {
+							p.sendMessage(ChatColor.translateAlternateColorCodes('&', returnPrefix() + ": " + returnSuffix() + broadcastMessages().get(i)));	
+						}
 					} else {
-						i = -1;
+						i = 0;
 					}
 				}
 				i++;
