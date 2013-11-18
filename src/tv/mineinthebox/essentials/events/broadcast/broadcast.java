@@ -36,8 +36,9 @@ public class broadcast {
 		taskId = Bukkit.getScheduler().runTaskTimer(xEssentials.getPlugin(), new Runnable() {
 			@Override
 			public void run() {
+				if(i < broadcastMessages().size()) {
 				for(Player p : Bukkit.getOnlinePlayers()) {
-					if(i < broadcastMessages().size()) {
+					
 						if(xEssentialsMemory.hightlights) {
 							if(!vanishApi.isVanished(p)) {
 								p.sendMessage(ChatColor.translateAlternateColorCodes('&', xEssentialsMemory.setSmilleys(returnPrefix() + ": " + returnSuffix() + broadcastMessages().get(i).replace("%p", xEssentialsMemory.hashtag+p.getName()+returnSuffix()), returnSuffix())));	
@@ -48,9 +49,9 @@ public class broadcast {
 						} else {
 							p.sendMessage(ChatColor.translateAlternateColorCodes('&', returnPrefix() + ": " + returnSuffix() + broadcastMessages().get(i)));	
 						}
-					} else {
-						i = 0;
 					}
+				} else {
+					i = 0;
 				}
 				i++;
 			}
