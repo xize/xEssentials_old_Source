@@ -6,7 +6,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import tv.mineinthebox.essentials.events.playerMoveEvent.afkCheck;
+import tv.mineinthebox.essentials.events.playerEvents.afkCheck;
 import tv.mineinthebox.essentials.permissions.consolePermission;
 
 public class cmdafk {

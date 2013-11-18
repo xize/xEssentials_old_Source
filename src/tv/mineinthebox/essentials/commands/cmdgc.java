@@ -4,7 +4,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 
-import tv.mineinthebox.essentials.events.pluginEnableEvent.TPS;
+import tv.mineinthebox.essentials.events.playerEvents.TPS;
 import tv.mineinthebox.essentials.permissions.playerPermission;
 
 public class cmdgc {

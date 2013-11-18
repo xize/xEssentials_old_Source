@@ -6,66 +6,66 @@ import org.bukkit.event.Listener;
 
 import tv.mineinthebox.essentials.xEssentials;
 import tv.mineinthebox.essentials.xEssentialsMemory;
-import tv.mineinthebox.essentials.events.EntityEvent.creatureSpawnManager;
-import tv.mineinthebox.essentials.events.EntityEvent.criticalEvent;
-import tv.mineinthebox.essentials.events.EntityEvent.disableFireWork;
-import tv.mineinthebox.essentials.events.EntityEvent.disableSpawnEggs;
-import tv.mineinthebox.essentials.events.EntityEvent.egglogger;
-import tv.mineinthebox.essentials.events.EntityEvent.enderDragonCheck;
-import tv.mineinthebox.essentials.events.EntityEvent.endermanCheck;
-import tv.mineinthebox.essentials.events.EntityEvent.firespread;
-import tv.mineinthebox.essentials.events.EntityEvent.witherGrief;
-import tv.mineinthebox.essentials.events.EntityEvent.zombieTarget;
+import tv.mineinthebox.essentials.events.EntityEvents.creatureSpawnManager;
+import tv.mineinthebox.essentials.events.EntityEvents.criticalEvent;
+import tv.mineinthebox.essentials.events.EntityEvents.disableFireWork;
+import tv.mineinthebox.essentials.events.EntityEvents.disableSpawnEggs;
+import tv.mineinthebox.essentials.events.EntityEvents.egglogger;
+import tv.mineinthebox.essentials.events.EntityEvents.enderDragonCheck;
+import tv.mineinthebox.essentials.events.EntityEvents.endermanCheck;
+import tv.mineinthebox.essentials.events.EntityEvents.firespread;
+import tv.mineinthebox.essentials.events.EntityEvents.weatherEvent;
+import tv.mineinthebox.essentials.events.EntityEvents.witherGrief;
+import tv.mineinthebox.essentials.events.EntityEvents.zombieTarget;
+import tv.mineinthebox.essentials.events.banEvents.AntiFloodSpam;
+import tv.mineinthebox.essentials.events.banEvents.alternateAccountEvent;
+import tv.mineinthebox.essentials.events.banEvents.banKickEvent;
+import tv.mineinthebox.essentials.events.banEvents.bancheck;
+import tv.mineinthebox.essentials.events.banEvents.muteManager;
+import tv.mineinthebox.essentials.events.banEvents.saveKickAlt;
+import tv.mineinthebox.essentials.events.banEvents.saveLeaveAlt;
 import tv.mineinthebox.essentials.events.broadcast.broadcast;
-import tv.mineinthebox.essentials.events.chatEvent.AntiFloodSpam;
-import tv.mineinthebox.essentials.events.chatEvent.afkChat;
-import tv.mineinthebox.essentials.events.chatEvent.chatEvent;
-import tv.mineinthebox.essentials.events.chatEvent.muteManager;
-import tv.mineinthebox.essentials.events.joinEvent.PlayerTaskEvent;
-import tv.mineinthebox.essentials.events.joinEvent.alternateAccountEvent;
-import tv.mineinthebox.essentials.events.joinEvent.bancheck;
-import tv.mineinthebox.essentials.events.joinEvent.flyEvent;
-import tv.mineinthebox.essentials.events.joinEvent.ghostJoin;
-import tv.mineinthebox.essentials.events.joinEvent.joinMessageEvent;
-import tv.mineinthebox.essentials.events.joinEvent.loadMemory;
-import tv.mineinthebox.essentials.events.joinEvent.modreqEvent;
-import tv.mineinthebox.essentials.events.joinEvent.newPlayer;
-import tv.mineinthebox.essentials.events.joinEvent.taskEvent;
-import tv.mineinthebox.essentials.events.kickEvent.banKickEvent;
-import tv.mineinthebox.essentials.events.kickEvent.delKickMemory;
-import tv.mineinthebox.essentials.events.kickEvent.ghostkickLeave;
-import tv.mineinthebox.essentials.events.kickEvent.saveKickAlt;
-import tv.mineinthebox.essentials.events.kickEvent.saveLocationEvent;
-import tv.mineinthebox.essentials.events.leaveEvent.delLeaveMemory;
-import tv.mineinthebox.essentials.events.leaveEvent.ghostLeave;
-import tv.mineinthebox.essentials.events.leaveEvent.leaveMessageEvent;
-import tv.mineinthebox.essentials.events.leaveEvent.locationSave;
-import tv.mineinthebox.essentials.events.leaveEvent.saveInventory;
-import tv.mineinthebox.essentials.events.leaveEvent.saveLeaveAlt;
-import tv.mineinthebox.essentials.events.leaveEvent.torchEventLeave;
+import tv.mineinthebox.essentials.events.memory.delKickMemory;
+import tv.mineinthebox.essentials.events.memory.delLeaveMemory;
+import tv.mineinthebox.essentials.events.memory.loadMemory;
 import tv.mineinthebox.essentials.events.motd.motd;
-import tv.mineinthebox.essentials.events.playerDeathEvent.deathBackEvent;
-import tv.mineinthebox.essentials.events.playerDeathEvent.deathHeadEvent;
-import tv.mineinthebox.essentials.events.playerMoveEvent.afkCheck;
-import tv.mineinthebox.essentials.events.playerMoveEvent.afkScheduler;
-import tv.mineinthebox.essentials.events.playerMoveEvent.firefly;
-import tv.mineinthebox.essentials.events.playerMoveEvent.torchEvent;
-import tv.mineinthebox.essentials.events.playerMoveEvent.zoneEvent;
-import tv.mineinthebox.essentials.events.pluginEnableEvent.TPS;
-import tv.mineinthebox.essentials.events.pvp.KillBounty;
-import tv.mineinthebox.essentials.events.pvp.clientSideGraveyard;
-import tv.mineinthebox.essentials.events.pvp.disablePvp;
-import tv.mineinthebox.essentials.events.pvp.steveHurtSound;
-import tv.mineinthebox.essentials.events.realisticGlass.realisticGlass;
+import tv.mineinthebox.essentials.events.playerEvents.KillBounty;
+import tv.mineinthebox.essentials.events.playerEvents.PlayerTaskEvent;
+import tv.mineinthebox.essentials.events.playerEvents.TPS;
+import tv.mineinthebox.essentials.events.playerEvents.afkChat;
+import tv.mineinthebox.essentials.events.playerEvents.afkCheck;
+import tv.mineinthebox.essentials.events.playerEvents.afkScheduler;
+import tv.mineinthebox.essentials.events.playerEvents.chatEvent;
+import tv.mineinthebox.essentials.events.playerEvents.clientSideGraveyard;
+import tv.mineinthebox.essentials.events.playerEvents.deathHeadEvent;
+import tv.mineinthebox.essentials.events.playerEvents.disablePvp;
+import tv.mineinthebox.essentials.events.playerEvents.firefly;
+import tv.mineinthebox.essentials.events.playerEvents.flyEvent;
+import tv.mineinthebox.essentials.events.playerEvents.ghostJoin;
+import tv.mineinthebox.essentials.events.playerEvents.ghostLeave;
+import tv.mineinthebox.essentials.events.playerEvents.ghostkickLeave;
+import tv.mineinthebox.essentials.events.playerEvents.joinMessageEvent;
+import tv.mineinthebox.essentials.events.playerEvents.leaveMessageEvent;
+import tv.mineinthebox.essentials.events.playerEvents.locationSave;
+import tv.mineinthebox.essentials.events.playerEvents.modreqEvent;
+import tv.mineinthebox.essentials.events.playerEvents.newPlayer_spawn;
+import tv.mineinthebox.essentials.events.playerEvents.realisticGlass;
+import tv.mineinthebox.essentials.events.playerEvents.saveInventory;
+import tv.mineinthebox.essentials.events.playerEvents.saveLocationEvent;
+import tv.mineinthebox.essentials.events.playerEvents.steveHurtSound;
+import tv.mineinthebox.essentials.events.playerEvents.taskEvent;
+import tv.mineinthebox.essentials.events.playerEvents.torchEvent;
+import tv.mineinthebox.essentials.events.playerEvents.torchEventLeave;
+import tv.mineinthebox.essentials.events.playerEvents.wg_spawnzone;
 import tv.mineinthebox.essentials.events.signEvent.colorSigns;
 import tv.mineinthebox.essentials.events.signEvent.fireworkSign;
 import tv.mineinthebox.essentials.events.signEvent.freeSign;
 import tv.mineinthebox.essentials.events.signEvent.signBoom;
-import tv.mineinthebox.essentials.events.teleportEvent.teleportBack;
+import tv.mineinthebox.essentials.events.teleportEvents.deathBackEvent;
+import tv.mineinthebox.essentials.events.teleportEvents.teleportBack;
 import tv.mineinthebox.essentials.events.vanishEvents.vanishEntity;
 import tv.mineinthebox.essentials.events.vanishEvents.vanishInteract;
 import tv.mineinthebox.essentials.events.vanishEvents.vanishOnjoin;
-import tv.mineinthebox.essentials.events.weatherEvent.weatherEvent;
 
 public class handler {
 
@@ -129,7 +129,7 @@ public class handler {
 		
 		setListener(new firefly());
 		setListener(new torchEvent());
-		setListener(new zoneEvent());
+		setListener(new wg_spawnzone());
 		
 		/*
 		 * 
@@ -204,7 +204,7 @@ public class handler {
 		 */
 		
 		setListener(new teleportBack());
-		setListener(new newPlayer());
+		setListener(new newPlayer_spawn());
 		
 		/*
 		 * 

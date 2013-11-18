@@ -11,7 +11,7 @@ import tv.mineinthebox.essentials.fileManager;
 import tv.mineinthebox.essentials.xEssentials;
 import tv.mineinthebox.essentials.xEssentialsMemory;
 import tv.mineinthebox.essentials.events.handler;
-import tv.mineinthebox.essentials.events.chatEvent.chatEvent;
+import tv.mineinthebox.essentials.events.playerEvents.chatEvent;
 import tv.mineinthebox.essentials.resources.vanish.vanishApi;
 
 public class broadcast {
