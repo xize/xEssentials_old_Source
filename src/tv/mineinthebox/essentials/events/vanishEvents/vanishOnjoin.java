@@ -1,4 +1,4 @@
-package tv.mineinthebox.essentials.events.joinEvent;
+package tv.mineinthebox.essentials.events.vanishEvents;
 
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -8,7 +8,7 @@ import org.bukkit.event.player.PlayerJoinEvent;
 
 import tv.mineinthebox.essentials.resources.vanish.vanishApi;
 
-public class vanishEvent implements Listener {
+public class vanishOnjoin implements Listener {
 	@EventHandler
 	public void vanishHandle(PlayerJoinEvent e) {
 		if(vanishApi.isVanished(e.getPlayer())) {

@@ -31,7 +31,6 @@ import tv.mineinthebox.essentials.events.joinEvent.loadMemory;
 import tv.mineinthebox.essentials.events.joinEvent.modreqEvent;
 import tv.mineinthebox.essentials.events.joinEvent.newPlayer;
 import tv.mineinthebox.essentials.events.joinEvent.taskEvent;
-import tv.mineinthebox.essentials.events.joinEvent.vanishEvent;
 import tv.mineinthebox.essentials.events.kickEvent.banKickEvent;
 import tv.mineinthebox.essentials.events.kickEvent.delKickMemory;
 import tv.mineinthebox.essentials.events.kickEvent.ghostkickLeave;
@@ -63,6 +62,9 @@ import tv.mineinthebox.essentials.events.signEvent.fireworkSign;
 import tv.mineinthebox.essentials.events.signEvent.freeSign;
 import tv.mineinthebox.essentials.events.signEvent.signBoom;
 import tv.mineinthebox.essentials.events.teleportEvent.teleportBack;
+import tv.mineinthebox.essentials.events.vanishEvents.vanishEntity;
+import tv.mineinthebox.essentials.events.vanishEvents.vanishInteract;
+import tv.mineinthebox.essentials.events.vanishEvents.vanishOnjoin;
 import tv.mineinthebox.essentials.events.weatherEvent.weatherEvent;
 
 public class handler {
@@ -96,7 +98,6 @@ public class handler {
 		setListener(new joinMessageEvent());
 		setListener(new modreqEvent());
 		setListener(new taskEvent());
-		setListener(new vanishEvent());
 		setListener(new PlayerTaskEvent());
 		
 		/*
@@ -298,6 +299,16 @@ public class handler {
 		 * 
 		 */
 		setListener(new motd());
+		
+		/*
+		 * 
+		 * Vanish events
+		 * 
+		 * 
+		 */
+		setListener(new vanishEntity());
+		setListener(new vanishInteract());
+		setListener(new vanishOnjoin());
 	}
 
 	public void setListener(Listener listener) {
