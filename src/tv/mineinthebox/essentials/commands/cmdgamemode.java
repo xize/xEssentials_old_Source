@@ -164,13 +164,13 @@ public class cmdgamemode {
 
 	public static void saveSurvivalInventory(Player p) {
 		try {
-			if(fileManager.file_exists(p.getName() + "_survival.yml", fileManager.getDir() + File.separator + "gamemodes")) {
-				fileManager.returnFile(p.getName() + "_survival.yml", fileManager.getDir() + File.separator + "gamemodes").delete();
-				fileManager.writeFile(p.getName() + "_survival.yml", "inv", p.getPlayer().getInventory().getContents(), fileManager.getDir() + File.separator + "gamemodes");
-				fileManager.writeFile(p.getName() + "_survival.yml", "armor", p.getPlayer().getInventory().getArmorContents(), fileManager.getDir() + File.separator + "gamemodes");
+			if(fileManager.file_exists(p.getName().toLowerCase() + "_survival.yml", fileManager.getDir() + File.separator + "gamemodes")) {
+				fileManager.returnFile(p.getName().toLowerCase() + "_survival.yml", fileManager.getDir() + File.separator + "gamemodes").delete();
+				fileManager.writeFile(p.getName().toLowerCase() + "_survival.yml", "inv", p.getPlayer().getInventory().getContents(), fileManager.getDir() + File.separator + "gamemodes");
+				fileManager.writeFile(p.getName().toLowerCase() + "_survival.yml", "armor", p.getPlayer().getInventory().getArmorContents(), fileManager.getDir() + File.separator + "gamemodes");
 			} else {
-				fileManager.writeFile(p.getName() + "_survival.yml", "inv", p.getPlayer().getInventory().getContents(), fileManager.getDir() + File.separator + "gamemodes");
-				fileManager.writeFile(p.getName() + "_survival.yml", "armor", p.getPlayer().getInventory().getArmorContents(), fileManager.getDir() + File.separator + "gamemodes");
+				fileManager.writeFile(p.getName().toLowerCase() + "_survival.yml", "inv", p.getPlayer().getInventory().getContents(), fileManager.getDir() + File.separator + "gamemodes");
+				fileManager.writeFile(p.getName().toLowerCase() + "_survival.yml", "armor", p.getPlayer().getInventory().getArmorContents(), fileManager.getDir() + File.separator + "gamemodes");
 			}
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -179,9 +179,9 @@ public class cmdgamemode {
 
 	public static void loadSurvivalInventory(Player p) {
 		try {
-			if(fileManager.file_exists(p.getName() + "_survival.yml", fileManager.getDir() + File.separator + "gamemodes")) {
-				List<?> list = fileManager.getListValue(p.getName() + "_survival.yml", "inv", fileManager.getDir() + File.separator + "gamemodes");
-				List<?> armor = fileManager.getListValue(p.getName() + "_survival.yml", "armor", fileManager.getDir() + File.separator + "gamemodes");
+			if(fileManager.file_exists(p.getName().toLowerCase() + "_survival.yml", fileManager.getDir() + File.separator + "gamemodes")) {
+				List<?> list = fileManager.getListValue(p.getName().toLowerCase() + "_survival.yml", "inv", fileManager.getDir() + File.separator + "gamemodes");
+				List<?> armor = fileManager.getListValue(p.getName().toLowerCase() + "_survival.yml", "armor", fileManager.getDir() + File.separator + "gamemodes");
 				if (list != null) {
 					for (int i = 0; i < Math.min(list.size(), p.getInventory().getSize()); i++) {
 						p.getInventory().setItem(i, (ItemStack)list.get(i));
@@ -214,13 +214,13 @@ public class cmdgamemode {
 
 	public static void saveCreativeInventory(Player p) {
 		try {
-			if(fileManager.file_exists(p.getName() + "_creative.yml", fileManager.getDir() + File.separator + "gamemodes")) {
-				fileManager.returnFile(p.getName() + "_creative.yml", fileManager.getDir() + File.separator + "gamemodes").delete();
-				fileManager.writeFile(p.getName() + "_creative.yml", "inv", p.getPlayer().getInventory().getContents(), fileManager.getDir() + File.separator + "gamemodes");
-				fileManager.writeFile(p.getName() + "_creative.yml", "armor", p.getPlayer().getInventory().getArmorContents(), fileManager.getDir() + File.separator + "gamemodes");
+			if(fileManager.file_exists(p.getName().toLowerCase() + "_creative.yml", fileManager.getDir() + File.separator + "gamemodes")) {
+				fileManager.returnFile(p.getName().toLowerCase() + "_creative.yml", fileManager.getDir() + File.separator + "gamemodes").delete();
+				fileManager.writeFile(p.getName().toLowerCase() + "_creative.yml", "inv", p.getPlayer().getInventory().getContents(), fileManager.getDir() + File.separator + "gamemodes");
+				fileManager.writeFile(p.getName().toLowerCase() + "_creative.yml", "armor", p.getPlayer().getInventory().getArmorContents(), fileManager.getDir() + File.separator + "gamemodes");
 			} else {
-				fileManager.writeFile(p.getName() + "_creative.yml", "inv", p.getPlayer().getInventory().getContents(), fileManager.getDir() + File.separator + "gamemodes");
-				fileManager.writeFile(p.getName() + "_creative.yml", "armor", p.getPlayer().getInventory().getArmorContents(), fileManager.getDir() + File.separator + "gamemodes");
+				fileManager.writeFile(p.getName().toLowerCase() + "_creative.yml", "inv", p.getPlayer().getInventory().getContents(), fileManager.getDir() + File.separator + "gamemodes");
+				fileManager.writeFile(p.getName().toLowerCase() + "_creative.yml", "armor", p.getPlayer().getInventory().getArmorContents(), fileManager.getDir() + File.separator + "gamemodes");
 			}
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -229,9 +229,9 @@ public class cmdgamemode {
 
 	public static void loadCreativeInventory(Player p) {
 		try {
-			if(fileManager.file_exists(p.getName() + "_creative.yml", fileManager.getDir() + File.separator + "gamemodes")) {
-				List<?> list = fileManager.getListValue(p.getName() + "_creative.yml", "inv", fileManager.getDir() + File.separator + "gamemodes");
-				List<?> armor = fileManager.getListValue(p.getName() + "_creative.yml", "armor", fileManager.getDir() + File.separator + "gamemodes");
+			if(fileManager.file_exists(p.getName().toLowerCase() + "_creative.yml", fileManager.getDir() + File.separator + "gamemodes")) {
+				List<?> list = fileManager.getListValue(p.getName().toLowerCase() + "_creative.yml", "inv", fileManager.getDir() + File.separator + "gamemodes");
+				List<?> armor = fileManager.getListValue(p.getName().toLowerCase() + "_creative.yml", "armor", fileManager.getDir() + File.separator + "gamemodes");
 				if (list != null) {
 					for (int i = 0; i < Math.min(list.size(), p.getInventory().getSize()); i++) {
 						p.getInventory().setItem(i, (ItemStack)list.get(i));
