@@ -36,10 +36,10 @@ public class cmdunmute {
 								sender.sendMessage(ChatColor.RED + args[0] + " is not muted!");
 							}
 						} else {
-							if(fileManager.file_exists(args[0] + ".yml", fileManager.getDir() + File.separator + "players")) {
-								if(fileManager.isSet(args[0] + ".yml", "muted", fileManager.getDir() + File.separator + "players")) {
+							if(fileManager.file_exists(args[0].toLowerCase() + ".yml", fileManager.getDir() + File.separator + "players")) {
+								if(fileManager.isSet(args[0].toLowerCase() + ".yml", "muted", fileManager.getDir() + File.separator + "players")) {
 									sender.sendMessage(ChatColor.GREEN + "successfully unmuted offline player " + args[0]);
-									fileManager.removeNode(args[0] + ".yml", "muted", fileManager.getDir() + File.separator + "players");
+									fileManager.removeNode(args[0].toLowerCase() + ".yml", "muted", fileManager.getDir() + File.separator + "players");
 								} else {
 									sender.sendMessage(ChatColor.RED + args[0] + " is not muted!");
 								}
