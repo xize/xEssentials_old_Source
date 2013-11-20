@@ -36,31 +36,31 @@ public class cmdhomeinvite {
 							sender.sendMessage(ChatColor.GRAY + "Default: " + ChatColor.GRAY + "/homeinvite accept " + ChatColor.WHITE + ": accept the invite to teleport to the players home!");
 							sender.sendMessage(ChatColor.GRAY + "Default: " + ChatColor.GRAY + "/homeinvite deny " + ChatColor.WHITE + ": refuse the invite to teleport to the players home!");
 						} else if(args[0].equalsIgnoreCase("accept")) {
-							if(playerInvites.containsKey(sender.getName())) {
-								Player requester = Bukkit.getPlayerExact(playerInvites.get(sender.getName()));
+							if(playerInvites.containsKey(sender.getName().toLowerCase())) {
+								Player requester = Bukkit.getPlayer(playerInvites.get(sender.getName()));
 								if(requester instanceof Player) {
 									Location loc = new Location(Bukkit.getWorld(fileManager.getStringValue(requester.getName().toLowerCase() + ".yml", "World", fileManager.getDir() + File.separator + "homes")), fileManager.getDoubleValue(requester.getName().toLowerCase() + ".yml", "x", fileManager.getDir() + File.separator + "homes"), fileManager.getDoubleValue(requester.getName().toLowerCase() + ".yml", "y", fileManager.getDir() + File.separator + "homes"), fileManager.getDoubleValue(requester.getName().toLowerCase() + ".yml", "z", fileManager.getDir() + File.separator + "homes"), fileManager.getIntegerValue(requester.getName().toLowerCase() + ".yml", "yaw", fileManager.getDir() + File.separator + "homes"), requester.getLocation().getPitch());
 									cmdteleport.teleport(p, loc);
 									requester.sendMessage(ChatColor.GREEN + p.getName() + " has successfully accepted your request");
 									p.sendMessage(ChatColor.GREEN + "you have accepted home request for player " + requester.getName());
-									playerInvites.remove(sender.getName());
+									playerInvites.remove(sender.getName().toLowerCase());
 								} else {
 									sender.sendMessage(ChatColor.RED + requester.getName() + " is not online!");
-									playerInvites.remove(sender.getName());
+									playerInvites.remove(sender.getName().toLowerCase());
 								}
 							} else {
 								sender.sendMessage(ChatColor.RED + "you do not have open homeinvites!");
 							}
 						} else if(args[0].equalsIgnoreCase("deny")) {
-							if(playerInvites.containsKey(sender.getName())) {
+							if(playerInvites.containsKey(sender.getName().toLowerCase())) {
 								Player requester = Bukkit.getPlayer(playerInvites.get(sender.getName()));
 								if(requester instanceof Player) {
 									requester.sendMessage(ChatColor.RED + sender.getName() + " has denied your homeinvite request!");
 									sender.sendMessage(ChatColor.GREEN + "successfully denied homeinvited request for player " + requester.getName());
-									playerInvites.remove(sender.getName());
+									playerInvites.remove(sender.getName().toLowerCase());
 								} else {
 									sender.sendMessage(ChatColor.RED + requester.getName() + " is not online!");
-									playerInvites.remove(sender.getName());
+									playerInvites.remove(sender.getName().toLowerCase());
 								}
 							} else {
 								sender.sendMessage(ChatColor.RED + "you do not have open homeinvites!");
@@ -73,12 +73,12 @@ public class cmdhomeinvite {
 								sender.sendMessage(ChatColor.GREEN + "homeinvite request successfully sent to player " + accepter.getName());
 								final String accepterName = accepter.getName();
 								final String inviterName = p.getName();
-								playerInvites.put(accepter.getName(), sender.getName());
+								playerInvites.put(accepter.getName().toLowerCase(), sender.getName().toLowerCase());
 								Bukkit.getScheduler().scheduleSyncDelayedTask(xEssentials.getPlugin(), new Runnable() {
 
 									@Override
 									public void run() {
-										if(!playerInvites.containsKey(accepter)) {
+										if(!playerInvites.containsKey(accepter.getName().toLowerCase())) {
 											return;
 										}
 										if(accepter instanceof Player) {
@@ -87,7 +87,7 @@ public class cmdhomeinvite {
 										if(p instanceof Player) {
 											p.sendMessage(ChatColor.RED + "your homeinvite to " + accepterName + " has been canceled out");
 										}
-										playerInvites.remove(accepterName);
+										playerInvites.remove(accepterName.toLowerCase());
 									}
 
 								}, 1000);
