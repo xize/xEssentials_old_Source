@@ -43,13 +43,13 @@ public class cmdteleport {
 								sender.sendMessage(ChatColor.GREEN + "teleporting to player " + args[0]);
 								teleport(p, victem);
 							} else {
-								if(fileManager.file_exists(args[0] + ".yml", fileManager.getDir() + File.separator + "players")) {
-									Double x = fileManager.getDoubleValue(args[0] + ".yml", "location.x", fileManager.getDir() + File.separator + "players");
-									Double y = fileManager.getDoubleValue(args[0] + ".yml", "location.y", fileManager.getDir() + File.separator + "players");
-									Double z = fileManager.getDoubleValue(args[0] + ".yml", "location.z", fileManager.getDir() + File.separator + "players");
-									int yaw = fileManager.getIntegerValue(args[0] + ".yml", "location.yaw", fileManager.getDir() + File.separator + "players");
-									if(Bukkit.getWorld(fileManager.getStringValue(args[0] + ".yml", "location.world", fileManager.getDir() + File.separator + "players")) != null) {
-										World w = Bukkit.getWorld(fileManager.getStringValue(args[0] + ".yml", "location.world", fileManager.getDir() + File.separator + "players"));
+								if(fileManager.file_exists(args[0].toLowerCase() + ".yml", fileManager.getDir() + File.separator + "players")) {
+									Double x = fileManager.getDoubleValue(args[0].toLowerCase() + ".yml", "location.x", fileManager.getDir() + File.separator + "players");
+									Double y = fileManager.getDoubleValue(args[0].toLowerCase() + ".yml", "location.y", fileManager.getDir() + File.separator + "players");
+									Double z = fileManager.getDoubleValue(args[0].toLowerCase() + ".yml", "location.z", fileManager.getDir() + File.separator + "players");
+									int yaw = fileManager.getIntegerValue(args[0].toLowerCase() + ".yml", "location.yaw", fileManager.getDir() + File.separator + "players");
+									if(Bukkit.getWorld(fileManager.getStringValue(args[0].toLowerCase() + ".yml", "location.world", fileManager.getDir() + File.separator + "players")) != null) {
+										World w = Bukkit.getWorld(fileManager.getStringValue(args[0].toLowerCase() + ".yml", "location.world", fileManager.getDir() + File.separator + "players"));
 										Location loc = p.getLocation();
 										loc.setX(x);
 										loc.setY(y);
