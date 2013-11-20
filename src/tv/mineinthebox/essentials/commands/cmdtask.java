@@ -25,7 +25,7 @@ public class cmdtask {
 						sender.sendMessage(ChatColor.RED + "oh oh, we don't know nothing about this argument!");
 					}
 				} else if(args.length > 1) {
-					if(fileManager.file_exists(args[0] + ".yml", fileManager.getDir() + File.separator + "players")) {
+					if(fileManager.file_exists(args[0].toLowerCase() + ".yml", fileManager.getDir() + File.separator + "players")) {
 						String command = null;
 						for(int i = 1; i < args.length; i++) {
 							if(command == null) {
@@ -34,7 +34,7 @@ public class cmdtask {
 								command = command + " " + args[i];	
 							}
 						}
-						fileManager.writeFile(args[0] + ".yml", "taskCommand", command.replace("null", ""), fileManager.getDir() + File.separator + "players");
+						fileManager.writeFile(args[0].toLowerCase() + ".yml", "taskCommand", command.replace("null", ""), fileManager.getDir() + File.separator + "players");
 						sender.sendMessage(ChatColor.GREEN + "successfully saved task command for player " + args[0] + " :)");
 					}
 				}
