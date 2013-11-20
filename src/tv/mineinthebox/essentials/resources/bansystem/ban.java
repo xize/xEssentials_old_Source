@@ -20,7 +20,7 @@ public class ban {
 				File[] list = dir.listFiles();
 				StringBuilder build = new StringBuilder();
 				for(File f : list) {
-					if(!f.getName().replace(".yml", "").equalsIgnoreCase(p.getName())) {
+					if(!f.getName().toLowerCase().replace(".yml", "").equalsIgnoreCase(p.getName().toLowerCase())) {
 						FileConfiguration con = YamlConfiguration.loadConfiguration(f);
 						if(con.getString("ip").equalsIgnoreCase(ip)) {
 							build.append(con.getString("player").toString() + ",");
@@ -30,7 +30,7 @@ public class ban {
 				}
 				if(build.length() != 0) {
 					for(Player a : Bukkit.getOnlinePlayers()) {
-						if(!a.getName().equalsIgnoreCase(p.getName())) {
+						if(!a.getName().toLowerCase().equalsIgnoreCase(p.getName().toLowerCase())) {
 							if(a.hasPermission("xEssentials.isStaff")) {
 								a.sendMessage(ChatColor.RED + "Warning player " + ChatColor.GOLD + p.getName() + ChatColor.RED + " has may alternate accounts!");
 								a.sendMessage(setTypeAlt(build.toString()));
@@ -52,7 +52,7 @@ public class ban {
 				File[] list = dir.listFiles();
 				StringBuilder build = new StringBuilder();
 				for(File f : list) {
-					if(!f.getName().replace(".yml", "").equalsIgnoreCase(victem.getName())) {
+					if(!f.getName().toLowerCase().replace(".yml", "").equalsIgnoreCase(victem.getName().toLowerCase())) {
 						FileConfiguration con = YamlConfiguration.loadConfiguration(f);
 						if(con.getString("ip").equalsIgnoreCase(ip)) {
 							build.append(con.getString("player").toString() + ",");
@@ -73,15 +73,15 @@ public class ban {
 	}
 
 	public static void getAlternateAccounts(CommandSender sender, String victem) {
-		if(fileManager.file_exists(victem + ".yml", fileManager.getDir() + File.separator + "alts")) {
-			String ip = fileManager.getStringValue(victem + ".yml", "ip", fileManager.getDir() + File.separator + "alts");
+		if(fileManager.file_exists(victem.toLowerCase() + ".yml", fileManager.getDir() + File.separator + "alts")) {
+			String ip = fileManager.getStringValue(victem.toLowerCase() + ".yml", "ip", fileManager.getDir() + File.separator + "alts");
 					try {
 						File dir = new File(fileManager.getDir() + File.separator + "alts");
 						if(dir.isDirectory()) {
 							File[] list = dir.listFiles();
 							StringBuilder build = new StringBuilder();
 							for(File f : list) {
-								if(!f.getName().replace(".yml", "").equalsIgnoreCase(victem)) {
+								if(!f.getName().toLowerCase().replace(".yml", "").equalsIgnoreCase(victem.toLowerCase())) {
 									FileConfiguration con = YamlConfiguration.loadConfiguration(f);
 									if(con.getString("ip").equalsIgnoreCase(ip)) {
 										build.append(con.getString("player").toString() + ",");
@@ -124,7 +124,7 @@ public class ban {
 
 	public static boolean isBanned(Player p) {
 		try {
-			File f = new File(fileManager.getDir() + File.separator + "bans" + File.separator + p.getName() + ".yml");
+			File f = new File(fileManager.getDir() + File.separator + "bans" + File.separator + p.getName().toLowerCase() + ".yml");
 			if(f.exists()) {
 				FileConfiguration con = YamlConfiguration.loadConfiguration(f);
 				if(con.getBoolean("Banned")) {
@@ -143,7 +143,7 @@ public class ban {
 
 	public static boolean whasBanned(Player p) {
 		try {
-			File f = new File(fileManager.getDir() + File.separator + "bans" + File.separator + p.getName() + ".yml");
+			File f = new File(fileManager.getDir() + File.separator + "bans" + File.separator + p.getName().toLowerCase() + ".yml");
 			if(f.exists()) {
 				FileConfiguration con = YamlConfiguration.loadConfiguration(f);
 				if(!con.getBoolean("Banned") && con.isBoolean("Banned")) {
@@ -162,7 +162,7 @@ public class ban {
 
 	public static boolean isBanned(String p) {
 		try {
-			File f = new File(fileManager.getDir() + File.separator + "bans" + File.separator + p + ".yml");
+			File f = new File(fileManager.getDir() + File.separator + "bans" + File.separator + p.toLowerCase() + ".yml");
 			if(f.exists()) {
 				FileConfiguration con = YamlConfiguration.loadConfiguration(f);
 				if(con.getBoolean("Banned") && con.isBoolean("Banned")) {
@@ -181,7 +181,7 @@ public class ban {
 
 	public static boolean whasBanned(String p) {
 		try {
-			File f = new File(fileManager.getDir() + File.separator + "bans" + File.separator + p + ".yml");
+			File f = new File(fileManager.getDir() + File.separator + "bans" + File.separator + p.toLowerCase() + ".yml");
 			if(f.exists()) {
 				FileConfiguration con = YamlConfiguration.loadConfiguration(f);
 				if(!con.getBoolean("Banned") && con.isBoolean("Banned")) {
@@ -200,7 +200,7 @@ public class ban {
 
 	public static boolean isTempBanned(Player p) {
 		try {
-			File f = new File(fileManager.getDir() + File.separator + "bans" + File.separator + p.getName() + ".yml");
+			File f = new File(fileManager.getDir() + File.separator + "bans" + File.separator + p.getName().toLowerCase() + ".yml");
 			if(f.exists()) {
 				FileConfiguration con = YamlConfiguration.loadConfiguration(f);
 				if(con.getBoolean("Tempbanned")) {
@@ -217,7 +217,7 @@ public class ban {
 
 	public static boolean isTempBanned(String p) {
 		try {
-			File f = new File(fileManager.getDir() + File.separator + "bans" + File.separator + p + ".yml");
+			File f = new File(fileManager.getDir() + File.separator + "bans" + File.separator + p.toLowerCase() + ".yml");
 			if(f.exists()) {
 				FileConfiguration con = YamlConfiguration.loadConfiguration(f);
 				if(con.getBoolean("Tempbanned")) {
