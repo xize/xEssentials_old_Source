@@ -33,12 +33,16 @@ public class cmdinvsee {
 							p.openInventory(victem.getInventory());
 						} else {
 							if(fileManager.file_exists(args[0].toLowerCase() + ".yml", fileManager.getDir() + File.separator + "inventory")) {
+								try {
 								List<?> list = (List<?>) fileManager.getListValue(args[0].toLowerCase() + ".yml", "inv", fileManager.getDir() + File.separator + "inventory");
 								ItemStack[] items = (ItemStack[]) list.toArray(new ItemStack[0]);
 								Inventory inv = Bukkit.createInventory(p, InventoryType.PLAYER);
 								inv.setContents(items);
 								sender.sendMessage(ChatColor.GREEN + "showing offline inventory of player " + args[0]);
-								p.openInventory(inv); 
+								p.openInventory(inv);
+								} catch(NullPointerException e) {
+									sender.sendMessage(ChatColor.RED + "this offline inventory file is out of date");
+								}
 							} else {
 								sender.sendMessage(ChatColor.RED + "no offline inventory found for player " + args[0]);
 							}
