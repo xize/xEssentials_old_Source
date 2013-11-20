@@ -246,11 +246,11 @@ public class xEssentialsMemory {
 	protected static HashMap<String, HashMap<String, Object>> onlinePlayers = new HashMap<String, HashMap<String, Object>>();
 
 	public static HashMap<String, Object> returnPlayer(Player p) {
-		if(!onlinePlayers.containsKey(p.getName())) {
-			onlinePlayers.put(p.getName(), new HashMap<String, Object>());
-			return onlinePlayers.get(p.getName());
+		if(!onlinePlayers.containsKey(p.getName().toLowerCase())) {
+			onlinePlayers.put(p.getName().toLowerCase(), new HashMap<String, Object>());
+			return onlinePlayers.get(p.getName().toLowerCase());
 		} else {
-			return onlinePlayers.get(p.getName());
+			return onlinePlayers.get(p.getName().toLowerCase());
 		}
 	}
 
@@ -285,9 +285,9 @@ public class xEssentialsMemory {
 	}
 
 	public static void removePlayer(Player p) {
-		if(onlinePlayers.containsKey(p.getName())) {
+		if(onlinePlayers.containsKey(p.getName().toLowerCase())) {
 			returnPlayer(p).clear();
-			onlinePlayers.remove(p.getName());
+			onlinePlayers.remove(p.getName().toLowerCase());
 		}
 	}
 
