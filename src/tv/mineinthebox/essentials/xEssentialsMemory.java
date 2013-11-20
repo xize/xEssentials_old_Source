@@ -255,30 +255,30 @@ public class xEssentialsMemory {
 	}
 
 	public static void setPlayer(Player p) {
-		if(!onlinePlayers.containsKey(p.getName())) {
-			if(fileManager.file_exists(p.getName() + ".yml", fileManager.getDir() + File.separator + "players")) {
-				if(fileManager.isSet(p.getName() + ".yml", "torch", fileManager.getDir() + File.separator + "players")) {
-					returnPlayer(p).put("torch", fileManager.getBooleanValue(p.getName() + ".yml", "torch", fileManager.getDir() + File.separator + "players"));
+		if(!onlinePlayers.containsKey(p.getName().toLowerCase())) {
+			if(fileManager.file_exists(p.getName().toLowerCase() + ".yml", fileManager.getDir() + File.separator + "players")) {
+				if(fileManager.isSet(p.getName().toLowerCase() + ".yml", "torch", fileManager.getDir() + File.separator + "players")) {
+					returnPlayer(p).put("torch", fileManager.getBooleanValue(p.getName().toLowerCase() + ".yml", "torch", fileManager.getDir() + File.separator + "players"));
 				}
-				if(fileManager.isSet(p.getName() + ".yml", "location", fileManager.getDir() + File.separator + "players")) {
-					returnPlayer(p).put("location.x", fileManager.getDoubleValue(p.getName() + ".yml", "location.x", fileManager.getDir() + File.separator + "players"));
-					returnPlayer(p).put("location.y", fileManager.getDoubleValue(p.getName() + ".yml", "location.y", fileManager.getDir() + File.separator + "players"));
-					returnPlayer(p).put("location.z", fileManager.getDoubleValue(p.getName() + ".yml", "location.z", fileManager.getDir() + File.separator + "players"));
-					returnPlayer(p).put("location.yaw", fileManager.getIntegerValue(p.getName() + ".yml", "location.yaw", fileManager.getDir() + File.separator + "players"));
-					returnPlayer(p).put("location.world", fileManager.getStringValue(p.getName() + ".yml", "location.world", fileManager.getDir() + File.separator + "players"));
+				if(fileManager.isSet(p.getName().toLowerCase() + ".yml", "location", fileManager.getDir() + File.separator + "players")) {
+					returnPlayer(p).put("location.x", fileManager.getDoubleValue(p.getName().toLowerCase() + ".yml", "location.x", fileManager.getDir() + File.separator + "players"));
+					returnPlayer(p).put("location.y", fileManager.getDoubleValue(p.getName().toLowerCase() + ".yml", "location.y", fileManager.getDir() + File.separator + "players"));
+					returnPlayer(p).put("location.z", fileManager.getDoubleValue(p.getName().toLowerCase() + ".yml", "location.z", fileManager.getDir() + File.separator + "players"));
+					returnPlayer(p).put("location.yaw", fileManager.getIntegerValue(p.getName().toLowerCase() + ".yml", "location.yaw", fileManager.getDir() + File.separator + "players"));
+					returnPlayer(p).put("location.world", fileManager.getStringValue(p.getName().toLowerCase() + ".yml", "location.world", fileManager.getDir() + File.separator + "players"));
 				}
-				if(fileManager.isSet(p.getName() + ".yml", "fly", fileManager.getDir() + File.separator + "players")) {
-					returnPlayer(p).put("fly", fileManager.getBooleanValue(p.getName() + ".yml", "fly", fileManager.getDir() + File.separator + "players"));
+				if(fileManager.isSet(p.getName().toLowerCase() + ".yml", "fly", fileManager.getDir() + File.separator + "players")) {
+					returnPlayer(p).put("fly", fileManager.getBooleanValue(p.getName().toLowerCase() + ".yml", "fly", fileManager.getDir() + File.separator + "players"));
 				}
-				if(fileManager.isSet(p.getName() + ".yml", "firefly", fileManager.getDir() + File.separator + "players")) {
-					returnPlayer(p).put("firefly", fileManager.getBooleanValue(p.getName() + ".yml", "firefly", fileManager.getDir() + File.separator + "players"));
+				if(fileManager.isSet(p.getName().toLowerCase() + ".yml", "firefly", fileManager.getDir() + File.separator + "players")) {
+					returnPlayer(p).put("firefly", fileManager.getBooleanValue(p.getName().toLowerCase() + ".yml", "firefly", fileManager.getDir() + File.separator + "players"));
 				}
-				if(fileManager.isSet(p.getName() + ".yml", "Vanished", fileManager.getDir() + File.separator + "players")) {
-					returnPlayer(p).put("Vanished", fileManager.getBooleanValue(p.getName() + ".yml", "Vanished", fileManager.getDir() + File.separator + "players"));
+				if(fileManager.isSet(p.getName().toLowerCase() + ".yml", "Vanished", fileManager.getDir() + File.separator + "players")) {
+					returnPlayer(p).put("Vanished", fileManager.getBooleanValue(p.getName().toLowerCase() + ".yml", "Vanished", fileManager.getDir() + File.separator + "players"));
 				}
-				if(fileManager.isSet(p.getName() + ".yml", "muted", fileManager.getDir() + File.separator + "players")) {
+				if(fileManager.isSet(p.getName().toLowerCase() + ".yml", "muted", fileManager.getDir() + File.separator + "players")) {
 					System.out.println("detected mute for player " + p.getName());
-					returnPlayer(p).put("muted", fileManager.getLongValue(p.getName() + ".yml", "muted", fileManager.getDir() + File.separator + "players"));
+					returnPlayer(p).put("muted", fileManager.getLongValue(p.getName().toLowerCase() + ".yml", "muted", fileManager.getDir() + File.separator + "players"));
 				}
 			}
 		}
