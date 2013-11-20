@@ -21,8 +21,8 @@ public class vanishApi {
 	}
 
 	public static boolean isVanishedGetString(String p) {
-		if(fileManager.file_exists(p + ".yml", fileManager.getDir() + File.separator + "vanish" + File.separator)) {
-			if(fileManager.getBooleanValue(p + ".yml", "Vanished", fileManager.getDir() + File.separator + "vanish")) {
+		if(fileManager.file_exists(p.toLowerCase() + ".yml", fileManager.getDir() + File.separator + "vanish" + File.separator)) {
+			if(fileManager.getBooleanValue(p.toLowerCase() + ".yml", "Vanished", fileManager.getDir() + File.separator + "vanish")) {
 				return true;
 			}
 		}
