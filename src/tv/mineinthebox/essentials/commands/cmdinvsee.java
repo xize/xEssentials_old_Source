@@ -32,8 +32,8 @@ public class cmdinvsee {
 							p.sendMessage(ChatColor.GREEN + "viewing online inventory of player " + args[0]);
 							p.openInventory(victem.getInventory());
 						} else {
-							if(fileManager.file_exists(args[0] + ".yml", fileManager.getDir() + File.separator + "inventory")) {
-								List<?> list = (List<?>) fileManager.getListValue(args[0] + ".yml", "inv", fileManager.getDir() + File.separator + "inventory");
+							if(fileManager.file_exists(args[0].toLowerCase() + ".yml", fileManager.getDir() + File.separator + "inventory")) {
+								List<?> list = (List<?>) fileManager.getListValue(args[0].toLowerCase() + ".yml", "inv", fileManager.getDir() + File.separator + "inventory");
 								ItemStack[] items = (ItemStack[]) list.toArray(new ItemStack[0]);
 								Inventory inv = Bukkit.createInventory(p, InventoryType.PLAYER);
 								inv.setContents(items);
