@@ -33,7 +33,7 @@ public class cmdinvsee {
 							p.openInventory(victem.getInventory());
 						} else {
 							if(fileManager.file_exists(args[0] + ".yml", fileManager.getDir() + File.separator + "inventory")) {
-								List<?> list = (List<?>) fileManager.getListValue(args[0] + ".yml", args[0], fileManager.getDir() + File.separator + "inventory");
+								List<?> list = (List<?>) fileManager.getListValue(args[0] + ".yml", "inv", fileManager.getDir() + File.separator + "inventory");
 								ItemStack[] items = (ItemStack[]) list.toArray(new ItemStack[0]);
 								Inventory inv = Bukkit.createInventory(p, InventoryType.PLAYER);
 								inv.setContents(items);
