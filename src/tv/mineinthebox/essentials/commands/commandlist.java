@@ -47,7 +47,8 @@ public class commandlist {
 			"motd",
 			"hand",
 			"heal",
-			"tp-id"
+			"tp-id",
+			"configuration"
 	};
 
 }

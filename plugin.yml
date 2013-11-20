@@ -1,5 +1,5 @@
 name: xEssentials
-version: 1.1
+version: 1.2
 description: core system
 author: Xeph0re
 authors: [] 
@@ -278,6 +278,12 @@ commands:
   tp-id:
      description: teleport
      aliases: []
+     permission:
+     permission-message:
+
+  configuration:
+     description: cfg
+     aliases: [cfg]
      permission:
      permission-message:
 
