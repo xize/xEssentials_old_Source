@@ -60,7 +60,7 @@ public class cmdhometp {
 									sender.sendMessage(ChatColor.RED + victem.getName() + " hasn't set a home");
 								}
 							} else {
-								if(fileManager.file_exists(args[0] + ".yml", fileManager.getDir() + File.separator + "homes")) {
+								if(fileManager.file_exists(args[0].toLowerCase() + ".yml", fileManager.getDir() + File.separator + "homes")) {
 									Double x = fileManager.getDoubleValue(args[0].toLowerCase() + ".yml", "x", fileManager.getDir() + File.separator + "homes");
 									Double y = fileManager.getDoubleValue(args[0].toLowerCase() + ".yml", "y", fileManager.getDir() + File.separator + "homes");
 									Double z = fileManager.getDoubleValue(args[0].toLowerCase() + ".yml", "z", fileManager.getDir() + File.separator + "homes");
