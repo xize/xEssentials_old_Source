@@ -61,12 +61,12 @@ public class cmdhometp {
 								}
 							} else {
 								if(fileManager.file_exists(args[0] + ".yml", fileManager.getDir() + File.separator + "homes")) {
-									Double x = fileManager.getDoubleValue(args[0] + ".yml", "x", fileManager.getDir() + File.separator + "homes");
-									Double y = fileManager.getDoubleValue(args[0] + ".yml", "y", fileManager.getDir() + File.separator + "homes");
-									Double z = fileManager.getDoubleValue(args[0] + ".yml", "z", fileManager.getDir() + File.separator + "homes");
-									int yaw = fileManager.getIntegerValue(args[0] + ".yml", "yaw", fileManager.getDir() + File.separator + "homes");
-									String w = fileManager.getStringValue(args[0] + ".yml", "world", fileManager.getDir() + File.separator + "homes");
-									if(Bukkit.getWorld(w) != null) {
+									Double x = fileManager.getDoubleValue(args[0].toLowerCase() + ".yml", "x", fileManager.getDir() + File.separator + "homes");
+									Double y = fileManager.getDoubleValue(args[0].toLowerCase() + ".yml", "y", fileManager.getDir() + File.separator + "homes");
+									Double z = fileManager.getDoubleValue(args[0].toLowerCase() + ".yml", "z", fileManager.getDir() + File.separator + "homes");
+									int yaw = fileManager.getIntegerValue(args[0].toLowerCase() + ".yml", "yaw", fileManager.getDir() + File.separator + "homes");
+									String w = fileManager.getStringValue(args[0].toLowerCase() + ".yml", "world", fileManager.getDir() + File.separator + "homes");
+									if(Bukkit.getWorld(w) instanceof World) {
 										loc.setX(x);
 										loc.setY(y);
 										loc.setZ(z);
