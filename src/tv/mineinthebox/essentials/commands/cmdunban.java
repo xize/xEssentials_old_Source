@@ -24,10 +24,10 @@ public class cmdunban {
 						sender.sendMessage(ChatColor.RED + "Admin: " + ChatColor.GRAY + "/unban <playername>" + ChatColor.WHITE + " : unbans a banned player");	
 					} else {
 						if(ban.isBanned(args[0])) {
-							if(fileManager.getBooleanValue(args[0] + ".yml", "Banned", fileManager.getDir() + File.separator + "bans")) {
-								fileManager.writeFile(args[0] + ".yml", "Banned", false, fileManager.getDir() + File.separator + "bans");
+							if(fileManager.getBooleanValue(args[0].toLowerCase() + ".yml", "Banned", fileManager.getDir() + File.separator + "bans")) {
+								fileManager.writeFile(args[0].toLowerCase() + ".yml", "Banned", false, fileManager.getDir() + File.separator + "bans");
 								sender.sendMessage(ChatColor.GREEN + args[0] + " is no longer banned!");
-							} else if(fileManager.getBooleanValue(args[0] + ".yml", "Tempbanned", fileManager.getDir() + File.separator + "bans")) {
+							} else if(fileManager.getBooleanValue(args[0].toLowerCase() + ".yml", "Tempbanned", fileManager.getDir() + File.separator + "bans")) {
 								fileManager.writeFile(args[0] + ".yml", "Tempbanned", false, fileManager.getDir() + File.separator + "bans");
 								sender.sendMessage(ChatColor.GREEN + args[0] + " is no longer tempory banned!");
 							}
