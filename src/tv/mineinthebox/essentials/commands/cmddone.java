@@ -29,8 +29,8 @@ public class cmddone {
 						} else {
 							Player p = Bukkit.getPlayer(args[0]);
 							if(p instanceof Player) {
-								if(fileManager.file_exists(p.getName() + ".yml", fileManager.getDir() + File.separator + "modreq")) {
-									File f = fileManager.returnFile(p.getName() + ".yml", fileManager.getDir() + File.separator + "modreq");
+								if(fileManager.file_exists(p.getName().toLowerCase() + ".yml", fileManager.getDir() + File.separator + "modreq")) {
+									File f = fileManager.returnFile(p.getName().toLowerCase() + ".yml", fileManager.getDir() + File.separator + "modreq");
 									p.sendMessage(ChatColor.GREEN + sender.getName() + " has done your modreq!");
 									p.sendMessage(ChatColor.GREEN + "comment: none");
 									f.delete();
@@ -47,8 +47,8 @@ public class cmddone {
 									sender.sendMessage(ChatColor.RED + p.getName() + " hasn't any modreqs open");
 								}
 							} else {
-								if(fileManager.file_exists(args[0] + ".yml", fileManager.getDir() + File.separator + "modreq")) {
-									File f = fileManager.returnFile(args[0] + ".yml", fileManager.getDir() + File.separator + "modreq");
+								if(fileManager.file_exists(args[0].toLowerCase() + ".yml", fileManager.getDir() + File.separator + "modreq")) {
+									File f = fileManager.returnFile(args[0].toLowerCase() + ".yml", fileManager.getDir() + File.separator + "modreq");
 									for(Player player : Bukkit.getOnlinePlayers()) {
 										if(player.hasPermission("xEssentials.command.done")) {
 											if(!sender.getName().equalsIgnoreCase(player.getName())) {
@@ -59,9 +59,9 @@ public class cmddone {
 									}
 									f.delete();
 									sender.sendMessage(ChatColor.GREEN + "successly done the modreq of player " + p.getName() + " saving to file for next join");
-									fileManager.writeFile(args[0] + ".yml", "date", timeunits.setLongToDate(System.currentTimeMillis()).toString(), fileManager.getDir() + File.separator + "modreq_done");
-									fileManager.writeFile(args[0] + ".yml", "comment", "none", fileManager.getDir() + File.separator + "modreq_done");
-									fileManager.writeFile(args[0] + ".yml", "helped", sender.getName(), fileManager.getDir() + File.separator + "modreq_done");
+									fileManager.writeFile(args[0].toLowerCase() + ".yml", "date", timeunits.setLongToDate(System.currentTimeMillis()).toString(), fileManager.getDir() + File.separator + "modreq_done");
+									fileManager.writeFile(args[0].toLowerCase() + ".yml", "comment", "none", fileManager.getDir() + File.separator + "modreq_done");
+									fileManager.writeFile(args[0].toLowerCase() + ".yml", "helped", sender.getName(), fileManager.getDir() + File.separator + "modreq_done");
 								} else {
 									sender.sendMessage(ChatColor.RED + p.getName() + " hasn't any modreqs open");
 								}
@@ -74,8 +74,8 @@ public class cmddone {
 						}
 						Player p = Bukkit.getPlayer(args[0]);
 						if(p instanceof Player) {
-							if(fileManager.file_exists(p.getName() + ".yml", fileManager.getDir() + File.separator + "modreq")) {
-								File f = fileManager.returnFile(p.getName() + ".yml", fileManager.getDir() + File.separator + "modreq");
+							if(fileManager.file_exists(p.getName().toLowerCase() + ".yml", fileManager.getDir() + File.separator + "modreq")) {
+								File f = fileManager.returnFile(p.getName().toLowerCase() + ".yml", fileManager.getDir() + File.separator + "modreq");
 								p.sendMessage(ChatColor.GREEN + sender.getName() + " has done your modreq!");
 								p.sendMessage(ChatColor.GREEN + "comment: " + build.toString());
 								f.delete();
@@ -92,8 +92,8 @@ public class cmddone {
 								sender.sendMessage(ChatColor.RED + p.getName() + " hasn't any modreqs open");
 							}
 						} else {
-							if(fileManager.file_exists(args[0] + ".yml", fileManager.getDir() + File.separator + "modreq")) {
-								File f = fileManager.returnFile(args[0] + ".yml", fileManager.getDir() + File.separator + "modreq");
+							if(fileManager.file_exists(args[0].toLowerCase() + ".yml", fileManager.getDir() + File.separator + "modreq")) {
+								File f = fileManager.returnFile(args[0].toLowerCase() + ".yml", fileManager.getDir() + File.separator + "modreq");
 								for(Player player : Bukkit.getOnlinePlayers()) {
 									if(player.hasPermission("xEssentials.command.done")) {
 										if(!sender.getName().equalsIgnoreCase(player.getName())) {
@@ -104,9 +104,9 @@ public class cmddone {
 								}
 								f.delete();
 								sender.sendMessage(ChatColor.GREEN + "successly done the modreq of player " + p.getName() + " saving to file for next join");
-								fileManager.writeFile(args[0] + ".yml", "date", timeunits.setLongToDate(System.currentTimeMillis()).toString(), fileManager.getDir() + File.separator + "modreq_done");
-								fileManager.writeFile(args[0] + ".yml", "comment", build.toString(), fileManager.getDir() + File.separator + "modreq_done");
-								fileManager.writeFile(args[0] + ".yml", "helped", sender.getName(), fileManager.getDir() + File.separator + "modreq_done");
+								fileManager.writeFile(args[0].toLowerCase() + ".yml", "date", timeunits.setLongToDate(System.currentTimeMillis()).toString(), fileManager.getDir() + File.separator + "modreq_done");
+								fileManager.writeFile(args[0].toLowerCase() + ".yml", "comment", build.toString(), fileManager.getDir() + File.separator + "modreq_done");
+								fileManager.writeFile(args[0].toLowerCase() + ".yml", "helped", sender.getName(), fileManager.getDir() + File.separator + "modreq_done");
 							} else {
 								sender.sendMessage(ChatColor.RED + p.getName() + " hasn't any modreqs open");
 							}
