@@ -48,7 +48,7 @@ public class cmdteleport {
 									Double y = fileManager.getDoubleValue(args[0].toLowerCase() + ".yml", "location.y", fileManager.getDir() + File.separator + "players");
 									Double z = fileManager.getDoubleValue(args[0].toLowerCase() + ".yml", "location.z", fileManager.getDir() + File.separator + "players");
 									int yaw = fileManager.getIntegerValue(args[0].toLowerCase() + ".yml", "location.yaw", fileManager.getDir() + File.separator + "players");
-									if(Bukkit.getWorld(fileManager.getStringValue(args[0].toLowerCase() + ".yml", "location.world", fileManager.getDir() + File.separator + "players")) != null) {
+									if(Bukkit.getWorld(fileManager.getStringValue(args[0].toLowerCase() + ".yml", "location.world", fileManager.getDir() + File.separator + "players")) instanceof World) {
 										World w = Bukkit.getWorld(fileManager.getStringValue(args[0].toLowerCase() + ".yml", "location.world", fileManager.getDir() + File.separator + "players"));
 										Location loc = p.getLocation();
 										loc.setX(x);
