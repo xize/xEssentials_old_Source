@@ -14,11 +14,11 @@ public class modreqEvent implements Listener {
 	public void modreqListenerEvent(PlayerJoinEvent e) {
 		if(e.getPlayer().hasPermission("xEssentials.command.check.admin")) {
 			if(fileManager.isDirectory(fileManager.getDir() + File.separator + "modreq_done")) {
-				if(fileManager.file_exists(e.getPlayer().getName() + ".yml", fileManager.getDir() + File.separator + "modreq_done")) {
-					File f = fileManager.returnFile(e.getPlayer().getName() + ".yml", fileManager.getDir() + File.separator + "modreq_done");
-					String date = fileManager.getStringValue(e.getPlayer().getName() + ".yml", "date", fileManager.getDir() + File.separator + "modreq_done");
-					String comment = fileManager.getStringValue(e.getPlayer().getName() + ".yml", "comment", fileManager.getDir() + File.separator + "modreq_done");
-					String helped = fileManager.getStringValue(e.getPlayer().getName() + ".yml", "helped", fileManager.getDir() + File.separator + "modreq_done");
+				if(fileManager.file_exists(e.getPlayer().getName().toLowerCase() + ".yml", fileManager.getDir() + File.separator + "modreq_done")) {
+					File f = fileManager.returnFile(e.getPlayer().getName().toLowerCase() + ".yml", fileManager.getDir() + File.separator + "modreq_done");
+					String date = fileManager.getStringValue(e.getPlayer().getName().toLowerCase() + ".yml", "date", fileManager.getDir() + File.separator + "modreq_done");
+					String comment = fileManager.getStringValue(e.getPlayer().getName().toLowerCase() + ".yml", "comment", fileManager.getDir() + File.separator + "modreq_done");
+					String helped = fileManager.getStringValue(e.getPlayer().getName().toLowerCase() + ".yml", "helped", fileManager.getDir() + File.separator + "modreq_done");
 					e.getPlayer().sendMessage(ChatColor.GREEN + "[" + date + "]" + "your modreq has been closed by staff member " + helped);
 					e.getPlayer().sendMessage(ChatColor.GRAY + "comment: " + comment);
 					f.delete();
@@ -31,11 +31,11 @@ public class modreqEvent implements Listener {
 					e.getPlayer().sendMessage(ChatColor.GOLD + "[modreq]" + ChatColor.GRAY + "currently there are no modreqs open!");	
 				}
 			} else {
-				if(fileManager.file_exists(e.getPlayer().getName() + ".yml", fileManager.getDir() + File.separator + "modreq_done")) {
-					File f = fileManager.returnFile(e.getPlayer().getName() + ".yml", fileManager.getDir() + File.separator + "modreq_done");
-					String date = fileManager.getStringValue(e.getPlayer().getName() + ".yml", "date", fileManager.getDir() + File.separator + "modreq_done");
-					String comment = fileManager.getStringValue(e.getPlayer().getName() + ".yml", "comment", fileManager.getDir() + File.separator + "modreq_done");
-					String helped = fileManager.getStringValue(e.getPlayer().getName() + ".yml", "helped", fileManager.getDir() + File.separator + "modreq_done");
+				if(fileManager.file_exists(e.getPlayer().getName().toLowerCase() + ".yml", fileManager.getDir() + File.separator + "modreq_done")) {
+					File f = fileManager.returnFile(e.getPlayer().getName().toLowerCase() + ".yml", fileManager.getDir() + File.separator + "modreq_done");
+					String date = fileManager.getStringValue(e.getPlayer().getName().toLowerCase() + ".yml", "date", fileManager.getDir() + File.separator + "modreq_done");
+					String comment = fileManager.getStringValue(e.getPlayer().getName().toLowerCase() + ".yml", "comment", fileManager.getDir() + File.separator + "modreq_done");
+					String helped = fileManager.getStringValue(e.getPlayer().getName().toLowerCase() + ".yml", "helped", fileManager.getDir() + File.separator + "modreq_done");
 					e.getPlayer().sendMessage(ChatColor.GREEN + "[" + date + "]" + "your modreq has been closed by staff member " + helped);
 					e.getPlayer().sendMessage(ChatColor.GRAY + "comment: " + comment);
 					f.delete();
