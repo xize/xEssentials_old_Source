@@ -19,9 +19,9 @@ public class cmdcheck {
 			if(sender instanceof Player) {
 				if(sender.hasPermission("xEssentials.command.check")) {
 					if(args.length == 0) {
-						if(fileManager.file_exists(sender.getName() + ".yml", fileManager.getDir() + File.separator + "modreq")) {
-							String date = fileManager.getStringValue(sender.getName() + ".yml", "submitDate", fileManager.getDir() + File.separator + "modreq");
-							String message = fileManager.getStringValue(sender.getName() + ".yml", "message", fileManager.getDir() + File.separator + "modreq");
+						if(fileManager.file_exists(sender.getName().toLowerCase() + ".yml", fileManager.getDir() + File.separator + "modreq")) {
+							String date = fileManager.getStringValue(sender.getName().toLowerCase() + ".yml", "submitDate", fileManager.getDir() + File.separator + "modreq");
+							String message = fileManager.getStringValue(sender.getName().toLowerCase() + ".yml", "message", fileManager.getDir() + File.separator + "modreq");
 							sender.sendMessage(ChatColor.GOLD + ".oO___[your modreqs]___Oo.");
 							sender.sendMessage(ChatColor.GOLD + "[" + date + "]" + ChatColor.RED + message + ChatColor.GRAY + "by: " + sender.getName());
 						} else {
@@ -55,18 +55,18 @@ public class cmdcheck {
 							if(sender.hasPermission("xEssentials.command.check.admin")) {
 								Player p = Bukkit.getPlayer(args[0]);
 								if(p instanceof Player) {
-									if(fileManager.file_exists(p.getName() + ".yml", fileManager.getDir() + File.separator + "modreq")) {
-										String message = fileManager.getStringValue(p.getName() + ".yml", "message", fileManager.getDir() + File.separator + "modreq");
-										String date = fileManager.getStringValue(p.getName() + ".yml", "submitDate", fileManager.getDir() + File.separator + "modreq");
+									if(fileManager.file_exists(p.getName().toLowerCase() + ".yml", fileManager.getDir() + File.separator + "modreq")) {
+										String message = fileManager.getStringValue(p.getName().toLowerCase() + ".yml", "message", fileManager.getDir() + File.separator + "modreq");
+										String date = fileManager.getStringValue(p.getName().toLowerCase() + ".yml", "submitDate", fileManager.getDir() + File.separator + "modreq");
 										sender.sendMessage(ChatColor.GOLD + ".oO___[modreq from player " + p.getName() + "]___Oo.");
 										sender.sendMessage(ChatColor.GOLD + "[" + date + "]" + ChatColor.RED + message + ChatColor.GRAY + "by: " + p.getName());
 									} else {
 										sender.sendMessage(ChatColor.RED + "modreq for player " + p.getName() + " does not exist");
 									}
 								} else {
-									if(fileManager.file_exists(args[0] + ".yml", fileManager.getDir() + File.separator + "modreq")) {
-										String message = fileManager.getStringValue(args[0] + ".yml", "message", fileManager.getDir() + File.separator + "modreq");
-										String date = fileManager.getStringValue(args[0] + ".yml", "submitDate", fileManager.getDir() + File.separator + "modreq");
+									if(fileManager.file_exists(args[0].toLowerCase() + ".yml", fileManager.getDir() + File.separator + "modreq")) {
+										String message = fileManager.getStringValue(args[0].toLowerCase() + ".yml", "message", fileManager.getDir() + File.separator + "modreq");
+										String date = fileManager.getStringValue(args[0].toLowerCase() + ".yml", "submitDate", fileManager.getDir() + File.separator + "modreq");
 										sender.sendMessage(ChatColor.GOLD + ".oO___[modreq from player " + args[0] + "]___Oo.");
 										sender.sendMessage(ChatColor.GOLD + "[" + date + "]" + ChatColor.RED + message + ChatColor.GRAY + "by: " + args[0]);
 									} else {
