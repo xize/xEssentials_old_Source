@@ -13,8 +13,8 @@ public class saveLeaveAlt implements Listener {
 	@EventHandler
 	public void saveAlt(PlayerQuitEvent e) {
 		String ip = e.getPlayer().getAddress().getHostName();
-		fileManager.writeFile(e.getPlayer().getName() + ".yml", "ip", ip, fileManager.getDir() + File.separator + "alts");
-		fileManager.writeFile(e.getPlayer().getName() + ".yml", "player", e.getPlayer().getName(), fileManager.getDir() + File.separator + "alts");
+		fileManager.writeFile(e.getPlayer().getName().toLowerCase() + ".yml", "ip", ip, fileManager.getDir() + File.separator + "alts");
+		fileManager.writeFile(e.getPlayer().getName().toLowerCase() + ".yml", "player", e.getPlayer().getName(), fileManager.getDir() + File.separator + "alts");
 	}
 
 }
