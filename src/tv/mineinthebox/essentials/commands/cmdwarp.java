@@ -27,15 +27,15 @@ public class cmdwarp {
 							sender.sendMessage(ChatColor.RED + "Admin: " + ChatColor.GRAY + "/warp <warpname> <player>" + ChatColor.WHITE + " : let another player teleport to a warp");
 						}
 					} else if(args.length == 1) {
-						if(fileManager.file_exists(args[0] + ".yml", fileManager.getDir() + File.separator + "warps")) {
+						if(fileManager.file_exists(args[0].toLowerCase() + ".yml", fileManager.getDir() + File.separator + "warps")) {
 							Player p = (Player) sender;
 							Location loc = p.getLocation();
-							loc.setX(fileManager.getDoubleValue(args[0] + ".yml", "x", fileManager.getDir() + File.separator + "warps"));
-							loc.setY(fileManager.getDoubleValue(args[0] + ".yml", "y", fileManager.getDir() + File.separator + "warps"));
-							loc.setZ(fileManager.getDoubleValue(args[0] + ".yml", "z", fileManager.getDir() + File.separator + "warps"));
-							loc.setYaw(fileManager.getIntegerValue(args[0] + ".yml", "yaw", fileManager.getDir() + File.separator + "warps"));
+							loc.setX(fileManager.getDoubleValue(args[0].toLowerCase() + ".yml", "x", fileManager.getDir() + File.separator + "warps"));
+							loc.setY(fileManager.getDoubleValue(args[0].toLowerCase() + ".yml", "y", fileManager.getDir() + File.separator + "warps"));
+							loc.setZ(fileManager.getDoubleValue(args[0].toLowerCase() + ".yml", "z", fileManager.getDir() + File.separator + "warps"));
+							loc.setYaw(fileManager.getIntegerValue(args[0].toLowerCase() + ".yml", "yaw", fileManager.getDir() + File.separator + "warps"));
 							loc.getWorld().refreshChunk(loc.getChunk().getX(), loc.getChunk().getZ());
-							if(Bukkit.getWorld(fileManager.getStringValue(args[0] + ".yml", "world", fileManager.getDir() + File.separator + "warps")) instanceof World) {
+							if(Bukkit.getWorld(fileManager.getStringValue(args[0].toLowerCase() + ".yml", "world", fileManager.getDir() + File.separator + "warps")) instanceof World) {
 								if(p.isInsideVehicle()) {
 									p.getVehicle().eject();
 									sender.sendMessage(ChatColor.GREEN + "successfully ejected from vehicle, warping to " + args[0]);
@@ -52,14 +52,14 @@ public class cmdwarp {
 						}
 					} else if(args.length == 2) {
 						if(sender.hasPermission("xEssentials.command.admin")) {
-							if(fileManager.file_exists(args[0] + ".yml", fileManager.getDir() + File.separator + "warps")) {
+							if(fileManager.file_exists(args[0].toLowerCase() + ".yml", fileManager.getDir() + File.separator + "warps")) {
 								Player p = Bukkit.getPlayer(args[1]);
 								if(p instanceof Player) {
 									Location loc = p.getLocation();
-									loc.setX(fileManager.getDoubleValue(args[0] + ".yml", "x", fileManager.getDir() + File.separator + "warps"));
-									loc.setY(fileManager.getDoubleValue(args[0] + ".yml", "y", fileManager.getDir() + File.separator + "warps"));
-									loc.setZ(fileManager.getDoubleValue(args[0] + ".yml", "z", fileManager.getDir() + File.separator + "warps"));
-									loc.setYaw(fileManager.getIntegerValue(args[0] + ".yml", "yaw", fileManager.getDir() + File.separator + "warps"));
+									loc.setX(fileManager.getDoubleValue(args[0].toLowerCase() + ".yml", "x", fileManager.getDir() + File.separator + "warps"));
+									loc.setY(fileManager.getDoubleValue(args[0].toLowerCase() + ".yml", "y", fileManager.getDir() + File.separator + "warps"));
+									loc.setZ(fileManager.getDoubleValue(args[0].toLowerCase() + ".yml", "z", fileManager.getDir() + File.separator + "warps"));
+									loc.setYaw(fileManager.getIntegerValue(args[0].toLowerCase() + ".yml", "yaw", fileManager.getDir() + File.separator + "warps"));
 									loc.getWorld().refreshChunk(loc.getChunk().getX(), loc.getChunk().getZ());
 									if(Bukkit.getWorld(fileManager.getStringValue(args[0] + ".yml", "world", fileManager.getDir() + File.separator + "warps")) instanceof World) {
 										if(p.isInsideVehicle()) {
@@ -71,7 +71,7 @@ public class cmdwarp {
 											p.teleport(loc);
 										}
 									} else {
-										sender.sendMessage(ChatColor.RED + "this world is not loaded! " + fileManager.getStringValue(args[0] + ".yml", "world", fileManager.getDir() + File.separator + "warps"));
+										sender.sendMessage(ChatColor.RED + "this world is not loaded! " + fileManager.getStringValue(args[0].toLowerCase() + ".yml", "world", fileManager.getDir() + File.separator + "warps"));
 									}
 								} else {
 									sender.sendMessage(ChatColor.RED + "couldn't find a warp with this name " + args[0]);
