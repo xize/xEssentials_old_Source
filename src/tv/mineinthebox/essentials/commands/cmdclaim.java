@@ -24,7 +24,7 @@ public class cmdclaim {
 					} else if(args.length == 1) {
 						Player p = Bukkit.getPlayer(args[0]);
 						if(p instanceof Player) {
-							if(fileManager.file_exists(p.getName() + ".yml", fileManager.getDir() + File.separator + "modreq")) {
+							if(fileManager.file_exists(p.getName().toLowerCase() + ".yml", fileManager.getDir() + File.separator + "modreq")) {
 								p.sendMessage(ChatColor.GOLD + "staff member " + sender.getName() + " has claimed your modreq!");
 								sender.sendMessage(ChatColor.GOLD + "successfully claimed modreq for player " + p.getName());
 								for(Player player : Bukkit.getOnlinePlayers()) {
