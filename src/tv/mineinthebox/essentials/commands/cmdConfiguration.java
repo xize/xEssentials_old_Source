@@ -48,6 +48,42 @@ public class cmdConfiguration {
 					File replacement = new File(f.getPath().replace(f.getName(), f.getName().toLowerCase()));
 					f.renameTo(replacement);
 				}
+				File[] modreq = fileManager.getFileList(fileManager.getDir() + File.separator + "modreq");
+				for(File f : modreq) {
+					entrys.add(f.getName());
+					File replacement = new File(f.getPath().replace(f.getName(), f.getName().toLowerCase()));
+					f.renameTo(replacement);
+				}
+				File[] modreq_done = fileManager.getFileList(fileManager.getDir() + File.separator + "modreq_done");
+				for(File f : modreq_done) {
+					entrys.add(f.getName());
+					File replacement = new File(f.getPath().replace(f.getName(), f.getName().toLowerCase()));
+					f.renameTo(replacement);
+				}
+				File[] homes = fileManager.getFileList(fileManager.getDir() + File.separator + "homes");
+				for(File f : homes) {
+					entrys.add(f.getName());
+					File replacement = new File(f.getPath().replace(f.getName(), f.getName().toLowerCase()));
+					f.renameTo(replacement);
+				}
+				File[] warps = fileManager.getFileList(fileManager.getDir() + File.separator + "warps");
+				for(File f : warps) {
+					entrys.add(f.getName());
+					File replacement = new File(f.getPath().replace(f.getName(), f.getName().toLowerCase()));
+					f.renameTo(replacement);
+				}
+				File[] vanish = fileManager.getFileList(fileManager.getDir() + File.separator + "vanish");
+				for(File f : vanish) {
+					entrys.add(f.getName());
+					File replacement = new File(f.getPath().replace(f.getName(), f.getName().toLowerCase()));
+					f.renameTo(replacement);
+				}
+				File[] compass = fileManager.getFileList(fileManager.getDir() + File.separator + "compass");
+				for(File f : compass) {
+					entrys.add(f.getName());
+					File replacement = new File(f.getPath().replace(f.getName(), f.getName().toLowerCase()));
+					f.renameTo(replacement);
+				}
 				sender.sendMessage(ChatColor.GREEN + "xEssentials configuration conversion done! " + entrys.size() + " changed files");
 				entrys.clear();
 			} else {
