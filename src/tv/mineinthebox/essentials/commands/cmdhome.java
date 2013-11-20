@@ -21,15 +21,15 @@ public class cmdhome {
 			if(sender instanceof Player) {
 				if(args.length == 0) {
 					if(sender.hasPermission("xEssentials.command.home")) {
-						if(fileManager.file_exists(sender.getName() + ".yml", fileManager.getDir() + File.separator + "homes")) {
+						if(fileManager.file_exists(sender.getName().toLowerCase() + ".yml", fileManager.getDir() + File.separator + "homes")) {
 							Player p = (Player) sender;
 							Location loc = p.getLocation();
-							loc.setX(fileManager.getDoubleValue(p.getName() + ".yml", "x", fileManager.getDir() + File.separator + "homes"));
-							loc.setY(fileManager.getDoubleValue(p.getName() + ".yml", "y", fileManager.getDir() + File.separator + "homes"));
-							loc.setZ(fileManager.getDoubleValue(p.getName() + ".yml", "z", fileManager.getDir() + File.separator + "homes"));
-							loc.setYaw(fileManager.getIntegerValue(p.getName() + ".yml", "yaw", fileManager.getDir() + File.separator + "homes"));
-							if(Bukkit.getWorld(fileManager.getStringValue(p.getName() + ".yml", "World", fileManager.getDir() + File.separator + "homes")) instanceof World) {
-								World w = Bukkit.getWorld(fileManager.getStringValue(p.getName() + ".yml", "World", fileManager.getDir() + File.separator + "homes"));
+							loc.setX(fileManager.getDoubleValue(p.getName().toLowerCase() + ".yml", "x", fileManager.getDir() + File.separator + "homes"));
+							loc.setY(fileManager.getDoubleValue(p.getName().toLowerCase() + ".yml", "y", fileManager.getDir() + File.separator + "homes"));
+							loc.setZ(fileManager.getDoubleValue(p.getName().toLowerCase() + ".yml", "z", fileManager.getDir() + File.separator + "homes"));
+							loc.setYaw(fileManager.getIntegerValue(p.getName().toLowerCase() + ".yml", "yaw", fileManager.getDir() + File.separator + "homes"));
+							if(Bukkit.getWorld(fileManager.getStringValue(p.getName().toLowerCase() + ".yml", "World", fileManager.getDir() + File.separator + "homes")) instanceof World) {
+								World w = Bukkit.getWorld(fileManager.getStringValue(p.getName().toLowerCase() + ".yml", "World", fileManager.getDir() + File.separator + "homes"));
 								loc.setWorld(w);
 								loc.getWorld().refreshChunk(loc.getChunk().getX(), loc.getChunk().getZ());
 								if(p.isInsideVehicle()) {
@@ -76,23 +76,23 @@ public class cmdhome {
 	}
 
 	public static void convertEssentials(File file) {
-		double x = fileManager.getDoubleValue(file.getName(), "homes.home.x", fileManager.getBukkitDir() + File.separator + "essentials");
-		double y = fileManager.getDoubleValue(file.getName(), "homes.home.y", fileManager.getBukkitDir() + File.separator + "essentials");
-		double z = fileManager.getDoubleValue(file.getName(), "homes.home.z", fileManager.getBukkitDir() + File.separator + "essentials");
-		int yaw = fileManager.getIntegerValue(file.getName(), "homes.home.yaw", fileManager.getBukkitDir() + File.separator + "essentials");
-		String world = fileManager.getStringValue(file.getName(), "homes.home.world", fileManager.getBukkitDir() + File.separator + "essentials");
-		if(fileManager.file_exists(file.getName(), fileManager.getDir() + File.separator + "homes")) {
-			fileManager.writeFile(file.getName(), "x", x, fileManager.getDir() + File.separator + "homes");
-			fileManager.writeFile(file.getName(), "y", y, fileManager.getDir() + File.separator + "homes");
-			fileManager.writeFile(file.getName(), "z", z, fileManager.getDir() + File.separator + "homes");
-			fileManager.writeFile(file.getName(), "yaw", yaw, fileManager.getDir() + File.separator + "homes");
-			fileManager.writeFile(file.getName(), "World", world, fileManager.getDir() + File.separator + "homes");
+		double x = fileManager.getDoubleValue(file.getName().toLowerCase(), "homes.home.x", fileManager.getBukkitDir() + File.separator + "essentials");
+		double y = fileManager.getDoubleValue(file.getName().toLowerCase(), "homes.home.y", fileManager.getBukkitDir() + File.separator + "essentials");
+		double z = fileManager.getDoubleValue(file.getName().toLowerCase(), "homes.home.z", fileManager.getBukkitDir() + File.separator + "essentials");
+		int yaw = fileManager.getIntegerValue(file.getName().toLowerCase(), "homes.home.yaw", fileManager.getBukkitDir() + File.separator + "essentials");
+		String world = fileManager.getStringValue(file.getName().toLowerCase(), "homes.home.world", fileManager.getBukkitDir() + File.separator + "essentials");
+		if(fileManager.file_exists(file.getName().toLowerCase(), fileManager.getDir() + File.separator + "homes")) {
+			fileManager.writeFile(file.getName().toLowerCase(), "x", x, fileManager.getDir() + File.separator + "homes");
+			fileManager.writeFile(file.getName().toLowerCase(), "y", y, fileManager.getDir() + File.separator + "homes");
+			fileManager.writeFile(file.getName().toLowerCase(), "z", z, fileManager.getDir() + File.separator + "homes");
+			fileManager.writeFile(file.getName().toLowerCase(), "yaw", yaw, fileManager.getDir() + File.separator + "homes");
+			fileManager.writeFile(file.getName().toLowerCase(), "World", world, fileManager.getDir() + File.separator + "homes");
 		} else {
-			fileManager.writeFile(file.getName(), "x", x, fileManager.getDir() + File.separator + "homes");
-			fileManager.writeFile(file.getName(), "y", y, fileManager.getDir() + File.separator + "homes");
-			fileManager.writeFile(file.getName(), "z", z, fileManager.getDir() + File.separator + "homes");
-			fileManager.writeFile(file.getName(), "yaw", yaw, fileManager.getDir() + File.separator + "homes");
-			fileManager.writeFile(file.getName(), "World", world, fileManager.getDir() + File.separator + "homes");
+			fileManager.writeFile(file.getName().toLowerCase(), "x", x, fileManager.getDir() + File.separator + "homes");
+			fileManager.writeFile(file.getName().toLowerCase(), "y", y, fileManager.getDir() + File.separator + "homes");
+			fileManager.writeFile(file.getName().toLowerCase(), "z", z, fileManager.getDir() + File.separator + "homes");
+			fileManager.writeFile(file.getName().toLowerCase(), "yaw", yaw, fileManager.getDir() + File.separator + "homes");
+			fileManager.writeFile(file.getName().toLowerCase(), "World", world, fileManager.getDir() + File.separator + "homes");
 		}
 	}
 
