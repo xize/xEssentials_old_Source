@@ -21,25 +21,25 @@ public class cmdsetwarp {
 						sender.sendMessage(ChatColor.RED + "Admin: " + ChatColor.GRAY + "/setwarp <warpname> " + ChatColor.WHITE + ": ");
 					} else if(args.length == 1) {
 						Player p = (Player) sender;
-						if(fileManager.file_exists(args[0] + ".yml", fileManager.getDir() + File.separator + "warps")) {
-							if(sender.getName().equalsIgnoreCase(fileManager.getStringValue(args[0] + ".yml", "warpOwner", fileManager.getDir() + File.separator + "warps"))) {
-								fileManager.writeFile(args[0] + ".yml", "x", p.getLocation().getX(), fileManager.getDir() + File.separator + "warps");
-								fileManager.writeFile(args[0] + ".yml", "y", p.getLocation().getY(), fileManager.getDir() + File.separator + "warps");
-								fileManager.writeFile(args[0] + ".yml", "z", p.getLocation().getZ(), fileManager.getDir() + File.separator + "warps");
-								fileManager.writeFile(args[0] + ".yml", "yaw", p.getLocation().getYaw(), fileManager.getDir() + File.separator + "warps");
-								fileManager.writeFile(args[0] + ".yml", "world", p.getWorld().getName(), fileManager.getDir() + File.separator + "warps");
-								fileManager.writeFile(args[0] + ".yml", "warpOwner", sender.getName(), fileManager.getDir() + File.separator + "warps");
+						if(fileManager.file_exists(args[0].toLowerCase() + ".yml", fileManager.getDir() + File.separator + "warps")) {
+							if(sender.getName().equalsIgnoreCase(fileManager.getStringValue(args[0].toLowerCase() + ".yml", "warpOwner", fileManager.getDir() + File.separator + "warps"))) {
+								fileManager.writeFile(args[0].toLowerCase() + ".yml", "x", p.getLocation().getX(), fileManager.getDir() + File.separator + "warps");
+								fileManager.writeFile(args[0].toLowerCase() + ".yml", "y", p.getLocation().getY(), fileManager.getDir() + File.separator + "warps");
+								fileManager.writeFile(args[0].toLowerCase() + ".yml", "z", p.getLocation().getZ(), fileManager.getDir() + File.separator + "warps");
+								fileManager.writeFile(args[0].toLowerCase() + ".yml", "yaw", p.getLocation().getYaw(), fileManager.getDir() + File.separator + "warps");
+								fileManager.writeFile(args[0].toLowerCase() + ".yml", "world", p.getWorld().getName(), fileManager.getDir() + File.separator + "warps");
+								fileManager.writeFile(args[0].toLowerCase() + ".yml", "warpOwner", sender.getName(), fileManager.getDir() + File.separator + "warps");
 								sender.sendMessage(ChatColor.GREEN + "successfully saved new location of the warp " + args[0]);
 							} else {
 								sender.sendMessage(ChatColor.RED + "you are not allowed to overwrite a warp!");
 							}
 						} else {
-							fileManager.writeFile(args[0] + ".yml", "x", p.getLocation().getX(), fileManager.getDir() + File.separator + "warps");
-							fileManager.writeFile(args[0] + ".yml", "y", p.getLocation().getY(), fileManager.getDir() + File.separator + "warps");
-							fileManager.writeFile(args[0] + ".yml", "z", p.getLocation().getZ(), fileManager.getDir() + File.separator + "warps");
-							fileManager.writeFile(args[0] + ".yml", "yaw", p.getLocation().getYaw(), fileManager.getDir() + File.separator + "warps");
-							fileManager.writeFile(args[0] + ".yml", "world", p.getWorld().getName(), fileManager.getDir() + File.separator + "warps");
-							fileManager.writeFile(args[0] + ".yml", "warpOwner", sender.getName(), fileManager.getDir() + File.separator + "warps");
+							fileManager.writeFile(args[0].toLowerCase() + ".yml", "x", p.getLocation().getX(), fileManager.getDir() + File.separator + "warps");
+							fileManager.writeFile(args[0].toLowerCase() + ".yml", "y", p.getLocation().getY(), fileManager.getDir() + File.separator + "warps");
+							fileManager.writeFile(args[0].toLowerCase() + ".yml", "z", p.getLocation().getZ(), fileManager.getDir() + File.separator + "warps");
+							fileManager.writeFile(args[0].toLowerCase() + ".yml", "yaw", p.getLocation().getYaw(), fileManager.getDir() + File.separator + "warps");
+							fileManager.writeFile(args[0].toLowerCase() + ".yml", "world", p.getWorld().getName(), fileManager.getDir() + File.separator + "warps");
+							fileManager.writeFile(args[0].toLowerCase() + ".yml", "warpOwner", sender.getName(), fileManager.getDir() + File.separator + "warps");
 							sender.sendMessage(ChatColor.GREEN + "successfully saved warp " + args[0]);
 						}
 					}
