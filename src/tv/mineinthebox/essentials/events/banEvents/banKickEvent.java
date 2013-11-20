@@ -16,7 +16,7 @@ public class banKickEvent implements Listener {
 		if(ban.isBanned(e.getPlayer())) {
 			e.setLeaveMessage("");
 		} else if(ban.isTempBanned(e.getPlayer())) {
-			if(!timeunits.isOverTime(fileManager.getLongValue(e.getPlayer().getName() + ".yml", "time", fileManager.getDir() + File.separator + "bans"))) {
+			if(!timeunits.isOverTime(fileManager.getLongValue(e.getPlayer().getName().toLowerCase() + ".yml", "time", fileManager.getDir() + File.separator + "bans"))) {
 				e.setLeaveMessage("");
 			}
 		}
