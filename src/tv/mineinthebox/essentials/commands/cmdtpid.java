@@ -21,13 +21,13 @@ public class cmdtpid {
 				if(args.length == 0) {
 					sender.sendMessage(ChatColor.RED + "use /tp-id playername");
 				} else if(args.length == 1) {
-					if(fileManager.file_exists(args[0]+".yml", fileManager.getDir() + File.separator + "modreq")) {
+					if(fileManager.file_exists(args[0].toLowerCase()+".yml", fileManager.getDir() + File.separator + "modreq")) {
 						try {
-							Double x = fileManager.getDoubleValue(args[0]+".yml", "x", fileManager.getDir() + File.separator + "modreq");
-							Double y = fileManager.getDoubleValue(args[0]+".yml", "y", fileManager.getDir() + File.separator + "modreq");
-							Double z = fileManager.getDoubleValue(args[0]+".yml", "z", fileManager.getDir() + File.separator + "modreq");
-							int yaw = fileManager.getIntegerValue(args[0]+".yml", "yaw", fileManager.getDir() + File.separator + "modreq");
-							String world = fileManager.getStringValue(args[0] + ".yml", "world", fileManager.getDir() + File.separator + "modreq");
+							Double x = fileManager.getDoubleValue(args[0].toLowerCase()+".yml", "x", fileManager.getDir() + File.separator + "modreq");
+							Double y = fileManager.getDoubleValue(args[0].toLowerCase()+".yml", "y", fileManager.getDir() + File.separator + "modreq");
+							Double z = fileManager.getDoubleValue(args[0].toLowerCase()+".yml", "z", fileManager.getDir() + File.separator + "modreq");
+							int yaw = fileManager.getIntegerValue(args[0].toLowerCase()+".yml", "yaw", fileManager.getDir() + File.separator + "modreq");
+							String world = fileManager.getStringValue(args[0].toLowerCase() + ".yml", "world", fileManager.getDir() + File.separator + "modreq");
 							World w = Bukkit.getWorld(world);
 							if(w instanceof World) {
 								Location loc = new Location(w, x, y, z, yaw, 0);
