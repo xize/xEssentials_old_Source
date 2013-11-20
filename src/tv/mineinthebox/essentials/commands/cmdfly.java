@@ -20,27 +20,27 @@ public class cmdfly {
 				if(args.length == 0) {
 					if(sender instanceof Player) {
 						Player p = (Player) sender;
-						if(fileManager.file_exists(sender.getName() + ".yml", fileManager.getDir() + File.separator + "players")) {
-							if(fileManager.isSet(sender.getName()  + ".yml", "fly", fileManager.getDir() + File.separator + "players")) {
-								if(fileManager.getBooleanValue(sender.getName() + ".yml", "fly", fileManager.getDir() + File.separator + "players")) {
-									fileManager.writeFile(sender.getName() + ".yml", "fly", false, fileManager.getDir() + File.separator + "players");
+						if(fileManager.file_exists(sender.getName().toLowerCase() + ".yml", fileManager.getDir() + File.separator + "players")) {
+							if(fileManager.isSet(sender.getName().toLowerCase()  + ".yml", "fly", fileManager.getDir() + File.separator + "players")) {
+								if(fileManager.getBooleanValue(sender.getName().toLowerCase() + ".yml", "fly", fileManager.getDir() + File.separator + "players")) {
+									fileManager.writeFile(sender.getName().toLowerCase() + ".yml", "fly", false, fileManager.getDir() + File.separator + "players");
 									p.sendMessage(ChatColor.GREEN + "successfully disabled survival fly!");
 									p.setAllowFlight(false);
 									p.setFlying(false);
 								} else {
-									fileManager.writeFile(sender.getName() + ".yml", "fly", true, fileManager.getDir() + File.separator + "players");
+									fileManager.writeFile(sender.getName().toLowerCase() + ".yml", "fly", true, fileManager.getDir() + File.separator + "players");
 									p.sendMessage(ChatColor.GREEN + "successfully enabled survival fly!");
 									p.setAllowFlight(true);
 									p.setFlying(true);
 								}
 							} else {
-								fileManager.writeFile(sender.getName() + ".yml", "fly", true, fileManager.getDir() + File.separator + "players");
+								fileManager.writeFile(sender.getName().toLowerCase() + ".yml", "fly", true, fileManager.getDir() + File.separator + "players");
 								p.sendMessage(ChatColor.GREEN + "successfully enabled survival fly!");
 								p.setAllowFlight(true);
 								p.setFlying(true);
 							}
 						} else {
-							fileManager.writeFile(sender.getName() + ".yml", "fly", true, fileManager.getDir() + File.separator + "players");
+							fileManager.writeFile(sender.getName().toLowerCase() + ".yml", "fly", true, fileManager.getDir() + File.separator + "players");
 							p.sendMessage(ChatColor.GREEN + "successfully enabled survival fly!");
 							p.setAllowFlight(true);
 							p.setFlying(true);
@@ -56,27 +56,27 @@ public class cmdfly {
 					} else {
 						Player player = Bukkit.getPlayer(args[0]);
 						if(player instanceof Player) {
-							if(fileManager.file_exists(player.getName() + ".yml", fileManager.getDir() + File.separator + "players")) {
-								if(fileManager.isSet(player.getName() + ".yml", "fly", fileManager.getDir() + File.separator + "players")) {
-									if(fileManager.getBooleanValue(player.getName() + ".yml", "fly", fileManager.getDir() + File.separator + "players")) {
-										fileManager.writeFile(player.getName() + ".yml", "fly", false, fileManager.getDir() + File.separator + "players");
+							if(fileManager.file_exists(player.getName().toLowerCase() + ".yml", fileManager.getDir() + File.separator + "players")) {
+								if(fileManager.isSet(player.getName().toLowerCase() + ".yml", "fly", fileManager.getDir() + File.separator + "players")) {
+									if(fileManager.getBooleanValue(player.getName().toLowerCase() + ".yml", "fly", fileManager.getDir() + File.separator + "players")) {
+										fileManager.writeFile(player.getName().toLowerCase() + ".yml", "fly", false, fileManager.getDir() + File.separator + "players");
 										player.setAllowFlight(false);
 										player.setFlying(false);
 										player.sendMessage(ChatColor.RED + sender.getName() + " has disabled your fly mode!");
 									} else {
-										fileManager.writeFile(player.getName() + ".yml", "fly", true, fileManager.getDir() + File.separator + "players");
+										fileManager.writeFile(player.getName().toLowerCase() + ".yml", "fly", true, fileManager.getDir() + File.separator + "players");
 										player.setAllowFlight(true);
 										player.setFlying(true);
 										player.sendMessage(ChatColor.GREEN + sender.getName() + " has enabled your fly mode!");
 									}
 								} else {
-									fileManager.writeFile(player.getName() + ".yml", "fly", true, fileManager.getDir() + File.separator + "players");
+									fileManager.writeFile(player.getName().toLowerCase() + ".yml", "fly", true, fileManager.getDir() + File.separator + "players");
 									player.setAllowFlight(true);
 									player.setFlying(true);
 									player.sendMessage(ChatColor.GREEN + sender.getName() + " has enabled your fly mode!");
 								}
 							} else {
-								fileManager.writeFile(player.getName() + ".yml", "fly", true, fileManager.getDir() + File.separator + "players");
+								fileManager.writeFile(player.getName().toLowerCase() + ".yml", "fly", true, fileManager.getDir() + File.separator + "players");
 								player.setAllowFlight(true);
 								player.setFlying(true);
 								player.sendMessage(ChatColor.GREEN + sender.getName() + " has enabled your fly mode!");
