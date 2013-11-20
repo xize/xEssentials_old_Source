@@ -296,7 +296,7 @@ public class xEssentialsMemory {
 		Iterator<Entry<String, Object>> it = map.entrySet().iterator();
 		while(it.hasNext()) {
 			Map.Entry<String, Object> its = (Entry<String, Object>) it.next();
-			fileManager.writeFile(p.getName() + ".yml", its.getKey(), its.getValue(), fileManager.getDir() + File.separator + "players");
+			fileManager.writeFile(p.getName().toLowerCase() + ".yml", its.getKey(), its.getValue(), fileManager.getDir() + File.separator + "players");
 		}
 	}
 
