@@ -20,9 +20,9 @@ public class cmddelwarp {
 					if(args.length == 0) {
 						sender.sendMessage(ChatColor.RED + "you where missing one argument, syntax: /delwarp <warpname>");
 					} else if(args.length == 1) {
-						if(fileManager.file_exists(args[0] + ".yml", fileManager.getDir() + File.separator + "warps")) {
+						if(fileManager.file_exists(args[0].toLowerCase() + ".yml", fileManager.getDir() + File.separator + "warps")) {
 							if(sender.hasPermission("xEssentials.command.delwarp.admin") || fileManager.getStringValue(args[0] + ".yml", "warpOwner", fileManager.getDir() + File.separator + "warps").equalsIgnoreCase(sender.getName())) {
-								fileManager.returnFile(args[0] + ".yml", fileManager.getDir() + File.separator + "warps").delete();
+								fileManager.returnFile(args[0].toLowerCase() + ".yml", fileManager.getDir() + File.separator + "warps").delete();
 								sender.sendMessage(ChatColor.GREEN + "successfully removed warp " + args[0]);
 							} else {
 								sender.sendMessage(ChatColor.RED + "warning this warp does not belongs to you!");
