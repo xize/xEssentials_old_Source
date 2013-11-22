@@ -47,6 +47,7 @@ public class xEssentials extends JavaPlugin {
 		log("has been disabled!", logType.info);
 		xEssentialsMemory.closeMemoryInput();
 		clearMemory.clearMem();
+		Runtime.getRuntime().gc(); 
 	}
 	
 	public static xEssentials getPlugin() {
