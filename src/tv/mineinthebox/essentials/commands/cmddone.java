@@ -103,7 +103,7 @@ public class cmddone {
 									}
 								}
 								f.delete();
-								sender.sendMessage(ChatColor.GREEN + "successly done the modreq of player " + p.getName() + " saving to file for next join");
+								sender.sendMessage(ChatColor.GREEN + "successly done the modreq of player " + args[0] + " saving to file for next join");
 								fileManager.writeFile(args[0].toLowerCase() + ".yml", "date", timeunits.setLongToDate(System.currentTimeMillis()).toString(), fileManager.getDir() + File.separator + "modreq_done");
 								fileManager.writeFile(args[0].toLowerCase() + ".yml", "comment", build.toString(), fileManager.getDir() + File.separator + "modreq_done");
 								fileManager.writeFile(args[0].toLowerCase() + ".yml", "helped", sender.getName(), fileManager.getDir() + File.separator + "modreq_done");
