@@ -1,7 +1,7 @@
 package tv.mineinthebox.essentials.events.playerEvents;
 
-import net.minecraft.server.v1_6_R3.EntityPlayer;
-import net.minecraft.server.v1_6_R3.Packet130UpdateSign;
+import net.minecraft.server.v1_7_R1.EntityPlayer;
+import net.minecraft.server.v1_7_R1.PacketPlayOutUpdateSign;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -9,7 +9,7 @@ import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
-import org.bukkit.craftbukkit.v1_6_R3.entity.CraftPlayer;
+import org.bukkit.craftbukkit.v1_7_R1.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -35,8 +35,9 @@ public class clientSideGraveyard implements Listener {
 				"you."
 			};
 			//https://forums.bukkit.org/threads/change-the-direction-of-a-sign.31582/ relevant
+			
 			EntityPlayer player = ((CraftPlayer) p).getHandle();
-			player.playerConnection.sendPacket(new Packet130UpdateSign(signBlock.getX(), signBlock.getY(), signBlock.getZ(), lines));
+			player.playerConnection.sendPacket(new PacketPlayOutUpdateSign(signBlock.getX(), signBlock.getY(), signBlock.getZ(), lines));
 			p.sendBlockChange(block.getLocation(), Material.MOSSY_COBBLESTONE, block.getData());
 			Block blockSkeleton = block.getRelative(BlockFace.UP);
 			p.sendBlockChange(blockSkeleton.getLocation(), Material.SKULL, (byte) 0);
