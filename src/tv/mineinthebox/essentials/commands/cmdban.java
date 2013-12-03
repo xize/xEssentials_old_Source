@@ -30,13 +30,13 @@ public class cmdban {
 						Player victem = Bukkit.getPlayer(args[0]);
 						if(!ban.isBanned(args[0])) {
 							if(victem instanceof Player) {
-								fileManager.writeFile(victem.getName().toLowerCase() + ".yml", "Player", victem.getName(), fileManager.getDir() + File.separator + "bans");
-								fileManager.writeFile(victem.getName().toLowerCase() + ".yml", "ip", victem.getAddress().getHostName(), fileManager.getDir() + File.separator + "bans");
-								fileManager.writeFile(victem.getName().toLowerCase() + ".yml", "BannedOn", timeunits.setLongToDate(System.currentTimeMillis()).toString(), fileManager.getDir() + File.separator + "bans");
-								fileManager.writeFile(victem.getName().toLowerCase() + ".yml", "BannedBy", sender.getName(), fileManager.getDir() + File.separator + "bans");
-								fileManager.writeFile(victem.getName().toLowerCase() + ".yml", "Reason", "the ban hammer has spoken!", fileManager.getDir() + File.separator + "bans");
-								fileManager.writeFile(victem.getName().toLowerCase() + ".yml", "Tempbanned", false, fileManager.getDir() + File.separator + "bans");
-								fileManager.writeFile(victem.getName().toLowerCase() + ".yml", "Banned", true, fileManager.getDir() + File.separator + "bans");
+								fileManager.writeFile(victem.getUniqueId() + ".yml", "Player", victem.getName(), fileManager.getDir() + File.separator + "bans");
+								fileManager.writeFile(victem.getUniqueId() + ".yml", "ip", victem.getAddress().getHostName(), fileManager.getDir() + File.separator + "bans");
+								fileManager.writeFile(victem.getUniqueId() + ".yml", "BannedOn", timeunits.setLongToDate(System.currentTimeMillis()).toString(), fileManager.getDir() + File.separator + "bans");
+								fileManager.writeFile(victem.getUniqueId() + ".yml", "BannedBy", sender.getName(), fileManager.getDir() + File.separator + "bans");
+								fileManager.writeFile(victem.getUniqueId() + ".yml", "Reason", "the ban hammer has spoken!", fileManager.getDir() + File.separator + "bans");
+								fileManager.writeFile(victem.getUniqueId() + ".yml", "Tempbanned", false, fileManager.getDir() + File.separator + "bans");
+								fileManager.writeFile(victem.getUniqueId() + ".yml", "Banned", true, fileManager.getDir() + File.separator + "bans");
 								showBanResults(victem.getName());
 								victem.kickPlayer(fileManager.getStringValue(victem.getName() + ".yml", "Reason", fileManager.getDir() + File.separator + "bans"));
 							} else {
@@ -64,13 +64,13 @@ public class cmdban {
 						Player victem = Bukkit.getPlayer(args[0]);
 						if(victem instanceof Player) {
 							if(!ban.isBanned(victem)) {
-								fileManager.writeFile(victem.getName().toLowerCase() + ".yml", "Player", victem.getName(), fileManager.getDir() + File.separator + "bans");
-								fileManager.writeFile(victem.getName().toLowerCase() + ".yml", "ip", victem.getAddress().getHostName(), fileManager.getDir() + File.separator + "bans");
-								fileManager.writeFile(victem.getName().toLowerCase() + ".yml", "BannedOn", timeunits.setLongToDate(System.currentTimeMillis()).toString(), fileManager.getDir() + File.separator + "bans");
-								fileManager.writeFile(victem.getName().toLowerCase() + ".yml", "BannedBy", sender.getName(), fileManager.getDir() + File.separator + "bans");
-								fileManager.writeFile(victem.getName().toLowerCase() + ".yml", "Reason", build.toString().replace("-hide", ""), fileManager.getDir() + File.separator + "bans");
-								fileManager.writeFile(victem.getName().toLowerCase() + ".yml", "Tempbanned", false, fileManager.getDir() + File.separator + "bans");
-								fileManager.writeFile(victem.getName().toLowerCase() + ".yml", "Banned", true, fileManager.getDir() + File.separator + "bans");
+								fileManager.writeFile(victem.getUniqueId() + ".yml", "Player", victem.getName(), fileManager.getDir() + File.separator + "bans");
+								fileManager.writeFile(victem.getUniqueId() + ".yml", "ip", victem.getAddress().getHostName(), fileManager.getDir() + File.separator + "bans");
+								fileManager.writeFile(victem.getUniqueId() + ".yml", "BannedOn", timeunits.setLongToDate(System.currentTimeMillis()).toString(), fileManager.getDir() + File.separator + "bans");
+								fileManager.writeFile(victem.getUniqueId() + ".yml", "BannedBy", sender.getName(), fileManager.getDir() + File.separator + "bans");
+								fileManager.writeFile(victem.getUniqueId() + ".yml", "Reason", build.toString().replace("-hide", ""), fileManager.getDir() + File.separator + "bans");
+								fileManager.writeFile(victem.getUniqueId() + ".yml", "Tempbanned", false, fileManager.getDir() + File.separator + "bans");
+								fileManager.writeFile(victem.getUniqueId() + ".yml", "Banned", true, fileManager.getDir() + File.separator + "bans");
 								victem.kickPlayer(fileManager.getStringValue(victem.getName().toLowerCase() + ".yml", "Reason", fileManager.getDir() + File.separator + "bans"));
 							} else {
 								sender.sendMessage(ChatColor.RED + args[0] + " is allready banned!");
@@ -93,14 +93,14 @@ public class cmdban {
 						Player victem = Bukkit.getPlayer(args[0]);
 						if(victem instanceof Player) {
 							if(!ban.isBanned(victem)) {
-								fileManager.writeFile(victem.getName().toLowerCase() + ".yml", "Player", victem.getName(), fileManager.getDir() + File.separator + "bans");
-								fileManager.writeFile(victem.getName().toLowerCase() + ".yml", "ip", victem.getAddress().getHostName(), fileManager.getDir() + File.separator + "bans");
-								fileManager.writeFile(victem.getName().toLowerCase() + ".yml", "BannedOn", timeunits.setLongToDate(System.currentTimeMillis()).toString(), fileManager.getDir() + File.separator + "bans");
-								fileManager.writeFile(victem.getName().toLowerCase() + ".yml", "BannedBy", sender.getName(), fileManager.getDir() + File.separator + "bans");
-								fileManager.writeFile(victem.getName().toLowerCase() + ".yml", "Reason", build.toString(), fileManager.getDir() + File.separator + "bans");
-								fileManager.writeFile(victem.getName().toLowerCase() + ".yml", "Tempbanned", false, fileManager.getDir() + File.separator + "bans");
-								fileManager.writeFile(victem.getName().toLowerCase() + ".yml", "Banned", true, fileManager.getDir() + File.separator + "bans");
-								showBanResults(victem.getName());
+								fileManager.writeFile(victem.getUniqueId() + ".yml", "Player", victem.getName(), fileManager.getDir() + File.separator + "bans");
+								fileManager.writeFile(victem.getUniqueId() + ".yml", "ip", victem.getAddress().getHostName(), fileManager.getDir() + File.separator + "bans");
+								fileManager.writeFile(victem.getUniqueId() + ".yml", "BannedOn", timeunits.setLongToDate(System.currentTimeMillis()).toString(), fileManager.getDir() + File.separator + "bans");
+								fileManager.writeFile(victem.getUniqueId() + ".yml", "BannedBy", sender.getName(), fileManager.getDir() + File.separator + "bans");
+								fileManager.writeFile(victem.getUniqueId() + ".yml", "Reason", build.toString(), fileManager.getDir() + File.separator + "bans");
+								fileManager.writeFile(victem.getUniqueId() + ".yml", "Tempbanned", false, fileManager.getDir() + File.separator + "bans");
+								fileManager.writeFile(victem.getUniqueId() + ".yml", "Banned", true, fileManager.getDir() + File.separator + "bans");
+								showBanResults(victem);
 								victem.kickPlayer(fileManager.getStringValue(victem.getName().toLowerCase() + ".yml", "Reason", fileManager.getDir() + File.separator + "bans"));
 							} else {
 								sender.sendMessage(ChatColor.RED + args[0] + " is allready banned!");
@@ -129,57 +129,75 @@ public class cmdban {
 		return false;
 	}
 
-	public static void showBanResults(String playerName) {
-		String player = fileManager.getStringValue(playerName.toLowerCase() + ".yml", "Player", fileManager.getDir() + File.separator + "bans");
-		String BannedOn = fileManager.getStringValue(playerName.toLowerCase() + ".yml", "BannedOn", fileManager.getDir() + File.separator + "bans");
-		String BannedBy = fileManager.getStringValue(playerName.toLowerCase() + ".yml", "BannedBy", fileManager.getDir() + File.separator + "bans");
-		String Reason = fileManager.getStringValue(playerName.toLowerCase() + ".yml", "Reason", fileManager.getDir() + File.separator + "bans");
-		Boolean Tempbanned = fileManager.getBooleanValue(playerName.toLowerCase() + ".yml", "Tempbanned", fileManager.getDir() + File.separator + "bans");
-		Boolean Banned = fileManager.getBooleanValue(playerName.toLowerCase() + ".yml", "Banned", fileManager.getDir() + File.separator + "bans");
-		for(Player p : Bukkit.getOnlinePlayers()) {
-			p.sendMessage(ChatColor.GOLD + ".oO___[Banned]___Oo.");
-			p.sendMessage(ChatColor.GRAY + "player: " + player);
-			p.sendMessage(ChatColor.GRAY + "banned on: " + BannedOn);
-			p.sendMessage(ChatColor.GRAY + "banned by: " + BannedBy);
-			p.sendMessage(ChatColor.GRAY + "reason: " + Reason);
-			p.sendMessage(ChatColor.GRAY + "tempbanned: " + Tempbanned);
-			p.sendMessage(ChatColor.GRAY + "banned: " + Banned);
+	public static void showBanResults(Player p) {
+		String player = fileManager.getStringValue(p.getUniqueId() + ".yml", "Player", fileManager.getDir() + File.separator + "bans");
+		String BannedOn = fileManager.getStringValue(p.getUniqueId() + ".yml", "BannedOn", fileManager.getDir() + File.separator + "bans");
+		String BannedBy = fileManager.getStringValue(p.getUniqueId() + ".yml", "BannedBy", fileManager.getDir() + File.separator + "bans");
+		String Reason = fileManager.getStringValue(p.getUniqueId() + ".yml", "Reason", fileManager.getDir() + File.separator + "bans");
+		Boolean Tempbanned = fileManager.getBooleanValue(p.getUniqueId() + ".yml", "Tempbanned", fileManager.getDir() + File.separator + "bans");
+		Boolean Banned = fileManager.getBooleanValue(p.getUniqueId() + ".yml", "Banned", fileManager.getDir() + File.separator + "bans");
+		for(Player pp : Bukkit.getOnlinePlayers()) {
+			pp.sendMessage(ChatColor.GOLD + ".oO___[Banned]___Oo.");
+			pp.sendMessage(ChatColor.GRAY + "player: " + player);
+			pp.sendMessage(ChatColor.GRAY + "banned on: " + BannedOn);
+			pp.sendMessage(ChatColor.GRAY + "banned by: " + BannedBy);
+			pp.sendMessage(ChatColor.GRAY + "reason: " + Reason);
+			pp.sendMessage(ChatColor.GRAY + "tempbanned: " + Tempbanned);
+			pp.sendMessage(ChatColor.GRAY + "banned: " + Banned);
+		}
+	}
+	
+	public static void showBanResults(String p) {
+		String player = fileManager.getStringValue(p.toLowerCase() + ".yml", "Player", fileManager.getDir() + File.separator + "bans");
+		String BannedOn = fileManager.getStringValue(p.toLowerCase() + ".yml", "BannedOn", fileManager.getDir() + File.separator + "bans");
+		String BannedBy = fileManager.getStringValue(p.toLowerCase() + ".yml", "BannedBy", fileManager.getDir() + File.separator + "bans");
+		String Reason = fileManager.getStringValue(p.toLowerCase() + ".yml", "Reason", fileManager.getDir() + File.separator + "bans");
+		Boolean Tempbanned = fileManager.getBooleanValue(p.toLowerCase() + ".yml", "Tempbanned", fileManager.getDir() + File.separator + "bans");
+		Boolean Banned = fileManager.getBooleanValue(p.toLowerCase() + ".yml", "Banned", fileManager.getDir() + File.separator + "bans");
+		for(Player pp : Bukkit.getOnlinePlayers()) {
+			pp.sendMessage(ChatColor.GOLD + ".oO___[Banned]___Oo.");
+			pp.sendMessage(ChatColor.GRAY + "player: " + player);
+			pp.sendMessage(ChatColor.GRAY + "banned on: " + BannedOn);
+			pp.sendMessage(ChatColor.GRAY + "banned by: " + BannedBy);
+			pp.sendMessage(ChatColor.GRAY + "reason: " + Reason);
+			pp.sendMessage(ChatColor.GRAY + "tempbanned: " + Tempbanned);
+			pp.sendMessage(ChatColor.GRAY + "banned: " + Banned);
 		}
 	}
 	
 	public static void setBanned(String ban_message, Player p, banType type) {
 		if(type == banType.floodspam) {
-			fileManager.writeFile(p.getName().toLowerCase() + ".yml", "Player", p.getName(), fileManager.getDir() + File.separator + "bans");
-			fileManager.writeFile(p.getName().toLowerCase() + ".yml", "ip", p.getAddress().getHostName(), fileManager.getDir() + File.separator + "bans");
-			fileManager.writeFile(p.getName().toLowerCase() + ".yml", "BannedOn", timeunits.setLongToDate(System.currentTimeMillis()).toString(), fileManager.getDir() + File.separator + "bans");
-			fileManager.writeFile(p.getName().toLowerCase() + ".yml", "BannedBy", "[" + type.name() + "]", fileManager.getDir() + File.separator + "bans");
-			fileManager.writeFile(p.getName().toLowerCase() + ".yml", "Reason", ban_message, fileManager.getDir() + File.separator + "bans");
-			fileManager.writeFile(p.getName().toLowerCase() + ".yml", "Tempbanned", false, fileManager.getDir() + File.separator + "bans");
-			fileManager.writeFile(p.getName().toLowerCase() + ".yml", "Banned", true, fileManager.getDir() + File.separator + "bans");
+			fileManager.writeFile(p.getUniqueId() + ".yml", "Player", p.getName(), fileManager.getDir() + File.separator + "bans");
+			fileManager.writeFile(p.getUniqueId() + ".yml", "ip", p.getAddress().getHostName(), fileManager.getDir() + File.separator + "bans");
+			fileManager.writeFile(p.getUniqueId() + ".yml", "BannedOn", timeunits.setLongToDate(System.currentTimeMillis()).toString(), fileManager.getDir() + File.separator + "bans");
+			fileManager.writeFile(p.getUniqueId() + ".yml", "BannedBy", "[" + type.name() + "]", fileManager.getDir() + File.separator + "bans");
+			fileManager.writeFile(p.getUniqueId() + ".yml", "Reason", ban_message, fileManager.getDir() + File.separator + "bans");
+			fileManager.writeFile(p.getUniqueId() + ".yml", "Tempbanned", false, fileManager.getDir() + File.separator + "bans");
+			fileManager.writeFile(p.getUniqueId() + ".yml", "Banned", true, fileManager.getDir() + File.separator + "bans");
 			p.kickPlayer(xEssentialsMemory.antiFloodSpamMessage);
 			showBanResults(p.getName());	
 		} else if(type == banType.humanspam) {
-			fileManager.writeFile(p.getName().toLowerCase() + ".yml", "Player", p.getName(), fileManager.getDir() + File.separator + "bans");
-			fileManager.writeFile(p.getName().toLowerCase() + ".yml", "ip", p.getAddress().getHostName(), fileManager.getDir() + File.separator + "bans");
-			fileManager.writeFile(p.getName().toLowerCase() + ".yml", "BannedOn", timeunits.setLongToDate(System.currentTimeMillis()).toString(), fileManager.getDir() + File.separator + "bans");
-			fileManager.writeFile(p.getName().toLowerCase() + ".yml", "BannedBy", "[" + type.name() + "]", fileManager.getDir() + File.separator + "bans");
-			fileManager.writeFile(p.getName().toLowerCase() + ".yml", "Reason", ban_message, fileManager.getDir() + File.separator + "bans");
-			fileManager.writeFile(p.getName().toLowerCase() + ".yml", "Tempbanned", false, fileManager.getDir() + File.separator + "bans");
-			fileManager.writeFile(p.getName().toLowerCase() + ".yml", "Banned", true, fileManager.getDir() + File.separator + "bans");
+			fileManager.writeFile(p.getUniqueId() + ".yml", "Player", p.getName(), fileManager.getDir() + File.separator + "bans");
+			fileManager.writeFile(p.getUniqueId() + ".yml", "ip", p.getAddress().getHostName(), fileManager.getDir() + File.separator + "bans");
+			fileManager.writeFile(p.getUniqueId() + ".yml", "BannedOn", timeunits.setLongToDate(System.currentTimeMillis()).toString(), fileManager.getDir() + File.separator + "bans");
+			fileManager.writeFile(p.getUniqueId() + ".yml", "BannedBy", "[" + type.name() + "]", fileManager.getDir() + File.separator + "bans");
+			fileManager.writeFile(p.getUniqueId() + ".yml", "Reason", ban_message, fileManager.getDir() + File.separator + "bans");
+			fileManager.writeFile(p.getUniqueId() + ".yml", "Tempbanned", false, fileManager.getDir() + File.separator + "bans");
+			fileManager.writeFile(p.getUniqueId() + ".yml", "Banned", true, fileManager.getDir() + File.separator + "bans");
 			p.kickPlayer(xEssentialsMemory.humanSpamMessage);
 		} else if(type == banType.pwnage) {
-			fileManager.writeFile(p.getName().toLowerCase() + ".yml", "Player", p.getName(), fileManager.getDir() + File.separator + "bans");
-			fileManager.writeFile(p.getName().toLowerCase() + ".yml", "ip", p.getAddress().getHostName(), fileManager.getDir() + File.separator + "bans");
-			fileManager.writeFile(p.getName().toLowerCase() + ".yml", "BannedOn", timeunits.setLongToDate(System.currentTimeMillis()).toString(), fileManager.getDir() + File.separator + "bans");
-			fileManager.writeFile(p.getName().toLowerCase() + ".yml", "BannedBy", "[" + type.name() + "]", fileManager.getDir() + File.separator + "bans");
-			fileManager.writeFile(p.getName().toLowerCase() + ".yml", "Reason", ban_message, fileManager.getDir() + File.separator + "bans");
-			fileManager.writeFile(p.getName().toLowerCase() + ".yml", "Tempbanned", false, fileManager.getDir() + File.separator + "bans");
-			fileManager.writeFile(p.getName().toLowerCase() + ".yml", "Banned", true, fileManager.getDir() + File.separator + "bans");
+			fileManager.writeFile(p.getUniqueId() + ".yml", "Player", p.getName(), fileManager.getDir() + File.separator + "bans");
+			fileManager.writeFile(p.getUniqueId() + ".yml", "ip", p.getAddress().getHostName(), fileManager.getDir() + File.separator + "bans");
+			fileManager.writeFile(p.getUniqueId() + ".yml", "BannedOn", timeunits.setLongToDate(System.currentTimeMillis()).toString(), fileManager.getDir() + File.separator + "bans");
+			fileManager.writeFile(p.getUniqueId() + ".yml", "BannedBy", "[" + type.name() + "]", fileManager.getDir() + File.separator + "bans");
+			fileManager.writeFile(p.getUniqueId() + ".yml", "Reason", ban_message, fileManager.getDir() + File.separator + "bans");
+			fileManager.writeFile(p.getUniqueId() + ".yml", "Tempbanned", false, fileManager.getDir() + File.separator + "bans");
+			fileManager.writeFile(p.getUniqueId() + ".yml", "Banned", true, fileManager.getDir() + File.separator + "bans");
 			p.kickPlayer(xEssentialsMemory.pwnageMessage);
 		}
 	}
 	
-	public static void setBanned(String ban_message, String p, banType type) {
+	/*public static void setBanned(String ban_message, String p, banType type) {
 		if(type == banType.floodspam) {
 			fileManager.writeFile(p.toLowerCase() + ".yml", "Player", p, fileManager.getDir() + File.separator + "bans");
 			fileManager.writeFile(p.toLowerCase() + ".yml", "ip", "unknown", fileManager.getDir() + File.separator + "bans");
@@ -207,6 +225,7 @@ public class cmdban {
 			fileManager.writeFile(p.toLowerCase() + ".yml", "Banned", true, fileManager.getDir() + File.separator + "bans");
 		}
 	}
+	*/
 	
 	public static enum banType {
 		floodspam,
