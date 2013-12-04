@@ -22,14 +22,16 @@ public class torchEvent implements Listener {
 	@EventHandler
 	public static void torch(PlayerMoveEvent e) {
 		if(isTorch(e.getPlayer())) {
-			if(e.getPlayer().getItemInHand().getType() == Material.TORCH) {
-				Block block = e.getPlayer().getLocation().getBlock().getRelative(BlockFace.DOWN);
-				if(block.getType() == Material.AIR || block.getType() == Material.WATER || block.getType() == Material.STATIONARY_WATER || block.getType() == Material.LAVA || block.getType() == Material.STATIONARY_LAVA) {
-					return;
+			if(e.getFrom().distance(e.getTo()) > 0) {
+				if(e.getPlayer().getItemInHand().getType() == Material.TORCH) {
+					Block block = e.getPlayer().getLocation().getBlock().getRelative(BlockFace.DOWN);
+					if(block.getType() == Material.AIR || block.getType() == Material.WATER || block.getType() == Material.STATIONARY_WATER || block.getType() == Material.LAVA || block.getType() == Material.STATIONARY_LAVA) {
+						return;
+					}
+					e.getPlayer().sendBlockChange(block.getLocation(), Material.GLOWSTONE, block.getData());
+					getTrailList(e.getPlayer()).add(block.getState());
+					removeGlow(e.getPlayer());
 				}
-				e.getPlayer().sendBlockChange(block.getLocation(), Material.GLOWSTONE, block.getData());
-				getTrailList(e.getPlayer()).add(block.getState());
-				removeGlow(e.getPlayer());
 			}
 		}
 	}
