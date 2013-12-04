@@ -52,6 +52,7 @@ import tv.mineinthebox.essentials.events.playerEvents.newPlayer_spawn;
 import tv.mineinthebox.essentials.events.playerEvents.realisticGlass;
 import tv.mineinthebox.essentials.events.playerEvents.saveInventory;
 import tv.mineinthebox.essentials.events.playerEvents.saveLocationEvent;
+import tv.mineinthebox.essentials.events.playerEvents.spawnDeathEvent;
 import tv.mineinthebox.essentials.events.playerEvents.steveHurtSound;
 import tv.mineinthebox.essentials.events.playerEvents.taskEvent;
 import tv.mineinthebox.essentials.events.playerEvents.torchEvent;
@@ -218,6 +219,7 @@ public class handler {
 		if(xEssentialsMemory.mobsUseHeads) {
 			setListener(new deathHeadEvent());
 		}
+		setListener(new spawnDeathEvent());
 		
 		/*
 		 * 
