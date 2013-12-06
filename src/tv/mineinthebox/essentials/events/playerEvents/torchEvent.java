@@ -25,7 +25,7 @@ public class torchEvent implements Listener {
 			if(e.getFrom().distance(e.getTo()) > 0) {
 				if(e.getPlayer().getItemInHand().getType() == Material.TORCH) {
 					Block block = e.getPlayer().getLocation().getBlock().getRelative(BlockFace.DOWN);
-					if(block.getType() == Material.AIR || block.getType() == Material.WATER || block.getType() == Material.STATIONARY_WATER || block.getType() == Material.LAVA || block.getType() == Material.STATIONARY_LAVA) {
+					if(block.getType() == Material.AIR || block.getType() == Material.WATER || block.getType() == Material.STATIONARY_WATER || block.getType() == Material.LAVA || block.getType() == Material.STATIONARY_LAVA || block.getType() == Material.LONG_GRASS || block.getType() == Material.RED_ROSE || (block.getType().isTransparent() && !block.getType().isSolid())) {
 						return;
 					}
 					e.getPlayer().sendBlockChange(block.getLocation(), Material.GLOWSTONE, block.getData());
