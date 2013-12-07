@@ -1,11 +1,11 @@
 package tv.mineinthebox.essentials.commands;
 
 import java.io.File;
-
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.World;
+import org.bukkit.block.Biome;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -13,6 +13,7 @@ import org.bukkit.entity.Player;
 import tv.mineinthebox.essentials.fileManager;
 import tv.mineinthebox.essentials.hook.ManCoHook;
 import tv.mineinthebox.essentials.hook.hooks;
+import tv.mineinthebox.essentials.hook.worldedit;
 import tv.mineinthebox.essentials.permissions.playerPermission;
 
 public class cmdteleport {
@@ -91,6 +92,38 @@ public class cmdteleport {
 							}
 						} else {
 							sender.sendMessage(ChatColor.RED + "this player is not online!");
+						}
+					} else if(args[0].equalsIgnoreCase("biome")) {
+						if(args[1].equalsIgnoreCase("list")) {
+							sender.sendMessage(ChatColor.GOLD + ".oO___[Biome list for teleportation]___Oo.");
+							StringBuilder build = new StringBuilder();
+							for(Biome biome : Biome.values()) {
+								build.append(biome.name() + ", ").toString();
+							}
+							sender.sendMessage(ChatColor.GRAY + build.toString());
+						} else {
+							try {
+								Biome biome = Biome.valueOf(args[1].toUpperCase());
+								if(sender instanceof Player) {
+									Player p = (Player) sender;
+									if(hooks.isWorldeditEnabled()) {
+										Location loc = worldedit.getFirstMatchingBiome(p, biome);
+										if(loc instanceof Location && loc != null) {
+											loc.getWorld().refreshChunk(loc.getChunk().getX(), loc.getChunk().getZ());
+											p.teleport(loc);
+											p.sendMessage(ChatColor.GREEN + "teleporting to biome: " + biome.name().toLowerCase());
+										} else {
+											sender.sendMessage(ChatColor.RED + "we weren't able to find this biome!");
+										}
+									} else {
+										sender.sendMessage(ChatColor.RED + "worldedit is not enabled so you aren't able to teleport to biomes!");
+									}
+								} else {
+									sender.sendMessage(ChatColor.RED + "a console cannot teleport to biomes!");
+								}
+							} catch(IllegalArgumentException e) {
+								sender.sendMessage(ChatColor.RED + "invalid biome name!");
+							}	
 						}
 					} else {
 						Player player1 = Bukkit.getPlayer(args[0]);

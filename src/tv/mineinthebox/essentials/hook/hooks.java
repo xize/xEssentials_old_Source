@@ -11,6 +11,13 @@ public class hooks {
 		return false;
 	}
 	
+	public static boolean isWorldeditEnabled() {
+		if(Bukkit.getPluginManager().isPluginEnabled("WorldEdit")) {
+			return true;
+		}
+		return false;
+	}
+	
 	public static boolean isPexEnabled() {
 		if(Bukkit.getPluginManager().isPluginEnabled("PermissionsEx")) {
 			return true;
